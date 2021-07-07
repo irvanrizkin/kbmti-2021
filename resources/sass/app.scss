@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'ITC CHELTENHAM STD';
+    src: url(/public/font/utc/CheltenhamStdBook.otf);
+}
+
+@font-face {
+    font-family: 'Regis';
+    src: url(/public/font/regis/Regis-SemiBold.ttf);
+}
+
+@import 'variable';
+
+@import "./node_modules/bootstrap/scss/bootstrap";
+
+@import 'abstract/mixins';
+
+@import 'layouts/navbar';
+
+@import 'pages/landing-page';

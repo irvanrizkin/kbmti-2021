@@ -1,0 +1,29 @@
+@mixin respon($breakpoint) {
+    @if $breakpoint == phone {
+        // 37.5 == 600px / 16px = 37.5
+        @media only screen and (max-width: 37.5em) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == tb-pot {
+        // 56.25 == 900px / 16px
+        @media only screen and (max-width: 56.25em) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == tb-land {
+        // 75 == 1200px / 16px
+        @media only screen and (max-width: 75em) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == big-d {
+        // 112.5 == 1800px / 16px
+        @media only screen and (min-width: 112.5em) {
+            @content;
+        }
+    }
+}
