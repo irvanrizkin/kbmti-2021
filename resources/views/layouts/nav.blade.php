@@ -12,7 +12,7 @@
           <a class="nav-link active" href="#">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">Department</a>
+          <a class="nav-link active" href="/department">Department</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="#">Berita</a>
