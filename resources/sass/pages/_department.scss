@@ -1,0 +1,136 @@
+.department {
+    &__top {
+        .col-lg-6:first-child {
+            margin-top: 130px;
+        }
+        &__list-group {
+            flex-direction: row !important;
+            border-radius: 1.25rem !important;
+            &__item {
+                font-weight: 600;
+                font-size: 2.25rem;
+                font-family: ITC Cheltenham Std;
+                padding: 1.875rem 1rem;
+                border: none !important;
+                text-align: center;
+                background-color: #F5F5F5;
+                max-width: 250px;
+                color: #24231F;
+            }
+            &__item:first-child {
+                border-top-right-radius: unset !important;
+                border-bottom-left-radius: inherit !important;
+            }
+            &__item:last-child {
+                border-top-right-radius: inherit !important;
+                border-bottom-left-radius: unset !important;
+            }
+            &__item.active {
+                background-color: #951C21;
+            }
+        }
+        &__tab-content {
+            margin-top: 35px;
+            &__item {
+                margin-bottom: 20px;
+                a {
+                    margin-left: 20px;
+                    font-weight: 600;
+                    font-size: 2.25rem;
+                    display: flex;
+                    align-self: center;
+                    font-family: ITC Cheltenham Std;
+                    text-decoration: none;
+                    color: #24231F;
+                    transition: 0.3s;
+                }
+                a:hover {
+                    color: #951C21;
+                    margin-left: 35px;
+                }
+            }
+            &__item.active a {
+                margin-left: 35px;
+                color: #951C21;
+            }
+        }
+        &__detail {
+            @include respon(tb-pot) {
+                padding-top: 30px;
+                text-align: center;
+            }
+            @include respon(tb-land) {
+                padding-left: calc(var(--bs-gutter-x) * .5);
+                padding-right: calc(var(--bs-gutter-x) * .5);
+            }
+            padding-left: 70px;
+            padding-top: 180px;
+            background-color: #951C21;
+            &__title {
+                margin-top: 30px;
+                &__border {
+                    width: 4px;
+                    height: 61px;
+                    background: #F5F5F5;
+                    align-self: center;
+                }
+                & span {
+                    margin-left: 16px;
+                    font-weight: 600;
+                    font-size: 4rem;
+                    color: #fff;
+                    font-family: ITC Cheltenham Std;
+                }
+            }
+            &__desc {
+                margin-top: 30px;
+                color: white;
+                font-family: ITC Cheltenham Std;
+                font-size: 1.5rem;
+                text-align: justify;
+                line-height: 180%;
+                max-width: 500px;
+            }
+            &__scroll {
+                margin-top: 40px;
+                & span {
+                    font-weight: 600;
+                    letter-spacing: 0.0075em;
+                    font-size: 0.875rem;
+                    color: white;
+                    font-family: ITC Cheltenham Std;
+                }
+                &__border {
+                    margin-top: 10px;
+                    width: 4px;
+                    height: 109px;
+                    background: #FFFFFF;
+                    border-radius: 22px;
+                    display: flex;
+                    align-self: center;
+                    margin-bottom: 30px;
+                }
+            }
+        }
+    }
+    &__member {
+        margin-bottom: 100px;
+        &__title {
+            padding-top: 100px;
+            margin-bottom: 4rem;
+            &__border {
+                width: 4px;
+                height: 61px;
+                background: #951C21;
+                align-self: center;
+            }
+            & span {
+                font-weight: 600;
+                font-size: 4rem;
+                color: #24231F;
+                font-family: ITC Cheltenham Std;
+                margin-left: 10px;
+            }
+        }
+    }
+}
