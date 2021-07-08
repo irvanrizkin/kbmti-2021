@@ -1,176 +1,178 @@
-.top {
-    height: 100vh;
-    min-height: 100%;
-    background-size: cover;
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-.top {
-    &__item {
-        text-align: center;
-        align-self: center;
+.home__ {
+    &top {
+        height: 100vh;
+        min-height: 100%;
+        background-size: cover;
+        position: relative;
+        display: flex;
+        justify-content: center;
     }
-    &__item {
-        &__logo {
-
+    &top {
+        &__item {
+            text-align: center;
+            align-self: center;
         }
+        &__item {
+            &__logo {
 
-        &__text {
-            color: white;
-            font-weight: 600;
-            font-size: 4rem;
-            font-family: Regis;
-        }
-    }
-}
-
-.top2 {
-    height: 720px;
-    min-height: 100%;
-    background-size: cover;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    font-family: ITC Cheltenham Std;
-}
-
-.top2 {
-    &__item {
-        text-align: center;
-        align-self: center;
-    }
-
-    &__item {
-        &__kbmti {
-            font-size: 4rem;
-            font-weight: 600;
-            color: #24231F;
-            margin-bottom: 30px;
-        }
-
-        &__kbmti-long {
-            font-size: 2.25rem;
-            font-weight: 600;
-            color: #24231F;
-            margin-bottom: 30px;
-        }
-
-        &__desc {
-            font-size: 1.5rem;
-            line-height: 180%;
-            max-width: 730px;
-            color: #24231F;
-        }
-    }
-}
-
-.mid {
-    &__visi {
-        margin-top: 55px;
-        &__title {
-            &__border {
-                width: 4px;
-                height: 61px;
-                background: #951C21;
-                align-self: center;
             }
-            & span {
-                margin-left: 16px;
+
+            &__text {
+                color: white;
                 font-weight: 600;
                 font-size: 4rem;
-                font-family: ITC Cheltenham Std;
+                font-family: Regis;
             }
-        }
-        &__desc {
-            margin-top: 24px;
-            max-width: 730px;
-            font-size: 1.5rem;
-            color: #4E4B66;
-            text-align: justify;
-            line-height: 180%;
-            font-family: ITC Cheltenham Std;
         }
     }
-    &__budaya {
-        margin-top: 130px;
-        &__title {
-            margin-bottom: 30px;
-            &__border {
-                width: 4px;
-                height: 61px;
-                background: #951C21;
-                align-self: center;
-            }
-            & span {
-                margin-left: 16px;
-                font-weight: 600;
-                font-size: 4rem;
-                font-family: ITC Cheltenham Std;
-            }
+
+    &top2 {
+        height: 720px;
+        min-height: 100%;
+        background-size: cover;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        font-family: ITC Cheltenham Std;
+    }
+
+    &top2 {
+        &__item {
+            text-align: center;
+            align-self: center;
         }
-        &__list {
-            margin-top: 60px;
-            &__title {
+
+        &__item {
+            &__kbmti {
+                font-size: 4rem;
                 font-weight: 600;
-                font-size: 3rem;
                 color: #24231F;
-                font-family: ITC Cheltenham Std;
+                margin-bottom: 30px;
             }
+
+            &__kbmti-long {
+                font-size: 2.25rem;
+                font-weight: 600;
+                color: #24231F;
+                margin-bottom: 30px;
+            }
+
             &__desc {
-                margin-top: 30px;
                 font-size: 1.5rem;
                 line-height: 180%;
-                color: #4E4B66;
                 max-width: 730px;
-                font-family: ITC Cheltenham Std;
+                color: #24231F;
             }
         }
     }
-}
 
-.mid2 {
-    margin-top: 130px;
-    margin-bottom: 100px;
-    &__clock {
-        margin-bottom: 20px;
-        width: 60px;
-    }
-
-    &__title {
-        margin-bottom: 20px;
-    }
-
-    &__title span {
-        margin-left: 16px;
-        font-weight: 600;
-        font-size: 3rem;
-        color: #24231F;
-        font-family: ITC Cheltenham Std;
-    }
-
-    &__desc {
-        font-size: 1.5rem;
-        color: #4E4B66;
-        font-family: ITC Cheltenham Std;
-        max-width: 530px;
-    }
-
-    &__carousel {
-        @include respon(phone) {
-            margin-top: 25px;
+    &mid {
+        &__visi {
+            margin-top: 55px;
+            &__title {
+                &__border {
+                    width: 4px;
+                    height: 61px;
+                    background: #951C21;
+                    align-self: center;
+                }
+                & span {
+                    margin-left: 16px;
+                    font-weight: 600;
+                    font-size: 4rem;
+                    font-family: ITC Cheltenham Std;
+                }
+            }
+            &__desc {
+                margin-top: 24px;
+                max-width: 730px;
+                font-size: 1.5rem;
+                color: #4E4B66;
+                text-align: justify;
+                line-height: 180%;
+                font-family: ITC Cheltenham Std;
+            }
         }
-        &__prev {
-            margin-right: 20px;
+        &__budaya {
+            margin-top: 130px;
+            &__title {
+                margin-bottom: 30px;
+                &__border {
+                    width: 4px;
+                    height: 61px;
+                    background: #951C21;
+                    align-self: center;
+                }
+                & span {
+                    margin-left: 16px;
+                    font-weight: 600;
+                    font-size: 4rem;
+                    font-family: ITC Cheltenham Std;
+                }
+            }
+            &__list {
+                margin-top: 60px;
+                &__title {
+                    font-weight: 600;
+                    font-size: 3rem;
+                    color: #24231F;
+                    font-family: ITC Cheltenham Std;
+                }
+                &__desc {
+                    margin-top: 30px;
+                    font-size: 1.5rem;
+                    line-height: 180%;
+                    color: #4E4B66;
+                    max-width: 730px;
+                    font-family: ITC Cheltenham Std;
+                }
+            }
+        }
+    }
+
+    &mid2 {
+        margin-top: 130px;
+        margin-bottom: 100px;
+        &__clock {
+            margin-bottom: 20px;
+            width: 60px;
         }
 
-        &__next {
-            margin-left: 20px;
+        &__title {
+            margin-bottom: 20px;
         }
 
-        &__slide {
-            &__inner {
-                border-radius: 20px;
+        &__title span {
+            margin-left: 16px;
+            font-weight: 600;
+            font-size: 3rem;
+            color: #24231F;
+            font-family: ITC Cheltenham Std;
+        }
+
+        &__desc {
+            font-size: 1.5rem;
+            color: #4E4B66;
+            font-family: ITC Cheltenham Std;
+            max-width: 530px;
+        }
+
+        &__carousel {
+            @include respon(phone) {
+                margin-top: 25px;
+            }
+            &__prev {
+                margin-right: 20px;
+            }
+
+            &__next {
+                margin-left: 20px;
+            }
+
+            &__slide {
+                &__inner {
+                    border-radius: 20px;
+                }
             }
         }
     }

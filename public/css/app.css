@@ -10940,7 +10940,7 @@ textarea.form-control-lg {
   margin-right: 30px;
 }
 
-.top {
+.home__top {
   height: 100vh;
   min-height: 100%;
   background-size: cover;
@@ -10948,19 +10948,17 @@ textarea.form-control-lg {
   display: flex;
   justify-content: center;
 }
-
-.top__item {
+.home__top__item {
   text-align: center;
   align-self: center;
 }
-.top__item__text {
+.home__top__item__text {
   color: white;
   font-weight: 600;
   font-size: 4rem;
   font-family: Regis;
 }
-
-.top2 {
+.home__top2 {
   height: 720px;
   min-height: 100%;
   background-size: cover;
@@ -10969,46 +10967,44 @@ textarea.form-control-lg {
   justify-content: center;
   font-family: ITC Cheltenham Std;
 }
-
-.top2__item {
+.home__top2__item {
   text-align: center;
   align-self: center;
 }
-.top2__item__kbmti {
+.home__top2__item__kbmti {
   font-size: 4rem;
   font-weight: 600;
   color: #24231F;
   margin-bottom: 30px;
 }
-.top2__item__kbmti-long {
+.home__top2__item__kbmti-long {
   font-size: 2.25rem;
   font-weight: 600;
   color: #24231F;
   margin-bottom: 30px;
 }
-.top2__item__desc {
+.home__top2__item__desc {
   font-size: 1.5rem;
   line-height: 180%;
   max-width: 730px;
   color: #24231F;
 }
-
-.mid__visi {
+.home__mid__visi {
   margin-top: 55px;
 }
-.mid__visi__title__border {
+.home__mid__visi__title__border {
   width: 4px;
   height: 61px;
   background: #951C21;
   align-self: center;
 }
-.mid__visi__title span {
+.home__mid__visi__title span {
   margin-left: 16px;
   font-weight: 600;
   font-size: 4rem;
   font-family: ITC Cheltenham Std;
 }
-.mid__visi__desc {
+.home__mid__visi__desc {
   margin-top: 24px;
   max-width: 730px;
   font-size: 1.5rem;
@@ -11017,34 +11013,34 @@ textarea.form-control-lg {
   line-height: 180%;
   font-family: ITC Cheltenham Std;
 }
-.mid__budaya {
+.home__mid__budaya {
   margin-top: 130px;
 }
-.mid__budaya__title {
+.home__mid__budaya__title {
   margin-bottom: 30px;
 }
-.mid__budaya__title__border {
+.home__mid__budaya__title__border {
   width: 4px;
   height: 61px;
   background: #951C21;
   align-self: center;
 }
-.mid__budaya__title span {
+.home__mid__budaya__title span {
   margin-left: 16px;
   font-weight: 600;
   font-size: 4rem;
   font-family: ITC Cheltenham Std;
 }
-.mid__budaya__list {
+.home__mid__budaya__list {
   margin-top: 60px;
 }
-.mid__budaya__list__title {
+.home__mid__budaya__list__title {
   font-weight: 600;
   font-size: 3rem;
   color: #24231F;
   font-family: ITC Cheltenham Std;
 }
-.mid__budaya__list__desc {
+.home__mid__budaya__list__desc {
   margin-top: 30px;
   font-size: 1.5rem;
   line-height: 180%;
@@ -11052,43 +11048,42 @@ textarea.form-control-lg {
   max-width: 730px;
   font-family: ITC Cheltenham Std;
 }
-
-.mid2 {
+.home__mid2 {
   margin-top: 130px;
   margin-bottom: 100px;
 }
-.mid2__clock {
+.home__mid2__clock {
   margin-bottom: 20px;
   width: 60px;
 }
-.mid2__title {
+.home__mid2__title {
   margin-bottom: 20px;
 }
-.mid2__title span {
+.home__mid2__title span {
   margin-left: 16px;
   font-weight: 600;
   font-size: 3rem;
   color: #24231F;
   font-family: ITC Cheltenham Std;
 }
-.mid2__desc {
+.home__mid2__desc {
   font-size: 1.5rem;
   color: #4E4B66;
   font-family: ITC Cheltenham Std;
   max-width: 530px;
 }
 @media only screen and (max-width: 37.5em) {
-  .mid2__carousel {
+  .home__mid2__carousel {
     margin-top: 25px;
   }
 }
-.mid2__carousel__prev {
+.home__mid2__carousel__prev {
   margin-right: 20px;
 }
-.mid2__carousel__next {
+.home__mid2__carousel__next {
   margin-left: 20px;
 }
-.mid2__carousel__slide__inner {
+.home__mid2__carousel__slide__inner {
   border-radius: 20px;
 }
 
