@@ -2,7 +2,7 @@
     background-color: #F5F5F5;
     padding: 1.875rem 1.1875rem 3.125rem;
     border-radius: 20px;
-    min-width: 300px;
+    width: 300px;
     &__nama {
         font-weight: 600;
         color: #24231F;
@@ -15,8 +15,9 @@
         font-size: 1.125rem;
         color: #4E4B66;
         font-family: ITC Cheltenham Std;
+        margin-bottom: 0.9375rem;
     }
     &__sm {
-        margin-top: 0.625rem;
+        // margin-top: 0.625rem;
     }
 }
