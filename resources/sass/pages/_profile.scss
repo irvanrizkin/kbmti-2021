@@ -1,0 +1,182 @@
+.profile {
+    &__heading {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-bottom: 4rem;
+        scroll-snap-align: center;
+        @include respon(tb-land) {
+            grid-template-columns: 1fr;
+        }
+    }
+    &__history {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 6rem;
+        padding-right: 3rem;
+        scroll-snap-align: center;
+        &-content {
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            text-align: justify;
+            font-family: ITC CHELTENHAM STD;
+        }
+        @include respon(tb-land) {
+            order: 1;
+            height: fit-content;
+            margin-top: 4rem;
+        }
+    }
+    &__image {
+        background-color: #951C21;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        &-title {
+          font-family: Regis;
+          color: #FFFFFF;
+          font-size: 4rem;
+          font-weight: 600;
+        }
+        &-scroll {
+          position: absolute;
+          bottom: 2rem;
+          font-size: 1rem;
+          color: white;
+          font-weight: 600;
+          text-align: center;
+          &-text {
+            margin-bottom: 10px;
+            font-family: Regis;
+          }
+          &-image {
+            animation: mover 0.5s infinite alternate;
+          }
+        }
+    }
+    &__chart {
+        text-align: center;
+        margin-bottom: 4rem;
+        scroll-snap-align: center;
+        &-container {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 2rem;
+        }
+        &-box {
+            width: 225px;
+            height: 225px;
+            display: flex;
+            border-radius: 20px;
+            background-color: #F5F5F5;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.5s;
+            &-img {
+                margin: auto;
+            }
+        }
+        &-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 0;
+            &>.profile__chart-box {
+                &:hover {
+                    background-color: #951C21;
+                    &> img {
+                        filter: brightness(0) invert(1);
+                    }
+                }
+            }
+        }
+    }
+    &__meaning {
+        text-align: center;
+        scroll-snap-align: center;
+        &-window {
+            background-color: #F5F5F5;
+            width: 500px;
+            height: 405px;
+            padding: 30px;
+            border-radius: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            &-title {
+                font-size: 1.5rem;
+                font-family: Regis;
+                font-weight: 600;
+            }
+            &-desc {
+                font-size: 1.125rem;
+                font-family: ITC Cheltenham Std;
+                font-weight: 400;
+            }
+            &-image {
+                height: 255px;
+            }
+        }
+        &-selection {
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5rem;
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 75rem;
+            &-item {
+                background-color: #F5F5F5;
+                padding: 15px;
+                border-radius: 20px;
+                margin-top: 2rem;
+                transition: background-color 0.5s;
+                border: 3px solid #F5F5F5;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+                &-img {
+                    width: 150px;
+                }
+                &:hover {
+                    background-color: #951C21;
+                    &> img {
+                        filter: brightness(0) invert(1);
+                    }
+                }
+                &.selected {
+                    border: 3px solid #951C21;
+                }
+            }
+            &-flex {
+                &-top {
+                    flex-basis: 20%;
+                    @include respon(tb-land) {
+                        flex-basis: 33.33%;
+                    }
+                    @include respon(tb-pot) {
+                        flex-basis: 50%;
+                    }
+                }
+                &-bottom {
+                    flex-basis: 20%;
+                    @include respon(tb-land) {
+                        flex-basis: 50%;
+                    }
+                    &-2 {
+                        @include respon(tb-land) {
+                            flex-basis: 50%;
+                        }
+                        @include respon(tb-pot) {
+                            flex-basis: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

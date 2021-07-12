@@ -13,10 +13,14 @@
 @import "./node_modules/bootstrap/scss/bootstrap";
 
 @import 'abstract/mixins';
+@import 'abstract/animation';
 
 @import 'layouts/navbar';
 @import 'layouts/footer';
 @import 'layouts/card-member';
+@import 'layouts/heading';
 
 @import 'pages/landing-page';
 @import 'pages/department';
+@import 'pages/landing-page';
+@import 'pages/profile';

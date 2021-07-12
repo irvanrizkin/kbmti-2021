@@ -1,0 +1,15 @@
+.heading {
+    display: inline-flex;
+    align-items: center;
+    &__line {
+        min-height: 4rem;
+        background-color: #951C21;
+        min-width: 0.25rem;
+        margin-right: 1rem;
+    }
+    &__text {
+        font-size: 4rem;
+        font-family: Regis;
+        font-weight: 600;
+    }
+}
