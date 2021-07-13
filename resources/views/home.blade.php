@@ -91,7 +91,7 @@
                             Selayaknya keluarga, EMTI merupakan tempat pulang yang mengedepankan <b>empati, simpati, dan kepedulian terhadap sesama</b>
                         </div>
                     </div>
-                </div>                
+                </div>
             </div>
         </div>
     </div>
