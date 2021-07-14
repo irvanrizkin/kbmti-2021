@@ -1,7 +1,26 @@
 .department {
     &__top {
-        .col-lg-6:first-child {
-            margin-top: 130px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-bottom: 4rem;
+        scroll-snap-align: center;
+        @include respon(tb-land) {
+            grid-template-columns: 1fr;
+        }
+        &__divisi {
+            margin-top: 1rem;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 6rem;
+            padding-right: 3rem;
+            scroll-snap-align: center;
+            @include respon(tb-land) {
+                order: 1;
+                height: fit-content;
+                margin-top: 4rem;
+            }
         }
         &__list-group {
             flex-direction: row !important;
@@ -55,15 +74,17 @@
             }
         }
         &__detail {
-            @include respon(tb-pot) {
+            background-color: #951C21;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            @include respon(tb-land) {
                 padding-top: 30px;
                 text-align: center;
+                margin-top: 4rem;
             }
-            @include respon(tb-land) {
-                padding-left: calc(var(--bs-gutter-x) * .5);
-                padding-right: calc(var(--bs-gutter-x) * .5);
-            }
-            padding-left: 70px;
             padding-top: 180px;
             background-color: #951C21;
             &__title {
