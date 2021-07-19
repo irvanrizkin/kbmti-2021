@@ -1,29 +1,28 @@
 .department {
     &__top {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        margin-bottom: 4rem;
-        scroll-snap-align: center;
+        .col-xl-6:last-child {
+            background-color: #951C21;
+        }
         @include respon(tb-land) {
-            grid-template-columns: 1fr;
+            .col-xl-6:first-child {
+                order: 1;
+            }
         }
         &__divisi {
             margin-top: 1rem;
+            padding-top: 180px;
             height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-left: 6rem;
-            padding-right: 3rem;
-            scroll-snap-align: center;
+            padding-left: 3rem;
             @include respon(tb-land) {
-                order: 1;
+                padding-top: 30px;
                 height: fit-content;
                 margin-top: 4rem;
+                padding-left: unset;
             }
         }
         &__list-group {
             flex-direction: row !important;
+            justify-content: center;
             border-radius: 1.25rem !important;
             &__item {
                 font-weight: 600;
@@ -49,7 +48,10 @@
             }
         }
         &__tab-content {
+            display: flex;
+            flex-direction: row;
             margin-top: 35px;
+            justify-content: center;
             &__item {
                 margin-bottom: 20px;
                 a {
@@ -74,19 +76,15 @@
             }
         }
         &__detail {
-            background-color: #951C21;
             height: 100vh;
             display: flex;
-            align-items: center;
-            flex-direction: column;
             justify-content: center;
+            padding-top: 180px;
             @include respon(tb-land) {
                 padding-top: 30px;
                 text-align: center;
                 margin-top: 4rem;
             }
-            padding-top: 180px;
-            background-color: #951C21;
             &__title {
                 margin-top: 30px;
                 &__border {
@@ -110,7 +108,6 @@
                 font-size: 1.5rem;
                 text-align: justify;
                 line-height: 180%;
-                max-width: 500px;
             }
             &__scroll {
                 margin-top: 40px;
@@ -139,6 +136,9 @@
         &__title {
             padding-top: 100px;
             margin-bottom: 4rem;
+            @include respon(tb-land) {
+                padding-top: 40px;
+            }
             &__border {
                 width: 4px;
                 height: 61px;
