@@ -1,0 +1,32 @@
+.paginator {
+    text-align: center;
+    &>a {
+        font-size: 1.5rem;
+        font-family: ITC CHELTENHAM STD;
+        color: #000000;
+        padding: 15px 10px;
+        text-decoration: none;
+        @include respon(phone) {
+            display: none;
+            &:first-child {
+                display: inline;
+            }
+            &:last-child {
+                display: inline;
+            }
+            &:nth-child(2) {
+                display: inline;
+            }
+            &:nth-last-child(2) {
+                display: inline;
+            }
+        }
+    }
+    &>.active {
+        color: #951C21;
+        border-top: 4px solid #951C21;
+        @include respon(phone) {
+            display: inline;
+        }
+    }
+}

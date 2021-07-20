@@ -1,0 +1,24 @@
+.search {
+    &__container {
+        display: inline-flex;
+        align-items: center;
+        padding: 10px 20px;
+        border-radius: 60px;
+        background: #F5F5F5;
+        max-width: 500px;
+        width: 100%;
+    }
+    &__input {
+        border: 0;
+        background-color: transparent;
+        outline: none;
+        font-size: 1.5rem;
+        width: 100%;
+    }
+    &__icon {
+        margin-right: 10px;
+        &>i {
+            font-size: 1.5rem;
+        }
+    }
+}
