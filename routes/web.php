@@ -24,3 +24,8 @@ Route::get('/department', function () {
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile.home');
+
+Route::get('/berita', function () {
+    $berita = DB::table('berita_test')->paginate(6);
+    return view('berita', ['berita' => $berita]);
+})->name('berita.home');
