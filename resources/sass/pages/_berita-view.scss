@@ -1,0 +1,24 @@
+.berita_detail {
+    &__top {
+        margin-top: 9rem;
+    }
+    &__content {
+        margin-top: 3.75rem;
+        &__judul {
+            margin-bottom: 1.35rem;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #4E4B66;
+            font-family: ITC Cheltenham Std;
+        }
+        &__body {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #4E4B66;
+            font-family: ITC Cheltenham Std;
+        }
+    }
+    &__footer {
+        margin-top: 3.75rem;
+    }
+}
