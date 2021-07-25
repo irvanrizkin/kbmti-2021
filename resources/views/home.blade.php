@@ -137,4 +137,97 @@
         </div>
     </div>
 </section>
+
+
+
+<section class="home__down">
+    
+    <div class="d-flex justify-content-center">
+        <div class="home__down__berita">
+            <div class="home__down__text">
+                Berita
+            </div>
+        </div>
+    </div>
+    
+  <div class="container text-center my-3">
+      <div class="row mx-auto my-auto">
+          <div id="myCarousel2" class="carousel slide w-100" data-ride="carousel">
+              <div class="carousel-inner" role="listbox">
+                  <div class="carousel-item py-5 active">
+                      <div class="row">
+
+                          <div class="col-sm-4">
+                            <div class="card shadow">
+                                <div class="card-body text-center">
+                                <img src="{{ asset('img/caroufoot1.png') }}" width="330px" height="330px">
+                                    <div class="d-flex justify-content-center">
+                                        <div class="home__down__date">
+                                            Selasa, 03 Mei 2021
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div class="home__down__title">
+                                            INFO ADVOKASI Pengambilan Jas Almamater 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-4">
+                            <div class="card shadow">
+                                <div class="card-body text-center">
+                                    <img src="{{ asset('img/caroufoot2.png') }}" width="330px" height="330px">
+                                    <div class="d-flex justify-content-center">
+                                        <div class="home__down__date">
+                                            Senin, 01 Mei 2021
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div class="home__down__title">
+                                            COMMERATION Hari Buruh Internasional
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                          </div>
+                          <div class="col-sm-4">
+                            <div class="card shadow">
+                                <div class="card-body text-center">
+                                <img src="{{ asset('img/caroufoot3.png') }}" width="330px" height="330px">
+                                    <div class="d-flex justify-content-center">
+                                        <div class="home__down__date">
+                                            Senin, 01 Mei 2021
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div class="home__down__title">
+                                            Birthday Calender Mei
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                          </div>
+
+                      </div>
+                  </div> 
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-12">
+              <a class="carousel-control-prev text-dark" href="#myCarousel2" role="button" data-slide="prev">
+                  <span class="fa fa-chevron-left" aria-hidden="true"></span>
+              </a>
+              <a class="carousel-control-next text-dark" href="#myCarousel2" role="button" data-slide="next">
+                  <span class="fa fa-chevron-right" aria-hidden="true"></span>
+              </a>
+          </div>
+      </div>
+  </div>
+
+</section>
 @endsection
+ 
