@@ -176,4 +176,43 @@
             }
         }
     }
+
+
+ 
+ 
+  
+
+    &down {
+        margin-top: 125px;
+        margin-bottom: 100px;
+        &__berita {
+            margin-top: 10px;
+            margin-bottom: 1px;
+        }
+
+        &__text {
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: #0c0e0d; 
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-family: ITC Cheltenham Std;
+        }
+
+        &__date {
+            margin-top: 1px;
+            margin-bottom: 1px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #750404;
+            font-family: ITC Cheltenham Std;
+        }
+
+        &__title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #24231F;
+            font-family: ITC Cheltenham Std;
+        }
+    }
 }
