@@ -10,7 +10,6 @@
 </section>
 <section class="berita__content">
 
-
 <section class="berita__content">	
 	<div class="container" > 
         <div class="row">
