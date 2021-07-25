@@ -10,10 +10,10 @@
 </section>
 <section class="berita__content">
 
+
 <section class="berita__content">	
 	<div class="container" > 
         <div class="row">
-	
     		<div class="col-sm-4">
             	<div class="berita__card">
                     <img src="{{ asset('img/caroufoot1.png') }}" style="width:100%" >
@@ -31,7 +31,6 @@
                     </div>
             	</div>
             </div>
-
 			<div class="col-sm-4">
             	<div class="berita__card">
                     <img src="{{ asset('img/caroufoot1.png') }}" style="width:100%" >
@@ -49,7 +48,6 @@
                     </div>
             	</div>
             </div>
-
 			<div class="col-sm-4">
             	<div class="berita__card">
                     <img src="{{ asset('img/caroufoot1.png') }}" style="width:100%" >
@@ -67,7 +65,6 @@
                     </div>
             	</div>
             </div>
-
 			<div class="col-sm-4">
             	<div class="berita__card">
                     <img src="{{ asset('img/caroufoot1.png') }}" style="width:100%" >
@@ -85,7 +82,6 @@
                     </div>
             	</div>
             </div>
-
 			<div class="col-sm-4">
             	<div class="berita__card">
                     <img src="{{ asset('img/caroufoot1.png') }}" style="width:100%" >
@@ -103,7 +99,6 @@
                     </div>
             	</div>
             </div>
-
 			<div class="col-sm-4">
             	<div class="berita__card">
                     <img src="{{ asset('img/caroufoot1.png') }}" style="width:100%" >
@@ -121,7 +116,6 @@
                     </div>
             	</div>
             </div>
-		
         </div>
     </div>	
 </section>
