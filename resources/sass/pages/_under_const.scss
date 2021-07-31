@@ -1,0 +1,44 @@
+.under_const {
+    &__mid {
+        height: 100vh;
+        min-height: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        &__item {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        &__strip_ornament {
+            position: absolute;
+            bottom: 0;
+        }
+    }
+
+    &__image {
+        width: 100vw;
+    }
+
+    &__button {
+        background-color:#951C21;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        display: inline-block;
+        font-size: 2rem;
+        font-weight: 400;
+    }
+
+    &__content {
+        margin-top: 1rem;
+        text-align: justify;
+        font-family: ITC CHELTENHAM STD;
+    }
+
+    &__star_ornament{
+        padding-right: 50rem;
+    }
+}

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Development Stage
 Route::get('/', function () {
     return view('home');
 })->name('landing.home');
@@ -33,3 +34,7 @@ Route::get('/berita', function () {
 Route::get('/berita/berita-1', function() {
   return view('berita.view');
 })->name('berita.view');
+
+Route::get('/under-construction', function () {
+    return view('under_const');
+})->name('under-const');
