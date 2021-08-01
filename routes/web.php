@@ -38,3 +38,21 @@ Route::get('/berita/berita-1', function() {
 Route::get('/under-construction', function () {
     return view('under_const');
 })->name('under-const');
+
+// Testing Admin Panel
+
+Route::get('/admin-home', function () {
+    return response()->json([
+        'success' => true
+    ]);
+})->name('admin.home');
+
+Route::get('logout', function () {
+    return response()->json([
+        'logout' => true
+    ]);
+})->name('logout');
+
+Route::get('/admin-panel-user', function () {
+    return view('admin.users.index');
+})->name('admin-panel-user-index');

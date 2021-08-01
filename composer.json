@@ -6,11 +6,18 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "bugsnag/bugsnag-laravel": "^2.21",
+        "doctrine/dbal": "^3.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "laravel/dusk": "^6.11",
         "laravel/framework": "^8.40",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "yajra/laravel-datatables-oracle": "^9.11",
+        "spatie/laravel-medialibrary": "^8.7",
+        "laravel/sanctum": "^2.8"
+        
     },
     "require-dev": {
         "facade/ignition": "^2.5",
