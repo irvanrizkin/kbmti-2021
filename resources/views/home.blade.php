@@ -21,7 +21,7 @@
         <div class="home__top2__item__kbmti-long">
             Keluarga Besar Mahasiswa Teknologi Informasi
         </div>
-        <div class="home__top2__item__desc">
+        <div class="home__top2__item__desc ms-auto me-auto">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie in lacus tempor praesent nunc. Pharetra phasellus ac tincidunt varius ac semper feugiat in cursus.
         </div>
     </div>
@@ -217,7 +217,7 @@
                           <div class="col-sm-4">
                             <div class="card shadow">
                                 <div class="card-body text-center">
-                                <img src="{{ asset('img/caroufoot1.png') }}" width="330px" height="330px">
+                                <img src="{{ asset('img/caroufoot1.png') }}">
                                     <div class="d-flex justify-content-center">
                                         <div class="home__down__date">
                                             Selasa, 03 Mei 2021
@@ -234,7 +234,7 @@
                           <div class="col-sm-4">
                             <div class="card shadow">
                                 <div class="card-body text-center">
-                                    <img src="{{ asset('img/caroufoot2.png') }}" width="330px" height="330px">
+                                    <img src="{{ asset('img/caroufoot2.png') }}">
                                     <div class="d-flex justify-content-center">
                                         <div class="home__down__date">
                                             Senin, 01 Mei 2021
@@ -252,7 +252,7 @@
                           <div class="col-sm-4">
                             <div class="card shadow">
                                 <div class="card-body text-center">
-                                <img src="{{ asset('img/caroufoot3.png') }}" width="330px" height="330px">
+                                <img src="{{ asset('img/caroufoot3.png') }}">
                                     <div class="d-flex justify-content-center">
                                         <div class="home__down__date">
                                             Senin, 01 Mei 2021
