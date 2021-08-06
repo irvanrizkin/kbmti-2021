@@ -153,6 +153,26 @@ return [
             'dummy_name_helper' => ' ',
         ],
     ],
+    'customEventRegistration' => [
+        'fields' => [
+            // Default Fields
+            'NIM' => 'NIM',
+            'Nama' => 'Nama',
+            'Email' => 'Email',
+            'Id_Line' => 'ID LINE',
+            'Nomor_Telepon' => 'Nomor Telepon',
+            'Angkatan' => 'Angkatan',
+
+            // Add on
+            'Inovasi' => 'Inovasi',
+            'Swot' => 'Analisis Swot',
+            'Organisasi' => 'Organisasi',
+            'Tahun_Organisasi' => 'Tahun Organisasi',
+            'Kepanitiaan' => 'Kepanitiaan',
+            'Tahun_Kepanitiaan' => 'Tahun Kepanitiaan',
+            'Pemberkasan' => 'Pemberkasan'
+        ],
+    ],
     'misc' => [
         'title'          => 'Misc',
         'title_singular' => 'Misc',

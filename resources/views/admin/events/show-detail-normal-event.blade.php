@@ -1,9 +1,13 @@
 @extends('layouts.admin.admin')
 @section('content')
+{{-- Add ke event Registration tapi baru lagi view nya! --}}
+{{-- Dibedain antaranya yang normal event sama yang kepanitiaan! --}}
 @can('event_registration_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.event-registrations.create') }}">
+            <a class="btn btn-success" href="{{ route('admin.event-registrations.customCreate', [
+                'eventId' => $event->id
+            ]) }}">
                 {{ trans('global.add') }} Pendaftar
             </a>
         </div>

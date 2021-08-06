@@ -49,7 +49,7 @@ class EventRegistration extends Model
     {
         $query = $this->query()
             ->join('event_field_responses', 'event_field_responses.event_registration_id', '=', 'event_registrations.id')
-            ->join('event_fields', 'event_field_responses.event_field_id', '=', 'event_field.id')
+            ->join('event_fields', 'event_field_responses.event_field_id', '=', 'event_fields.id')
             ->select('event_registrations.id', 'event_fields.name', 'event_field_responses.response')
             ->where(function ($q) {
                 $q->where('name', '=', 'Organisasi')
@@ -65,7 +65,7 @@ class EventRegistration extends Model
     {
         $query = $this->query()
             ->join('event_field_responses', 'event_field_responses.event_registration_id', '=', 'event_registrations.id')
-            ->join('event_fields', 'event_field_responses.event_field_id', '=', 'event_field.id')
+            ->join('event_fields', 'event_field_responses.event_field_id', '=', 'event_fields.id')
             ->select('event_registrations.id', 'event_fields.name', 'event_field_responses.response')
             ->where(function ($q) {
                 $q->where('name', '=', 'Kepanitiaan')
@@ -81,10 +81,22 @@ class EventRegistration extends Model
     {
         $query = $this->query()
             ->join('event_field_responses', 'event_field_responses.event_registration_id', '=', 'event_registrations.id')
-            ->join('event_fields', 'event_field_responses.event_field_id', '=', 'event_field.id')
+            ->join('event_fields', 'event_field_responses.event_field_id', '=', 'event_fields.id')
             ->select('event_registrations.id', 'event_fields.name', 'event_field_responses.response')
             ->where('name', '=', 'Pemberkasan')
             ->where('event_registrations.id', '=', $eventRegistrationId)
+            ->get();
+        return $query;
+    }
+
+    // Helper event_field
+    public function getEventField()
+    {
+        $query = $this->query()
+            ->join('event_field_responses', 'event_field_responses.event_registration_id', '=', 'event_registrations.id')
+            ->join('event_fields', 'event_field_responses.event_field_id', '=', 'event_fields.id')
+            ->select('event_registrations.id', 'event_fields.name', 'event_field_responses.response')
+            ->where('event_registrations.id', '=', $this->id)
             ->get();
         return $query;
     }

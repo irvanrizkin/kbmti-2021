@@ -23,22 +23,22 @@
                             {{ $eventRegistration->id }}
                         </td>
                     </tr>
+                    @foreach ($eventRegistration->getEventField() as $item)
                     <tr>
                         <th>
-                            {{ trans('cruds.eventRegistration.fields.dummy_name') }}
+                            {{ $item->name ?? "" }}
                         </th>
                         <td>
-                            {{ $eventRegistration->dummy_name }}
+                        @if ( $item->name == "Pemberkasan" )
+                            <a href="{{ route('admin.event-registrations.downloadPemberkasan', [ 'itemPath' => $item->getPemberkasanAttribute($item->id)[0]->response ]) }}" target="blank">
+                                Download Here
+                            </a>    
+                        @else
+                                {{ $item->response ?? "" }}
+                        @endif
                         </td>
                     </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.eventRegistration.fields.event') }}
-                        </th>
-                        <td>
-                            {{ $eventRegistration->event->name ?? '' }}
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
             <div class="form-group">

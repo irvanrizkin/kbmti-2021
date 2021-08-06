@@ -1,9 +1,8 @@
 <?php
 
-// namespace Database\Seeders;
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,16 +13,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        $faker = Faker::create('id:ID');
-        $bureau = ['RnD', 'RnC', 'Advocacy', 'SE', 'Entre', 'HRD', 'BPMTI'];
-
-        for ($i=0; $i < 30; $i++) {
-            DB::table('berita_test')->insert([
-                'title' => $faker->sentence(),
-                'created_at' => $faker->dateTimeThisYear(),
-                'bureau' => $bureau[$faker->numberBetween(0,6)]
-            ]);
-        }
+        $this->call([
+            // Irvan
+            BeritaTestSeeder::class,
+            // Default
+            PermissionsTableSeeder::class,
+            RolesTableSeeder::class,
+            PermissionRoleTableSeeder::class,
+            UsersTableSeeder::class,
+            RoleUserTableSeeder::class,
+        ]);
     }
 }

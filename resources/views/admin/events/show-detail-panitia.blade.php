@@ -3,7 +3,9 @@
 @can('event_registration_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.event-registrations.create') }}">
+            <a class="btn btn-success" href="{{ route('admin.event-registrations.customCreate', [
+                'eventId' => $event->id
+            ]) }}">
                 {{ trans('global.add') }} Pendaftar
             </a>
         </div>
@@ -16,11 +18,15 @@
         'Tahun_Organisasi',
         'Tahun_Kepanitiaan',
         'Pemberkasan'
-    ];    
+    ];
+    $disabledFields = [
+        'Inovasi',
+        'Swot'
+    ]
 @endphp
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.eventRegistration.title_singular') }} {{ trans('global.list') }}
+        {{ trans('global.list_pendaftar_event') }} : <b> {{ $event->name ?? "Ini Nama Event" }} </b>
     </div>
 
     <div class="card-body">
@@ -35,7 +41,7 @@
                             {{ trans('cruds.eventRegistration.fields.id') }}
                         </th>
                         @foreach ($event->eventFields as $field)
-                            @if ( in_array($field->name, $specialFields) )
+                            @if ( in_array($field->name, $specialFields) || in_array($field->name, $disabledFields) )
                                 @continue
                             @else
                             <th>
@@ -60,7 +66,7 @@
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         @foreach ($event->eventFields as $field)
-                            @if ( in_array($field->name, $specialFields) )
+                            @if ( in_array($field->name, $specialFields) || in_array($field->name, $disabledFields) )
                                 @continue
                             @else
                                 <td>
@@ -88,14 +94,14 @@
                                 {{ $item->id ?? '' }}
                             </td>
                             @foreach ($item->eventFieldResponses as $response)
-                                @if ( in_array($response->toEventField->name, $specialFields) )
+                                @if ( in_array($response->event_field->name, $specialFields) || in_array($response->event_field->name, $disabledFields) )
                                     @continue
                                 @endif
                                 <td>{{$response->response}}</td>
                             @endforeach
                             {{-- Pemberkasan --}}
                             <td>
-                                <a href="https://google.com" target="blank">
+                                <a href="{{ route('admin.event-registrations.downloadPemberkasan', [ 'itemPath' => $item->getPemberkasanAttribute($item->id)[0]->response ]) }}" target="blank">
                                     <div class="col-md-6">
                                         <button class="btn btn-success">
                                             <i class="fa fa-download"></i>
