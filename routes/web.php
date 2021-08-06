@@ -70,7 +70,6 @@ Route::get('/home', function () {
 
 // Failsafe
 Auth::routes(['register' => false]);
-// Route::redirect('/login', '/');
 
 // Profile
 Route::prefix('profile')
