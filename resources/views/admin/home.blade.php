@@ -19,10 +19,10 @@
                     @can('event_access')
                         TESTING
                     @endcan
-                    {{ auth()->user()->can('event_access') }}
+                    {{-- {{ auth()->user()->can('event_access') }}
                     @if(auth()->user()->can('event_access'))
                         INI HARUS BISA
-                    @endif
+                    @endif --}}
                 </div>
             </div>
         </div>
