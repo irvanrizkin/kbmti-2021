@@ -4,8 +4,8 @@
 
 @section('content')
     <div class="container">
-        <section class="under_const__mid">
-            <div class="under_const__mid__item under_const__star_ornament">
+        <section class="under_const__mid" data-aos="zoom-out" data-aos-duration="1500">
+            <div class="under_const__mid__item under_const__star_ornament animate__animated animate__bounce animate__slow animate__infinite">
                 <img src="{{ asset('img/star_ornament.svg') }}" alt="">
             </div>
             <div class="under_const__mid__item">
