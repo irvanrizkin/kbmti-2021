@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', 'Profil KBMTI')
 
 @section('content')
     <section class="profile__heading" id="heading">
