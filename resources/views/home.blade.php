@@ -150,16 +150,16 @@
         </div>
     </div>
     
-  <div class="container text-center my-3">
+  <div class="text-center my-3">
       <div class="row mx-auto my-auto">
-          <div id="myCarousel2" class="carousel slide w-100" data-ride="carousel">
+          <div id="myCarousel2" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner" role="listbox">
                   <div class="carousel-item py-5 active">
                       <div class="row">
                           <div class="col-sm-4">
                             <div class="card shadow">
                                 <div class="card-body text-center">
-                                <img src="{{ asset('img/caroufoot1.png') }}" width="330px" height="330px">
+                                <img src="{{ asset('img/caroufoot1.png') }}">
                                     <div class="d-flex justify-content-center">
                                         <div class="home__down__date">
                                             Selasa, 03 Mei 2021
@@ -176,7 +176,7 @@
                           <div class="col-sm-4">
                             <div class="card shadow">
                                 <div class="card-body text-center">
-                                    <img src="{{ asset('img/caroufoot2.png') }}" width="330px" height="330px">
+                                    <img src="{{ asset('img/caroufoot2.png') }}">
                                     <div class="d-flex justify-content-center">
                                         <div class="home__down__date">
                                             Senin, 01 Mei 2021
@@ -194,7 +194,7 @@
                           <div class="col-sm-4">
                             <div class="card shadow">
                                 <div class="card-body text-center">
-                                <img src="{{ asset('img/caroufoot3.png') }}" width="330px" height="330px">
+                                <img src="{{ asset('img/caroufoot3.png') }}">
                                     <div class="d-flex justify-content-center">
                                         <div class="home__down__date">
                                             Senin, 01 Mei 2021
