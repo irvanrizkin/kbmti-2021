@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+// GuestController
+use App\Http\Controllers\Guest\HomeController as GuestHomeController;
+use App\Http\Controllers\Guest\ProfileController as GuestProfileConttroller;
+use App\Http\Controllers\Guest\DepartmentController as GuestDepartmentController;
+use App\Http\Controllers\Guest\BeritaController as GuestBeritaController;
+
 // Auth
 use App\Http\Controllers\Auth\ChangePasswordController as AuthChangePasswordController;
 
@@ -32,31 +38,28 @@ use App\Http\Controllers\Admin\EventFieldChoiceController as AdminEventFieldChoi
 |
 */
 
-// Development Stage
-Route::get('/', function () {
-    return view('home');
-})->name('landing.home');
+// Guest
+Route::as('guest.')
+    ->group(function () {
+        // Landing Page
+        Route::get('/', [GuestHomeController::class, 'index'])->name('landing.home');
 
-Route::get('/department', function () {
-    return view('department');
-})->name('department.home');
+        // Profile
+        Route::resource('/profile', GuestProfileConttroller::class);
 
-Route::get('/profile', function () {
-    return view('profile');
-})->name('profile.home');
+        // Department
+        Route::resource('/department', GuestDepartmentController::class);
 
-Route::get('/berita', function () {
-    $berita = DB::table('berita_test')->paginate(6);
-    return view('berita.index', ['berita' => $berita]);
-})->name('berita.home');
+        // Berita
+        Route::get('/berita', [GuestBeritaController::class, 'berita-1'])->name('berita.berita-1');
+        Route::resource('/berita', GuestBeritaController::class);
 
-Route::get('/berita/berita-1', function () {
-    return view('berita.view');
-})->name('berita.view');
+        // Open Recruitment
+        Route::redirect('/open-recruitmen', '/under-construction');
 
-Route::get('/under-construction', function () {
-    return view('under_const');
-})->name('under-const');
+        // Under Construction
+        Route::view('/under-construction', 'under_const');
+    });
 
 // Testing Admin Panel
 

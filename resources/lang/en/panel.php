@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'Project-test',
+    'site-title' => 'Panel KBMTI',
 ];

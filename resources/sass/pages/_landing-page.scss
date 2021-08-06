@@ -180,8 +180,9 @@
   
 
     &down {
+        background-color: #F5F5F5;
         margin-top: 125px;
-        margin-bottom: 100px;
+        margin-bottom: 30px;
         &__berita {
             margin-top: 10px;
             margin-bottom: 1px;
@@ -189,16 +190,16 @@
 
         &__text {
             font-weight: 600;
-            font-size: 1.5rem;
+            font-size: 3rem;
             color: #0c0e0d; 
             margin-top: 10px;
-            margin-bottom: 10px;
+            // margin-bottom: 10px;
             font-family: ITC Cheltenham Std;
         }
 
         &__date {
-            margin-top: 1px;
-            margin-bottom: 1px;
+            margin-top: 20px;
+            margin-bottom: 20px;
             font-weight: 600;
             font-size: 1rem;
             color: #750404;
@@ -206,10 +207,24 @@
         }
 
         &__title {
+            margin-bottom: 30px;
             font-weight: 600;
             font-size: 1rem;
             color: #24231F;
             font-family: ITC Cheltenham Std;
         }
+
+        &__link {
+            text-decoration: none;
+        }
+
+        &__card-box {
+            background-color: #F5F5F5;
+        }
+
+        &__arrows {
+            margin-bottom: 175px;
+        }
+        
     }
 }

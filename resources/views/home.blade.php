@@ -4,7 +4,7 @@
 
 @section('content')
 <section class="home__top" style="background-image: url('{{ asset('img/img-cover.png') }}')">
-    <div class="home__top__item">
+    <div class="home__top__item animate__animated animate__bounce animate__slow">
         <div class="home__top__item__logo">
             <img src="{{ asset('img/logo-putih.svg') }}" alt="">
         </div>
@@ -14,35 +14,35 @@
     </div>
 </section>
 <section class="home__top2" style="background-image: url('{{ asset('img/paper-cover.png') }}')">
-    <div class="home__top2__item">
+    <div class="home__top2__item" data-aos="fade-up">
         <div class="home__top2__item__kbmti">
             KBMTI
         </div>
         <div class="home__top2__item__kbmti-long">
             Keluarga Besar Mahasiswa Teknologi Informasi
         </div>
-        <div class="home__top2__item__desc">
+        <div class="home__top2__item__desc ms-auto me-auto">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie in lacus tempor praesent nunc. Pharetra phasellus ac tincidunt varius ac semper feugiat in cursus.
         </div>
     </div>
 </section>
 <section class="home__mid">
     <div class="container">
-        <div class="home__mid__visi">
+        <div class="home__mid__visi" data-aos="fade-right">
             <div class="home__mid__visi__title d-flex">
                 <div class="home__mid__visi__title__border"></div>
                 <span>Visi</span>
             </div>
-            <div class="home__mid__visi__desc">
+            <div class="home__mid__visi__desc" data-aos="fade-right">
                 Mewujudkan Eksekutif Mahasiswa Teknologi Informasi sebagai lembaga yang solid dan kolaboratif dalam menciptakan karya bermakna bagi Keluarga Besar Mahasiswa Teknologi Informasi.
             </div>
         </div>
         <div class="home__mid__visi">
-            <div class="home__mid__visi__title d-flex justify-content-end">
+            <div class="home__mid__visi__title d-flex justify-content-end" data-aos="fade-left">
                 <div class="home__mid__visi__title__border"></div>
                 <span>Misi</span>
             </div>
-            <div class="home__mid__visi__desc ms-auto">
+            <div class="home__mid__visi__desc ms-auto" data-aos="fade-left">
                 Menciptakan iklim internal EMTI yang solid dan supportif dengan berlandaskan kekeluargaan.
                 <div class="mb-2"></div>
                 Menjadikan EMTI sebagai wadah untuk dapat mengembangkan diri guna mencapai prestasi dan aktualisasi diri mahasiswa Teknologi Informasi.
@@ -53,13 +53,13 @@
             </div>
         </div>
         <div class="home__mid__budaya text-center">
-            <div class="home__mid__budaya__title d-flex justify-content-center">
+            <div class="home__mid__budaya__title d-flex justify-content-center" data-aos="fade-up">
                 <div class="home__mid__budaya__title__border"></div>
                 <span>Budaya Kerja</span>
             </div>
             <div class="d-flex justify-content-center">
                 <div class="wrapper">
-                    <div class="home__mid__budaya__list">
+                    <div class="home__mid__budaya__list" data-aos="fade-up">
                         <div class="home__mid__budaya__list__title">
                             Positive Vibes
                         </div>
@@ -67,7 +67,7 @@
                             EMTI periode ini akan selalu berupaya menciptakan <b>lingkungan kerja yang positif</b> sehingga dapat mengoptimalisasi proses upgrading diri
                         </div>
                     </div>
-                    <div class="home__mid__budaya__list">
+                    <div class="home__mid__budaya__list" data-aos="fade-up">
                         <div class="home__mid__budaya__list__title">
                             Inspiring Colaboration
                         </div>
@@ -75,7 +75,7 @@
                             EMTI mengedepankan <b>kolaborasi</b> yang <b>menginspirasi</b> dalam menciptakan karya bermakna
                         </div>
                     </div>
-                    <div class="home__mid__budaya__list">
+                    <div class="home__mid__budaya__list" data-aos="fade-up">
                         <div class="home__mid__budaya__list__title">
                             Excellent Teamwork
                         </div>
@@ -83,7 +83,7 @@
                             <b>Kerjasama tim</b> berperan penting menjadikan kualitas program kerja EMTI <b>maksimal dan bermanfaat</b>
                         </div>
                     </div>
-                    <div class="home__mid__budaya__list">
+                    <div class="home__mid__budaya__list" data-aos="fade-up">
                         <div class="home__mid__budaya__list__title">
                             Inspiring Colaboration
                         </div>
@@ -99,7 +99,7 @@
 <section class="home__mid2">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 mt-5">
+            <div class="col-md-6 mt-5" data-aos="fade-right">
                 <div class="home__mid2__clock">
                     <img src="{{ asset('img/icon-clock.svg') }}" alt="">
                 </div>
@@ -111,7 +111,7 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie in lacus tempor praesent nunc. Pharetra phasellus ac tincidunt varius ac semper feugiat in cursus.
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" data-aos="fade-left">
                 <div class="home__mid2__carousel d-flex align-items-center">
                     <a href="#" class="home__mid2__carousel__prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                         <img src="{{ asset('img/arrowleft.svg') }}" class="w-100" alt="">
@@ -142,147 +142,136 @@
 
 <section class="home__down">
     
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center" data-aos="fade-down">
         <div class="home__down__berita">
             <div class="home__down__text">
-                Berita
+                    Berita
             </div>
         </div>
     </div>
     
-  <div class="text-center my-3">
-      <div class="row mx-auto my-auto">
-          <div id="myCarousel2" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner" role="listbox">
-                  <div class="carousel-item py-5 active">
-                      <div class="row">
-                          <div class="col-sm-4">
-                            <div class="card shadow">
-                                <div class="card-body text-center">
-                                <img src="{{ asset('img/caroufoot1.png') }}">
-                                    <div class="d-flex justify-content-center">
-                                        <div class="home__down__date">
-                                            Selasa, 03 Mei 2021
+    <div class="text-center my-3">
+        <div class="row mx-auto my-auto">
+            <div id="myCarousel2" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1000">
+                                    <a href="https://google.com" class="home__down__link">
+                                        <img src="{{ asset('img/caroufoot1.png') }}" class="img-fluid">
+                                        <div class="d-flex justify-content-center">
+                                            <div class="home__down__date">
+                                                Selasa, 03 Mei 2021
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="d-flex justify-content-center">
-                                        <div class="home__down__title">
-                                            INFO ADVOKASI Pengambilan Jas Almamater 
+                                        <div class="d-flex justify-content-center">
+                                            <div class="home__down__title">
+                                                [INFO ADVOKASI Pengambilan Jas Almamater] 
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
+                                </div>
+                                <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1400">
+                                    <a href="https://google.com" class="home__down__link">
+                                        <img src="{{ asset('img/caroufoot2.png')  }}" class="img-fluid">
+                                        <div class="d-flex justify-content-center">
+                                            <div class="home__down__date">
+                                                Senin, 01 Mei 2021
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <div class="home__down__title">
+                                                [COMMERATION Hari Buruh Internasional]
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1800">
+                                    <a href="https://google.com" class="home__down__link">
+                                        <img src="{{ asset('img/caroufoot3.png') }}" class="img-fluid">
+                                        <div class="d-flex justify-content-center">
+                                            <div class="home__down__date">
+                                                Senin, 01 Mei 2021
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <div class="home__down__title">
+                                                [Birthday Calender Mei]
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
-                          </div>
-                          <div class="col-sm-4">
-                            <div class="card shadow">
-                                <div class="card-body text-center">
-                                    <img src="{{ asset('img/caroufoot2.png') }}">
-                                    <div class="d-flex justify-content-center">
-                                        <div class="home__down__date">
-                                            Senin, 01 Mei 2021
+                        </div>
+                        {{-- End of Carousel item --}}
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1000">
+                                    <a href="https://google.com" class="home__down__link">
+                                        <img src="{{ asset('img/caroufoot1.png') }}" class="img-fluid">
+                                        <div class="d-flex justify-content-center">
+                                            <div class="home__down__date">
+                                                Selasa, 03 Mei 2021
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="d-flex justify-content-center">
-                                        <div class="home__down__title">
-                                            COMMERATION Hari Buruh Internasional
+                                        <div class="d-flex justify-content-center">
+                                            <div class="home__down__title">
+                                                [INFO ADVOKASI Pengambilan Jas Almamater] 
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
+                                </div>
+                                <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1400">
+                                    <a href="https://google.com" class="home__down__link">
+                                        <img src="{{ asset('img/caroufoot2.png')  }}" class="img-fluid">
+                                        <div class="d-flex justify-content-center">
+                                            <div class="home__down__date">
+                                                Senin, 01 Mei 2021
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <div class="home__down__title">
+                                                [COMMERATION Hari Buruh Internasional]
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1800">
+                                    <a href="https://google.com" class="home__down__link">
+                                        <img src="{{ asset('img/caroufoot3.png') }}" class="img-fluid">
+                                        <div class="d-flex justify-content-center">
+                                            <div class="home__down__date">
+                                                Senin, 01 Mei 2021
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <div class="home__down__title">
+                                                [Birthday Calender Mei]
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
+                        </div>
+                        {{-- End of Carousel Item --}}
+                    </div> 
+                </div>
+            </div>
+        </div>    
+    </div>
 
-                          </div>
-                          <div class="col-sm-4">
-                            <div class="card shadow">
-                                <div class="card-body text-center">
-                                <img src="{{ asset('img/caroufoot3.png') }}">
-                                    <div class="d-flex justify-content-center">
-                                        <div class="home__down__date">
-                                            Senin, 01 Mei 2021
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-center">
-                                        <div class="home__down__title">
-                                            Birthday Calender Mei
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                          </div>
-
-                      </div>
-                  </div> 
-                  <div class="carousel-item py-5">
-                      <div class="row">
-                          <div class="col-sm-4">
-                            <div class="card shadow">
-                                <div class="card-body text-center">
-                                <img src="{{ asset('img/caroufoot1.png') }}" width="330px" height="330px">
-                                    <div class="d-flex justify-content-center">
-                                        <div class="home__down__date">
-                                            Selasa, 03 Mei 2021
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-center">
-                                        <div class="home__down__title">
-                                            INFO ADVOKASI Pengambilan Jas Almamater 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                          </div>
-                          <div class="col-sm-4">
-                            <div class="card shadow">
-                                <div class="card-body text-center">
-                                    <img src="{{ asset('img/caroufoot2.png') }}" width="330px" height="330px">
-                                    <div class="d-flex justify-content-center">
-                                        <div class="home__down__date">
-                                            Senin, 01 Mei 2021
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-center">
-                                        <div class="home__down__title">
-                                            COMMERATION Hari Buruh Internasional
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                          </div>
-                          <div class="col-sm-4">
-                            <div class="card shadow">
-                                <div class="card-body text-center">
-                                <img src="{{ asset('img/caroufoot3.png') }}" width="330px" height="330px">
-                                    <div class="d-flex justify-content-center">
-                                        <div class="home__down__date">
-                                            Senin, 01 Mei 2021
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-center">
-                                        <div class="home__down__title">
-                                            Birthday Calender Mei
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                          </div>
-
-                      </div>
-                  </div> 
-              </div>
-          </div>  
-          <div class="col-md-12" >
-          <a href="#" class="home__mid2__carousel__prev" type="button" data-bs-target="#myCarousel2" data-bs-slide="prev">
-            <img src="{{ asset('img/arrowleft.svg') }}"   alt="">
-          </a>
-          <a href="#" class="home__mid2__carousel__next" type="button" data-bs-target="#myCarousel2" data-bs-slide="next">
-            <img src="{{ asset('img/arrowright.svg') }}"  alt="">
-          </a>
-          </div>
-      </div>    
-  </div>
-
+</section>
+<section class="home__down__arrows">
+    <div class="col-md-12 d-flex justify-content-center ">
+        <div class="ms-auto me-auto">
+            <a href="#" class="home__mid2__carousel__prev" type="button" data-bs-target="#myCarousel2" data-bs-slide="prev">
+                <img src="{{ asset('img/arrowleft.svg') }}"   alt="">
+            </a>
+            <a href="#" class="home__mid2__carousel__next" type="button" data-bs-target="#myCarousel2" data-bs-slide="next">
+                <img src="{{ asset('img/arrowright.svg') }}"  alt="">
+            </a>
+        </div>
+    </div>
 </section>
 @endsection
  
