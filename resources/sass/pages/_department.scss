@@ -162,4 +162,12 @@
             }
         }
     }
+    &__item-toggle {
+        &__active{
+            display: block;
+        }
+        &__inactive{
+            display: none;
+        }
+    }
 }
