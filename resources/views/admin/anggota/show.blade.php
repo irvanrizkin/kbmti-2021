@@ -61,10 +61,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.anggotum.fields.keanggotaan') }}
+                            {{ trans('cruds.anggotum.fields.department') }}
                         </th>
                         <td>
-                            {{ App\Models\Anggotum::KEANGGOTAAN_SELECT[$anggotum->keanggotaan] ?? '' }}
+                            {{ $anggotum->department->initial ?? '' }}
                         </td>
                     </tr>
                 </tbody>

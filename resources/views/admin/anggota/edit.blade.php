@@ -44,17 +44,37 @@
                 <span class="help-block">{{ trans('cruds.anggotum.fields.linkedin_acc_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required">{{ trans('cruds.anggotum.fields.keanggotaan') }}</label>
-                <select class="form-control {{ $errors->has('keanggotaan') ? 'is-invalid' : '' }}" name="keanggotaan" id="keanggotaan" required>
-                    <option value disabled {{ old('keanggotaan', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach(App\Models\Anggotum::KEANGGOTAAN_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('keanggotaan', $anggotum->keanggotaan) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                <label for="type">{{ trans('cruds.anggotum.fields.type') }}</label>
+                {{-- <input class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" type="text" name="type" id="type" value="{{ old('type', $anggotum->type) }}"> --}}
+                <select name="type" id="type" class="form-control select2 {{ $errors->has('department') ? 'is-invalid' : '' }}">
+                    <option value="Ketua Departemen">Ketua Department</option>
+                    <option value="Wakil Ketua Departemen">Wakil Ketua Department</option>
+                    <option value="Staff Dept">Staff Department</option>
+                </select>
+                @if($errors->has('type'))
+                    <span class="text-danger">{{ $errors->first('type') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.anggotum.fields.type_helper') }}</span>
+            </div>
+            {{-- <div class="form-group">
+                <label for="caption">{{ trans('cruds.anggotum.fields.caption') }}</label>
+                <input class="form-control {{ $errors->has('caption') ? 'is-invalid' : '' }}" type="text" name="caption" id="caption" value="{{ old('caption', $anggotum->caption) }}">
+                @if($errors->has('caption'))
+                    <span class="text-danger">{{ $errors->first('caption') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.anggotum.fields.caption_helper') }}</span>
+            </div> --}}
+            <div class="form-group">
+                <label class="required" for="department_id">{{ trans('cruds.anggotum.fields.department') }}</label>
+                <select class="form-control select2 {{ $errors->has('department') ? 'is-invalid' : '' }}" name="department_id" id="department_id" required>
+                    @foreach($departments as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('department_id') ? old('department_id') : $anggotum->department->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('keanggotaan'))
-                    <span class="text-danger">{{ $errors->first('keanggotaan') }}</span>
+                @if($errors->has('department'))
+                    <span class="text-danger">{{ $errors->first('department') }}</span>
                 @endif
-                <span class="help-block">{{ trans('cruds.anggotum.fields.keanggotaan_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.anggotum.fields.department_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

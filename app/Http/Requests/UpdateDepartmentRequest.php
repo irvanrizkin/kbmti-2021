@@ -2,16 +2,16 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Anggotum;
+use App\Models\Department;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
-class UpdateAnggotumRequest extends FormRequest
+class UpdateDepartmentRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('anggotum_edit');
+        return Gate::allows('department_edit');
     }
 
     public function rules()
@@ -21,22 +21,19 @@ class UpdateAnggotumRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'instagram_acc' => [
+            'initial' => [
                 'string',
-                'nullable',
-            ],
-            'linkedin_acc' => [
-                'string',
-                'nullable',
-            ],
-            'department_id' => [
                 'required',
-                'integer',
+            ],
+            'description' => [
+                'required',
             ],
             'type' => [
-                'required'.
-                'string'
-            ]
+                'required',
+            ],
+            'sub_type' => [
+                'required',
+            ],
         ];
     }
 }

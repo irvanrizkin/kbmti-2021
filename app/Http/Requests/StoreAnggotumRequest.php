@@ -32,9 +32,14 @@ class StoreAnggotumRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'keanggotaan' => [
+            'department_id' => [
                 'required',
+                'integer',
             ],
+            'type' => [
+                'required'.
+                'string'
+            ]
         ];
     }
 }

@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\EventFieldController as AdminEventFieldController
 use App\Http\Controllers\Admin\EventFieldResponseController as AdminEventFieldResponseController;
 use App\Http\Controllers\Admin\UpcomingProkerController as AdminUpcomingProkerController;
 use App\Http\Controllers\Admin\EventFieldChoiceController as AdminEventFieldChoiceController;
+use App\Http\Controllers\Admin\DepartmentController as AdminDepartmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -144,4 +145,10 @@ Route::prefix('admin')
         // Event Field Choice
         Route::delete('event-field-choices/destroy', [AdminEventFieldChoiceController::class, 'massDestroy'])->name('event-field-choices.massDestroy');
         Route::resource('event-field-choices', AdminEventFieldChoiceController::class);
+
+        // Department
+        Route::delete('departments/destroy', [AdminDepartmentController::class, 'massDestroy'])->name('departments.massDestroy');
+        Route::post('departments/media', [AdminDepartmentController::class, 'storeMedia'])->name('departments.storeMedia');
+        Route::post('departments/ckmedia', [AdminDepartmentController::class, 'storeCKEditorImages'])->name('departments.storeCKEditorImages');
+        Route::resource('departments', AdminDepartmentController::class);
     });
