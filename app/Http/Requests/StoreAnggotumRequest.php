@@ -37,8 +37,8 @@ class StoreAnggotumRequest extends FormRequest
                 'integer',
             ],
             'type' => [
-                'required'.
-                'string'
+                'required',
+                'string',
             ]
         ];
     }

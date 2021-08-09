@@ -32,7 +32,7 @@
     <div class="tab-pane fade show" id="list-bpmti" role="tabpanel" aria-labelledby="list-bpmti-list">
         <div class="department__top__tab-content__item d-flex button-subgroup-trigger-parent" id="button-subgroup-trigger-Non-Komisi">
             <img src="{{ asset('img/icon_1.svg') }}" alt="" width="48px">
-            <a href="#" class="button-subgroup-trigger" data-subgroup="Non-Komisi" data-group="bpmti">Non-Komisi</a>
+            <a href="#" class="button-subgroup-trigger" data-subgroup="BPMTI" data-group="bpmti">Non-Komisi</a>
         </div>
         <div class="department__top__tab-content__item d-flex button-subgroup-trigger-parent" id="button-subgroup-trigger-Komisi-1">
             <img src="{{ asset('img/icon_2.svg') }}" alt="" width="48px">

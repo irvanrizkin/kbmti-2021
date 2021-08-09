@@ -119,7 +119,7 @@
                             </div>
                         </div>
                     @endif
-                    @endforeach
+                @endforeach
             </div>
         </div>
     </div>

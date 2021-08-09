@@ -20,59 +20,57 @@
         <div class="col-xl-6">
             {{-- Contoh dari Non-Departemen KBMTI --}}
             {{-- Non Dept --}}
-            @include('department.detail', [ "deptName" => "Non-Dept", "group" => "emti", "detailCaption" => "Ini nanti non-dept" ,"isVisible" => true ])
+            @include('department.detail', [ "deptName" => $arrayDept['nonDept']->initial, "group" => "emti", "detailCaption" => $arrayDept['nonDept']->description, "imageUrl" => $arrayDept["nonDept"]->logo->getUrl() ,"isVisible" => true ])
             {{-- HRD --}}
-            @include('department.detail', [ "deptName" => "HRD", "group" => "emti", "detailCaption" => "Ini nanti HRD" ])
+            @include('department.detail', [ "deptName" => $arrayDept['hrd']->initial, "group" => "emti", "detailCaption" => $arrayDept['hrd']->description, "imageUrl" => $arrayDept["hrd"]->logo->getUrl() ])
             {{-- Advo --}}
-            @include('department.detail', [ "deptName" => "Advo", "group" => "emti", "detailCaption" => "Ini nanti Advo" ])
+            @include('department.detail', [ "deptName" => $arrayDept['advo']->initial, "group" => "emti", "detailCaption" => $arrayDept['advo']->description, "imageUrl" => $arrayDept["advo"]->logo->getUrl() ])
             {{-- SE --}}
-            @include('department.detail', [ "deptName" => "SE", "group" => "emti", "detailCaption" => "Ini nanti SE" ])
+            @include('department.detail', [ "deptName" => $arrayDept['se']->initial, "group" => "emti", "detailCaption" => $arrayDept['se']->description, "imageUrl" => $arrayDept["se"]->logo->getUrl() ])
             {{-- RnD --}}
-            @include('department.detail', [ "deptName" => "RnD", "group" => "emti", "detailCaption" => "Ini nanti RnD" ])
+            @include('department.detail', [ "deptName" => $arrayDept['rnd']->initial, "group" => "emti", "detailCaption" => $arrayDept['rnd']->description, "imageUrl" => $arrayDept["rnd"]->logo->getUrl() ])
             {{-- RnC --}}
-            @include('department.detail', [ "deptName" => "RnC", "group" => "emti", "detailCaption" => "Ini nanti RnC" ])
+            @include('department.detail', [ "deptName" => $arrayDept['rnc']->initial, "group" => "emti", "detailCaption" => $arrayDept['rnc']->description, "imageUrl" => $arrayDept["rnc"]->logo->getUrl() ])
             {{-- Entre --}}
-            @include('department.detail', [ "deptName" => "Entre", "group" => "emti", "detailCaption" => "Ini nanti Entre" ])
+            @include('department.detail', [ "deptName" => $arrayDept['entre']->initial, "group" => "emti", "detailCaption" => $arrayDept['entre']->description, "imageUrl" => $arrayDept["entre"]->logo->getUrl() ])
             {{-- BPMTI --}}
-            <div class="department__item-toggle__inactive fade show toggle-group-bpmti">
-                <div class="department__top__detail">
-                    <div class="container text-center">
-                        <img src="{{ asset('img/blank-image.svg') }}" alt="">
-                        <div class="department__top__detail__title d-flex justify-content-center">
-                            <div class="department__top__detail__title__border"></div>
-                            <span>Ini BPMTI</span>
-                        </div>
-                        <div class="department__top__detail__desc">
-                            Ini nantinya adalah BPMTI
-                        </div>
-                        <div class="department__top__detail__scroll text-center">
-                            <span>Scroll</span>
-                            <div class="d-flex justify-content-center">
-                                <div class="department__top__detail__scroll__border"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {{-- Non Komisi --}}
+            @include('department.detail-bpmti', [ "deptName" => "Non-Komisi", "group" => "bpmti", "detailCaption" => "BPMTI Adalah ....", ])
+            {{-- Komisi 1 --}}
+            @include('department.detail', [ "deptName" => $arrayDept['komisi1']->initial, "group" => "bpmti", "detailCaption" => $arrayDept['komisi1']->description, ])
+            {{-- Komisi 2 --}}
+            @include('department.detail', [ "deptName" => $arrayDept['komisi2']->initial, "group" => "bpmti", "detailCaption" => $arrayDept['komisi2']->description, ])
+            {{-- Komisi 3 --}}
+            @include('department.detail', [ "deptName" => $arrayDept['komisi3']->initial, "group" => "bpmti", "detailCaption" => $arrayDept['komisi3']->description, ])
         </div>
 </section>
 </div>
 
-{{-- KEY --}}
-{{-- Non-Dept --}}
-@include('department.content_emti', [ "deptName" => "Non-Dept", "isVisible" => true ])
-{{-- HRD --}}
-@include('department.content_emti', [ "deptName" => "HRD"])
-{{-- Advo --}}
-@include('department.content_emti', [ "deptName" => "Advo" ]);
-{{-- SE --}}
-@include('department.content_emti', [ "deptName" => "SE" ]);
-{{-- RnD --}}
-@include('department.content_emti', [ "deptName" => "RnD" ]);
-{{-- RnC --}}
-@include('department.content_emti', [ "deptName" => "RnC" ]);
-{{-- Entre --}}
-@include('department.content_emti', [ "deptName" => "Entre" ]);
+    {{-- EMTI --}}
+    {{-- Non-Dept --}}
+    @include('department.content_anggota', [ "deptName" => $arrayDept['nonDept']->initial, 'anggotas' => $arrayDept["nonDept"]->anggotas, 'group' => 'emti' ,"isVisible" => true ])
+    {{-- HRD --}}
+    @include('department.content_anggota', [ "deptName" => $arrayDept['hrd']->initial, 'anggotas' => $arrayDept["hrd"]->anggotas, 'group'=> 'emti'])
+    {{-- Advo --}}
+    @include('department.content_anggota', [ "deptName" => $arrayDept['advo']->initial, 'anggotas' => $arrayDept["advo"]->anggotas, 'group'=> 'emti' ]);
+    {{-- SE --}}
+    @include('department.content_anggota', [ "deptName" => $arrayDept['se']->initial, 'anggotas' => $arrayDept["se"]->anggotas, 'group'=> 'emti' ]);
+    {{-- RnD --}}
+    @include('department.content_anggota', [ "deptName" => $arrayDept['rnd']->initial, 'anggotas' => $arrayDept["rnd"]->anggotas, 'group'=> 'emti' ]);
+    {{-- RnC --}}
+    @include('department.content_anggota', [ "deptName" => $arrayDept['rnc']->initial, 'anggotas' => $arrayDept["rnc"]->anggotas, 'group'=> 'emti' ]);
+    {{-- Entre --}}
+    @include('department.content_anggota', [ "deptName" => $arrayDept['entre']->initial, 'anggotas' => $arrayDept["entre"]->anggotas, 'group'=> 'emti' ]);
+
+    {{-- BPMTI --}}
+    {{-- Non Komisi --}}
+    @include('department.content_anggota', ["deptName" => $arrayDept["nonKomisi"]->initial, "anggotas" => $arrayDept["nonKomisi"]->anggotas, 'group' => 'bpmti'])
+    {{-- Komisi 1 --}}
+    @include('department.content_anggota', ["deptName" => $arrayDept["komisi1"]->initial, "anggotas" => $arrayDept["komisi1"]->anggotas, 'group' => 'bpmti'])
+    {{-- Komisi 2 --}}
+    @include('department.content_anggota', ["deptName" => $arrayDept["komisi2"]->initial, "anggotas" => $arrayDept["komisi2"]->anggotas, 'group' => 'bpmti'])
+    {{-- Komisi 3 --}}
+    @include('department.content_anggota', ["deptName" => $arrayDept["komisi3"]->initial, "anggotas" => $arrayDept["komisi3"]->anggotas, 'group' => 'bpmti'])
 @endsection
 
 @section('custom-script')
@@ -100,8 +98,6 @@
             let idParentThis = "button-subgroup-trigger-" + subGroup
             let anotherClass = "toggle-group-" + group
 
-            
-
             // Hide All Non Corresponding Class
             $("." + anotherClass).hide()
             // Show the target class
@@ -126,12 +122,20 @@
         }
 
         var buttonBpmtiTrigger = function () {
-
+            // Hide All Item Group
+            $('.toggle-group-bpmti').hide();
+            // Show Non-Dept
+            $(".toggle-subgroup-BPMTI").show();
+            // Deactivate the item
+            $('.button-subgroup-trigger-parent').removeClass("active")
+            // Activate the item
+            $("#button-subgroup-trigger-Non-Komisi").toggleClass("active")
         }
 
         // Listeners
         $(".button-group-trigger").on('click', buttonGroupTrigger);
         $(".button-subgroup-trigger").on('click', subGroupTrigger);
         $("#list-emti-list").on('click', buttonEmtiTrigger);
+        $("#list-bpmti-list").on('click', buttonBpmtiTrigger)
     </script>
 @endsection
