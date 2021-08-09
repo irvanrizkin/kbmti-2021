@@ -85,6 +85,14 @@
                 text-align: center;
                 margin-top: 4rem;
             }
+            &__logo {
+                // Figma Value widht => 180px
+                width: 250px;
+                // Figma Value height => 180px
+                height: 250px;
+                vertical-align: middle;
+                border-radius: 50%;
+            }
             &__title {
                 margin-top: 30px;
                 &__border {

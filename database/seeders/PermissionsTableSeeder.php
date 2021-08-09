@@ -244,6 +244,26 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 59,
+                'title' => 'department_create',
+            ],
+            [
+                'id'    => 60,
+                'title' => 'department_edit',
+            ],
+            [
+                'id'    => 61,
+                'title' => 'department_show',
+            ],
+            [
+                'id'    => 62,
+                'title' => 'department_delete',
+            ],
+            [
+                'id'    => 63,
+                'title' => 'department_access',
+            ],
+            [
+                'id'    => 64,
                 'title' => 'profile_password_edit',
             ],
         ];

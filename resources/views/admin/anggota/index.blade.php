@@ -38,8 +38,14 @@
                             {{ trans('cruds.anggotum.fields.linkedin_acc') }}
                         </th>
                         <th>
-                            {{ trans('cruds.anggotum.fields.keanggotaan') }}
+                            {{ trans('cruds.anggotum.fields.department') }}
                         </th>
+                        <th>
+                            {{ trans('cruds.anggotum.fields.type') }}
+                        </th>
+                        {{-- <th>
+                            {{ trans('cruds.anggotum.fields.caption') }}
+                        </th> --}}
                         <th>
                             &nbsp;
                         </th>
@@ -71,8 +77,14 @@
                                 {{ $anggotum->linkedin_acc ?? '' }}
                             </td>
                             <td>
-                                {{ App\Models\Anggotum::KEANGGOTAAN_SELECT[$anggotum->keanggotaan] ?? '' }}
+                                {{ $anggotum->department->initial ?? '' }}
                             </td>
+                            <td>
+                                {{ $anggotum->type ?? '' }}
+                            </td>
+                            {{-- <td>
+                                {{ $anggotum->caption ?? '' }}
+                            </td> --}}
                             <td>
                                 @can('anggotum_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.anggota.show', $anggotum->id) }}">

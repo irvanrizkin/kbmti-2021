@@ -10,16 +10,26 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Anggotum extends Model implements HasMedia
+class Department extends Model implements HasMedia
 {
     use SoftDeletes;
     use InteractsWithMedia;
     use HasFactory;
 
-    public $table = 'anggota';
+    public const TYPE_SELECT = [
+        'EMTI'  => 'EMTI',
+        'BPMTI' => 'BPMTI',
+    ];
+
+    public const SUB_TYPE_SELECT = [
+        'Department'     => 'Department',
+        'Non-Department' => 'Non-Department',
+    ];
+
+    public $table = 'departments';
 
     protected $appends = [
-        'image',
+        'logo',
     ];
 
     protected $dates = [
@@ -30,15 +40,13 @@ class Anggotum extends Model implements HasMedia
 
     protected $fillable = [
         'name',
-        'instagram_acc',
-        'linkedin_acc',
-        'keanggotaan',
+        'initial',
+        'description',
+        'type',
+        'sub_type',
         'created_at',
         'updated_at',
         'deleted_at',
-        'department_id',
-        'type',
-        'caption'
     ];
 
     public function registerMediaConversions(Media $media = null): void
@@ -47,9 +55,9 @@ class Anggotum extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
-    public function getImageAttribute()
+    public function getLogoAttribute()
     {
-        $file = $this->getMedia('image')->last();
+        $file = $this->getMedia('logo')->last();
         if ($file) {
             $file->url       = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');
@@ -59,13 +67,13 @@ class Anggotum extends Model implements HasMedia
         return $file;
     }
 
-    public function department()
-    {
-        return $this->belongsTo(Department::class, 'department_id');
-    }
-
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    // To Anggota
+    public function anggotas(){
+        return $this->hasMany(Anggotum::class, 'department_id', 'id');
     }
 }

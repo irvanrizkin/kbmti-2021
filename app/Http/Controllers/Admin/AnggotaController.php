@@ -8,6 +8,7 @@ use App\Http\Requests\MassDestroyAnggotumRequest;
 use App\Http\Requests\StoreAnggotumRequest;
 use App\Http\Requests\UpdateAnggotumRequest;
 use App\Models\Anggotum;
+use App\Models\Department;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -21,7 +22,7 @@ class AnggotaController extends Controller
     {
         abort_if(Gate::denies('anggotum_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $anggota = Anggotum::with(['media'])->get();
+        $anggota = Anggotum::with(['department', 'media'])->get();
 
         return view('admin.anggota.index', compact('anggota'));
     }
@@ -30,7 +31,9 @@ class AnggotaController extends Controller
     {
         abort_if(Gate::denies('anggotum_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.anggota.create');
+        $departments = Department::pluck('initial', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.anggota.create', compact('departments'));
     }
 
     public function store(StoreAnggotumRequest $request)
@@ -52,7 +55,11 @@ class AnggotaController extends Controller
     {
         abort_if(Gate::denies('anggotum_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.anggota.edit', compact('anggotum'));
+        $departments = Department::pluck('initial', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $anggotum->load('department');
+
+        return view('admin.anggota.edit', compact('departments', 'anggotum'));
     }
 
     public function update(UpdateAnggotumRequest $request, Anggotum $anggotum)
@@ -76,6 +83,8 @@ class AnggotaController extends Controller
     public function show(Anggotum $anggotum)
     {
         abort_if(Gate::denies('anggotum_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $anggotum->load('department');
 
         return view('admin.anggota.show', compact('anggotum'));
     }

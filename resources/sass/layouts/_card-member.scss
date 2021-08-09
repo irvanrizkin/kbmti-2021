@@ -17,6 +17,12 @@
         font-family: ITC Cheltenham Std;
         margin-bottom: 0.9375rem;
     }
+    &__image {
+        width: 160px;
+        height: 160px;
+        vertical-align: middle;
+        border-radius: 50%;
+    }
     &__sm {
         // margin-top: 0.625rem;
     }

@@ -83,6 +83,18 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
+                            @can('department_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.departments.index") }}" class="nav-link {{ request()->is("admin/departments") || request()->is("admin/departments/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-users">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.department.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
                             @can('anggotum_access')
                                 <li class="nav-item">
                                     <a href="{{ route("admin.anggota.index") }}" class="nav-link {{ request()->is("admin/anggota") || request()->is("admin/anggota/*") ? "active" : "" }}">
