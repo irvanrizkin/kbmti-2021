@@ -72,7 +72,7 @@ Route::get('/home', function () {
     return redirect()->route('admin.home');
 });
 
-// Failsafe
+// Failsafe Auth
 Auth::routes(['register' => false]);
 
 // Profile
@@ -152,3 +152,6 @@ Route::prefix('admin')
         Route::post('departments/ckmedia', [AdminDepartmentController::class, 'storeCKEditorImages'])->name('departments.storeCKEditorImages');
         Route::resource('departments', AdminDepartmentController::class);
     });
+
+// Testing for development experimental
+Route::view('experimental-department', 'department/experimental_department_template');
