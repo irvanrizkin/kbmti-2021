@@ -40,12 +40,12 @@
                         <th>
                             {{ trans('cruds.anggotum.fields.department') }}
                         </th>
-                        <th>
-                            {{ trans('cruds.anggotum.fields.type') }}
-                        </th>
                         {{-- <th>
-                            {{ trans('cruds.anggotum.fields.caption') }}
+                            {{ trans('cruds.anggotum.fields.type') }}
                         </th> --}}
+                        <th>
+                            {{ trans('cruds.anggotum.fields.caption') }}
+                        </th>
                         <th>
                             &nbsp;
                         </th>
@@ -71,20 +71,27 @@
                                 @endif
                             </td>
                             <td>
-                                {{ $anggotum->instagram_acc ?? '' }}
+                                <a href="{{ $anggotum->instagram_acc ?? '' }}">
+                                    <button class="btn btn-primary">
+                                        Click
+                                    </button>
+                                </a>
                             </td>
                             <td>
-                                {{ $anggotum->linkedin_acc ?? '' }}
+                                <a href="{{ $anggotum->linkedin_acc ?? '' }}">
+                                    <button class="btn btn-primary">
+                                        Click
+                                    </button>
+                                </a>
                             </td>
                             <td>
                                 {{ $anggotum->department->initial ?? '' }}
                             </td>
-                            <td>
-                                {{ $anggotum->type ?? '' }}
+                            <td class="d-flex justify-content-center">
+                                <span class="badge rounded-pill bg-{{ $anggotum->caption == "Staff" ? 'primary' : "success" }}">
+                                    {{ $anggotum->caption ?? '' }}
+                                </span>
                             </td>
-                            {{-- <td>
-                                {{ $anggotum->caption ?? '' }}
-                            </td> --}}
                             <td>
                                 @can('anggotum_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.anggota.show', $anggotum->id) }}">

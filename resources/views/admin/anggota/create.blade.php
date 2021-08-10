@@ -55,14 +55,14 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.anggotum.fields.type_helper') }}</span>
             </div>
-            {{-- <div class="form-group">
+            <div class="form-group">
                 <label for="caption">{{ trans('cruds.anggotum.fields.caption') }}</label>
                 <input class="form-control {{ $errors->has('caption') ? 'is-invalid' : '' }}" type="text" name="caption" id="caption" value="{{ old('caption', '') }}">
                 @if($errors->has('caption'))
                     <span class="text-danger">{{ $errors->first('caption') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.anggotum.fields.caption_helper') }}</span>
-            </div> --}}
+            </div>
             <div class="form-group">
                 <label class="required" for="department_id">{{ trans('cruds.anggotum.fields.department') }}</label>
                 <select class="form-control select2 {{ $errors->has('department') ? 'is-invalid' : '' }}" name="department_id" id="department_id" required>

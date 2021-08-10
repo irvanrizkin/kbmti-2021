@@ -11,7 +11,7 @@
                         <div class="card-member text-center">
                             <img src="{{ $anggota->image->getUrl() }}" alt="" class="card-member__image">
                             <div class="card-member__nama">{{ $anggota->name }}</div>
-                            <div class="card-member__position">{{ $anggota->type }}</div>
+                            <div class="card-member__position">{{ $anggota->caption }}</div>
                             <div class="card-member__sm d-flex justify-content-center gap-4">
                                 <a href="#"><img src="{{ asset('/img/instagram.svg') }}" alt=""></a>
                                 <a href="#"><img src="{{ asset('/img/linkedin.svg') }}" alt=""></a>

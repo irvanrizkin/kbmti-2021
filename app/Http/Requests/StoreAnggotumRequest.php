@@ -39,7 +39,11 @@ class StoreAnggotumRequest extends FormRequest
             'type' => [
                 'required',
                 'string',
-            ]
+            ],
+            'caption' => [
+                'required',
+                'string',
+            ],
         ];
     }
 }

@@ -34,9 +34,13 @@ class UpdateAnggotumRequest extends FormRequest
                 'integer',
             ],
             'type' => [
-                'required'.
+                'required',
                 'string'
-            ]
+            ],
+            'caption' => [
+                'required',
+                'string'
+            ],
         ];
     }
 }
