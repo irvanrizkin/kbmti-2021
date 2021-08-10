@@ -21,6 +21,9 @@ class StoreArticleRequest extends FormRequest
                 'string',
                 'required',
             ],
+            'image.*' => [
+                'required',
+            ],
         ];
     }
 }

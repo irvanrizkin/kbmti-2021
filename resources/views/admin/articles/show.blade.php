@@ -31,6 +31,34 @@
                             {{ $article->name }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.article.fields.content') }}
+                        </th>
+                        <td>
+                            {!! $article->content !!}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.article.fields.image') }}
+                        </th>
+                        <td>
+                            @foreach($article->image as $key => $media)
+                                <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
+                                    <img src="{{ $media->getUrl('thumb') }}">
+                                </a>
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.article.fields.counter') }}
+                        </th>
+                        <td>
+                            {{ $article->counter }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

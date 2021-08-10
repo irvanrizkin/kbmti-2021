@@ -105,7 +105,7 @@ return [
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
-            'name'              => 'Nama Artikel',
+            'name'              => 'Nama Berita',
             'name_helper'       => ' ',
             'created_at'        => 'Created at',
             'created_at_helper' => ' ',
@@ -113,6 +113,12 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted at',
             'deleted_at_helper' => ' ',
+            'content'           => 'Konten',
+            'content_helper'    => ' ',
+            'image'             => 'Image',
+            'image_helper'      => ' ',
+            'counter'           => 'Counter',
+            'counter_helper'    => ' ',
         ],
     ],
     'event' => [

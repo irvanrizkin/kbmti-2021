@@ -29,6 +29,9 @@
                             {{ trans('cruds.article.fields.name') }}
                         </th>
                         <th>
+                            {{ trans('cruds.article.fields.image') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -44,6 +47,13 @@
                             </td>
                             <td>
                                 {{ $article->name ?? '' }}
+                            </td>
+                            <td>
+                                @foreach($article->image as $key => $media)
+                                    <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $media->getUrl('thumb') }}">
+                                    </a>
+                                @endforeach
                             </td>
                             <td>
                                 @can('article_show')
