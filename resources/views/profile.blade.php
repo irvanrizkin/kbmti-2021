@@ -17,8 +17,10 @@
             <img src="{{ asset('img/logo-putih.svg') }}" alt="" class="profile__image-img"  data-aos="fade-left" data-aos-duration="1000">
             <div class="profile__image-title" data-aos="fade-left" data-aos-duration="1000">Profil</div>
             <div class="profile__image-scroll" data-aos="fade-left" data-aos-duration="1500">
-                <div class="profile__image-scroll-text">Scroll</div>
-                <img class="profile__image-scroll-image" src="{{ asset('img/scroll-line.svg') }}" alt="">
+                <div class="animate__animated animate__bounce animate__slow animate__infinite">
+                    <div class="profile__image-scroll-text">Scroll</div>
+                    <img src="{{ asset('img/scroll-line.svg') }}" alt="">
+                </div>
             </div>
         </div>
     </section>
