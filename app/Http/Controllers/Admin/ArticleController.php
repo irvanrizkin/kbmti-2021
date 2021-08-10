@@ -7,6 +7,8 @@ use App\Http\Requests\MassDestroyArticleRequest;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
+use App\Models\Tag;
+use App\Models\HasTag;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,12 +28,37 @@ class ArticleController extends Controller
     {
         abort_if(Gate::denies('article_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.articles.create');
+        $tags = Tag::all();
+
+        return view('admin.articles.create', compact('tags'));
     }
 
     public function store(StoreArticleRequest $request)
     {
         $article = Article::create($request->all());
+        $arrayedTags = [];
+
+        foreach ($request->tags as $tag) {
+            $tag = Tag::where('name', $tag);
+            if ($tag->exists()) {
+                $itemTag = [
+                    "article_id" => $article->id,
+                    "tag_id" => $tag->first()->id,
+                ];
+            } else {
+                $newTag = Tag::create([
+                    'name' => $tag
+                ]);
+                $itemTag = [
+                    "article_id" => $article->id,
+                    "tag_id" => $newTag->id
+                ];
+            }
+            array_push($arrayedTags, $itemTag);
+        }
+
+        // Resolving arrayedTags
+        $this->resolverArrayedTags($arrayedTags);
 
         return redirect()->route('admin.articles.index');
     }
@@ -71,5 +98,12 @@ class ArticleController extends Controller
         Article::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    // Helpers
+    private function resolverArrayedTags($arrayedTags){
+        foreach ($arrayedTags as $itemTag) {
+            HasTag::create($itemTag);
+        }
     }
 }

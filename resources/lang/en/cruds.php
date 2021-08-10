@@ -119,6 +119,8 @@ return [
             'image_helper'      => ' ',
             'counter'           => 'Counter',
             'counter_helper'    => ' ',
+            'tags'              => 'Tags',
+            'tags_helper'       => ' ',
         ],
     ],
     'event' => [
