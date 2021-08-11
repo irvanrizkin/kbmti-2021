@@ -11,15 +11,20 @@ use App\Models\Tag;
 use App\Models\HasTag;
 use Gate;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
 use Symfony\Component\HttpFoundation\Response;
 
 class ArticleController extends Controller
 {
+
+    use MediaUploadingTrait;
+
     public function index()
     {
         abort_if(Gate::denies('article_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $articles = Article::all();
+        $articles = Article::with(['media'])->get();
 
         return view('admin.articles.index', compact('articles'));
     }
@@ -38,27 +43,40 @@ class ArticleController extends Controller
         $article = Article::create($request->all());
         $arrayedTags = [];
 
-        foreach ($request->tags as $tag) {
-            $tag = Tag::where('name', $tag);
-            if ($tag->exists()) {
-                $itemTag = [
-                    "article_id" => $article->id,
-                    "tag_id" => $tag->first()->id,
-                ];
-            } else {
+        // Tag Add
+        foreach (($request->tags ?? []) as $tag_id) {
+            $itemTag = [
+                "article_id" => $article->id,
+                "tag_id" => $tag_id,
+            ];
+            array_push($arrayedTags, $itemTag);
+        }
+
+        if ($request->add_tags) {
+            foreach ($request->add_tags as $tagName) {
                 $newTag = Tag::create([
-                    'name' => $tag
+                    'name' => $tagName
                 ]);
                 $itemTag = [
-                    "article_id" => $article->id,
-                    "tag_id" => $newTag->id
+                    'article_id' => $article->id,
+                    'tag_id' => $newTag->id
                 ];
+                array_push($arrayedTags, $itemTag);
             }
-            array_push($arrayedTags, $itemTag);
         }
 
         // Resolving arrayedTags
         $this->resolverArrayedTags($arrayedTags);
+
+        // Image
+        foreach ($request->input('image', []) as $file) {
+            $article->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('image');
+        }
+
+        if ($media = $request->input('ck-media', false)) {
+            Media::whereIn('id', $media)->update(['model_id' => $article->id]);
+        }
+        // CKEditor
 
         return redirect()->route('admin.articles.index');
     }
@@ -73,6 +91,20 @@ class ArticleController extends Controller
     public function update(UpdateArticleRequest $request, Article $article)
     {
         $article->update($request->all());
+
+        if (count($article->image) > 0) {
+            foreach ($article->image as $media) {
+                if (!in_array($media->file_name, $request->input('image', []))) {
+                    $media->delete();
+                }
+            }
+        }
+        $media = $article->image->pluck('file_name')->toArray();
+        foreach ($request->input('image', []) as $file) {
+            if (count($media) === 0 || !in_array($file, $media)) {
+                $article->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('image');
+            }
+        }
 
         return redirect()->route('admin.articles.index');
     }
@@ -100,10 +132,23 @@ class ArticleController extends Controller
         return response(null, Response::HTTP_NO_CONTENT);
     }
 
+    public function storeCKEditorImages(Request $request)
+    {
+        abort_if(Gate::denies('article_create') && Gate::denies('article_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $model         = new Article();
+        $model->id     = $request->input('crud_id', 0);
+        $model->exists = true;
+        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+
+        return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
+    }
+
+
     // Helpers
     private function resolverArrayedTags($arrayedTags){
         foreach ($arrayedTags as $itemTag) {
-            HasTag::create($itemTag);
+            HasTag::create($itemTag)->save();
         }
     }
 }

@@ -41,8 +41,8 @@
                     <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
                 </div>
                 <select class="form-control select2 {{ $errors->has('tags') ? 'is-invalid' : '' }}" name="tags[]" id="tags" multiple>
-                    @foreach($tags as $id => $tags)
-                        <option value="{{ $id }}" {{ in_array($id, old('tags', [])) ? 'selected' : '' }}>{{ $tags }}</option>
+                    @foreach($tags as $id => $tag)
+                        <option value="{{ $tag->id }}" {{ in_array($id, old('tags', [])) ? 'selected' : '' }}>{{ $tag->name }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('tags'))
@@ -221,7 +221,7 @@ Dropzone.options.imageDropzone = {
               $org = `<div class='form-group col-md-12' id='field-${numerical}'>` +
               "<div class='row'>" +
               "<div class='col-md-11'>" +
-              "<input type='text' name='tags[]' class='form-control' placeholder='Nama Tag' required>" +
+              "<input type='text' name='add_tags[]' class='form-control' placeholder='Nama Tag' required>" +
               "</div>" +
               "<div class='col-md-1'>" +
               `<button class='btn btn-warning btn-block' id='removeSign-${numerical}'>` +

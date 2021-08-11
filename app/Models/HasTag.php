@@ -12,7 +12,7 @@ class HasTag extends Model
     use SoftDeletes;
     use HasFactory;
 
-    public $table = 'has_tag';
+    public $table = 'has_tags';
 
     protected $dates = [
         'created_at',

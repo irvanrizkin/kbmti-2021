@@ -10,6 +10,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
+
 class Article extends Model implements HasMedia
 {
     use SoftDeletes;
@@ -38,12 +39,14 @@ class Article extends Model implements HasMedia
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function regsisterMediaConversion(Media $media = null): void{
+    public function registerMediaConversions(Media $media = null): void
+    {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
-    public function getImageAttribute(){
+    public function getImageAttribute()
+    {
         $files = $this->getMedia('image');
         $files->each(function ($item) {
             $item->url = $item->getUrl();
@@ -54,7 +57,8 @@ class Article extends Model implements HasMedia
         return $files;
     }
 
-    public function hasTag(){
+    public function hasTag()
+    {
         return $this->hasMany(HasTag::class, 'article_id');
     }
 }
