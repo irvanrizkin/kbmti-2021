@@ -32,6 +32,12 @@
                             {{ trans('cruds.article.fields.image') }}
                         </th>
                         <th>
+                            {{ trans('cruds.article.fields.counter') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.article.fields.tags') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -53,6 +59,16 @@
                                     <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
                                         <img src="{{ $media->getUrl('thumb') }}">
                                     </a>
+                                @endforeach
+                            </td>
+                            <td>
+                                {{ $article->counter ?? '' }}
+                            </td>
+                            <td>
+                                @foreach ($article->hasTag as $hasTag)
+                                    <span class="badge rounded-pill bg-primary">
+                                        {{ $hasTag->tag->name }}
+                                    </span>
                                 @endforeach
                             </td>
                             <td>

@@ -117,7 +117,7 @@ return [
             'content_helper'    => ' ',
             'image'             => 'Image',
             'image_helper'      => ' ',
-            'counter'           => 'Counter',
+            'counter'           => 'Jumlah dikunjungi',
             'counter_helper'    => ' ',
             'tags'              => 'Tags',
             'tags_helper'       => ' ',
