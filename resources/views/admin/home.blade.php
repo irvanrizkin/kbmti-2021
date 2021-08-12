@@ -14,15 +14,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
                     BTW, kalau ada yang ditanyakan atau bagaimana, bisa kontak development RnD ya. Oke?
-                    @can('event_access')
-                        TESTING
-                    @endcan
-                    {{-- {{ auth()->user()->can('event_access') }}
-                    @if(auth()->user()->can('event_access'))
-                        INI HARUS BISA
-                    @endif --}}
                 </div>
             </div>
         </div>

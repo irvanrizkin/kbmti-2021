@@ -117,6 +117,8 @@ Route::prefix('admin')
 
         // Article
         Route::delete('articles/destroy', [AdminArticleController::class, 'massDestroy'])->name('articles.massDestroy');
+        Route::post('articles/media', [AdminArticleController::class, 'storeMedia'])->name('articles.storeMedia');
+        Route::post('articles/ckmedia', [AdminArticleController::class, 'storeCKEditorImage'])->name('articles.storeCKEditorImages');
         Route::resource('articles', AdminArticleController::class);
 
         // Event
