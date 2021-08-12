@@ -13,7 +13,7 @@
                         <a class="list-group-item department__top__list-group__item list-group-item-action button-group-trigger" id="list-bpmti-list" data-bs-toggle="list" href="#list-bpmti" role="tab" aria-controls="list-bpmti" data-group="bpmti">BPMTI</a>
                     </div>
                     {{-- Include Tab Panes --}}
-                    @include('department.department_tab_panes')
+                    @include('department.tab_panes')
                 </div>
             </div>
         </div>

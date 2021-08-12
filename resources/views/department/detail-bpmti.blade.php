@@ -11,7 +11,7 @@
             <div class="department__top__detail__desc ms-4">
                 {{ strip_tags($detailCaption ?? '') }}
             </div>
-            <div class="department__top__detail__scroll text-center">
+            <div class="department__top__detail__scroll text-center animate__animated animate__bounce animate__slow animate__infinite">
                 <span>Scroll</span>
                 <div class="d-flex justify-content-center">
                     <div class="department__top__detail__scroll__border"></div>

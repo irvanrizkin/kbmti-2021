@@ -52,18 +52,8 @@ class ArticleController extends Controller
             array_push($arrayedTags, $itemTag);
         }
 
-        if ($request->add_tags) {
-            foreach ($request->add_tags as $tagName) {
-                $newTag = Tag::create([
-                    'name' => $tagName
-                ]);
-                $itemTag = [
-                    'article_id' => $article->id,
-                    'tag_id' => $newTag->id
-                ];
-                array_push($arrayedTags, $itemTag);
-            }
-        }
+        // Add New Tag
+        $arrayedTags = $this->addNewTag($request->add_tags, $article->id, $arrayedTags);
 
         // Resolving arrayedTags
         $this->resolverArrayedTags($arrayedTags);
@@ -85,12 +75,19 @@ class ArticleController extends Controller
     {
         abort_if(Gate::denies('article_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.articles.edit', compact('article'));
+        $tags = Tag::all();
+
+        $arrayedTagId = $article->hasTag
+            ->pluck('tag_id')
+            ->toArray();
+
+        return view('admin.articles.edit', compact('article', 'tags', 'arrayedTagId'));
     }
 
     public function update(UpdateArticleRequest $request, Article $article)
     {
         $article->update($request->all());
+        $arrayedTags = [];
 
         if (count($article->image) > 0) {
             foreach ($article->image as $media) {
@@ -105,6 +102,27 @@ class ArticleController extends Controller
                 $article->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('image');
             }
         }
+
+        // Tag Add
+        foreach (($request->tags ?? []) as $tag_id) {
+            $condition = HasTag::where('article_id', $article->id)
+                ->where('tag_id', $tag_id)
+                ->exists();
+            if ($condition) {
+                continue;
+            }
+            $itemTag = [
+                "article_id" => $article->id,
+                "tag_id" => $tag_id,
+            ];
+            array_push($arrayedTags, $itemTag);
+        }
+
+        // New Tag
+        $arrayedTags = $this->addNewTag($request->add_tags, $article->id, $arrayedTags);
+
+        // Resolve Arrayed Tags
+        $this->resolverArrayedTags($arrayedTags);
 
         return redirect()->route('admin.articles.index');
     }
@@ -150,5 +168,21 @@ class ArticleController extends Controller
         foreach ($arrayedTags as $itemTag) {
             HasTag::create($itemTag)->save();
         }
+    }
+
+    private function addNewTag($newTags, $articleid, $arrayContainter){
+        if ($newTags) {
+            foreach ($newTags as $tagName) {
+                $newTag = Tag::create([
+                    'name' => $tagName
+                ]);
+                $itemTag = [
+                    'article_id' => $articleid,
+                    'tag_id' => $newTag->id
+                ];
+                array_push($arrayContainter, $itemTag);
+            }
+        }
+        return $arrayContainter;
     }
 }

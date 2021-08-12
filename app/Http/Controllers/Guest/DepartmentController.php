@@ -27,14 +27,6 @@ class DepartmentController extends Controller
             'komisi3' => Department::firstWhere('name', 'Komisi 3') ?? null
         ];
         // return view('department_template', compact('arrayDept'));
-        return view('department.experimental_department_template', compact('arrayDept'));
-    }
-
-    public function show($initial){
-        $department = Department::firstWhere('initial', $initial);
-        if (!$department) {
-            return abort(404);
-        }
-        return view('department/department', compact('department'));
+        return view('department.department_template', compact('arrayDept'));
     }
 }

@@ -61,4 +61,14 @@ class Article extends Model implements HasMedia
     {
         return $this->hasMany(HasTag::class, 'article_id');
     }
+
+    // Helper function
+    public function isTagExist(){
+        $query = $this->query()
+            ->join('has_tags', 'has_tags.article_id', '=', 'articles.id')
+            ->join('tags', 'has_tags.tag_id', '=', 'tags.id')
+            ->where('articles.id', '=', $this->id)
+            ->get();
+        return $query;
+    }
 }
