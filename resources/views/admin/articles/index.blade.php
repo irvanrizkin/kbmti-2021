@@ -35,6 +35,9 @@
                             {{ trans('cruds.article.fields.counter') }}
                         </th>
                         <th>
+                            {{ trans("cruds.article.fields.bureau") }}
+                        </th>
+                        <th>
                             {{ trans('cruds.article.fields.tags') }}
                         </th>
                         <th>
@@ -63,6 +66,9 @@
                             </td>
                             <td>
                                 {{ $article->counter ?? '' }}
+                            </td>
+                            <td>
+                                {{ $article->bureau ?? '' }}
                             </td>
                             <td>
                                 @foreach ($article->hasTag as $hasTag)

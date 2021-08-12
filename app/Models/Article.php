@@ -29,9 +29,19 @@ class Article extends Model implements HasMedia
         'name',
         'content',
         'counter',
+        'bureau',
         'created_at',
         'updated_at',
         'deleted_at',
+    ];
+
+    public const BUREAU_SELECT = [
+        'HRD'  => 'HRD',
+        'ADVO' => 'Advocacy',
+        'SE' => 'Social Environment',
+        'RND' => 'Research and Development',
+        'RNC' => 'Relation and Creative',
+        'ENTRE' => 'Entrepreneurship'
     ];
 
     protected function serializeDate(DateTimeInterface $date)

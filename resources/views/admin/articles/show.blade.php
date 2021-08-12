@@ -56,7 +56,27 @@
                             {{ trans('cruds.article.fields.counter') }}
                         </th>
                         <td>
-                            {{ $article->counter }}
+                            {{ $article->counter ?? 0 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.article.fields.bureau') }}
+                        </th>
+                        <td>
+                            {{ $article->bureau ?? "" }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.article.fields.tags') }}
+                        </th>
+                        <td>
+                            @foreach ($article->hasTag as $hasTag)
+                                    <span class="badge rounded-pill bg-primary">
+                                        {{ $hasTag->tag->name }}
+                                    </span>
+                            @endforeach
                         </td>
                     </tr>
                 </tbody>

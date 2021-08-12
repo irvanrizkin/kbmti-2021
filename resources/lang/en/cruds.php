@@ -121,6 +121,8 @@ return [
             'counter_helper'    => ' ',
             'tags'              => 'Tags',
             'tags_helper'       => ' ',
+            'bureau'            => 'Bureau',
+            'bureau_helper'     => ' ',
         ],
     ],
     'event' => [

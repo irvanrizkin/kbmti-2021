@@ -34,6 +34,20 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.article.fields.image_helper') }}</span>
             </div>
+            {{-- Bureau --}}
+            <div class="form-group">
+              <label class="required">{{ trans('cruds.article.fields.bureau') }}</label>
+              <select class="form-control {{ $errors->has('bureau') ? 'is-invalid' : '' }}" name="bureau" id="bureau" required>
+                  <option value disabled {{ old('bureau', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                  @foreach(App\Models\Article::BUREAU_SELECT as $key => $label)
+                      <option value="{{ $key }}" {{ old('bureau', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                  @endforeach
+              </select>
+              @if($errors->has('bureau'))
+                  <span class="text-danger">{{ $errors->first('bureau') }}</span>
+              @endif
+              <span class="help-block">{{ trans('cruds.article.fields.bureau_helper') }}</span>
+          </div>
             <div class="form-group">
               <label for="tags">{{ trans('cruds.article.fields.tags') }}</label>
                 <div style="padding-bottom: 4px">
