@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Department;
-use Illuminate\Support\Facades\Date;
 
 class DepartmentSeeder extends Seeder
 {
