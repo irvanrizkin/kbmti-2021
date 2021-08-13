@@ -22,6 +22,7 @@ class AnggotaSeeder extends Seeder
                 'linkedin_acc' => 'ini akun linkedin',
                 'type' => 'Staff',
                 'caption' => 'Staff',
+                'department_id' => 1,
             ],
             [
                 'name' => 'Ketua HRD',
@@ -29,6 +30,7 @@ class AnggotaSeeder extends Seeder
                 'linkedin_acc' => 'Akun linkedin Ketua HRD',
                 'type' => 'Ketua Departemen',
                 'caption' => 'Ketua Departemen',
+                'department_id' => 1,
             ],
             [
                 'name' => 'Wakil Ketua HRD',
@@ -36,6 +38,7 @@ class AnggotaSeeder extends Seeder
                 'linkedin_acc' => 'Akun linkedin Ketua HRD',
                 'type' => 'Ketua Departemen',
                 'caption' => 'Ketua Departemen',
+                'department_id' => 1,
             ],
             [
                 'name' => 'Vania Sahda',
@@ -43,6 +46,7 @@ class AnggotaSeeder extends Seeder
                 'linkedin_acc' => 'Akun Linkedin',
                 'type' => 'Staff',
                 'caption' => 'Staff',
+                'department_id' => 1,
             ],
             [
                 'name' => 'Ardhya Khrisna Chandra',
@@ -50,6 +54,7 @@ class AnggotaSeeder extends Seeder
                 'linkedin_acc' => 'Akun Linkedin',
                 'type' => 'Staff',
                 'caption' => 'Staff',
+                'department_id' => 1,
             ],
             [
                 'name' => 'Raihan Winurputra',
@@ -57,6 +62,7 @@ class AnggotaSeeder extends Seeder
                 'linkedin_acc' => 'Akun Linkedin',
                 'type' => 'Staff',
                 'caption' => 'Staff',
+                'department_id' => 1,
             ],
             [
                 'name' => 'Ketua Advocacy',
@@ -64,6 +70,7 @@ class AnggotaSeeder extends Seeder
                 'linkedin_acc' => 'Akun Linkedin',
                 'type' => 'Ketua Departemen',
                 'caption' => 'Ketua Departemen',
+                'department_id' => 2,
             ],
             [
                 'name' => 'Wakil Ketua Advocacy',
@@ -71,6 +78,7 @@ class AnggotaSeeder extends Seeder
                 'linkedin_acc' => 'Akun Linkedin',
                 'type' => 'Ketua Departemen',
                 'caption' => 'Ketua Departemen',
+                'department_id' => 2,
             ],
             [
                 'name' => 'Wakil Ketua Advocacy',
@@ -78,6 +86,7 @@ class AnggotaSeeder extends Seeder
                 'linkedin_acc' => 'Akun Linkedin',
                 'type' => 'Wakil Ketua Departemen',
                 'caption' => 'Wakil Ketua Departemen',
+                'department_id' => 2,
             ],
             [
                 'name' => 'Julina Larasati Pramudita',
@@ -85,6 +94,7 @@ class AnggotaSeeder extends Seeder
                 'linkedin_acc' => 'Akun Linkedin',
                 'type' => 'Staff',
                 'caption' => 'Staff',
+                'department_id' => 2,
             ],
             [
                 'name' => 'Syafifa Alifah',
@@ -92,6 +102,7 @@ class AnggotaSeeder extends Seeder
                 'linkedin_acc' => 'Akun Linkedin',
                 'type' => 'Staff',
                 'caption' => 'Staff',
+                'department_id' => 2,
             ],
             [
                 'name' => 'Rifdah',
@@ -99,6 +110,7 @@ class AnggotaSeeder extends Seeder
                 'linkedin_acc' => 'Akun Linkedin',
                 'type' => 'Staff',
                 'caption' => 'Staff',
+                'department_id' => 2,
             ],
         ];
 
