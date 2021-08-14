@@ -19,7 +19,7 @@
             KBMTI
         </div>
         <div class="home__top2__item__kbmti-long">
-            Keluarga Besar Mahasiswa Teknologi Informasi
+            Keluarga Besar Mahasiswa <span style="color: #951C21;">Teknologi Informasi</span>
         </div>
         <div class="home__top2__item__desc ms-auto me-auto">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie in lacus tempor praesent nunc. Pharetra phasellus ac tincidunt varius ac semper feugiat in cursus.
@@ -141,7 +141,7 @@
 
 
 <section class="home__down">
-    
+
     <div class="d-flex justify-content-center" data-aos="fade-down">
         <div class="home__down__berita">
             <div class="home__down__text">
@@ -149,7 +149,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="text-center my-3">
         <div class="row mx-auto my-auto">
             <div id="myCarousel2" class="carousel slide" data-ride="carousel">
@@ -166,7 +166,7 @@
                                         </div>
                                         <div class="d-flex justify-content-center">
                                             <div class="home__down__title">
-                                                [INFO ADVOKASI Pengambilan Jas Almamater] 
+                                                [INFO ADVOKASI Pengambilan Jas Almamater]
                                             </div>
                                         </div>
                                     </a>
@@ -216,7 +216,7 @@
                                         </div>
                                         <div class="d-flex justify-content-center">
                                             <div class="home__down__title">
-                                                [INFO ADVOKASI Pengambilan Jas Almamater] 
+                                                [INFO ADVOKASI Pengambilan Jas Almamater]
                                             </div>
                                         </div>
                                     </a>
@@ -254,10 +254,10 @@
                             </div>
                         </div>
                         {{-- End of Carousel Item --}}
-                    </div> 
+                    </div>
                 </div>
             </div>
-        </div>    
+        </div>
     </div>
 
 </section>
@@ -274,4 +274,3 @@
     </div>
 </section>
 @endsection
- 

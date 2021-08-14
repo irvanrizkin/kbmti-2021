@@ -13,10 +13,14 @@
                             <div class="card-member__nama">{{ $anggota->name }}</div>
                             <div class="card-member__position">{{ $anggota->caption }}</div>
                             <div class="card-member__sm d-flex justify-content-center gap-4">
-                                <a href="#"><img src="{{ asset('/img/instagram.svg') }}" alt=""></a>
-                                <a href="#"><img src="{{ asset('/img/linkedin.svg') }}" alt=""></a>
+                                <a href="#">
+                                    @include('department.instagram')
+                                </a>
+                                <a href="#">
+                                    @include('department.linkedin')
+                                </a>
                             </div>
-                        </div>    
+                        </div>
                     @endif
                 @endforeach
             </div>
@@ -28,14 +32,18 @@
         <div class="row">
             <div class="col-12 d-flex flex-wrap justify-content-center gap-5">
                 @foreach ($anggotas as $anggota)
-                    @if ($anggota->type == "Staff")    
+                    @if ($anggota->type == "Staff")
                         <div class="card-member text-center d-flex flex-column">
                             <img src="{{ $anggota->image?->getUrl() }}" alt="" class="card-member__image align-self-center">
                             <div class="card-member__nama">{{ $anggota->name }}</div>
                             <div class="card-member__position">{{ $anggota->type }}</div>
                             <div class="card-member__sm mt-auto d-flex justify-content-center gap-4">
-                                <a href="#"><img src="{{ asset('/img/instagram.svg') }}" alt=""></a>
-                                <a href="#"><img src="{{ asset('/img/linkedin.svg') }}" alt=""></a>
+                                <a href="#">
+                                    @include('department.instagram')
+                                </a>
+                                <a href="#">
+                                    @include('department.linkedin')
+                                </a>
                             </div>
                         </div>
                     @endif

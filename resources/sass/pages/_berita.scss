@@ -7,7 +7,7 @@
     &__content {
         margin-top: 3rem;
         margin-left: 6rem;
-        margin-right: 6rem;  
+        margin-right: 6rem;
     }
     &__hr {
         margin-bottom: 10px;
@@ -24,6 +24,40 @@
         margin-top: 4rem;
         margin-bottom: 6rem;
     }
+    &__card {
+        border-radius: 20px 20px 0px 0px;
+        &-image {
+            border-radius: 20px 20px 0px 0px;
+        }
+        &-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-image: none;
+        }
+        &:hover {
+            &> .berita__image > .berita__card-overlay {
+                background-image: url("/img/bg-hover-berita.png");
+                mix-blend-mode: multiply;
+                background-size: cover;
+                border-radius: 20px 20px 0px 0px;
+            }
+            &> .berita__container {
+                background: #24231F;
+                &> .berita__container-date {
+                    color: white;
+                }
+                &> .berita__container-title {
+                    color: white;
+                }
+            }
+        }
+    }
+    &__image {
+        position: relative;
+    }
 
 
 
@@ -32,14 +66,31 @@
 
 
     &__card {
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
         transition: 0.3s;
         width: 100%;
         margin-bottom: 3rem;
         background-color: rgba(238, 238, 238, 0.986);
+        border-radius: 0px 0px 20px 20px;
     }
-  
+
     &__container{
         padding: 2px 16px;
+        border-radius: 0px 0px 20px 20px;
+        &-date {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: 400;
+            font-size: 1rem;
+            color: #750404;
+            font-family: ITC Cheltenham Std;
+        }
+        &-title {
+            margin-bottom: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #24231F;
+            font-family: ITC Cheltenham Std;
+        }
     }
 }
