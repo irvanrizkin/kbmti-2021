@@ -3,6 +3,7 @@
     padding: 1.875rem 1.1875rem 3.125rem;
     border-radius: 20px;
     width: 300px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     &__nama {
         font-weight: 600;
         color: #24231F;
@@ -25,5 +26,12 @@
     }
     &__sm {
         // margin-top: 0.625rem;
+    }
+    &__icon {
+        fill: #24231F;
+        transition: fill 0.5s;
+        &:hover{
+            fill: #951C21;
+        }
     }
 }
