@@ -13,12 +13,16 @@
                             <div class="card-member__nama">{{ $anggota->name }}</div>
                             <div class="card-member__position">{{ $anggota->caption }}</div>
                             <div class="card-member__sm d-flex justify-content-center gap-4">
-                                <a href="#">
-                                    @include('department.instagram')
-                                </a>
-                                <a href="#">
-                                    @include('department.linkedin')
-                                </a>
+                                @if ($anggota->instagram_acc)    
+                                    <a href="{{ $anggota->instagram_acc }}">
+                                        @include('department.instagram')
+                                    </a>
+                                @endif
+                                @if ($anggota->linkedin_acc)    
+                                    <a href="{{ $anggota->linkedin_acc }}">
+                                        @include('department.linkedin')
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     @endif

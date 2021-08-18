@@ -39,121 +39,140 @@ use App\Http\Controllers\Admin\DepartmentController as AdminDepartmentController
 |
 */
 
-// Guest
-Route::as('guest.')
-    ->group(function () {
-        // Landing Page
-        Route::get('/', [GuestHomeController::class, 'index'])->name('landing.home');
+$condition = env('APP_DEBUG') 
+    // && ( env('APP_STAGE') != 'local' )
+    ;
 
-        // Profile
-        Route::resource('/profile', GuestProfileConttroller::class);
+$routesAttributes = [];
 
-        // Department
-        Route::resource('/department', GuestDepartmentController::class);
+if ( $condition ) {
+    
+    $routesAttributes = [
+        'prefix' => 't',
+        'middleware' => [
+            'redirectRouteDebug'
+        ]
+    ];
 
-        // Berita
-        Route::get('/berita', [GuestBeritaController::class, 'berita-1'])->name('berita.berita-1');
-        Route::resource('/berita', GuestBeritaController::class);
+    Route::view('/', 'under_const');
+}
 
-        // Open Recruitment
-        Route::redirect('/open-recruitmen', '/under-construction');
+Route::group($routesAttributes, function () {
+    // Guest
+    Route::as('guest.')
+        ->group(function () {
+            // Landing Page
+            Route::get('/', [GuestHomeController::class, 'index'])->name('landing.home');
 
-        // Under Construction
-        Route::view('/under-construction', 'under_const');
+            // Profile
+            Route::resource('/profile', GuestProfileConttroller::class);
+
+            // Department
+            Route::resource('/department', GuestDepartmentController::class);
+
+            // Berita
+            Route::get('/berita', [GuestBeritaController::class, 'berita-1'])->name('berita.berita-1');
+            Route::resource('/berita', GuestBeritaController::class);
+
+            // Open Recruitment
+            Route::redirect('/open-recruitmen', '/under-construction');
+
+            // Under Construction
+            Route::view('/under-construction', 'under_const');
+        });
+
+    // Admin Panel
+    Route::get('/home', function () {
+        if (session('status')) {
+            return redirect()->route('admin.home')->with('status', session('status'));
+        }
+
+        return redirect()->route('admin.home');
     });
 
-// Testing Admin Panel
+    // Failsafe Auth
+    Auth::routes(['register' => false]);
 
-Route::get('/home', function () {
-    if (session('status')) {
-        return redirect()->route('admin.home')->with('status', session('status'));
-    }
+    // Profile
+    Route::prefix('profile')
+        ->as('profile.')
+        ->middleware('auth')
+        ->group(function () {
+            if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {
+                Route::get('password', [AuthChangePasswordController::class, 'edit'])->name('password.edit');
+                Route::post('password', [AuthChangePasswordController::class, 'update'])->name('password.update');
+                Route::post('profile', [AuthChangePasswordController::class, 'updateProfile'])->name('password.updateProfile');
+                Route::post('profile/destroy', [AuthChangePasswordController::class, 'destroyProfile'])->name('password.destroyProfile');
+            }
+        });
 
-    return redirect()->route('admin.home');
+    // Admin
+    Route::prefix('admin')
+        ->as('admin.')
+        ->middleware('auth')
+        ->group(function () {
+            // Home
+            Route::get('/', [AdminHomeController::class, 'index'])->name('home');
+
+
+            // Permissions
+            Route::delete('permissions/destroy', [AdminPermissionsControlelr::class, 'massDestroy'])->name('permissions.massDestroy');
+            Route::resource('permissions', AdminPermissionsControlelr::class);
+
+            // Roles
+            Route::delete('roles/destroy', [AdminRolesController::class, 'massDestroy'])->name('roles.massDestroy');
+            Route::resource('roles', AdminRolesController::class);
+
+            // Users
+            Route::delete('users/destroy', [AdminUsersController::class, 'massDestroy'])->name('users.massDestroy');
+            Route::resource('users', AdminUsersController::class);
+
+            // Anggota
+            Route::delete('anggota/destroy', [AdminAnggotController::class, 'massDestroy'])->name('anggota.massDestroy');
+            Route::post('anggota/media', [AdminAnggotController::class, 'storeMedia'])->name('anggota.storeMedia');
+            Route::post('anggota/ckmedia', [AdminAnggotController::class, 'storeCKEditorImages'])->name('anggota.storeCKEditorImages');
+            Route::resource('anggota', AdminAnggotController::class);
+
+            // Article
+            Route::delete('articles/destroy', [AdminArticleController::class, 'massDestroy'])->name('articles.massDestroy');
+            Route::post('articles/media', [AdminArticleController::class, 'storeMedia'])->name('articles.storeMedia');
+            Route::post('articles/ckmedia', [AdminArticleController::class, 'storeCKEditorImage'])->name('articles.storeCKEditorImages');
+            Route::resource('articles', AdminArticleController::class);
+
+            // Event
+            Route::delete('events/destroy', [AdminEventFieldController::class, 'massDestroy'])->name('events.massDestroy');
+            Route::resource('events', AdminEventController::class);
+
+            // Event Registration
+            Route::get('event-registrations/pemberkasan/{itemPath}', [AdminEventRegistrationController::class, 'downloadPemberkasan'])->name('event-registrations.downloadPemberkasan');
+            Route::get('event-registrations/add-event-registration/{eventId}', [AdminEventRegistrationController::class, 'customCreate'])->name('event-registrations.customCreate');
+            Route::post('event-registrations/add-event-registration', [AdminEventRegistrationController::class, 'customStore'])->name('event-registrations.customStore');
+            Route::delete('event-registrations/destroy', [AdminEventRegistrationController::class, 'massDestroy'])->name('event-registrations.massDestroy');
+            Route::resource('event-registrations', AdminEventRegistrationController::class);
+
+            // Event Field
+            Route::delete('event-fields/destroy', [AdminEventFieldController::class, 'massDestroy'])->name('event-fields.massDestroy');
+            Route::resource('event-fields', AdminEventFieldController::class);
+
+            // Event Field Response
+            Route::delete('event-field-responses/destroy', [AdminEventFieldResponseController::class, 'massDestroy'])->name('event-field-responses.massDestroy');
+            Route::resource('event-field-responses', AdminEventFieldResponseController::class);
+
+            // Upcoming Proker
+            Route::delete('upcoming-prokers/destroy', [AdminUpcomingProkerController::class, 'massDestroy'])->name('upcoming-prokers.massDestroy');
+            Route::resource('upcoming-prokers', AdminUpcomingProkerController::class);
+
+            // Event Field Choice
+            Route::delete('event-field-choices/destroy', [AdminEventFieldChoiceController::class, 'massDestroy'])->name('event-field-choices.massDestroy');
+            Route::resource('event-field-choices', AdminEventFieldChoiceController::class);
+
+            // Department
+            Route::delete('departments/destroy', [AdminDepartmentController::class, 'massDestroy'])->name('departments.massDestroy');
+            Route::post('departments/media', [AdminDepartmentController::class, 'storeMedia'])->name('departments.storeMedia');
+            Route::post('departments/ckmedia', [AdminDepartmentController::class, 'storeCKEditorImages'])->name('departments.storeCKEditorImages');
+            Route::resource('departments', AdminDepartmentController::class);
+        });
 });
 
-// Failsafe Auth
-Auth::routes(['register' => false]);
-
-// Profile
-Route::prefix('profile')
-    ->as('profile.')
-    ->middleware('auth')
-    ->group(function () {
-        if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {
-            Route::get('password', [AuthChangePasswordController::class, 'edit'])->name('password.edit');
-            Route::post('password', [AuthChangePasswordController::class, 'update'])->name('password.update');
-            Route::post('profile', [AuthChangePasswordController::class, 'updateProfile'])->name('password.updateProfile');
-            Route::post('profile/destroy', [AuthChangePasswordController::class, 'destroyProfile'])->name('password.destroyProfile');
-        }
-    });
-
-// Admin
-Route::prefix('admin')
-    ->as('admin.')
-    ->middleware('auth')
-    ->group(function () {
-        // Home
-        Route::get('/', [AdminHomeController::class, 'index'])->name('home');
-
-
-        // Permissions
-        Route::delete('permissions/destroy', [AdminPermissionsControlelr::class, 'massDestroy'])->name('permissions.massDestroy');
-        Route::resource('permissions', AdminPermissionsControlelr::class);
-
-        // Roles
-        Route::delete('roles/destroy', [AdminRolesController::class, 'massDestroy'])->name('roles.massDestroy');
-        Route::resource('roles', AdminRolesController::class);
-
-        // Users
-        Route::delete('users/destroy', [AdminUsersController::class, 'massDestroy'])->name('users.massDestroy');
-        Route::resource('users', AdminUsersController::class);
-
-        // Anggota
-        Route::delete('anggota/destroy', [AdminAnggotController::class, 'massDestroy'])->name('anggota.massDestroy');
-        Route::post('anggota/media', [AdminAnggotController::class, 'storeMedia'])->name('anggota.storeMedia');
-        Route::post('anggota/ckmedia', [AdminAnggotController::class, 'storeCKEditorImages'])->name('anggota.storeCKEditorImages');
-        Route::resource('anggota', AdminAnggotController::class);
-
-        // Article
-        Route::delete('articles/destroy', [AdminArticleController::class, 'massDestroy'])->name('articles.massDestroy');
-        Route::post('articles/media', [AdminArticleController::class, 'storeMedia'])->name('articles.storeMedia');
-        Route::post('articles/ckmedia', [AdminArticleController::class, 'storeCKEditorImage'])->name('articles.storeCKEditorImages');
-        Route::resource('articles', AdminArticleController::class);
-
-        // Event
-        Route::delete('events/destroy', [AdminEventFieldController::class, 'massDestroy'])->name('events.massDestroy');
-        Route::resource('events', AdminEventController::class);
-
-        // Event Registration
-        Route::get('event-registrations/pemberkasan/{itemPath}', [AdminEventRegistrationController::class, 'downloadPemberkasan'])->name('event-registrations.downloadPemberkasan');
-        Route::get('event-registrations/add-event-registration/{eventId}', [AdminEventRegistrationController::class, 'customCreate'])->name('event-registrations.customCreate');
-        Route::post('event-registrations/add-event-registration', [AdminEventRegistrationController::class, 'customStore'])->name('event-registrations.customStore');
-        Route::delete('event-registrations/destroy', [AdminEventRegistrationController::class, 'massDestroy'])->name('event-registrations.massDestroy');
-        Route::resource('event-registrations', AdminEventRegistrationController::class);
-
-        // Event Field
-        Route::delete('event-fields/destroy', [AdminEventFieldController::class, 'massDestroy'])->name('event-fields.massDestroy');
-        Route::resource('event-fields', AdminEventFieldController::class);
-
-        // Event Field Response
-        Route::delete('event-field-responses/destroy', [AdminEventFieldResponseController::class, 'massDestroy'])->name('event-field-responses.massDestroy');
-        Route::resource('event-field-responses', AdminEventFieldResponseController::class);
-
-        // Upcoming Proker
-        Route::delete('upcoming-prokers/destroy', [AdminUpcomingProkerController::class, 'massDestroy'])->name('upcoming-prokers.massDestroy');
-        Route::resource('upcoming-prokers', AdminUpcomingProkerController::class);
-
-        // Event Field Choice
-        Route::delete('event-field-choices/destroy', [AdminEventFieldChoiceController::class, 'massDestroy'])->name('event-field-choices.massDestroy');
-        Route::resource('event-field-choices', AdminEventFieldChoiceController::class);
-
-        // Department
-        Route::delete('departments/destroy', [AdminDepartmentController::class, 'massDestroy'])->name('departments.massDestroy');
-        Route::post('departments/media', [AdminDepartmentController::class, 'storeMedia'])->name('departments.storeMedia');
-        Route::post('departments/ckmedia', [AdminDepartmentController::class, 'storeCKEditorImages'])->name('departments.storeCKEditorImages');
-        Route::resource('departments', AdminDepartmentController::class);
-    });
-
 // Testing for development experimental
-Route::view('experimental-department', 'department/experimental_department_template');
+// Route::view('experimental-department', 'department/experimental_department_template');
