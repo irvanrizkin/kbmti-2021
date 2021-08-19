@@ -8,11 +8,11 @@ use App\Http\Requests\MassDestroyDepartmentRequest;
 use App\Http\Requests\StoreDepartmentRequest;
 use App\Http\Requests\UpdateDepartmentRequest;
 use App\Models\Department;
+use App\Models\Media_handlers as CustomMediaHandler;
 use Gate;
 use Illuminate\Http\Request;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\Storage;
+use File;
 
 class DepartmentController extends Controller
 {
@@ -37,22 +37,23 @@ class DepartmentController extends Controller
 
     public function store(StoreDepartmentRequest $request)
     {
-        return response()->json([
-            'success' => true,
-            'logo' => $request->input('logo'),
-            'message' => 'Fetching the logo'
-        ]);
-        // $department = Department::create($request->all());
+        $department = Department::create($request->all());
 
         if ($request->input('logo', false)) {
-            // $department->addMedia(storage_path('tmp/uploads/' . basename($request->input('logo'))))->toMediaCollection('logo');
-            Storage::move('tmp/uplodas/', '');
+            // Keluarnya nanti public_path("storage/departments/nama filenya")
+            File::move(storage_path('tmp/uploads/') . $request->input('logo'), storage_path('app/public/departments/') . $request->input('logo'));
+            // Create new item
+            $mediaHandle = CustomMediaHandler::create([
+                'path' => $request->input('logo')
+            ]);
         }
-
         // Disabled
         // if ($media = $request->input('ck-media', false)) {
         //     Media::whereIn('id', $media)->update(['model_id' => $department->id]);
         // }
+
+        $department->media_id = $mediaHandle->id;
+        $department->save();
 
         return redirect()->route('admin.departments.index');
     }
@@ -69,16 +70,14 @@ class DepartmentController extends Controller
         $department->update($request->all());
 
         if ($request->input('logo', false)) {
-            if (!$department->logo || $request->input('logo') !== $department->logo->file_name) {
-                if ($department->logo) {
-                    $department->logo->delete();
-                }
-                $department->addMedia(storage_path('tmp/uploads/' . basename($request->input('logo'))))->toMediaCollection('logo');
-            }
-        } elseif ($department->logo) {
-            $department->logo->delete();
+            File::move(storage_path('tmp/uploads/') . $request->input('logo'), storage_path('app/public/departments/') . $request->input('logo'));
+            $mediaHandle = CustomMediaHandler::create([
+                'path' => $request->input('logo')
+            ]);
+            CustomMediaHandler::where('id', $department->getMediaPath->id);
+            $department->media_id = $mediaHandle->id;
+            $department->save();
         }
-
         return redirect()->route('admin.departments.index');
     }
 

@@ -13,6 +13,14 @@
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
+            <div class="row">
+                <div class="col-12 d-flex flex-column">
+                    <h2>Logo</h2>
+                    @if ($department->getMediaPath?->path)
+                        <img src="{{ "/storage/departments/" . $department->getMediaPath->path }}" alt="" class="img-fluid">     
+                    @endif
+                </div>
+            </div>
             <table class="table table-bordered table-striped">
                 <tbody>
                     <tr>
@@ -47,18 +55,6 @@
                             {!! $department->description !!}
                         </td>
                     </tr>
-                    {{-- <tr>
-                        <th>
-                            {{ trans('cruds.department.fields.logo') }}
-                        </th>
-                        <td>
-                            @if($department->logo)
-                                <a href="{{ $department->logo->getUrl() }}" target="_blank" style="display: inline-block">
-                                    <img src="{{ $department->logo->getUrl('thumb') }}">
-                                </a>
-                            @endif
-                        </td>
-                    </tr> --}}
                     <tr>
                         <th>
                             {{ trans('cruds.department.fields.type') }}

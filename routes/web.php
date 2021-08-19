@@ -47,14 +47,15 @@ $routesAttributes = [];
 
 if ( $condition ) {
     
-    $routesAttributes = [
-        'prefix' => 't',
-        'middleware' => [
-            'redirectRouteDebug'
-        ]
-    ];
+    // Temporary deactivated to testing in local
+    // $routesAttributes = [
+    //     'prefix' => 't',
+    //     'middleware' => [
+    //         'redirectRouteDebug'
+    //     ]
+    // ];
 
-    Route::view('/', 'under_const');
+    // Route::view('/', 'under_const');
 }
 
 Route::group($routesAttributes, function () {
