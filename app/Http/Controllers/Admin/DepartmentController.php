@@ -12,6 +12,7 @@ use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Storage;
 
 class DepartmentController extends Controller
 {
@@ -21,7 +22,8 @@ class DepartmentController extends Controller
     {
         abort_if(Gate::denies('department_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $departments = Department::with(['media'])->get();
+        // $departments = Department::with(['media'])->get();
+        $departments = Department::all();
 
         return view('admin.departments.index', compact('departments'));
     }
@@ -35,15 +37,22 @@ class DepartmentController extends Controller
 
     public function store(StoreDepartmentRequest $request)
     {
-        $department = Department::create($request->all());
+        return response()->json([
+            'success' => true,
+            'logo' => $request->input('logo'),
+            'message' => 'Fetching the logo'
+        ]);
+        // $department = Department::create($request->all());
 
         if ($request->input('logo', false)) {
-            $department->addMedia(storage_path('tmp/uploads/' . basename($request->input('logo'))))->toMediaCollection('logo');
+            // $department->addMedia(storage_path('tmp/uploads/' . basename($request->input('logo'))))->toMediaCollection('logo');
+            Storage::move('tmp/uplodas/', '');
         }
 
-        if ($media = $request->input('ck-media', false)) {
-            Media::whereIn('id', $media)->update(['model_id' => $department->id]);
-        }
+        // Disabled
+        // if ($media = $request->input('ck-media', false)) {
+        //     Media::whereIn('id', $media)->update(['model_id' => $department->id]);
+        // }
 
         return redirect()->route('admin.departments.index');
     }

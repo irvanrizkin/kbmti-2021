@@ -47,7 +47,7 @@
                             {!! $department->description !!}
                         </td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <th>
                             {{ trans('cruds.department.fields.logo') }}
                         </th>
@@ -58,7 +58,7 @@
                                 </a>
                             @endif
                         </td>
-                    </tr>
+                    </tr> --}}
                     <tr>
                         <th>
                             {{ trans('cruds.department.fields.type') }}

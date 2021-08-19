@@ -31,9 +31,9 @@
                         <th>
                             {{ trans('cruds.department.fields.initial') }}
                         </th>
-                        <th>
+                        {{-- <th>
                             {{ trans('cruds.department.fields.logo') }}
-                        </th>
+                        </th> --}}
                         <th>
                             {{ trans('cruds.department.fields.type') }}
                         </th>
@@ -56,8 +56,8 @@
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
-                        <td>
-                        </td>
+                        {{-- <td>
+                        </td> --}}
                         <td>
                             <select class="search" strict="true">
                                 <option value>{{ trans('global.all') }}</option>
@@ -93,13 +93,13 @@
                             <td>
                                 {{ $department->initial ?? '' }}
                             </td>
-                            <td>
+                            {{-- <td>
                                 @if($department->logo)
                                     <a href="{{ $department->logo->getUrl() }}" target="_blank" style="display: inline-block">
                                         <img src="{{ $department->logo->getUrl('thumb') }}">
                                     </a>
                                 @endif
-                            </td>
+                            </td> --}}
                             <td>
                                 {{ App\Models\Department::TYPE_SELECT[$department->type] ?? '' }}
                             </td>
