@@ -28,9 +28,9 @@
                         <th>
                             {{ trans('cruds.anggotum.fields.name') }}
                         </th>
-                        <th>
+                        {{-- <th>
                             {{ trans('cruds.anggotum.fields.image') }}
-                        </th>
+                        </th> --}}
                         <th>
                             {{ trans('cruds.anggotum.fields.instagram_acc') }}
                         </th>
@@ -63,13 +63,13 @@
                             <td>
                                 {{ $anggotum->name ?? '' }}
                             </td>
-                            <td>
+                            {{-- <td>
                                 @if($anggotum->image)
                                     <a href="{{ $anggotum->image->getUrl() }}" target="_blank" style="display: inline-block">
                                         <img src="{{ $anggotum->image->getUrl('thumb') }}">
                                     </a>
                                 @endif
-                            </td>
+                            </td> --}}
                             <td>
                                 <a href="{{ $anggotum->instagram_acc ?? '' }}">
                                     <button class="btn btn-primary">
