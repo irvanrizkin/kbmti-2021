@@ -22,7 +22,6 @@ class DepartmentController extends Controller
     {
         abort_if(Gate::denies('department_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        // $departments = Department::with(['media'])->get();
         $departments = Department::all();
 
         return view('admin.departments.index', compact('departments'));
