@@ -9,7 +9,7 @@
                 @foreach ($anggotas as $anggota)
                     @if ($anggota->type == 'Ketua Departemen' || $anggota->type == "Wakil Ketua Departemen")
                         <div class="card-member text-center">
-                            <img src="{{ $anggota->image?->getUrl() }}" alt="" class="card-member__image">
+                            <img src="{{ $anggota->getMediaPath->path ?? null }}" alt="" class="card-member__image">
                             <div class="card-member__nama">{{ $anggota->name }}</div>
                             <div class="card-member__position">{{ $anggota->caption }}</div>
                             <div class="card-member__sm d-flex justify-content-center gap-4">
@@ -36,9 +36,9 @@
         <div class="row">
             <div class="col-12 d-flex flex-wrap justify-content-center gap-5">
                 @foreach ($anggotas as $anggota)
-                    @if ($anggota->type == "Staff")
+                    @if ($anggota->type == "Staff Dept")
                         <div class="card-member text-center d-flex flex-column">
-                            <img src="{{ $anggota->image?->getUrl() }}" alt="" class="card-member__image align-self-center">
+                            <img src="{{ $anggota->getMediaPath->path ?? null }}" alt="" class="card-member__image align-self-center">
                             <div class="card-member__nama">{{ $anggota->name }}</div>
                             <div class="card-member__position">{{ $anggota->type }}</div>
                             <div class="card-member__sm mt-auto d-flex justify-content-center gap-4">

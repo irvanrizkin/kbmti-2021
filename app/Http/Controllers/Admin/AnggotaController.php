@@ -71,18 +71,21 @@ class AnggotaController extends Controller
         return view('admin.anggota.edit', compact('departments', 'anggotum'));
     }
 
-    public function update(UpdateAnggotumRequest $request, Anggotum $anggotum)
+    public function update(UpdateAnggotumRequest $request, $id)
     {
-        $anggotum->update($request->all());
+        $anggotum = Anggotum::where('id', $id);
+        $anggotum->update( $request->except('_method', '_token', 'image') );
 
         if ($request->input('image', false)) {
-            File::move(storage_path('tmp/uploads') . $request->input('image'), storage_path('app/public/anggotas/') . $request->input('image'));
+            File::move(storage_path('tmp/uploads/') . $request->input('image'), storage_path('app/public/anggotas/') . $request->input('image'));
             $mediaHandle = CustomMediaHandler::create([
                 'path' => $request->input('image')
             ]);
-            CustomMediaHandler::where('id', $anggotum->getMediaPath->id);
-            $anggotum->media_id = $mediaHandle->id;
-            $anggotum->save();
+            // If previously exist
+            if ($anggotum->first()->getMediaPath) {
+                CustomMediaHandler::where('id', $anggotum->first()->getMediaPath->id)->delete();
+            }
+            $anggotum->update( [ 'media_id' => $mediaHandle->id ] );
         }
 
         return redirect()->route('admin.anggota.index');

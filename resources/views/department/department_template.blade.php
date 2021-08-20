@@ -20,57 +20,57 @@
         <div class="col-xl-6">
             {{-- Contoh dari Non-Departemen KBMTI --}}
             {{-- Non Dept --}}
-            @include('department.detail', [ "deptName" => $arrayDept['nonDept']?->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['nonDept']?->description ?? "", "imageUrl" => ($arrayDept["nonDept"]->logo?->getUrl() ?? "") ,"isVisible" => true ])
+            @include('department.detail', [ "deptName" => $arrayDept['nonDept']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['nonDept']->description ?? "", "imageUrl" => ($arrayDept["nonDept"]->getMediaPath->path ?? "") ,"isVisible" => true ])
             {{-- HRD --}}
-            @include('department.detail', [ "deptName" => $arrayDept['hrd']?->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['hrd']?->description ?? "", "imageUrl" => ($arrayDept["hrd"]->logo?->getUrl() ?? "") ])
+            @include('department.detail', [ "deptName" => $arrayDept['hrd']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['hrd']->description ?? "", "imageUrl" => ($arrayDept["hrd"]->getMediaPath->path ?? "") ])
             {{-- Advo --}}
-            @include('department.detail', [ "deptName" => $arrayDept['advo']?->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['advo']?->description ?? "", "imageUrl" => ($arrayDept["advo"]->logo?->getUrl() ?? "") ])
+            @include('department.detail', [ "deptName" => $arrayDept['advo']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['advo']->description ?? "", "imageUrl" => ($arrayDept["advo"]->getMediaPath->path ?? "") ])
             {{-- SE --}}
-            @include('department.detail', [ "deptName" => $arrayDept['se']?->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['se']?->description ?? "", "imageUrl" => ($arrayDept["se"]->logo?->getUrl() ?? "") ])
+            @include('department.detail', [ "deptName" => $arrayDept['se']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['se']->description ?? "", "imageUrl" => ($arrayDept["se"]->getMediaPath->path ?? "") ])
             {{-- RnD --}}
-            @include('department.detail', [ "deptName" => $arrayDept['rnd']?->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['rnd']?->description ?? "", "imageUrl" => ($arrayDept["rnd"]->logo?->getUrl() ?? "") ])
+            @include('department.detail', [ "deptName" => $arrayDept['rnd']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['rnd']->description ?? "", "imageUrl" => ($arrayDept["rnd"]->getMediaPath->path ?? "") ])
             {{-- RnC --}}
-            @include('department.detail', [ "deptName" => $arrayDept['rnc']?->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['rnc']?->description ?? "", "imageUrl" => ($arrayDept["rnc"]->logo?->getUrl() ?? "") ])
+            @include('department.detail', [ "deptName" => $arrayDept['rnc']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['rnc']->description ?? "", "imageUrl" => ($arrayDept["rnc"]->getMediaPath->path ?? "") ])
             {{-- Entre --}}
-            @include('department.detail', [ "deptName" => $arrayDept['entre']?->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['entre']?->description ?? "", "imageUrl" => ($arrayDept["entre"]->logo?->getUrl() ?? "") ])
+            @include('department.detail', [ "deptName" => $arrayDept['entre']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['entre']->description ?? "", "imageUrl" => ($arrayDept["entre"]->getMediaPath->path ?? "") ])
             {{-- BPMTI --}}
             {{-- Non Komisi --}}
             @include('department.detail-bpmti', [ "deptName" => "Non-Komisi", "group" => "bpmti", "detailCaption" => "BPMTI Adalah ....", ])
             {{-- Komisi 1 --}}
-            @include('department.detail', [ "deptName" => $arrayDept['komisi1']?->initial ?? "", "group" => "bpmti", "detailCaption" => $arrayDept['komisi1']?->description ?? "", ])
+            @include('department.detail', [ "deptName" => $arrayDept['komisi1']->initial ?? "", "group" => "bpmti", "detailCaption" => $arrayDept['komisi1']->description ?? "", ])
             {{-- Komisi 2 --}}
-            @include('department.detail', [ "deptName" => $arrayDept['komisi2']?->initial ?? "", "group" => "bpmti", "detailCaption" => $arrayDept['komisi2']?->description ?? "", ])
+            @include('department.detail', [ "deptName" => $arrayDept['komisi2']->initial ?? "", "group" => "bpmti", "detailCaption" => $arrayDept['komisi2']->description ?? "", ])
             {{-- Komisi 3 --}}
-            @include('department.detail', [ "deptName" => $arrayDept['komisi3']?->initial ?? "", "group" => "bpmti", "detailCaption" => $arrayDept['komisi3']?->description ?? "", ])
+            @include('department.detail', [ "deptName" => $arrayDept['komisi3']->initial ?? "", "group" => "bpmti", "detailCaption" => $arrayDept['komisi3']->description ?? "", ])
         </div>
 </section>
 </div>
 
     {{-- EMTI --}}
     {{-- Non-Dept --}}
-    @include('department.content_anggota', [ "deptName" => $arrayDept['nonDept']?->initial ?? "", 'anggotas' => $arrayDept["nonDept"]?->anggotas ?? [], 'group' => 'emti' ,"isVisible" => true ])
+    @include('department.content_anggota', [ "deptName" => $arrayDept['nonDept']->initial ?? "", 'anggotas' => $arrayDept["nonDept"]->anggotas ?? [], 'group' => 'emti' ,"isVisible" => true ])
     {{-- HRD --}}
-    @include('department.content_anggota', [ "deptName" => $arrayDept['hrd']?->initial ?? "", 'anggotas' => $arrayDept["hrd"]?->anggotas ?? [], 'group'=> 'emti'])
+    @include('department.content_anggota', [ "deptName" => $arrayDept['hrd']->initial ?? "", 'anggotas' => $arrayDept["hrd"]->anggotas ?? [], 'group'=> 'emti'])
     {{-- Advo --}}
-    @include('department.content_anggota', [ "deptName" => $arrayDept['advo']?->initial ?? "", 'anggotas' => $arrayDept["advo"]?->anggotas ?? [], 'group'=> 'emti' ]);
+    @include('department.content_anggota', [ "deptName" => $arrayDept['advo']->initial ?? "", 'anggotas' => $arrayDept["advo"]->anggotas ?? [], 'group'=> 'emti' ]);
     {{-- SE --}}
-    @include('department.content_anggota', [ "deptName" => $arrayDept['se']?->initial ?? "", 'anggotas' => $arrayDept["se"]?->anggotas ?? [], 'group'=> 'emti' ]);
+    @include('department.content_anggota', [ "deptName" => $arrayDept['se']->initial ?? "", 'anggotas' => $arrayDept["se"]->anggotas ?? [], 'group'=> 'emti' ]);
     {{-- RnD --}}
-    @include('department.content_anggota', [ "deptName" => $arrayDept['rnd']?->initial ?? "", 'anggotas' => $arrayDept["rnd"]?->anggotas ?? [], 'group'=> 'emti' ]);
+    @include('department.content_anggota', [ "deptName" => $arrayDept['rnd']->initial ?? "", 'anggotas' => $arrayDept["rnd"]->anggotas ?? [], 'group'=> 'emti' ]);
     {{-- RnC --}}
-    @include('department.content_anggota', [ "deptName" => $arrayDept['rnc']?->initial ?? "", 'anggotas' => $arrayDept["rnc"]?->anggotas ?? [], 'group'=> 'emti' ]);
+    @include('department.content_anggota', [ "deptName" => $arrayDept['rnc']->initial ?? "", 'anggotas' => $arrayDept["rnc"]->anggotas ?? [], 'group'=> 'emti' ]);
     {{-- Entre --}}
-    @include('department.content_anggota', [ "deptName" => $arrayDept['entre']?->initial ?? "", 'anggotas' => $arrayDept["entre"]?->anggotas ?? [], 'group'=> 'emti' ]);
+    @include('department.content_anggota', [ "deptName" => $arrayDept['entre']->initial ?? "", 'anggotas' => $arrayDept["entre"]->anggotas ?? [], 'group'=> 'emti' ]);
 
     {{-- BPMTI --}}
     {{-- Non Komisi --}}
-    @include('department.content_anggota', ["deptName" => $arrayDept["nonKomisi"]?->initial ?? "", "anggotas" => $arrayDept["nonKomisi"]?->anggotas ?? [], 'group' => 'bpmti'])
+    @include('department.content_anggota', ["deptName" => $arrayDept["nonKomisi"]->initial ?? "", "anggotas" => $arrayDept["nonKomisi"]->anggotas ?? [], 'group' => 'bpmti'])
     {{-- Komisi 1 --}}
-    @include('department.content_anggota', ["deptName" => $arrayDept["komisi1"]?->initial ?? "", "anggotas" => $arrayDept["komisi1"]?->anggotas ?? [], 'group' => 'bpmti'])
+    @include('department.content_anggota', ["deptName" => $arrayDept["komisi1"]->initial ?? "", "anggotas" => $arrayDept["komisi1"]->anggotas ?? [], 'group' => 'bpmti'])
     {{-- Komisi 2 --}}
-    @include('department.content_anggota', ["deptName" => $arrayDept["komisi2"]?->initial ?? "", "anggotas" => $arrayDept["komisi2"]?->anggotas ?? [], 'group' => 'bpmti'])
+    @include('department.content_anggota', ["deptName" => $arrayDept["komisi2"]->initial ?? "", "anggotas" => $arrayDept["komisi2"]->anggotas ?? [], 'group' => 'bpmti'])
     {{-- Komisi 3 --}}
-    @include('department.content_anggota', ["deptName" => $arrayDept["komisi3"]?->initial ?? "", "anggotas" => $arrayDept["komisi3"]?->anggotas ?? [], 'group' => 'bpmti'])
+    @include('department.content_anggota', ["deptName" => $arrayDept["komisi3"]->initial ?? "", "anggotas" => $arrayDept["komisi3"]->anggotas ?? [], 'group' => 'bpmti'])
 @endsection
 
 @section('custom-script')
