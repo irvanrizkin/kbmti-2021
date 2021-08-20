@@ -4,6 +4,12 @@
     }
     &__content {
         margin-top: 3.75rem;
+        &__img {
+          margin-bottom: 30px;
+          &__item {
+            padding: 20px;
+          }
+        }
         &__judul {
             margin-bottom: 1.35rem;
             font-size: 1.75rem;

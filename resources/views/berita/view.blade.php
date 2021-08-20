@@ -10,6 +10,17 @@
             @include('layouts.search', ['name' => 'searchBerita', 'text' => 'Info Advokasi...'])
         </section>
         <section class="berita_detail__content">
+            <div class="berita_detail__content__img">
+              <div class="owl-carousel">
+                <div class="berita_detail__content__img__item" ><img src="{{ asset('img/carou-berita.png') }}" alt="" srcset=""></div>
+                <div class="berita_detail__content__img__item" ><img src="{{ asset('img/carou-berita.png') }}" alt="" srcset=""></div>
+                <div class="berita_detail__content__img__item" ><img src="{{ asset('img/carou-berita.png') }}" alt="" srcset=""></div>
+                <div class="berita_detail__content__img__item" ><img src="{{ asset('img/carou-berita.png') }}" alt="" srcset=""></div>
+                <div class="berita_detail__content__img__item" ><img src="{{ asset('img/carou-berita.png') }}" alt="" srcset=""></div>
+                <div class="berita_detail__content__img__item" ><img src="{{ asset('img/carou-berita.png') }}" alt="" srcset=""></div>
+                <div class="berita_detail__content__img__item" ><img src="{{ asset('img/carou-berita.png') }}" alt="" srcset=""></div>
+              </div>
+            </div>
             <div class="berita_detail__content__judul">[ INFO ADVOKASI | MEKANISME UJIAN AKHIR SEMESTER GENAP 2020/2021 FILKOM SECARA DARING ]</div>
             <div class="berita_detail__content__body">
                 Halo Tetizen !</br>
@@ -42,4 +53,23 @@
             <div class="berita__break"></div>
         </section>
     </div>
+@endsection
+
+@section('custom-script')
+    <script>
+      $('.owl-carousel').owlCarousel({
+        stagePadding: 50,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:2
+            },
+            1000:{
+                items:3
+            }
+        }
+    });
+    </script>
 @endsection
