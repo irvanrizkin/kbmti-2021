@@ -9,10 +9,12 @@ use App\Http\Requests\StoreAnggotumRequest;
 use App\Http\Requests\UpdateAnggotumRequest;
 use App\Models\Anggotum;
 use App\Models\Department;
+use App\Models\Media_handlers as CustomMediaHandler;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
+use File;
 
 class AnggotaController extends Controller
 {
@@ -22,7 +24,7 @@ class AnggotaController extends Controller
     {
         abort_if(Gate::denies('anggotum_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $anggota = Anggotum::with(['department', 'media'])->get();
+        $anggota = Anggotum::with(['department'])->get();
 
         return view('admin.anggota.index', compact('anggota'));
     }
@@ -41,12 +43,19 @@ class AnggotaController extends Controller
         $anggotum = Anggotum::create($request->all());
 
         if ($request->input('image', false)) {
-            $anggotum->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
+            // $anggotum->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
+            File::move(storage_path('tmp/uploads/') . $request->input('image'), storage_path('app/public/anggotas/') . $request->input('image'));
+            $mediaHandle = CustomMediaHandler::create([
+                'path' => $request->input('image')
+            ]);
         }
 
-        if ($media = $request->input('ck-media', false)) {
-            Media::whereIn('id', $media)->update(['model_id' => $anggotum->id]);
-        }
+        // Disabled
+        // if ($media = $request->input('ck-media', false)) {
+        //     Media::whereIn('id', $media)->update(['model_id' => $anggotum->id]);
+        // }
+        $anggotum->media_id = $mediaHandle->id;
+        $anggotum->save();
 
         return redirect()->route('admin.anggota.index');
     }
@@ -67,14 +76,13 @@ class AnggotaController extends Controller
         $anggotum->update($request->all());
 
         if ($request->input('image', false)) {
-            if (!$anggotum->image || $request->input('image') !== $anggotum->image->file_name) {
-                if ($anggotum->image) {
-                    $anggotum->image->delete();
-                }
-                $anggotum->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
-            }
-        } elseif ($anggotum->image) {
-            $anggotum->image->delete();
+            File::move(storage_path('tmp/uploads') . $request->input('image'), storage_path('app/public/anggotas/') . $request->input('image'));
+            $mediaHandle = CustomMediaHandler::create([
+                'path' => $request->input('image')
+            ]);
+            CustomMediaHandler::where('id', $anggotum->getMediaPath->id);
+            $anggotum->media_id = $mediaHandle->id;
+            $anggotum->save();
         }
 
         return redirect()->route('admin.anggota.index');
