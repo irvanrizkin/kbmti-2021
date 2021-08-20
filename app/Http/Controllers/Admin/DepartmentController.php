@@ -64,18 +64,21 @@ class DepartmentController extends Controller
         return view('admin.departments.edit', compact('department'));
     }
 
-    public function update(UpdateDepartmentRequest $request, Department $department)
+    public function update(UpdateDepartmentRequest $request, $id)
     {
-        $department->update($request->all());
+        $department = Department::where('id', $id);
+        $department->update($request->except('_method', '_token', 'logo'));
 
         if ($request->input('logo', false)) {
             File::move(storage_path('tmp/uploads/') . $request->input('logo'), storage_path('app/public/departments/') . $request->input('logo'));
             $mediaHandle = CustomMediaHandler::create([
                 'path' => $request->input('logo')
             ]);
-            CustomMediaHandler::where('id', $department->getMediaPath->id);
-            $department->media_id = $mediaHandle->id;
-            $department->save();
+            // If previously exist
+            if ($department->first()->getMediaPath) {
+                CustomMediaHandler::where('id', $department->first()->getMediaPath->id)->delete();
+            }
+            $department->update([ 'media_id' => $mediaHandle->id ]);
         }
         return redirect()->route('admin.departments.index');
     }

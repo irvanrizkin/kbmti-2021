@@ -7,6 +7,14 @@
     </div>
 
     <div class="card-body">
+        <div class="row">
+            <div class="col-12 d-flex flex-column">
+                <h2>Avatar</h2>
+                @if ($anggotum->getMediaPath?->path)
+                    <img src="{{ "/storage/anggotas/" . $anggotum->getMediaPath->path }}" alt="" class="img-fluid">     
+                @endif
+            </div>
+        </div>
         <form method="POST" action="{{ route("admin.anggota.update", [$anggotum->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
@@ -45,11 +53,11 @@
             </div>
             <div class="form-group">
                 <label for="type">{{ trans('cruds.anggotum.fields.type') }}</label>
-                {{-- <input class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" type="text" name="type" id="type" value="{{ old('type', $anggotum->type) }}"> --}}
                 <select name="type" id="type" class="form-control select2 {{ $errors->has('department') ? 'is-invalid' : '' }}">
-                    <option value="Ketua Departemen">Ketua Department</option>
-                    <option value="Wakil Ketua Departemen">Wakil Ketua Department</option>
-                    <option value="Staff Dept">Staff Department</option>
+                    <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    <option value="Ketua Departemen" {{ $anggotum->type == "Ketua Departemen" ? 'selected' : '' }}>Ketua Department</option>
+                    <option value="Wakil Ketua Departemen {{ $anggotum->type == "Wakil Ketua Departemen" ? 'selected' : '' }}">Wakil Ketua Department</option>
+                    <option value="Staff Dept" {{ $anggotum->type == "Staff Dept" ? 'selected' : '' }}>Staff Department</option>
                 </select>
                 @if($errors->has('type'))
                     <span class="text-danger">{{ $errors->first('type') }}</span>

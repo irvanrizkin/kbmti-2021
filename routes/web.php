@@ -182,3 +182,4 @@ Route::group($routesAttributes, function () {
 
 // Testing for development experimental
 // Route::view('experimental-department', 'department/experimental_department_template');
+// Route::view('template-departemen', 'department_template');
