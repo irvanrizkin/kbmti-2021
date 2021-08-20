@@ -13,6 +13,9 @@
     {{-- Animate Css --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- OwlCarousel --}}
+    <link rel="stylesheet" href="{{ asset('css/owlcarousel/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owlcarousel/owl.theme.default.min.css') }}">
 </head>
 
 <body>
@@ -29,6 +32,7 @@
     <script>
         AOS.init();
     </script>
+    <script src="{{ asset('js/owlcarousel/owl.carousel.min.js') }}"></script>
     @yield('custom-script')
 </body>
 
