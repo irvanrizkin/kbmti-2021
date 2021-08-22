@@ -48,7 +48,7 @@
                 <select name="type" id="type" class="form-control select2 {{ $errors->has('department') ? 'is-invalid' : '' }}">
                     <option value="Ketua Departemen">Ketua Department</option>
                     <option value="Wakil Ketua Departemen">Wakil Ketua Department</option>
-                    <option value="Staff">Staff Department</option>
+                    <option value="Staff Dept">Staff Department</option>
                 </select>
                 @if($errors->has('type'))
                     <span class="text-danger">{{ $errors->first('type') }}</span>
