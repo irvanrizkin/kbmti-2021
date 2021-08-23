@@ -10,7 +10,13 @@ class BeritaController extends Controller
     /**
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index (){
+    public function index()
+    {
+        return view('berita.index');
+    }
+
+    public function show()
+    {
         return view('berita.view');
     }
 }

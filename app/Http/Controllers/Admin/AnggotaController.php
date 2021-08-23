@@ -12,7 +12,6 @@ use App\Models\Department;
 use App\Models\Media_handlers as CustomMediaHandler;
 use Gate;
 use Illuminate\Http\Request;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use File;
 

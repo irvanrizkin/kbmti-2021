@@ -28,9 +28,9 @@ class Department extends Model
 
     public $table = 'departments';
 
-    protected $appends = [
-        'logo',
-    ];
+    // protected $appends = [
+    //     'logo',
+    // ];
 
     protected $dates = [
         'created_at',
@@ -48,6 +48,8 @@ class Department extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    private $const_ModelName = "departments";
 
     // public function registerMediaConversions(Media $media = null): void
     // {
@@ -82,6 +84,18 @@ class Department extends Model
     public function getMediaPath()
     {
         // should return an array
-        return $this->belongsTo(Media_handlers::class, 'media_id');
+        $query = $this->query()
+            ->join('media_handlers', 'media_handlers.model_id', '=', 'departments.id')
+            ->where('media_handlers.model_id', '=', $this->id)
+            ->where('media_handlers.model_name', '=', $this->const_ModelName)
+            ->where('media_handlers.deleted_at', '=', null)
+            ->get();
+
+        // return single object instead of an array
+        if ( count($query) != 0 ) {
+            return $query[0];
+        }
+
+        return null;
     }
 }

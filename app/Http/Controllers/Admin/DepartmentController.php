@@ -17,6 +17,7 @@ use File;
 class DepartmentController extends Controller
 {
     use MediaUploadingTrait;
+    private $modelName = "departments";
 
     public function index()
     {
@@ -41,18 +42,17 @@ class DepartmentController extends Controller
         if ($request->input('logo', false)) {
             // Keluarnya nanti public_path("storage/departments/nama filenya")
             File::move(storage_path('tmp/uploads/') . $request->input('logo'), storage_path('app/public/departments/') . $request->input('logo'));
-            // Create new item
+            // Create new item of media handlers
             $mediaHandle = CustomMediaHandler::create([
-                'path' => $request->input('logo')
+                'path' => $request->input('logo'),
+                'model_id' => $department->id,
+                'model_name' => $this->modelName,
             ]);
         }
         // Disabled
         // if ($media = $request->input('ck-media', false)) {
         //     Media::whereIn('id', $media)->update(['model_id' => $department->id]);
         // }
-
-        $department->media_id = $mediaHandle->id;
-        $department->save();
 
         return redirect()->route('admin.departments.index');
     }
@@ -71,14 +71,17 @@ class DepartmentController extends Controller
 
         if ($request->input('logo', false)) {
             File::move(storage_path('tmp/uploads/') . $request->input('logo'), storage_path('app/public/departments/') . $request->input('logo'));
-            $mediaHandle = CustomMediaHandler::create([
-                'path' => $request->input('logo')
-            ]);
             // If previously exist
-            if ($department->first()->getMediaPath) {
-                CustomMediaHandler::where('id', $department->first()->getMediaPath->id)->delete();
+            if ($department->first()->getMediaPath()) {
+                CustomMediaHandler::where('model_id', $id)
+                    ->where('model_name', $this->modelName)
+                    ->delete();
             }
-            $department->update([ 'media_id' => $mediaHandle->id ]);
+            $mediaHandle = CustomMediaHandler::create([
+                'path' => $request->input('logo'),
+                'model_id' => $id,
+                'model_name' => $this->modelName,
+            ]);
         }
         return redirect()->route('admin.departments.index');
     }

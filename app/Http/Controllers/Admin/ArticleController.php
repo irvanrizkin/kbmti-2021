@@ -9,11 +9,13 @@ use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
 use App\Models\Tag;
 use App\Models\HasTag;
+use App\Models\Media_handlers as CustomMediaHandler;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use Symfony\Component\HttpFoundation\Response;
+use File;
 
 class ArticleController extends Controller
 {
@@ -24,7 +26,7 @@ class ArticleController extends Controller
     {
         abort_if(Gate::denies('article_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $articles = Article::with(['media'])->get();
+        $articles = Article::all();
 
         return view('admin.articles.index', compact('articles'));
     }
@@ -60,13 +62,17 @@ class ArticleController extends Controller
 
         // Image
         foreach ($request->input('image', []) as $file) {
-            $article->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('image');
+            // $article->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('image');
+            File::move( storage_path('tmp/uploads/') . $file, storage_path('app/public/articles') . $file );
+            // $mediaHandle = CustomMediaHandler::create([
+            //     'path' => $file
+            // ]);
         }
-
-        if ($media = $request->input('ck-media', false)) {
-            Media::whereIn('id', $media)->update(['model_id' => $article->id]);
-        }
-        // CKEditor
+        
+        // CKEditor is Disabled
+        // if ($media = $request->input('ck-media', false)) {
+        //     Media::whereIn('id', $media)->update(['model_id' => $article->id]);
+        // }
 
         return redirect()->route('admin.articles.index');
     }

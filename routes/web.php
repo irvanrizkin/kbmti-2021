@@ -28,6 +28,9 @@ use App\Http\Controllers\Admin\UpcomingProkerController as AdminUpcomingProkerCo
 use App\Http\Controllers\Admin\EventFieldChoiceController as AdminEventFieldChoiceController;
 use App\Http\Controllers\Admin\DepartmentController as AdminDepartmentController;
 
+// Models
+use App\Models\Department;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -186,3 +189,10 @@ Route::group($routesAttributes, function () {
 // Testing for development experimental
 // Route::view('experimental-department', 'department/experimental_department_template');
 // Route::view('template-departemen', 'department_template');
+Route::get('testing-model-department', function () {
+    $var = Department::find(1);
+    // $var->createMedia();
+    return response()->json([
+        'var' => $var->getMediaPath()
+    ]);
+});
