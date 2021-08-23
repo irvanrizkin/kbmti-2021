@@ -6,6 +6,9 @@
 
 .nav-item {
     margin-left: 60px;
+    .active {
+        font-weight: 700;
+    }
 }
 
 .nav-item a {

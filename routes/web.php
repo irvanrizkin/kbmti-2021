@@ -72,11 +72,14 @@ Route::group($routesAttributes, function () {
             Route::resource('/department', GuestDepartmentController::class);
 
             // Berita
-            Route::get('/berita', [GuestBeritaController::class, 'berita-1'])->name('berita.berita-1');
+            // Route::get('/berita', [GuestBeritaController::class, 'berita-1'])->name('berita.berita-1');
             Route::resource('/berita', GuestBeritaController::class);
 
+            // Product
+            Route::redirect('/products', '/under-construction')->name('products');
+
             // Open Recruitment
-            Route::redirect('/open-recruitmen', '/under-construction');
+            Route::redirect('/open-recruitmen', '/under-construction')->name('open-recruitmen');
 
             // Under Construction
             Route::view('/under-construction', 'under_const');
