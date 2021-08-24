@@ -98,4 +98,10 @@ class Department extends Model
 
         return null;
     }
+
+    // Helper functions to get url path
+    public function getUrlPath()
+    {
+        return url("/storage/$this->model_name/$this->path");
+    }
 }

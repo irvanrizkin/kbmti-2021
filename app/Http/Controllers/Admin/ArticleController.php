@@ -21,6 +21,7 @@ class ArticleController extends Controller
 {
 
     use MediaUploadingTrait;
+    private $modelName = "articles";
 
     public function index()
     {
@@ -63,10 +64,12 @@ class ArticleController extends Controller
         // Image
         foreach ($request->input('image', []) as $file) {
             // $article->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('image');
-            File::move( storage_path('tmp/uploads/') . $file, storage_path('app/public/articles') . $file );
-            // $mediaHandle = CustomMediaHandler::create([
-            //     'path' => $file
-            // ]);
+            File::move( storage_path('tmp/uploads/') . $file, storage_path('app/public/articles/') . $file );
+            $mediaHandle = CustomMediaHandler::create([
+                'path' => $file,
+                'model_id' => $article->id,
+                'model_name' => $this->modelName
+            ]);
         }
         
         // CKEditor is Disabled

@@ -16,8 +16,8 @@
             <div class="row">
                 <div class="col-12 d-flex flex-column">
                     <h2>Avatar</h2>
-                    @if ($anggotum->getMediaPath?->path)
-                        <img src="{{ "/storage/anggotas/" . $anggotum->getMediaPath->path }}" alt="" class="img-fluid">     
+                    @if ($media = $anggotum->getMediaPath())
+                        <img src="{{ $media->getUrlPath() }}" alt="" class="img-fluid">     
                     @endif
                 </div>
             </div>

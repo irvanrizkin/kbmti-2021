@@ -37,7 +37,7 @@ class Anggotum extends Model
         'caption'
     ];
 
-    private $const_ModelName = "Anggota";
+    private $const_ModelName = "anggotas";
 
     // public function registerMediaConversions(Media $media = null): void
     // {
@@ -70,7 +70,6 @@ class Anggotum extends Model
     // Helper function to Set Media Handler NEW
     public function createMedia($image)
     {
-
     }
 
     // Helper function to Media Handler
@@ -78,17 +77,23 @@ class Anggotum extends Model
     {
         // should return an array
         $query = $this->query()
-            ->join('media_handlers', 'media_handlers.model_id', '=', 'departments.id')
+            ->join('media_handlers', 'media_handlers.model_id', '=', 'anggota.id')
             ->where('media_handlers.model_id', '=', $this->id)
             ->where('media_handlers.model_name', '=', $this->const_ModelName)
             ->where('media_handlers.deleted_at', '=', null)
             ->get();
 
         // return single object instead of an array
-        if ( count($query) != 0 ) {
+        if (count($query) != 0) {
             return $query[0];
         }
 
         return null;
+    }
+    
+    // Helper functions to get url path
+    public function getUrlPath()
+    {
+        return url("/storage/$this->model_name/$this->path");
     }
 }

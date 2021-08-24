@@ -43,6 +43,8 @@ class Article extends Model
         'ENTRE' => 'Entrepreneurship'
     ];
 
+    private $const_ModelName = "articles";
+
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
@@ -86,7 +88,23 @@ class Article extends Model
     // Helper funtion to Media Handler
     public function getMediaPath()
     {
-        // should return an array
-        return $this->belongsTo(Media_handlers::class, 'media_id');
+        // should return an array of media handlers
+        $query = $this->query()
+            ->join('media_handlers', 'media_handlers.model_id', '=', 'articles.id')
+            ->where('media_handlers.model_id', '=', $this->id)
+            ->where('media_handlers.model_name', '=', $this->const_ModelName)
+            ->where('media_handlers.deleted_at', '=', null)
+            ->get();
+        if (count($query) != 0) {
+            return $query;
+        }
+
+        return null;
+    }
+
+    // Helper functions to get url path
+    public function getUrlPath()
+    {
+        return url("/storage/$this->model_name/$this->path");
     }
 }

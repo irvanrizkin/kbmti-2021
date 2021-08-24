@@ -16,8 +16,10 @@
             <div class="row">
                 <div class="col-12 d-flex flex-column">
                     <h2>Logo</h2>
-                    @if ($department->getMediaPath())
-                        <img src="{{ "/storage/departments/" . $department->getMediaPath()->path }}" alt="" class="img-fluid">     
+                    @if ($media = $department->getMediaPath())
+                        {{-- {{ $media }} --}}
+                        {{-- <img src="{{ "/storage/departments/" . $department->getMediaPath()->path }}" alt="" class="img-fluid">      --}}
+                        <img src="{{ $media->getUrlPath() }}" alt="" class="img-fluid">     
                     @endif
                 </div>
             </div>

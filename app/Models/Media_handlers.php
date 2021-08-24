@@ -29,4 +29,8 @@ class Media_handlers extends Model
     ];
 
     // Helper functions
+    public function getUrlPath()
+    {
+        return url("/storage/$this->model_name/$this->path");
+    }
 }

@@ -141,15 +141,15 @@ Route::group($routesAttributes, function () {
             Route::resource('anggota', AdminAnggotController::class);
 
             // Article is disabled due maintenance
-            Route::get('articles', function () {
-                return response()->json([
-                    'message' => 'this feature is under maintenance'
-                ]);
-            })->name('articles.index');
-            // Route::delete('articles/destroy', [AdminArticleController::class, 'massDestroy'])->name('articles.massDestroy');
-            // Route::post('articles/media', [AdminArticleController::class, 'storeMedia'])->name('articles.storeMedia');
-            // Route::post('articles/ckmedia', [AdminArticleController::class, 'storeCKEditorImage'])->name('articles.storeCKEditorImages');
-            // Route::resource('articles', AdminArticleController::class);
+            // Route::get('articles', function () {
+            //     return response()->json([
+            //         'message' => 'this feature is under maintenance'
+            //     ]);
+            // })->name('articles.index');
+            Route::delete('articles/destroy', [AdminArticleController::class, 'massDestroy'])->name('articles.massDestroy');
+            Route::post('articles/media', [AdminArticleController::class, 'storeMedia'])->name('articles.storeMedia');
+            Route::post('articles/ckmedia', [AdminArticleController::class, 'storeCKEditorImage'])->name('articles.storeCKEditorImages');
+            Route::resource('articles', AdminArticleController::class);
 
             // Event
             Route::delete('events/destroy', [AdminEventFieldController::class, 'massDestroy'])->name('events.massDestroy');
