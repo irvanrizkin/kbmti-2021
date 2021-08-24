@@ -13,10 +13,13 @@ use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use File;
+use Intervention\Image\Facades\Image;
+use App\Http\Controllers\Traits\MediaConversionTrait;
 
 class DepartmentController extends Controller
 {
     use MediaUploadingTrait;
+    use MediaConversionTrait;
     private $modelName = "departments";
 
     public function index()
@@ -42,6 +45,9 @@ class DepartmentController extends Controller
         if ($request->input('logo', false)) {
             // Keluarnya nanti public_path("storage/departments/nama filenya")
             File::move(storage_path('tmp/uploads/') . $request->input('logo'), storage_path('app/public/departments/') . $request->input('logo'));
+            // Create the preview version and thumnail version
+            $this->convertToThumbnail($this->modelName ,$request->input('logo'));
+            $this->convertToPreview($this->modelName ,$request->input('logo'));
             // Create new item of media handlers
             $mediaHandle = CustomMediaHandler::create([
                 'path' => $request->input('logo'),
@@ -82,6 +88,9 @@ class DepartmentController extends Controller
                 'model_id' => $id,
                 'model_name' => $this->modelName,
             ]);
+            // Create thumbnail and preview version
+            $this->convertToThumbnail($this->modelName, $request->input('logo'));
+            $this->convertToPreview($this->modelName, $request->input('logo'));
         }
         return redirect()->route('admin.departments.index');
     }
@@ -120,4 +129,27 @@ class DepartmentController extends Controller
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }
+
+    // // Helper function convert
+    // public function convertToThumbnail($media = null)
+    // {
+    //     // if (!$media || $subPath) {
+    //     //     return;
+    //     // }
+
+    //     return Image::make(storage_path("app/public/departments/") . $media)
+    //         ->resize(50, 50)
+    //         ->save(storage_path("app/public/departments/thumbnails/") . $media);
+    // }
+
+    // public function convertToPreview($media = null)
+    // {
+    //     // if (!$media || $subPath) {
+    //     //     return;
+    //     // }
+
+    //     return Image::make(storage_path("app/public/departments/") . $media)
+    //         ->resize(120, 120)
+    //         ->save(storage_path("app/public/departments/previews/") . $media);
+    // }
 }
