@@ -12,7 +12,6 @@ use App\Models\HasTag;
 use App\Models\Media_handlers as CustomMediaHandler;
 use Gate;
 use Illuminate\Http\Request;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use Symfony\Component\HttpFoundation\Response;
 use File;
@@ -64,14 +63,17 @@ class ArticleController extends Controller
         // Image
         foreach ($request->input('image', []) as $file) {
             // $article->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('image');
-            File::move( storage_path('tmp/uploads/') . $file, storage_path('app/public/articles/') . $file );
+            File::move(storage_path('tmp/uploads/') . $file, storage_path('app/public/articles/') . $file);
             $mediaHandle = CustomMediaHandler::create([
                 'path' => $file,
                 'model_id' => $article->id,
                 'model_name' => $this->modelName
             ]);
+            // Crreate preview and thumnail
+            $this->convertToThumbnail($this->modelName, $file);
+            $this->convertToPreview($this->modelName, $file);
         }
-        
+
         // CKEditor is Disabled
         // if ($media = $request->input('ck-media', false)) {
         //     Media::whereIn('id', $media)->update(['model_id' => $article->id]);
@@ -107,8 +109,18 @@ class ArticleController extends Controller
         }
         $media = $article->image->pluck('file_name')->toArray();
         foreach ($request->input('image', []) as $file) {
+
             if (count($media) === 0 || !in_array($file, $media)) {
-                $article->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('image');
+                // $article->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('image');
+                File::move(storage_path('tmp/uploads/') . $file, storage_path('app/public/articles/') . $file);
+                $mediaHandle = CustomMediaHandler::create([
+                    'path' => $file,
+                    'model_id' => $article->id,
+                    'model_name' => $this->modelName
+                ]);
+                // Crreate preview and thumnail
+                $this->convertToThumbnail($this->modelName, $file);
+                $this->convertToPreview($this->modelName, $file);
             }
         }
 
@@ -172,14 +184,17 @@ class ArticleController extends Controller
     }
 
 
-    // Helpers
-    private function resolverArrayedTags($arrayedTags){
+    // Helpers to resolve arrayed tags
+    private function resolverArrayedTags($arrayedTags)
+    {
         foreach ($arrayedTags as $itemTag) {
             HasTag::create($itemTag)->save();
         }
     }
 
-    private function addNewTag($newTags, $articleid, $arrayContainter){
+    // Helpers to resolve newTag
+    private function addNewTag($newTags, $articleid, $arrayContainter)
+    {
         if ($newTags) {
             foreach ($newTags as $tagName) {
                 $newTag = Tag::create([

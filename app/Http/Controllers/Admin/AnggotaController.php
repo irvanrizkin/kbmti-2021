@@ -14,10 +14,12 @@ use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use File;
+use App\Http\Controllers\Traits\MediaConversionTrait;
 
 class AnggotaController extends Controller
 {
     use MediaUploadingTrait;
+    use MediaConversionTrait;
     private $modelName = "anggotas";
 
     public function index()
@@ -45,8 +47,11 @@ class AnggotaController extends Controller
         if ($request->input('image', false)) {
             // $anggotum->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
             File::move(storage_path('tmp/uploads/') . $request->input('image'), storage_path('app/public/anggotas/') . $request->input('image'));
+            // Create the preview version and thumnail version
+            $this->convertToThumbnail($this->modelName, $request->input('image'));
+            $this->convertToPreview($this->modelName, $request->input('image'));
             $mediaHandle = CustomMediaHandler::create([
-                'path' => $request->input('logo'),
+                'path' => $request->input('image'),
                 'model_id' => $anggotum->id,
                 'model_name' => $this->modelName,
             ]);
@@ -56,8 +61,6 @@ class AnggotaController extends Controller
         // if ($media = $request->input('ck-media', false)) {
         //     Media::whereIn('id', $media)->update(['model_id' => $anggotum->id]);
         // }
-        // $anggotum->media_id = $mediaHandle->id;
-        // $anggotum->save();
 
         return redirect()->route('admin.anggota.index');
     }
@@ -76,7 +79,7 @@ class AnggotaController extends Controller
     public function update(UpdateAnggotumRequest $request, $id)
     {
         $anggotum = Anggotum::where('id', $id);
-        $anggotum->update( $request->except('_method', '_token', 'image') );
+        $anggotum->update($request->except('_method', '_token', 'image'));
 
         if ($request->input('image', false)) {
             File::move(storage_path('tmp/uploads/') . $request->input('image'), storage_path('app/public/anggotas/') . $request->input('image'));
@@ -91,8 +94,10 @@ class AnggotaController extends Controller
                 'model_id' => $id,
                 'model_name' => $this->modelName,
             ]);
+            // Create thumnail and preview version
+            $this->convertToThumbnail($this->modelName, $request->input('image'));
+            $this->convertToPreview($this->modelName, $request->input('image'));
 
-            // $anggotum->update( [ 'media_id' => $mediaHandle->id ] );
         }
 
         return redirect()->route('admin.anggota.index');

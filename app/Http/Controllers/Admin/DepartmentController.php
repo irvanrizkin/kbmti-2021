@@ -13,7 +13,6 @@ use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use File;
-use Intervention\Image\Facades\Image;
 use App\Http\Controllers\Traits\MediaConversionTrait;
 
 class DepartmentController extends Controller
@@ -129,27 +128,4 @@ class DepartmentController extends Controller
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }
-
-    // // Helper function convert
-    // public function convertToThumbnail($media = null)
-    // {
-    //     // if (!$media || $subPath) {
-    //     //     return;
-    //     // }
-
-    //     return Image::make(storage_path("app/public/departments/") . $media)
-    //         ->resize(50, 50)
-    //         ->save(storage_path("app/public/departments/thumbnails/") . $media);
-    // }
-
-    // public function convertToPreview($media = null)
-    // {
-    //     // if (!$media || $subPath) {
-    //     //     return;
-    //     // }
-
-    //     return Image::make(storage_path("app/public/departments/") . $media)
-    //         ->resize(120, 120)
-    //         ->save(storage_path("app/public/departments/previews/") . $media);
-    // }
 }

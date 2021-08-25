@@ -182,9 +182,10 @@
       }
     },
     init: function () {
-@if(isset($department) && $department->logo)
-      var file = {!! json_encode($department->logo) !!}
-          this.options.addedfile.call(this, file)
+@if(isset($department) && $department->getMediaPath())
+      var file = {!! json_encode($department->getMediaPath()) !!}
+      console.log(file)
+      this.options.addedfile.call(this, file)
       this.options.thumbnail.call(this, file, file.preview)
       file.previewElement.classList.add('dz-complete')
       $('form').append('<input type="hidden" name="logo" value="' + file.file_name + '">')
