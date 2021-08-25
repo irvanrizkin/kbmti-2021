@@ -48,24 +48,6 @@ class Article extends Model implements MediaModelInterface
         return $date->format('Y-m-d H:i:s');
     }
 
-    // public function registerMediaConversions(Media $media = null): void
-    // {
-    //     $this->addMediaConversion('thumb')->fit('crop', 50, 50);
-    //     $this->addMediaConversion('preview')->fit('crop', 120, 120);
-    // }
-
-    // public function getImageAttribute()
-    // {
-    //     $files = $this->getMedia('image');
-    //     $files->each(function ($item) {
-    //         $item->url = $item->getUrl();
-    //         $item->thumbnail = $item->getUrl('thumb');
-    //         $item->preview = $item->getUrl('preview');
-    //     });
-
-    //     return $files;
-    // }
-
     // Helper functions to detect tag
     public function hasTag()
     {

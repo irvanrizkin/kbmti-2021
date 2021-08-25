@@ -7,14 +7,14 @@
     </div>
 
     <div class="card-body">
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-12 d-flex flex-column">
                 <h2>Avatar</h2>
                 @if ($media = $anggotum->getMediaPath())
                     <img src="{{ $media->getUrlPath() }}" alt="" class="img-fluid">     
                 @endif
             </div>
-        </div>
+        </div> --}}
         <form method="POST" action="{{ route("admin.anggota.update", [$anggotum->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf

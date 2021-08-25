@@ -15,10 +15,6 @@ class Anggotum extends Model implements MediaModelInterface
 
     public $table = 'anggota';
 
-    // protected $appends = [
-    //     'image',
-    // ];
-
     protected $dates = [
         'created_at',
         'updated_at',

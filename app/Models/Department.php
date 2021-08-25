@@ -11,7 +11,6 @@ use App\Interfaces\MediaModelInterface;
 class Department extends Model implements MediaModelInterface
 {
     use SoftDeletes;
-    // use InteractsWithMedia;
     use HasFactory;
 
     public const TYPE_SELECT = [
