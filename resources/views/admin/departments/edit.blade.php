@@ -7,14 +7,14 @@
     </div>
 
     <div class="card-body">
-        <div class="row">
+        {{-- <div class="row">
           <div class="col-12 d-flex flex-column">
               <h2>Logo</h2>
-              @if ($department->getMediaPath->path)
-                  <img src="{{ "/storage/departments/" . $department->getMediaPath->path }}" alt="" class="img-fluid">     
+              @if ($media = $department->getMediaPath())
+                  <img src="{{ $media->getUrlPath() }}" alt="" class="img-fluid">     
               @endif
           </div>
-      </div>
+        </div> --}}
         <form method="POST" action="{{ route("admin.departments.update", [$department->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
@@ -172,7 +172,7 @@
     },
     success: function (file, response) {
       $('form').find('input[name="logo"]').remove()
-      $('form').append('<input type="hidden" name="logo" value="' + response.name + '">')
+      $('form').append('<input type="hidden" name="logo" value="' + response.path + '">')
     },
     removedfile: function (file) {
       file.previewElement.remove()
@@ -182,12 +182,13 @@
       }
     },
     init: function () {
-@if(isset($department) && $department->logo)
-      var file = {!! json_encode($department->logo) !!}
-          this.options.addedfile.call(this, file)
+@if(isset($department) && $department->getMediaPath())
+      var file = {!! json_encode($department->getMediaPath()) !!}
+      console.log(file)
+      this.options.addedfile.call(this, file)
       this.options.thumbnail.call(this, file, file.preview)
       file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="logo" value="' + file.file_name + '">')
+      $('form').append('<input type="hidden" name="logo" value="' + file.path + '">')
       this.options.maxFiles = this.options.maxFiles - 1
 @endif
     },
