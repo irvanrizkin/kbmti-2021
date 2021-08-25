@@ -6,9 +6,10 @@ use \DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Interfaces\MediaModelInterface;
 
 
-class Article extends Model
+class Article extends Model implements MediaModelInterface
 {
     use SoftDeletes;
     use HasFactory;
@@ -93,6 +94,10 @@ class Article extends Model
             ->where('media_handlers.deleted_at', '=', null)
             ->get();
         if (count($query) != 0) {
+            foreach ($query as $item) {
+                $item->thumbnail = $this->getThumbnailUrlPath($item->path);
+                $item->preview = $this->getPreviewUrlPath($item->path);
+            }
             return $query;
         }
 
@@ -103,5 +108,23 @@ class Article extends Model
     public function getUrlPath()
     {
         return url("/storage/$this->model_name/$this->path");
+    }
+
+    // Implements from MediaModelInterfaces
+    public function getPreviewUrlPath($path = "")
+    {
+        if ($path) {
+            return url("/storage/$this->const_ModelName/previews/$path");
+        }
+        return url("/storage/$this->const_ModelName/previews/$this->path");
+    }
+
+    // Helper functions to get thumbnail url path
+    public function getThumbnailUrlPath($path = "")
+    {
+        if ($path) {
+            return url("/storage/$this->const_ModelName/thumbails/$path");
+        }
+        return url("/storage/$this->const_ModelName/thumbails/$this->path");
     }
 }

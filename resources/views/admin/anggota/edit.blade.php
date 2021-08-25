@@ -125,9 +125,9 @@
       }
     },
     init: function () {
-@if(isset($anggotum) && $anggotum->image)
-      var file = {!! json_encode($anggotum->image) !!}
-          this.options.addedfile.call(this, file)
+@if(isset($anggotum) && $anggotum->getMediaPath())
+      var file = {!! json_encode($anggotum->getMediaPath()) !!}
+      this.options.addedfile.call(this, file)
       this.options.thumbnail.call(this, file, file.preview)
       file.previewElement.classList.add('dz-complete')
       $('form').append('<input type="hidden" name="image" value="' + file.file_name + '">')

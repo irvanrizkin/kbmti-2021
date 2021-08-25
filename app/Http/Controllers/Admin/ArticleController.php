@@ -14,12 +14,14 @@ use Gate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use Symfony\Component\HttpFoundation\Response;
+use App\Http\Controllers\Traits\MediaConversionTrait;
 use File;
 
 class ArticleController extends Controller
 {
 
     use MediaUploadingTrait;
+    use MediaConversionTrait;
     private $modelName = "articles";
 
     public function index()

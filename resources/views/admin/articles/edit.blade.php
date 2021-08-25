@@ -188,10 +188,11 @@ Dropzone.options.imageDropzone = {
       $('form').find('input[name="image[]"][value="' + name + '"]').remove()
     },
     init: function () {
-@if(isset($article) && $article->image)
-      var files = {!! json_encode($article->image) !!}
+@if(isset($article) && $article->getMediaPath())
+      var files = {!! json_encode($article->getMediaPath()) !!}
           for (var i in files) {
           var file = files[i]
+          console.log(file)
           this.options.addedfile.call(this, file)
           this.options.thumbnail.call(this, file, file.preview)
           file.previewElement.classList.add('dz-complete')

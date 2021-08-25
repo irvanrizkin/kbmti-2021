@@ -6,17 +6,18 @@ use \DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Interfaces\MediaModelInterface;
 
-class Anggotum extends Model
+class Anggotum extends Model implements MediaModelInterface
 {
     use SoftDeletes;
     use HasFactory;
 
     public $table = 'anggota';
 
-    protected $appends = [
-        'image',
-    ];
+    // protected $appends = [
+    //     'image',
+    // ];
 
     protected $dates = [
         'created_at',
@@ -50,11 +51,6 @@ class Anggotum extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
-    // Helper function to Set Media Handler NEW
-    public function createMedia($image)
-    {
-    }
-
     // Helper function to Media Handler
     public function getMediaPath()
     {
@@ -68,15 +64,37 @@ class Anggotum extends Model
 
         // return single object instead of an array
         if (count($query) != 0) {
-            return $query[0];
+            // Add new sub attribute about preview and
+            $item = $query[0];
+            $item->thumbnail = $this->getThumbnailUrlPath($item->path);
+            $item->preview = $this->getPreviewUrlPath($item->path);
+            return $item;
         }
 
         return null;
     }
-    
-    // Helper functions to get url path
+
+    // Implements from MedialModelInterface
     public function getUrlPath()
     {
         return url("/storage/$this->model_name/$this->path");
+    }
+
+    // Implements from MediaModelInterfaces
+    public function getPreviewUrlPath($path = "")
+    {
+        if ($path) {
+            return url("/storage/$this->const_ModelName/previews/$path");
+        }
+        return url("/storage/$this->const_ModelName/previews/$this->path");
+    }
+
+    // Helper functions to get thumbnail url path
+    public function getThumbnailUrlPath($path = "")
+    {
+        if ($path) {
+            return url("/storage/$this->const_ModelName/thumbails/$path");
+        }
+        return url("/storage/$this->const_ModelName/thumbails/$this->path");
     }
 }
