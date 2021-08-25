@@ -115,7 +115,7 @@
     },
     success: function (file, response) {
       $('form').find('input[name="image"]').remove()
-      $('form').append('<input type="hidden" name="image" value="' + response.name + '">')
+      $('form').append('<input type="hidden" name="image" value="' + response.path + '">')
     },
     removedfile: function (file) {
       file.previewElement.remove()
@@ -130,7 +130,7 @@
       this.options.addedfile.call(this, file)
       this.options.thumbnail.call(this, file, file.preview)
       file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="image" value="' + file.file_name + '">')
+      $('form').append('<input type="hidden" name="image" value="' + file.path + '">')
       this.options.maxFiles = this.options.maxFiles - 1
 @endif
     },

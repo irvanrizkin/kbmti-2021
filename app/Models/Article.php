@@ -104,6 +104,29 @@ class Article extends Model implements MediaModelInterface
         return null;
     }
 
+    // Helper function return array only
+    public function getArrayOnlyPath()
+    {
+        $query = $this->query()
+            ->join('media_handlers', 'media_handlers.model_id', '=', 'articles.id')
+            ->where('media_handlers.model_id', '=', $this->id)
+            ->where('media_handlers.model_name', '=', $this->const_ModelName)
+            ->where('media_handlers.deleted_at', '=', null)
+            ->select("media_handlers.path")
+            ->get();
+
+        // return single object instead of an array
+        if (count($query) != 0) {
+            $array = [];
+            foreach ($query as $item) {
+                array_push($array, $item->path);
+            }
+            return $array;
+        }
+
+        return [];
+    }
+
     // Helper functions to get url path
     public function getUrlPath()
     {

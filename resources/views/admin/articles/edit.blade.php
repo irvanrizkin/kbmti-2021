@@ -173,15 +173,15 @@ Dropzone.options.imageDropzone = {
       height: 4096
     },
     success: function (file, response) {
-      $('form').append('<input type="hidden" name="image[]" value="' + response.name + '">')
-      uploadedImageMap[file.name] = response.name
+      $('form').append('<input type="hidden" name="image[]" value="' + response.path + '">')
+      uploadedImageMap[file.path] = response.path
     },
     removedfile: function (file) {
-      console.log(file)
+      console.log(file.path)
       file.previewElement.remove()
       var name = ''
-      if (typeof file.file_name !== 'undefined') {
-        name = file.file_name
+      if (typeof file.path !== 'undefined') {
+        name = file.path
       } else {
         name = uploadedImageMap[file.name]
       }
@@ -192,11 +192,11 @@ Dropzone.options.imageDropzone = {
       var files = {!! json_encode($article->getMediaPath()) !!}
           for (var i in files) {
           var file = files[i]
-          console.log(file)
+          // console.log(file.path)
           this.options.addedfile.call(this, file)
           this.options.thumbnail.call(this, file, file.preview)
           file.previewElement.classList.add('dz-complete')
-          $('form').append('<input type="hidden" name="image[]" value="' + file.file_name + '">')
+          $('form').append('<input type="hidden" name="image[]" value="' + file.path + '">')
         }
 @endif
     },

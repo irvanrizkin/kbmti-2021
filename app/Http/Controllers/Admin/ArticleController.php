@@ -99,17 +99,27 @@ class ArticleController extends Controller
 
     public function update(UpdateArticleRequest $request, Article $article)
     {
+        // return response()->json([
+        //     'image' => $request->input('image')
+        // ]);
         $article->update($request->all());
         $arrayedTags = [];
 
-        if (count($article->image) > 0) {
-            foreach ($article->image as $media) {
-                if (!in_array($media->file_name, $request->input('image', []))) {
-                    $media->delete();
+        // Delete the images that doesn't exist
+        if (count($article->getArrayOnlyPath()) > 0) {
+            foreach ($article->getArrayOnlyPath() as $media) {
+                if (!in_array($media, $request->input('image', []))) {
+                    // Ngedelete barang Media Handler
+                    CustomMediaHandler::where('path', $media)
+                        ->where('model_name', $this->modelName)
+                        ->where('model_id', $article->id)
+                        ->delete();
+                    // $media->delete();
                 }
             }
         }
-        $media = $article->image->pluck('file_name')->toArray();
+        
+        $media = $article->getArrayOnlyPath();
         foreach ($request->input('image', []) as $file) {
 
             if (count($media) === 0 || !in_array($file, $media)) {

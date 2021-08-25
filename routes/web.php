@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\DepartmentController as AdminDepartmentController
 
 // Models
 use App\Models\Department;
+use App\Models\Article;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,14 +43,14 @@ use App\Models\Department;
 |
 */
 
-$condition = env('APP_DEBUG') 
+$condition = env('APP_DEBUG')
     // && ( env('APP_STAGE') != 'local' )
-    ;
+;
 
 $routesAttributes = [];
 
-if ( $condition ) {
-    
+if ($condition) {
+
     // Temporary deactivated to testing in local
     // $routesAttributes = [
     //     'prefix' => 't',
@@ -193,6 +194,13 @@ Route::get('testing-model-department', function () {
     $var = Department::find(1);
     // $var->createMedia();
     return response()->json([
-        'var' => $var->getMediaPath()
+        'var' => $var->getArrayOnlyPath(),
+    ]);
+});
+
+Route::get('testing-model-article', function () {
+    $var = Article::find(6);
+    return response()->json([
+        'var' => $var->getArrayOnlyPath(),
     ]);
 });
