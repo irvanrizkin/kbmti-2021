@@ -784,6 +784,19 @@ class AnggotaSeeder extends Seeder
 
         ];
 
+        /**
+         * Inserting data
+         */
         Anggotum::insert($anggotaEmtiNon);
+        Anggotum::insert($anggotaBpmtiNon);
+        Anggotum::insert($komisi1Bpmti);
+        Anggotum::insert($komisi2Bpmti);
+        Anggotum::insert($komisi3Bpmti);
+        Anggotum::insert($advocacy);
+        Anggotum::insert($entre);
+        Anggotum::insert($hrd);
+        Anggotum::insert($rnc);
+        Anggotum::insert($rnd);
+        Anggotum::insert($se);
     }
 }
