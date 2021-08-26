@@ -12,9 +12,16 @@ class DepartmentController extends Controller
      */
     public function index()
     {
+        /**
+         * NOTE: nonDept included:
+         *  - Ketua dan Wakil ketua EMTI
+         */
+
         $arrayDept = [
             // EMTI
-            'nonDept' => Department::firstWhere('initial', 'Non-Dept') ?? null,
+            'kahim_wakahim' => Department::firstWhere('initial', 'Kahim_dan_Wakahim') ?? null,
+            'sekben' => Department::firstWhere('initial', 'Sekben') ?? null,
+            'internal' => Department::firstWhere('initial', 'Internal') ?? null,
             'hrd' => Department::firstWhere('initial', 'HRD') ?? null,
             'advo' => Department::firstWhere('initial', 'Advo') ?? null,
             'se' => Department::firstWhere('initial', 'SE') ?? null,

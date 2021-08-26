@@ -7,7 +7,7 @@
     <section class="department__top row">
         <div class="col-xl-6">
             <div class="department__top__divisi">
-                <div class="container">
+                <div class="container" data-aos="fade-right">
                     <div class="list-group department__top__list-group" id="list-tab" role="tablist">
                         <a class="list-group-item department__top__list-group__item list-group-item-action active button-group-trigger" id="list-emti-list" data-bs-toggle="list" href="#list-emti" role="tab" aria-controls="list-emti" data-group="emti">EMTI</a>
                         <a class="list-group-item department__top__list-group__item list-group-item-action button-group-trigger" id="list-bpmti-list" data-bs-toggle="list" href="#list-bpmti" role="tab" aria-controls="list-bpmti" data-group="bpmti">BPMTI</a>
@@ -17,10 +17,14 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-6">
+        <div class="col-xl-6" data-aos="fade-left">
             {{-- Contoh dari Non-Departemen KBMTI --}}
             {{-- Non Dept --}}
-            @include('department.detail', [ "deptName" => $arrayDept['nonDept']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['nonDept']->description ?? "", "imageUrl" => ($arrayDept["nonDept"]->getMediaPath()->imageUrl ?? "") ,"isVisible" => true ])
+            @include('department.detail', [ "deptName" => $arrayDept['kahim_wakahim']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['kahim_wakahim']->description ?? "", "imageUrl" => ($arrayDept["kahim_wakahim"]->getMediaPath()->imageUrl ?? "") ,"isVisible" => true ])
+            {{-- Sekben --}}
+            @include('department.detail', [ "deptName" => $arrayDept['sekben']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['sekben']->description ?? "", "imageUrl" => ($arrayDept["sekben"]->getMediaPath()->imageUrl ?? "") ])
+            {{-- Internal --}}
+            @include('department.detail', [ "deptName" => $arrayDept['internal']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['internal']->description ?? "", "imageUrl" => ($arrayDept["internal"]->getMediaPath()->imageUrl ?? "") ])
             {{-- HRD --}}
             @include('department.detail', [ "deptName" => $arrayDept['hrd']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['hrd']->description ?? "", "imageUrl" => ($arrayDept["hrd"]->getMediaPath()->imageUrl ?? "") ])
             {{-- Advo --}}
@@ -48,29 +52,33 @@
 
     {{-- EMTI --}}
     {{-- Non-Dept --}}
-    @include('department.content_anggota', [ "deptName" => $arrayDept['nonDept']->initial ?? "", 'anggotas' => $arrayDept["nonDept"]->anggotas ?? [], 'group' => 'emti' ,"isVisible" => true ])
+    @include('department.contents.kahim-wakahim_emti', [ "deptName" => $arrayDept['kahim_wakahim']->initial ?? "", 'anggotas' => $arrayDept["kahim_wakahim"]->anggotas ?? [], 'group' => 'emti' ,"isVisible" => true ])
+    {{-- Sekben --}}
+    @include('department.contents.base_anggota_departemen', [ "deptName" => $arrayDept['sekben']->initial ?? "", 'anggotas' => $arrayDept["sekben"]->anggotas ?? [], 'group'=> 'emti'])
+    {{-- Intenral --}}
+    @include('department.contents.internal_emti', [ "deptName" => $arrayDept['internal']->initial ?? "", 'anggotas' => $arrayDept["internal"]->anggotas ?? [], 'group'=> 'emti'])
     {{-- HRD --}}
-    @include('department.content_anggota', [ "deptName" => $arrayDept['hrd']->initial ?? "", 'anggotas' => $arrayDept["hrd"]->anggotas ?? [], 'group'=> 'emti'])
+    @include('department.contents.base_anggota_departemen', [ "deptName" => $arrayDept['hrd']->initial ?? "", 'anggotas' => $arrayDept["hrd"]->anggotas ?? [], 'group'=> 'emti'])
     {{-- Advo --}}
-    @include('department.content_anggota', [ "deptName" => $arrayDept['advo']->initial ?? "", 'anggotas' => $arrayDept["advo"]->anggotas ?? [], 'group'=> 'emti' ]);
+    @include('department.contents.base_anggota_departemen', [ "deptName" => $arrayDept['advo']->initial ?? "", 'anggotas' => $arrayDept["advo"]->anggotas ?? [], 'group'=> 'emti' ])
     {{-- SE --}}
-    @include('department.content_anggota', [ "deptName" => $arrayDept['se']->initial ?? "", 'anggotas' => $arrayDept["se"]->anggotas ?? [], 'group'=> 'emti' ]);
+    @include('department.contents.base_anggota_departemen', [ "deptName" => $arrayDept['se']->initial ?? "", 'anggotas' => $arrayDept["se"]->anggotas ?? [], 'group'=> 'emti' ])
     {{-- RnD --}}
-    @include('department.content_anggota', [ "deptName" => $arrayDept['rnd']->initial ?? "", 'anggotas' => $arrayDept["rnd"]->anggotas ?? [], 'group'=> 'emti' ]);
+    @include('department.contents.base_anggota_departemen', [ "deptName" => $arrayDept['rnd']->initial ?? "", 'anggotas' => $arrayDept["rnd"]->anggotas ?? [], 'group'=> 'emti' ])
     {{-- RnC --}}
-    @include('department.content_anggota', [ "deptName" => $arrayDept['rnc']->initial ?? "", 'anggotas' => $arrayDept["rnc"]->anggotas ?? [], 'group'=> 'emti' ]);
+    @include('department.contents.base_anggota_departemen', [ "deptName" => $arrayDept['rnc']->initial ?? "", 'anggotas' => $arrayDept["rnc"]->anggotas ?? [], 'group'=> 'emti' ])
     {{-- Entre --}}
-    @include('department.content_anggota', [ "deptName" => $arrayDept['entre']->initial ?? "", 'anggotas' => $arrayDept["entre"]->anggotas ?? [], 'group'=> 'emti' ]);
+    @include('department.contents.base_anggota_departemen', [ "deptName" => $arrayDept['entre']->initial ?? "", 'anggotas' => $arrayDept["entre"]->anggotas ?? [], 'group'=> 'emti' ])
 
     {{-- BPMTI --}}
     {{-- Non Komisi --}}
-    @include('department.content_anggota', ["deptName" => $arrayDept["nonKomisi"]->initial ?? "", "anggotas" => $arrayDept["nonKomisi"]->anggotas ?? [], 'group' => 'bpmti'])
+    @include('department.contents.base_anggota_departemen', ["deptName" => $arrayDept["nonKomisi"]->initial ?? "", "anggotas" => $arrayDept["nonKomisi"]->anggotas ?? [], 'group' => 'bpmti'])
     {{-- Komisi 1 --}}
-    @include('department.content_anggota', ["deptName" => $arrayDept["komisi1"]->initial ?? "", "anggotas" => $arrayDept["komisi1"]->anggotas ?? [], 'group' => 'bpmti'])
+    @include('department.contents.base_anggota_departemen', ["deptName" => $arrayDept["komisi1"]->initial ?? "", "anggotas" => $arrayDept["komisi1"]->anggotas ?? [], 'group' => 'bpmti'])
     {{-- Komisi 2 --}}
-    @include('department.content_anggota', ["deptName" => $arrayDept["komisi2"]->initial ?? "", "anggotas" => $arrayDept["komisi2"]->anggotas ?? [], 'group' => 'bpmti'])
+    @include('department.contents.base_anggota_departemen', ["deptName" => $arrayDept["komisi2"]->initial ?? "", "anggotas" => $arrayDept["komisi2"]->anggotas ?? [], 'group' => 'bpmti'])
     {{-- Komisi 3 --}}
-    @include('department.content_anggota', ["deptName" => $arrayDept["komisi3"]->initial ?? "", "anggotas" => $arrayDept["komisi3"]->anggotas ?? [], 'group' => 'bpmti'])
+    @include('department.contents.base_anggota_departemen', ["deptName" => $arrayDept["komisi3"]->initial ?? "", "anggotas" => $arrayDept["komisi3"]->anggotas ?? [], 'group' => 'bpmti'])
 @endsection
 
 @section('custom-script')
@@ -88,6 +96,9 @@
             $("." + anotherClass).hide();
             // Show the target class
             $("." + target).show();
+
+            console.log(target)
+            console.log(anotherClass)
         }
 
         var subGroupTrigger = function () {
@@ -113,12 +124,12 @@
             // Hide All Item Group
             $('.toggle-group-emti').hide();
             // Show Non-Dept
-            $(".toggle-subgroup-Non-Dept").show();
+            $(".toggle-subgroup-Kahim_dan_Wakahim").show();
             // Activate the Non-Department
             // Deactivate the item
             $('.button-subgroup-trigger-parent').removeClass("active")
             // Activate the item
-            $("#button-subgroup-trigger-Non-Dept").toggleClass("active")
+            $("#button-subgroup-trigger-Kahim_dan_Wakahim").toggleClass("active")
         }
 
         var buttonBpmtiTrigger = function () {

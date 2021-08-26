@@ -37,6 +37,8 @@ class AnggotaSeeder extends Seeder
          * 9 => Komisi 1
          * 10 => Komisi 2
          * 11 => Komisi 3
+         * 12 => Sekretaris dan Bendahara
+         * 13 => Internal
          */
 
         /**
@@ -66,13 +68,17 @@ class AnggotaSeeder extends Seeder
                 'department_id' => 7,
             ],
 
+        ];
+
+        $sekben = [
+
             [
                 'name' => 'Marchenda Fayza Madjid',
                 'instagram_acc' => 'https://www.instagram.com/fay.loveu/',
                 'linkedin_acc' => 'https://www.linkedin.com/in/marchenda-f-16a0b3128',
-                'type' => $staffType,
+                'type' => $ketuaType,
                 'caption' => 'Pemimpin Sekben',
-                'department_id' => 7,
+                'department_id' => 12,
             ],
 
             [
@@ -81,7 +87,7 @@ class AnggotaSeeder extends Seeder
                 'linkedin_acc' => '',
                 'type' => $staffType,
                 'caption' => 'Sekretaris 1',
-                'department_id' => 7,
+                'department_id' => 12,
             ],
 
             [
@@ -90,7 +96,7 @@ class AnggotaSeeder extends Seeder
                 'linkedin_acc' => 'https://www.linkedin.com/in/lusiana-yulianto-3a56b41b9',
                 'type' => $staffType,
                 'caption' => 'Sekretaris 2',
-                'department_id' => 7,
+                'department_id' => 12,
             ],
 
             [
@@ -98,26 +104,21 @@ class AnggotaSeeder extends Seeder
                 'instagram_acc' => 'https://www.instagram.com/saviraayp/',
                 'linkedin_acc' => '',
                 'type' => $staffType,
-                'caption' => 'Sekretaris 2',
-                'department_id' => 7,
+                'caption' => 'Bendahara',
+                'department_id' => 12,
             ],
 
+        ];
+
+        $internal = [
+            
             [
                 'name' => 'Qanita Nur Farhana',
                 'instagram_acc' => 'http://instagram.com/farhanakey',
                 'linkedin_acc' => 'http://linkedin.com/in/qonitafarhana',
                 'type' => $staffType,
                 'caption' => 'Internal',
-                'department_id' => 7,
-            ],
-
-            [
-                'name' => 'Qanita Nur Farhana',
-                'instagram_acc' => 'http://instagram.com/farhanakey',
-                'linkedin_acc' => 'http://linkedin.com/in/qonitafarhana',
-                'type' => $staffType,
-                'caption' => 'Internal',
-                'department_id' => 7,
+                'department_id' => 13,
             ],
 
             [
@@ -126,7 +127,7 @@ class AnggotaSeeder extends Seeder
                 'linkedin_acc' => 'https://www.linkedin.com/in/yanuaroctavianus/',
                 'type' => $staffType,
                 'caption' => 'Internal',
-                'department_id' => 7,
+                'department_id' => 13,
             ],
 
             [
@@ -135,8 +136,9 @@ class AnggotaSeeder extends Seeder
                 'linkedin_acc' => 'https://www.linkedin.com/in/yanuaroctavianus/',
                 'type' => $staffType,
                 'caption' => 'Internal',
-                'department_id' => 7,
+                'department_id' => 13,
             ],
+
         ];
 
         $anggotaBpmtiNon = [
@@ -788,6 +790,8 @@ class AnggotaSeeder extends Seeder
          * Inserting data
          */
         Anggotum::insert($anggotaEmtiNon);
+        Anggotum::insert($sekben);
+        Anggotum::insert($internal);
         Anggotum::insert($anggotaBpmtiNon);
         Anggotum::insert($komisi1Bpmti);
         Anggotum::insert($komisi2Bpmti);

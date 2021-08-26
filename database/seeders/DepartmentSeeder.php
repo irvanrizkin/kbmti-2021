@@ -59,9 +59,9 @@ class DepartmentSeeder extends Seeder
                 'sub_type' => 'Department',
             ],
             [
-                'name' => 'Non Departemen',
-                'initial' => 'Non-Dept',
-                'description' => '<p>Non departemen terdiri dari.....</p>',
+                'name' => 'Ketua dan Wakil Ketua Himpunan',
+                'initial' => 'Kahim_dan_Wakahim',
+                'description' => '<p>Ketua himpunan dan wakil ketua himpunan terdiri dari.....</p>',
                 'type' => 'EMTI',
                 'sub_type' => 'Non-Department',
             ],
@@ -93,6 +93,23 @@ class DepartmentSeeder extends Seeder
                 'initial' => 'Komisi-3',
                 'description' => '<p>Komisi 3 dalam BPMTI bertugas untuk</p>',
                 'type' => 'BPMTI',
+                'sub_type' => 'Department',
+            ],
+
+            // Quick Fix add on
+            [
+                'name' => 'Sekretaris dan Bendahara',
+                'initial' => 'Sekben',
+                'description' => '<p>Sekretaris dan Bendahara adalah</p>',
+                'type' => 'EMTI',
+                'sub_type' => 'Department',
+            ],
+
+            [
+                'name' => 'Internal',
+                'initial' => 'Internal',
+                'description' => '<p>Internal adalah</p>',
+                'type' => 'EMTI',
                 'sub_type' => 'Department',
             ],
         ];

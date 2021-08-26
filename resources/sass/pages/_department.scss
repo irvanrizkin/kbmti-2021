@@ -10,7 +10,7 @@
         }
         &__divisi {
             margin-top: 1rem;
-            padding-top: 180px;
+            padding-top: 150px;
             height: 100vh;
             padding-left: 3rem;
             @include respon(tb-land) {
@@ -51,7 +51,7 @@
             display: flex;
             flex-direction: row;
             margin-top: 35px;
-            justify-content: center;
+            justify-content: left;
             &__item {
                 margin-bottom: 20px;
                 a {

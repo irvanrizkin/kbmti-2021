@@ -1,11 +1,11 @@
 <section class="department__member department__item-toggle__{{ ($isVisible ?? false) ? "active" : "inactive"  }} toggle-group-{{ $group }} toggle-subgroup-{{ $deptName ?? '' }}" data-group="{{ $group }}">
     <div class="container">
-        <div class="department__member__title d-flex justify-content-center">
+        <div class="department__member__title d-flex justify-content-center animate__animated animate__fadeIn">
             <div class="department__member__title__border"></div>
             <span>Ketua & Wakil {{ $deptName ?? "" }}</span>
         </div>
         <div class="row">
-            <div class="col-12 d-flex flex-wrap justify-content-center gap-5">
+            <div class="col-12 d-flex flex-wrap justify-content-center gap-5 animate__animated animate__fadeIn">
                 @foreach ($anggotas as $anggota)
                     @if ($anggota->type == 'Ketua Departemen' || $anggota->type == "Wakil Ketua Departemen")
                         <div class="card-member text-center">
@@ -37,12 +37,12 @@
                 @endforeach
             </div>
         </div>
-        <div class="department__member__title d-flex justify-content-center">
+        <div class="department__member__title d-flex justify-content-center animate__animated animate__fadeIn">
             <div class="department__member__title__border"></div>
             <span>Staff</span>
         </div>
         <div class="row">
-            <div class="col-12 d-flex flex-wrap justify-content-center gap-5">
+            <div class="col-12 d-flex flex-wrap justify-content-center gap-5 animate__animated animate__fadeIn">
                 @foreach ($anggotas as $anggota)
                     @if ($anggota->type == "Staff Dept")
                         @php
