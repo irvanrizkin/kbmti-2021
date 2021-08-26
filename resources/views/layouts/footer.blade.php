@@ -13,7 +13,7 @@
                         <img src="{{ asset('img/cr-icon.svg') }}" alt="">
                     </div>
                     <div class="footer__cr__tahun">
-                        2021 - 2022 KBTMI
+                        2021 - 2022 KBMTI
                     </div>
                 </div>
             </div>

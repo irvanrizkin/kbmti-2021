@@ -59,6 +59,9 @@
         @include respon(phone) {
             margin-bottom: 5px;
         }
+        &:hover {
+            color: #951C21;
+        }
     }
     &__icon {
         &__medsos {
