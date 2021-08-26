@@ -35,11 +35,25 @@
             height: 100%;
             top: 0;
             left: 0;
-            background-image: none;
+            background: none;
+        }
+        &-lembaga {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 24px;
+            font-family: 'ITC CHELTENHAM STD';
+            min-width: 142px;
+            text-align: center;
+            background: #951C21;
+            border-radius: 0px 20px 0px 30px;
+            color: white;
+            font-weight: 700;
+            padding: 9px 12px;
         }
         &:hover {
             &> .berita__image > .berita__card-overlay {
-                background-image: url("/img/bg-hover-berita.png");
+                background: linear-gradient(110deg, #951C21, #951C21 60%, transparent 60%, transparent);
                 mix-blend-mode: multiply;
                 background-size: cover;
                 border-radius: 20px 20px 0px 0px;
@@ -57,6 +71,10 @@
     }
     &__image {
         position: relative;
+        &>img {
+            width: 100%;
+            border-radius: 20px 20px 0px 0px;
+        }
     }
 
 
@@ -71,12 +89,13 @@
         width: 100%;
         margin-bottom: 3rem;
         background-color: rgba(238, 238, 238, 0.986);
-        border-radius: 0px 0px 20px 20px;
+        border-radius: 20px;
     }
 
     &__container{
         padding: 2px 16px;
         border-radius: 0px 0px 20px 20px;
+        transition: background 0.5s ease;
         &-date {
             margin-top: 20px;
             margin-bottom: 10px;
