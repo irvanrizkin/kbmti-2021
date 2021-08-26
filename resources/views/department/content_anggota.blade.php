@@ -11,10 +11,9 @@
                         <div class="card-member text-center">
                             @php
                                 $imgSource = "/storage/anggotas/";
-                                if ($anggota->getMediaPath) {
-                                    $imgSource .= $anggota->getMediaPath->path;
+                                if ($anggota->getMediaPath()) {
+                                    $imgSource .= $anggota->getMediaPath()->imageUrl ?? "";
                                 } else {
-                                    // $imgSource .= "611e619e3e16b_Screenshot from 2020-12-27 02-22-24.png";
                                     $imgSource = "/img/" . "kiwul.png";
                                 }
                             @endphp
@@ -22,7 +21,7 @@
                             <div class="card-member__nama">{{ $anggota->name }}</div>
                             <div class="card-member__position">{{ $anggota->caption }}</div>
                             <div class="card-member__sm d-flex justify-content-center gap-4">
-                                @if ($anggota->instagram_acc)    
+                                @if ($anggota->instagram_acc)
                                     <a href="{{ $anggota->instagram_acc }}">
                                         @include('department.instagram')
                                     </a>
@@ -48,24 +47,27 @@
                     @if ($anggota->type == "Staff Dept")
                         @php
                             $imgSource = "/storage/anggotas/";
-                                if ($anggota->getMediaPath) {
-                                    $imgSource .= $anggota->getMediaPath->path;
+                                if ($anggota->getMediaPath()) {
+                                    $imgSource .= $anggota->getMediaPath()->imageUrl ?? "";
                                 } else {
-                                    // $imgSource .= "611e619e3e16b_Screenshot from 2020-12-27 02-22-24.png";
                                     $imgSource = "/img/" . "kiwul.png";
                                 }
                         @endphp
                         <div class="card-member text-center d-flex flex-column">
                             <img src="{{ $imgSource }}" alt="" class="card-member__image align-self-center">
                             <div class="card-member__nama">{{ $anggota->name }}</div>
-                            <div class="card-member__position">{{ $anggota->type }}</div>
+                            <div class="card-member__position">{{ $anggota->caption }}</div>
                             <div class="card-member__sm mt-auto d-flex justify-content-center gap-4">
-                                <a href="#">
-                                    @include('department.instagram')
-                                </a>
-                                <a href="#">
-                                    @include('department.linkedin')
-                                </a>
+                                @if ($anggota->instagram_acc)
+                                    <a href="{{ $anggota->instagram_acc }}">
+                                        @include('department.instagram')
+                                    </a>
+                                @endif
+                                @if ($anggota->linkedin_acc)    
+                                    <a href="{{ $anggota->linkedin_acc }}">
+                                        @include('department.linkedin')
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     @endif

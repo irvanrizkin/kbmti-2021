@@ -115,7 +115,7 @@
     },
     success: function (file, response) {
       $('form').find('input[name="image"]').remove()
-      $('form').append('<input type="hidden" name="image" value="' + response.path + '">')
+      $('form').append('<input type="hidden" name="image" value="' + response.name + '">')
     },
     removedfile: function (file) {
       file.previewElement.remove()

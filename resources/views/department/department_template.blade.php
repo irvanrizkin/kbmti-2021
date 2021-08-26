@@ -20,19 +20,19 @@
         <div class="col-xl-6">
             {{-- Contoh dari Non-Departemen KBMTI --}}
             {{-- Non Dept --}}
-            @include('department.detail', [ "deptName" => $arrayDept['nonDept']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['nonDept']->description ?? "", "imageUrl" => ($arrayDept["nonDept"]->getMediaPath->path ?? "") ,"isVisible" => true ])
+            @include('department.detail', [ "deptName" => $arrayDept['nonDept']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['nonDept']->description ?? "", "imageUrl" => ($arrayDept["nonDept"]->getMediaPath()->imageUrl ?? "") ,"isVisible" => true ])
             {{-- HRD --}}
-            @include('department.detail', [ "deptName" => $arrayDept['hrd']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['hrd']->description ?? "", "imageUrl" => ($arrayDept["hrd"]->getMediaPath->path ?? "") ])
+            @include('department.detail', [ "deptName" => $arrayDept['hrd']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['hrd']->description ?? "", "imageUrl" => ($arrayDept["hrd"]->getMediaPath()->imageUrl ?? "") ])
             {{-- Advo --}}
-            @include('department.detail', [ "deptName" => $arrayDept['advo']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['advo']->description ?? "", "imageUrl" => ($arrayDept["advo"]->getMediaPath->path ?? "") ])
+            @include('department.detail', [ "deptName" => $arrayDept['advo']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['advo']->description ?? "", "imageUrl" => ($arrayDept["advo"]->getMediaPath()->imageUrl ?? "") ])
             {{-- SE --}}
-            @include('department.detail', [ "deptName" => $arrayDept['se']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['se']->description ?? "", "imageUrl" => ($arrayDept["se"]->getMediaPath->path ?? "") ])
+            @include('department.detail', [ "deptName" => $arrayDept['se']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['se']->description ?? "", "imageUrl" => ($arrayDept["se"]->getMediaPath()->imageUrl ?? "") ])
             {{-- RnD --}}
-            @include('department.detail', [ "deptName" => $arrayDept['rnd']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['rnd']->description ?? "", "imageUrl" => ($arrayDept["rnd"]->getMediaPath->path ?? "") ])
+            @include('department.detail', [ "deptName" => $arrayDept['rnd']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['rnd']->description ?? "", "imageUrl" => ($arrayDept["rnd"]->getMediaPath()->imageUrl ?? "") ])
             {{-- RnC --}}
-            @include('department.detail', [ "deptName" => $arrayDept['rnc']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['rnc']->description ?? "", "imageUrl" => ($arrayDept["rnc"]->getMediaPath->path ?? "") ])
+            @include('department.detail', [ "deptName" => $arrayDept['rnc']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['rnc']->description ?? "", "imageUrl" => ($arrayDept["rnc"]->getMediaPath()->imageUrl ?? "") ])
             {{-- Entre --}}
-            @include('department.detail', [ "deptName" => $arrayDept['entre']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['entre']->description ?? "", "imageUrl" => ($arrayDept["entre"]->getMediaPath->path ?? "") ])
+            @include('department.detail', [ "deptName" => $arrayDept['entre']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['entre']->description ?? "", "imageUrl" => ($arrayDept["entre"]->getMediaPath()->imageUrl ?? "") ])
             {{-- BPMTI --}}
             {{-- Non Komisi --}}
             @include('department.detail-bpmti', [ "deptName" => "Non-Komisi", "group" => "bpmti", "detailCaption" => "BPMTI Adalah ....", ])

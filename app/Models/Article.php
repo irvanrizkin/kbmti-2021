@@ -77,6 +77,7 @@ class Article extends Model implements MediaModelInterface
             ->get();
         if (count($query) != 0) {
             foreach ($query as $item) {
+                $item->imageUrl = $this->getUrlPath($item->path);
                 $item->thumbnail = $this->getThumbnailUrlPath($item->path);
                 $item->preview = $this->getPreviewUrlPath($item->path);
             }
@@ -110,8 +111,11 @@ class Article extends Model implements MediaModelInterface
     }
 
     // Helper functions to get url path
-    public function getUrlPath()
+    public function getUrlPath($path = "")
     {
+        if ($path) {
+            return url("/storage/$this->const_ModelName/$path");
+        }
         return url("/storage/$this->model_name/$this->path");
     }
 

@@ -173,8 +173,8 @@ Dropzone.options.imageDropzone = {
       height: 4096
     },
     success: function (file, response) {
-      $('form').append('<input type="hidden" name="image[]" value="' + response.path + '">')
-      uploadedImageMap[file.path] = response.path
+      $('form').append('<input type="hidden" name="image[]" value="' + response.name + '">')
+      uploadedImageMap[file.name] = response.name
     },
     removedfile: function (file) {
       console.log(file.path)

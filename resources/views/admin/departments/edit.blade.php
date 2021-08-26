@@ -172,7 +172,7 @@
     },
     success: function (file, response) {
       $('form').find('input[name="logo"]').remove()
-      $('form').append('<input type="hidden" name="logo" value="' + response.path + '">')
+      $('form').append('<input type="hidden" name="logo" value="' + response.name + '">')
     },
     removedfile: function (file) {
       file.previewElement.remove()
@@ -184,7 +184,6 @@
     init: function () {
 @if(isset($department) && $department->getMediaPath())
       var file = {!! json_encode($department->getMediaPath()) !!}
-      console.log(file)
       this.options.addedfile.call(this, file)
       this.options.thumbnail.call(this, file, file.preview)
       file.previewElement.classList.add('dz-complete')

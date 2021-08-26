@@ -71,6 +71,7 @@ class Department extends Model implements MediaModelInterface
         if (count($query) != 0) {
             // Add new sub attribute about preview and
             $item = $query[0];
+            $item->imageUrl = $this->getUrlPath($item->path);
             $item->thumbnail = $this->getThumbnailUrlPath($item->path);
             $item->preview = $this->getPreviewUrlPath($item->path);
             return $item;
@@ -80,8 +81,11 @@ class Department extends Model implements MediaModelInterface
     }
 
     // Implements from MedialModelInterface
-    public function getUrlPath()
+    public function getUrlPath($path = "")
     {
+        if ($path) {
+            return url("/storage/$this->const_ModelName/$path");
+        }
         return url("/storage/$this->const_ModelName/$this->path");
     }
 

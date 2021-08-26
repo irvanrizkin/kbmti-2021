@@ -71,8 +71,11 @@ class Anggotum extends Model implements MediaModelInterface
     }
 
     // Implements from MedialModelInterface
-    public function getUrlPath()
+    public function getUrlPath($path = "")
     {
+        if ($path) {
+            return url("/storage/$this->const_ModelName/$path");
+        }
         return url("/storage/$this->model_name/$this->path");
     }
 

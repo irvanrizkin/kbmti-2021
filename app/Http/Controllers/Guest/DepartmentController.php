@@ -10,7 +10,8 @@ class DepartmentController extends Controller
     /**
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(){
+    public function index()
+    {
         $arrayDept = [
             // EMTI
             'nonDept' => Department::firstWhere('initial', 'Non-Dept') ?? null,
@@ -26,6 +27,12 @@ class DepartmentController extends Controller
             'komisi2' => Department::firstWhere('name', 'Komisi 2') ?? null,
             'komisi3' => Department::firstWhere('name', 'Komisi 3') ?? null
         ];
+
+        // Testing
+        // return response()->json([
+        //     'nonDept' => Department::firstWhere('initial', 'Non-Dept')->getUrlPath(),
+        // ]);
+
         // return view('department_template', compact('arrayDept'));
         return view('department.department_template', compact('arrayDept'));
     }
