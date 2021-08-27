@@ -177,25 +177,26 @@ Dropzone.options.imageDropzone = {
       uploadedImageMap[file.name] = response.name
     },
     removedfile: function (file) {
-      console.log(file)
+      console.log(file.path)
       file.previewElement.remove()
       var name = ''
-      if (typeof file.file_name !== 'undefined') {
-        name = file.file_name
+      if (typeof file.path !== 'undefined') {
+        name = file.path
       } else {
         name = uploadedImageMap[file.name]
       }
       $('form').find('input[name="image[]"][value="' + name + '"]').remove()
     },
     init: function () {
-@if(isset($article) && $article->image)
-      var files = {!! json_encode($article->image) !!}
+@if(isset($article) && $article->getMediaPath())
+      var files = {!! json_encode($article->getMediaPath()) !!}
           for (var i in files) {
           var file = files[i]
+          // console.log(file.path)
           this.options.addedfile.call(this, file)
           this.options.thumbnail.call(this, file, file.preview)
           file.previewElement.classList.add('dz-complete')
-          $('form').append('<input type="hidden" name="image[]" value="' + file.file_name + '">')
+          $('form').append('<input type="hidden" name="image[]" value="' + file.path + '">')
         }
 @endif
     },

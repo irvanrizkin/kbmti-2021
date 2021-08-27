@@ -9,22 +9,26 @@ use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
 use App\Models\Tag;
 use App\Models\HasTag;
+use App\Models\Media_handlers as CustomMediaHandler;
 use Gate;
 use Illuminate\Http\Request;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use Symfony\Component\HttpFoundation\Response;
+use App\Http\Controllers\Traits\MediaConversionTrait;
+use File;
 
 class ArticleController extends Controller
 {
 
     use MediaUploadingTrait;
+    use MediaConversionTrait;
+    private $modelName = "articles";
 
     public function index()
     {
         abort_if(Gate::denies('article_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $articles = Article::with(['media'])->get();
+        $articles = Article::all();
 
         return view('admin.articles.index', compact('articles'));
     }
@@ -60,13 +64,22 @@ class ArticleController extends Controller
 
         // Image
         foreach ($request->input('image', []) as $file) {
-            $article->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('image');
+            // $article->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('image');
+            File::move(storage_path('tmp/uploads/') . $file, storage_path('app/public/articles/') . $file);
+            $mediaHandle = CustomMediaHandler::create([
+                'path' => $file,
+                'model_id' => $article->id,
+                'model_name' => $this->modelName
+            ]);
+            // Crreate preview and thumnail
+            $this->convertToThumbnail($this->modelName, $file);
+            $this->convertToPreview($this->modelName, $file);
         }
 
-        if ($media = $request->input('ck-media', false)) {
-            Media::whereIn('id', $media)->update(['model_id' => $article->id]);
-        }
-        // CKEditor
+        // CKEditor is Disabled
+        // if ($media = $request->input('ck-media', false)) {
+        //     Media::whereIn('id', $media)->update(['model_id' => $article->id]);
+        // }
 
         return redirect()->route('admin.articles.index');
     }
@@ -86,20 +99,40 @@ class ArticleController extends Controller
 
     public function update(UpdateArticleRequest $request, Article $article)
     {
+        // return response()->json([
+        //     'image' => $request->input('image')
+        // ]);
         $article->update($request->all());
         $arrayedTags = [];
 
-        if (count($article->image) > 0) {
-            foreach ($article->image as $media) {
-                if (!in_array($media->file_name, $request->input('image', []))) {
-                    $media->delete();
+        // Delete the images that doesn't exist
+        if (count($article->getArrayOnlyPath()) > 0) {
+            foreach ($article->getArrayOnlyPath() as $media) {
+                if (!in_array($media, $request->input('image', []))) {
+                    // Ngedelete barang Media Handler
+                    CustomMediaHandler::where('path', $media)
+                        ->where('model_name', $this->modelName)
+                        ->where('model_id', $article->id)
+                        ->delete();
+                    // $media->delete();
                 }
             }
         }
-        $media = $article->image->pluck('file_name')->toArray();
+        
+        $media = $article->getArrayOnlyPath();
         foreach ($request->input('image', []) as $file) {
+
             if (count($media) === 0 || !in_array($file, $media)) {
-                $article->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('image');
+                // $article->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('image');
+                File::move(storage_path('tmp/uploads/') . $file, storage_path('app/public/articles/') . $file);
+                $mediaHandle = CustomMediaHandler::create([
+                    'path' => $file,
+                    'model_id' => $article->id,
+                    'model_name' => $this->modelName
+                ]);
+                // Crreate preview and thumnail
+                $this->convertToThumbnail($this->modelName, $file);
+                $this->convertToPreview($this->modelName, $file);
             }
         }
 
@@ -163,14 +196,17 @@ class ArticleController extends Controller
     }
 
 
-    // Helpers
-    private function resolverArrayedTags($arrayedTags){
+    // Helpers to resolve arrayed tags
+    private function resolverArrayedTags($arrayedTags)
+    {
         foreach ($arrayedTags as $itemTag) {
             HasTag::create($itemTag)->save();
         }
     }
 
-    private function addNewTag($newTags, $articleid, $arrayContainter){
+    // Helpers to resolve newTag
+    private function addNewTag($newTags, $articleid, $arrayContainter)
+    {
         if ($newTags) {
             foreach ($newTags as $tagName) {
                 $newTag = Tag::create([

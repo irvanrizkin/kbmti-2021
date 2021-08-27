@@ -24,7 +24,13 @@ class Media_handlers extends Model
         'created_at',
         'updated_at',
         'deleted_at',
+        'model_name',
+        'model_id'
     ];
 
     // Helper functions
+    public function getUrlPath()
+    {
+        return url("/storage/$this->model_name/$this->path");
+    }
 }

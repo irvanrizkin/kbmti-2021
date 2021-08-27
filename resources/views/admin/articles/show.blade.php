@@ -6,6 +6,22 @@
         {{ trans('global.show') }} {{ trans('cruds.article.title') }}
     </div>
 
+    {{-- Need more styling --}}
+    <div class="row">
+        <div class="container">
+            <h2>List Images</h2>
+            <div class="row">
+                @if ($medias = $article->getMediaPath())
+                    @foreach ($medias as $media)
+                        <div class="col">
+                            <img src="{{ $media->getUrlPath() }}" alt="" class="img-fluid">     
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+    </div>
+
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
@@ -39,7 +55,7 @@
                             {!! $article->content !!}
                         </td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <th>
                             {{ trans('cruds.article.fields.image') }}
                         </th>
@@ -50,7 +66,7 @@
                                 </a>
                             @endforeach
                         </td>
-                    </tr>
+                    </tr> --}}
                     <tr>
                         <th>
                             {{ trans('cruds.article.fields.counter') }}

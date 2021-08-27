@@ -28,6 +28,10 @@ use App\Http\Controllers\Admin\UpcomingProkerController as AdminUpcomingProkerCo
 use App\Http\Controllers\Admin\EventFieldChoiceController as AdminEventFieldChoiceController;
 use App\Http\Controllers\Admin\DepartmentController as AdminDepartmentController;
 
+// Models
+use App\Models\Department;
+use App\Models\Article;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,14 +43,14 @@ use App\Http\Controllers\Admin\DepartmentController as AdminDepartmentController
 |
 */
 
-$condition = env('APP_DEBUG') 
+$condition = env('APP_DEBUG')
     // && ( env('APP_STAGE') != 'local' )
-    ;
+;
 
 $routesAttributes = [];
 
-if ( $condition ) {
-    
+if ($condition) {
+
     // Temporary deactivated to testing in local
     // $routesAttributes = [
     //     'prefix' => 't',
@@ -72,11 +76,14 @@ Route::group($routesAttributes, function () {
             Route::resource('/department', GuestDepartmentController::class);
 
             // Berita
-            Route::get('/berita', [GuestBeritaController::class, 'berita-1'])->name('berita.berita-1');
+            // Route::get('/berita', [GuestBeritaController::class, 'berita-1'])->name('berita.berita-1');
             Route::resource('/berita', GuestBeritaController::class);
 
+            // Product
+            Route::redirect('/products', '/under-construction')->name('products');
+
             // Open Recruitment
-            Route::redirect('/open-recruitmen', '/under-construction');
+            Route::redirect('/open-recruitmen', '/under-construction')->name('open-recruitmen');
 
             // Under Construction
             Route::view('/under-construction', 'under_const');
@@ -135,15 +142,15 @@ Route::group($routesAttributes, function () {
             Route::resource('anggota', AdminAnggotController::class);
 
             // Article is disabled due maintenance
-            Route::get('articles', function () {
-                return response()->json([
-                    'message' => 'this feature is under maintenance'
-                ]);
-            })->name('articles.index');
-            // Route::delete('articles/destroy', [AdminArticleController::class, 'massDestroy'])->name('articles.massDestroy');
-            // Route::post('articles/media', [AdminArticleController::class, 'storeMedia'])->name('articles.storeMedia');
-            // Route::post('articles/ckmedia', [AdminArticleController::class, 'storeCKEditorImage'])->name('articles.storeCKEditorImages');
-            // Route::resource('articles', AdminArticleController::class);
+            // Route::get('articles', function () {
+            //     return response()->json([
+            //         'message' => 'this feature is under maintenance'
+            //     ]);
+            // })->name('articles.index');
+            Route::delete('articles/destroy', [AdminArticleController::class, 'massDestroy'])->name('articles.massDestroy');
+            Route::post('articles/media', [AdminArticleController::class, 'storeMedia'])->name('articles.storeMedia');
+            Route::post('articles/ckmedia', [AdminArticleController::class, 'storeCKEditorImage'])->name('articles.storeCKEditorImages');
+            Route::resource('articles', AdminArticleController::class);
 
             // Event
             Route::delete('events/destroy', [AdminEventFieldController::class, 'massDestroy'])->name('events.massDestroy');
@@ -183,3 +190,17 @@ Route::group($routesAttributes, function () {
 // Testing for development experimental
 // Route::view('experimental-department', 'department/experimental_department_template');
 // Route::view('template-departemen', 'department_template');
+Route::get('testing-model-department', function () {
+    $var = Department::find(1);
+    // $var->createMedia();
+    return response()->json([
+        'var' => $var->getArrayOnlyPath(),
+    ]);
+});
+
+Route::get('testing-model-article', function () {
+    $var = Article::find(6);
+    return response()->json([
+        'var' => $var->getArrayOnlyPath(),
+    ]);
+});

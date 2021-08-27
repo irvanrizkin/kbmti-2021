@@ -6,14 +6,11 @@ use \DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-// use Spatie\MediaLibrary\HasMedia;
-// use Spatie\MediaLibrary\InteractsWithMedia;
-// use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use App\Interfaces\MediaModelInterface;
 
-class Department extends Model
+class Department extends Model implements MediaModelInterface
 {
     use SoftDeletes;
-    // use InteractsWithMedia;
     use HasFactory;
 
     public const TYPE_SELECT = [
@@ -28,9 +25,6 @@ class Department extends Model
 
     public $table = 'departments';
 
-    protected $appends = [
-        'logo',
-    ];
 
     protected $dates = [
         'created_at',
@@ -49,23 +43,7 @@ class Department extends Model
         'deleted_at',
     ];
 
-    // public function registerMediaConversions(Media $media = null): void
-    // {
-    //     $this->addMediaConversion('thumb')->fit('crop', 50, 50);
-    //     $this->addMediaConversion('preview')->fit('crop', 120, 120);
-    // }
-
-    // public function getLogoAttribute()
-    // {
-    //     $file = $this->getMedia('logo')->last();
-    //     if ($file) {
-    //         $file->url       = $file->getUrl();
-    //         $file->thumbnail = $file->getUrl('thumb');
-    //         $file->preview   = $file->getUrl('preview');
-    //     }
-
-    //     return $file;
-    // }
+    private $const_ModelName = "departments";
 
     protected function serializeDate(DateTimeInterface $date)
     {
@@ -82,6 +60,50 @@ class Department extends Model
     public function getMediaPath()
     {
         // should return an array
-        return $this->belongsTo(Media_handlers::class, 'media_id');
+        $query = $this->query()
+            ->join('media_handlers', 'media_handlers.model_id', '=', 'departments.id')
+            ->where('media_handlers.model_id', '=', $this->id)
+            ->where('media_handlers.model_name', '=', $this->const_ModelName)
+            ->where('media_handlers.deleted_at', '=', null)
+            ->get();
+
+        // return single object instead of an array
+        if (count($query) != 0) {
+            // Add new sub attribute about preview and
+            $item = $query[0];
+            $item->imageUrl = $this->getUrlPath($item->path);
+            $item->thumbnail = $this->getThumbnailUrlPath($item->path);
+            $item->preview = $this->getPreviewUrlPath($item->path);
+            return $item;
+        }
+
+        return null;
+    }
+
+    // Implements from MedialModelInterface
+    public function getUrlPath($path = "")
+    {
+        if ($path) {
+            return url("/storage/$this->const_ModelName/$path");
+        }
+        return url("/storage/$this->const_ModelName/$this->path");
+    }
+
+    // Implements from MediaModelInterfaces
+    public function getPreviewUrlPath($path = "")
+    {
+        if ($path) {
+            return url("/storage/$this->const_ModelName/previews/$path");
+        }
+        return url("/storage/$this->const_ModelName/previews/$this->path");
+    }
+
+    // Helper functions to get thumbnail url path
+    public function getThumbnailUrlPath($path = "")
+    {
+        if ($path) {
+            return url("/storage/$this->const_ModelName/thumbails/$path");
+        }
+        return url("/storage/$this->const_ModelName/thumbails/$this->path");
     }
 }

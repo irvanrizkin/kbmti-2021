@@ -7,14 +7,14 @@
     </div>
 
     <div class="card-body">
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-12 d-flex flex-column">
                 <h2>Avatar</h2>
-                @if ($anggotum->getMediaPath?->path)
-                    <img src="{{ "/storage/anggotas/" . $anggotum->getMediaPath->path }}" alt="" class="img-fluid">     
+                @if ($media = $anggotum->getMediaPath())
+                    <img src="{{ $media->getUrlPath() }}" alt="" class="img-fluid">     
                 @endif
             </div>
-        </div>
+        </div> --}}
         <form method="POST" action="{{ route("admin.anggota.update", [$anggotum->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
@@ -125,12 +125,12 @@
       }
     },
     init: function () {
-@if(isset($anggotum) && $anggotum->image)
-      var file = {!! json_encode($anggotum->image) !!}
-          this.options.addedfile.call(this, file)
+@if(isset($anggotum) && $anggotum->getMediaPath())
+      var file = {!! json_encode($anggotum->getMediaPath()) !!}
+      this.options.addedfile.call(this, file)
       this.options.thumbnail.call(this, file, file.preview)
       file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="image" value="' + file.file_name + '">')
+      $('form').append('<input type="hidden" name="image" value="' + file.path + '">')
       this.options.maxFiles = this.options.maxFiles - 1
 @endif
     },
