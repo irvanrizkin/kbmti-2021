@@ -14,7 +14,7 @@ class CreateMediaHandlersTable extends Migration
     public function up()
     {
         Schema::create('media_handlers', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id'); // unsignedBigIncrements("id")
             $table->string('path')->nullable();
             $table->timestamps();
             $table->softDeletes();
