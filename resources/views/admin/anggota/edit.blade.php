@@ -56,7 +56,7 @@
                 <select name="type" id="type" class="form-control select2 {{ $errors->has('department') ? 'is-invalid' : '' }}">
                     <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                     <option value="Ketua Departemen" {{ $anggotum->type == "Ketua Departemen" ? 'selected' : '' }}>Ketua Department</option>
-                    <option value="Wakil Ketua Departemen {{ $anggotum->type == "Wakil Ketua Departemen" ? 'selected' : '' }}">Wakil Ketua Department</option>
+                    <option value="Wakil Ketua Departemen" {{ $anggotum->type == "Wakil Ketua Departemen" ? 'selected' : '' }}>Wakil Ketua Department</option>
                     <option value="Staff Dept" {{ $anggotum->type == "Staff Dept" ? 'selected' : '' }}>Staff Department</option>
                 </select>
                 @if($errors->has('type'))
