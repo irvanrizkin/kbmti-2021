@@ -102,7 +102,7 @@ Route::group($routesAttributes, function () {
     Auth::routes(['register' => false]);
 
     // Profile
-    Route::prefix('profile')
+    Route::prefix('profile-admin')
         ->as('profile.')
         ->middleware('auth')
         ->group(function () {
