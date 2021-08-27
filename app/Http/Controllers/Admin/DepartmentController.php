@@ -72,7 +72,7 @@ class DepartmentController extends Controller
     public function update(UpdateDepartmentRequest $request, $id)
     {
         $department = Department::where('id', $id);
-        $department->update($request->except('_method', '_token', 'logo'));
+        $department->update($request->except('_method', '_token', 'logo', '_route_'));
 
         if ($request->input('logo', false)) {
             File::move(storage_path('tmp/uploads/') . $request->input('logo'), storage_path('app/public/departments/') . $request->input('logo'));

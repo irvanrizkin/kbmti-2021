@@ -10,11 +10,10 @@
                     @if ($anggota->type == 'Ketua Departemen' || $anggota->type == "Wakil Ketua Departemen")
                         <div class="card-member text-center">
                             @php
-                                $imgSource = "/storage/anggotas/";
                                 if ($anggota->getMediaPath()) {
-                                    $imgSource .= $anggota->getMediaPath()->imageUrl ?? "";
+                                    $imgSource = $anggota->getMediaPath()->imageUrl ?? "";
                                 } else {
-                                    $imgSource = "/img/" . "kiwul.png";
+                                    $imgSource = url("/img/kiwul.png");
                                 }
                             @endphp
                             <img src="{{ $imgSource }}" alt="" class="card-member__image">
@@ -46,11 +45,10 @@
                 @foreach ($anggotas as $anggota)
                     @if ($anggota->type == "Staff Dept")
                         @php
-                            $imgSource = "/storage/anggotas/";
-                                if ($anggota->getMediaPath()) {
-                                    $imgSource .= $anggota->getMediaPath()->imageUrl ?? "";
+                            if ($anggota->getMediaPath()) {
+                                    $imgSource = $anggota->getMediaPath()->imageUrl ?? "";
                                 } else {
-                                    $imgSource = "/img/" . "kiwul.png";
+                                    $imgSource = url("/img/kiwul.png");
                                 }
                         @endphp
                         <div class="card-member text-center d-flex flex-column">

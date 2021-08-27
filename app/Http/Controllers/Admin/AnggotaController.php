@@ -79,7 +79,7 @@ class AnggotaController extends Controller
     public function update(UpdateAnggotumRequest $request, $id)
     {
         $anggotum = Anggotum::where('id', $id);
-        $anggotum->update($request->except('_method', '_token', 'image'));
+        $anggotum->update($request->except('_method', '_token', 'image', '_route_'));
 
         if ($request->input('image', false)) {
             File::move(storage_path('tmp/uploads/') . $request->input('image'), storage_path('app/public/anggotas/') . $request->input('image'));

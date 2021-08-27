@@ -190,17 +190,17 @@ Route::group($routesAttributes, function () {
 // Testing for development experimental
 // Route::view('experimental-department', 'department/experimental_department_template');
 // Route::view('template-departemen', 'department_template');
-Route::get('testing-model-department', function () {
-    $var = Department::find(1);
-    // $var->createMedia();
-    return response()->json([
-        'var' => $var->getArrayOnlyPath(),
-    ]);
-});
+// Route::get('testing-model-department', function () {
+//     $var = Department::find(1);
+//     // $var->createMedia();
+//     return response()->json([
+//         'var' => $var->getArrayOnlyPath(),
+//     ]);
+// });
 
-Route::get('testing-model-article', function () {
-    $var = Article::find(6);
-    return response()->json([
-        'var' => $var->getArrayOnlyPath(),
-    ]);
-});
+// Route::get('testing-model-article', function () {
+//     $var = Article::find(6);
+//     return response()->json([
+//         'var' => $var->getArrayOnlyPath(),
+//     ]);
+// });

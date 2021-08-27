@@ -84,26 +84,26 @@ class Department extends Model implements MediaModelInterface
     public function getUrlPath($path = "")
     {
         if ($path) {
-            return url("/storage/$this->const_ModelName/$path");
+            return url(env("ASSET_URL", "") . "/storage/$this->const_ModelName/$path");
         }
-        return url("/storage/$this->const_ModelName/$this->path");
+        return url(env("ASSET_URL", "") . "/storage/$this->const_ModelName/$this->path");
     }
 
     // Implements from MediaModelInterfaces
     public function getPreviewUrlPath($path = "")
     {
         if ($path) {
-            return url("/storage/$this->const_ModelName/previews/$path");
+            return url(env("ASSET_URL", "") . "/storage/$this->const_ModelName/previews/$path");
         }
-        return url("/storage/$this->const_ModelName/previews/$this->path");
+        return url(env("ASSET_URL", "") . "/storage/$this->const_ModelName/previews/$this->path");
     }
 
     // Helper functions to get thumbnail url path
     public function getThumbnailUrlPath($path = "")
     {
         if ($path) {
-            return url("/storage/$this->const_ModelName/thumbails/$path");
+            return url(env("ASSET_URL", "") . "/storage/$this->const_ModelName/thumbails/$path");
         }
-        return url("/storage/$this->const_ModelName/thumbails/$this->path");
+        return url(env("ASSET_URL", "") . "/storage/$this->const_ModelName/thumbails/$this->path");
     }
 }

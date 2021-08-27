@@ -36,7 +36,6 @@ class Anggotum extends Model implements MediaModelInterface
 
     private $const_ModelName = "anggotas";
 
-
     public function department()
     {
         return $this->belongsTo(Department::class, 'department_id');
@@ -62,6 +61,7 @@ class Anggotum extends Model implements MediaModelInterface
         if (count($query) != 0) {
             // Add new sub attribute about preview and
             $item = $query[0];
+            $item->imageUrl = $this->getUrlPath($item->path);
             $item->thumbnail = $this->getThumbnailUrlPath($item->path);
             $item->preview = $this->getPreviewUrlPath($item->path);
             return $item;
@@ -74,26 +74,26 @@ class Anggotum extends Model implements MediaModelInterface
     public function getUrlPath($path = "")
     {
         if ($path) {
-            return url("/storage/$this->const_ModelName/$path");
+            return url(env("ASSET_URL", "") . "/storage/$this->const_ModelName/$path");
         }
-        return url("/storage/$this->model_name/$this->path");
+        return url(env("ASSET_URL", "") . "/storage/$this->model_name/$this->path");
     }
 
     // Implements from MediaModelInterfaces
     public function getPreviewUrlPath($path = "")
     {
         if ($path) {
-            return url("/storage/$this->const_ModelName/previews/$path");
+            return url(env("ASSET_URL", "") . "/storage/$this->const_ModelName/previews/$path");
         }
-        return url("/storage/$this->const_ModelName/previews/$this->path");
+        return url(env("ASSET_URL", "") . "/storage/$this->const_ModelName/previews/$this->path");
     }
 
     // Helper functions to get thumbnail url path
     public function getThumbnailUrlPath($path = "")
     {
         if ($path) {
-            return url("/storage/$this->const_ModelName/thumbails/$path");
+            return url(env("ASSET_URL", "") . "/storage/$this->const_ModelName/thumbails/$path");
         }
-        return url("/storage/$this->const_ModelName/thumbails/$this->path");
+        return url(env("ASSET_URL", "") . "/storage/$this->const_ModelName/thumbails/$this->path");
     }
 }
