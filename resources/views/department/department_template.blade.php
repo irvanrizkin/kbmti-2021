@@ -39,13 +39,13 @@
             @include('department.detail', [ "deptName" => $arrayDept['entre']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['entre']->description ?? "", "imageUrl" => ($arrayDept["entre"]->getMediaPath()->imageUrl ?? "") ])
             {{-- BPMTI --}}
             {{-- Non Komisi --}}
-            @include('department.detail-bpmti', [ "deptName" => "Non-Komisi", "group" => "bpmti", "detailCaption" => "BPMTI Adalah ....", ])
+            @include('department.detail', [ "deptName" => $arrayDept["nonKomisi"]->initial ?? "", "group" => "bpmti", "detailCaption" => "BPMTI Adalah ....", ])
             {{-- Komisi 1 --}}
-            @include('department.detail', [ "deptName" => $arrayDept['komisi1']->initial ?? "", "group" => "bpmti", "detailCaption" => $arrayDept['komisi1']->description ?? "", ])
+            @include('department.detail-bpmti', [ "deptName" => $arrayDept['komisi1']->initial ?? "", "group" => "bpmti", "detailCaption" => $arrayDept['komisi1']->description ?? "", ])
             {{-- Komisi 2 --}}
-            @include('department.detail', [ "deptName" => $arrayDept['komisi2']->initial ?? "", "group" => "bpmti", "detailCaption" => $arrayDept['komisi2']->description ?? "", ])
+            @include('department.detail-bpmti', [ "deptName" => $arrayDept['komisi2']->initial ?? "", "group" => "bpmti", "detailCaption" => $arrayDept['komisi2']->description ?? "", ])
             {{-- Komisi 3 --}}
-            @include('department.detail', [ "deptName" => $arrayDept['komisi3']->initial ?? "", "group" => "bpmti", "detailCaption" => $arrayDept['komisi3']->description ?? "", ])
+            @include('department.detail-bpmti', [ "deptName" => $arrayDept['komisi3']->initial ?? "", "group" => "bpmti", "detailCaption" => $arrayDept['komisi3']->description ?? "", ])
         </div>
 </section>
 </div>
@@ -72,7 +72,7 @@
 
     {{-- BPMTI --}}
     {{-- Non Komisi --}}
-    @include('department.contents.base_anggota_departemen', ["deptName" => $arrayDept["nonKomisi"]->initial ?? "", "anggotas" => $arrayDept["nonKomisi"]->anggotas ?? [], 'group' => 'bpmti'])
+    @include('department.contents.koordinator-sekjen_bpmti', ["deptName" => $arrayDept["nonKomisi"]->initial ?? "", "anggotas" => $arrayDept["nonKomisi"]->anggotas ?? [], 'group' => 'bpmti'])
     {{-- Komisi 1 --}}
     @include('department.contents.base_anggota_departemen', ["deptName" => $arrayDept["komisi1"]->initial ?? "", "anggotas" => $arrayDept["komisi1"]->anggotas ?? [], 'group' => 'bpmti'])
     {{-- Komisi 2 --}}
@@ -97,8 +97,6 @@
             // Show the target class
             $("." + target).show();
 
-            console.log(target)
-            console.log(anotherClass)
         }
 
         var subGroupTrigger = function () {

@@ -6,7 +6,7 @@
             @endif --}}
             <div class="department__top__detail__title d-flex ms-4">
                 <div class="department__top__detail__title__border"></div>
-                <span>{{ $deptName ?? '' }}</span>
+                <span>{{ str_replace("_", " ", ($deptName ?? '') ) }}</span>
             </div>
             <div class="department__top__detail__desc ms-4">
                 {{ strip_tags($detailCaption ?? '') }}

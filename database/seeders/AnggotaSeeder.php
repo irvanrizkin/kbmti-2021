@@ -158,7 +158,7 @@ class AnggotaSeeder extends Seeder
                 'name' => 'Muhammad Hafidz',
                 'instagram_acc' => 'https://www.instagram.com/_hafizbi/',
                 'linkedin_acc' => 'https://www.linkedin.com/in/muhammad-hafidz-b5133921a',
-                'type' => 'Wwakil Ketua Departemen',
+                'type' => $wakilType,
                 'caption' => 'Sekretaris Jenderal',
                 'department_id' => 8,
             ],
