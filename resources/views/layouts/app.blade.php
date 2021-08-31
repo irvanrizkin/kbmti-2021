@@ -16,6 +16,8 @@
     {{-- OwlCarousel --}}
     <link rel="stylesheet" href="{{ asset('css/owlcarousel/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owlcarousel/owl.theme.default.min.css') }}">
+    {{-- Favico --}}
+    <link rel="shortcut icon" type="image/jpg" href="{{ asset('img/logo.svg') }}">
 </head>
 
 <body>

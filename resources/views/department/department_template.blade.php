@@ -39,7 +39,7 @@
             @include('department.detail', [ "deptName" => $arrayDept['entre']->initial ?? "", "group" => "emti", "detailCaption" => $arrayDept['entre']->description ?? "", "imageUrl" => ($arrayDept["entre"]->getMediaPath()->imageUrl ?? "") ])
             {{-- BPMTI --}}
             {{-- Non Komisi --}}
-            @include('department.detail', [ "deptName" => $arrayDept["nonKomisi"]->initial ?? "", "group" => "bpmti", "detailCaption" => "BPMTI Adalah ....", ])
+            @include('department.detail', [ "deptName" => $arrayDept["nonKomisi"]->initial ?? "", "group" => "bpmti", "detailCaption" => $arrayDept["nonKomisi"]->description ?? "", ])
             {{-- Komisi 1 --}}
             @include('department.detail-bpmti', [ "deptName" => $arrayDept['komisi1']->initial ?? "", "group" => "bpmti", "detailCaption" => $arrayDept['komisi1']->description ?? "", ])
             {{-- Komisi 2 --}}
