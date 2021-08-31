@@ -7,11 +7,14 @@
         <div class="profile__history" id="history">
             @include('layouts.heading', ['text' => 'Sejarah KBMTI', 'data_aos' => 'fade-right'])
             <div class="profile__history-content" data-aos="fade-right" data-aos-duration="1000">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Semper in placerat at in nibh. Aenean et ultrices volutpat morbi. Sit enim, sit ipsum pellentesque amet, volutpat dui lacus auctor. Fusce at ullamcorper quis mauris ut.
+                Keluarga Besar Mahasiswa Teknologi Informasi (KBMTI) merupakan lembaga mahasiswa program studi Teknologi Informasi yang terdiri dari EMTI dan BPMTI. Diresmikan pada sidang umum MKBM FILKOM pada tanggal 25 Maret 2019 lalu dilanjutkan dengan pelantikan yang dilakukan oleh Fakultas pada tanggal 4 April 2019. KBMTI berfungsi sebagai wadah pembelajaran organisasi dan kreativitas mahasiswa Teknologi Infomasi FILKOM UB untuk menyalurkan aspirasi dan berkarya dalam bidang akademik maupun non akademik.
             </div>
-            <div class="profile__history-content" data-aos="fade-right" data-aos-duration="1500">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Semper in placerat at in nibh. Aenean et ultrices volutpat morbi. Sit enim, sit ipsum pellentesque amet, volutpat dui lacus auctor. Fusce at ullamcorper quis mauris ut.
-            </div>
+            {{-- <div class="profile__history-content" data-aos="fade-right" data-aos-duration="1500">
+                Eksekutif Mahasiswa Teknologi Informasi merupakan lembaga eksekutif di dalam Keluarga Besar Mahasiswa Teknologi Informasi. Di dalam EMTI terdiri dari beragam posisi, departemen, dan biro. Dan dipimpin langsung oleh Ketua EMTI beserta dengan Wakil Ketua EMTI. Bertujuan untuk membentuk mahasiswa tumbuh bersama menjadi mahasiswa yang kreatif, inofatif, dan bisa menghilangkan batas-batas kesenjangan antar mahasiswa Teknologi Informasi Fakultas Ilmu Komputer Universitas Brawijaya.
+            </div> --}}
+            {{-- <div class="profile__history-content" data-aos="fade-right" data-aos-duration="2000">
+                BPMTI adalah Badan Perwakilan Legislatif Mahasiswa Teknologi Informasi yang memiliki tugas untuk mengemban kedaulatan dan memberikan kebijakan yang mencerminkan  keinginan Mahasiswa Teknologi Informasi. Dengan kata lain BPMTI merupakan wakil Mahasiswa yang mendengar seluruh keluhan Mahasiswa Teknologi Informasi serta aktif dalam meluangkan pemikiran untuk menyusun suatu kebijakan yang akan diberlakukan dalam lingkungan Mahasiswa Program Studi Teknologi Informasi
+            </div> --}}
         </div>
         <div class="profile__image">
             <img src="{{ asset('img/logo-putih.svg') }}" alt="" class="profile__image-img"  data-aos="fade-left" data-aos-duration="1000">
@@ -26,17 +29,27 @@
     </section>
     <section class="profile__chart" id="chart">
         @include('layouts.heading', ['text' => 'Struktur Lembaga', 'data_aos' => 'fade-down'])
+        {{-- Tekon Irvan ki masalah e yok po --}}
+        {{-- <div class="row">
+            <div class="profile__description-emti">
+                Testing
+            </div>
+            <div class="col-10"></div>
+            <div class="profile__description-bpmti">
+                Testing
+            </div>
+        </div> --}}
         <div class="profile__chart-container">
             <div class="profile__chart-box" data-aos="fade-down">
                 <img class="profile__chart-box-img" src="{{ asset('img/logo/kbmti-big.svg') }}" alt="">
             </div>
             <img src="{{ asset('img/organization-line.svg') }}" data-aos="fade-down" alt="">
             <ol class="profile__chart-inner" data-aos="fade-down">
-                <li class="profile__chart-box">
-                    <img class="profile__chart-box-img" src="{{ asset('img/logo/emti-big.svg') }}" alt="">
+                <li class="profile__chart-box profile__chart-box-clickable" data-value="emti">
+                    <img class="profile__chart-box-img" src="{{ asset('img/logo/emti-big.svg') }}" alt="" data-value="emti">
                 </li>
-                <li class="profile__chart-box">
-                    <img class="profile__chart-box-img" src="{{ asset('img/logo/bpmti-big.svg') }}" alt="">
+                <li class="profile__chart-box profile__chart-box-clickable" data-value="bpmti">
+                    <img class="profile__chart-box-img" src="{{ asset('img/logo/bpmti-big.svg') }}" alt="" data-value="bpmti">
                 </li>
             </ol>
         </div>
@@ -145,5 +158,14 @@
         .getAttribute('src')
         .replace('-mini', '');
     }
+
+    function emtiBpmtiListener(event){
+        route = "{{ route('guest.department.index') }}"
+        dataGroup = event.target.getAttribute("data-value")
+        route += `?group=${dataGroup}`
+        location.replace( route )
+    }
+
+$(".profile__chart-box-clickable").click(emtiBpmtiListener)
 </script>
 @endsection
