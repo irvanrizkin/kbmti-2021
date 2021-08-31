@@ -9,31 +9,31 @@
             <a href="#" class="button-subgroup-trigger" data-subgroup="Sekben" data-group="emti">Sekretaris dan Bendahara</a>
         </div>
         <div class="department__top__tab-content__item d-flex button-subgroup-trigger-parent" id="button-subgroup-trigger-Internal">
-            <img src="{{ asset('img/icon_2.svg') }}" alt="" width="48px">
+            <img src="{{ asset('img/icon_3.svg') }}" alt="" width="48px">
             <a href="#" class="button-subgroup-trigger" data-subgroup="Internal" data-group="emti">Internal</a>
         </div>
         <div class="department__top__tab-content__item d-flex button-subgroup-trigger-parent" id="button-subgroup-trigger-HRD">
-            <img src="{{ asset('img/icon_2.svg') }}" alt="" width="48px">
+            <img src="{{ asset('img/icon_4.svg') }}" alt="" width="48px">
             <a href="#" class="button-subgroup-trigger" data-subgroup="HRD" data-group="emti">Human Resource & Dev</a>
         </div>
         <div class="department__top__tab-content__item d-flex button-subgroup-trigger-parent" id="button-subgroup-trigger-Advo">
-            <img src="{{ asset('img/icon_3.svg') }}" alt="" width="48px">
+            <img src="{{ asset('img/icon_5.svg') }}" alt="" width="48px">
             <a href="#" class="button-subgroup-trigger" data-subgroup="Advo" data-group="emti">Advocacy</a>
         </div>
         <div class="department__top__tab-content__item d-flex button-subgroup-trigger-parent" id="button-subgroup-trigger-SE">
-            <img src="{{ asset('img/icon_4.svg') }}" alt="" width="48px">
+            <img src="{{ asset('img/icon_6.svg') }}" alt="" width="48px">
             <a href="#" class="button-subgroup-trigger" data-subgroup="SE" data-group="emti">Social Environment</a>
         </div>
         <div class="department__top__tab-content__item d-flex button-subgroup-trigger-parent" id="button-subgroup-trigger-RnD">
-            <img src="{{ asset('img/icon_5.svg') }}" alt="" width="48px">
+            <img src="{{ asset('img/icon_7.svg') }}" alt="" width="48px">
             <a href="#" class="button-subgroup-trigger" data-subgroup="RnD" data-group="emti">Research & Dev</a>
         </div>
         <div class="department__top__tab-content__item d-flex button-subgroup-trigger-parent" id="button-subgroup-trigger-RnC">
-            <img src="{{ asset('img/icon_6.svg') }}" alt="" width="48px">
+            <img src="{{ asset('img/icon_8.svg') }}" alt="" width="48px">
             <a href="#" class="button-subgroup-trigger" data-subgroup="RnC" data-group="emti">Relation & Creative</a>
         </div>
         <div class="department__top__tab-content__item d-flex button-subgroup-trigger-parent" id="button-subgroup-trigger-Entre">
-            <img src="{{ asset('img/icon_7.svg') }}" alt="" width="48px">
+            <img src="{{ asset('img/icon_9.svg') }}" alt="" width="48px">
             <a href="#" class="button-subgroup-trigger" data-subgroup="Entre" data-group="emti">Entrepreneurship</a>
         </div>
     </div>
