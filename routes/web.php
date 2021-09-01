@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Static\MediaHandler as StaticVarMediaHandler;
 
 // GuestController
 use App\Http\Controllers\Guest\HomeController as GuestHomeController;
@@ -189,7 +190,9 @@ Route::group($routesAttributes, function () {
 });
 
 // Testing for development experimental
+
 // Route::view('experimental-department', 'department/experimental_department_template');
+
 // Route::view('template-departemen', 'department_template');
 // Route::get('testing-model-department', function () {
 //     $var = Department::find(1);
@@ -215,3 +218,10 @@ Route::group($routesAttributes, function () {
 // });
 
 // Route::view('testing-custom-quote', 'testing.custom-quote');
+
+Route::get('testing-static-media-handler', function () {
+    return response()->json([
+        "success" => true,
+        "message" => StaticVarMediaHandler::UpcomingProkerModelName,
+    ]);
+});

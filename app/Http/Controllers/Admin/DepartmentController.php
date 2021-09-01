@@ -14,12 +14,13 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use File;
 use App\Http\Controllers\Traits\MediaConversionTrait;
+use App\Static\MediaHandler as StaticVarMediaHandler;
 
 class DepartmentController extends Controller
 {
     use MediaUploadingTrait;
     use MediaConversionTrait;
-    private $modelName = "departments";
+    private $modelName = StaticVarMediaHandler::DepartmentModelName;
 
     public function index()
     {
@@ -43,7 +44,7 @@ class DepartmentController extends Controller
 
         if ($request->input('logo', false)) {
             // Keluarnya nanti public_path("storage/departments/nama filenya")
-            File::move(storage_path('tmp/uploads/') . $request->input('logo'), storage_path('app/public/departments/') . $request->input('logo'));
+            File::move(storage_path('tmp/uploads/') . $request->input('logo'), storage_path("app/public/$this->modelName/") . $request->input('logo'));
             // Create the preview version and thumnail version
             $this->convertToThumbnail($this->modelName ,$request->input('logo'));
             $this->convertToPreview($this->modelName ,$request->input('logo'));
@@ -75,7 +76,7 @@ class DepartmentController extends Controller
         $department->update($request->except('_method', '_token', 'logo', '_route_'));
 
         if ($request->input('logo', false)) {
-            File::move(storage_path('tmp/uploads/') . $request->input('logo'), storage_path('app/public/departments/') . $request->input('logo'));
+            File::move(storage_path('tmp/uploads/') . $request->input('logo'), storage_path("app/public/$this->modelName/") . $request->input('logo'));
             // If previously exist
             if ($department->first()->getMediaPath()) {
                 CustomMediaHandler::where('model_id', $id)

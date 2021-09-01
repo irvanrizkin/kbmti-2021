@@ -15,12 +15,13 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use File;
 use App\Http\Controllers\Traits\MediaConversionTrait;
+use App\Static\MediaHandler as StaticVarMediaHandler;
 
 class AnggotaController extends Controller
 {
     use MediaUploadingTrait;
     use MediaConversionTrait;
-    private $modelName = "anggotas";
+    private $modelName = StaticVarMediaHandler::AnggotaModelName;
 
     public function index()
     {
@@ -46,7 +47,7 @@ class AnggotaController extends Controller
 
         if ($request->input('image', false)) {
             // $anggotum->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
-            File::move(storage_path('tmp/uploads/') . $request->input('image'), storage_path('app/public/anggotas/') . $request->input('image'));
+            File::move(storage_path('tmp/uploads/') . $request->input('image'), storage_path("app/public/$this->modelName/") . $request->input('image'));
             // Create the preview version and thumnail version
             $this->convertToThumbnail($this->modelName, $request->input('image'));
             $this->convertToPreview($this->modelName, $request->input('image'));
@@ -82,7 +83,7 @@ class AnggotaController extends Controller
         $anggotum->update($request->except('_method', '_token', 'image', '_route_'));
 
         if ($request->input('image', false)) {
-            File::move(storage_path('tmp/uploads/') . $request->input('image'), storage_path('app/public/anggotas/') . $request->input('image'));
+            File::move(storage_path('tmp/uploads/') . $request->input('image'), storage_path("app/public/$this->modelName/") . $request->input('image'));
             // If previously exist
             if ($anggotum->first()->getMediaPath()) {
                 CustomMediaHandler::where('model_id', $id)

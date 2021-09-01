@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Interfaces\MediaModelInterface;
+use App\Static\MediaHandler as StaticVarMediaHandler;
 
 class Anggotum extends Model implements MediaModelInterface
 {
@@ -34,7 +35,7 @@ class Anggotum extends Model implements MediaModelInterface
         'caption'
     ];
 
-    private $const_ModelName = "anggotas";
+    private $const_ModelName = StaticVarMediaHandler::AnggotaModelName;
 
     public function department()
     {

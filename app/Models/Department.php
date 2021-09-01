@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Interfaces\MediaModelInterface;
+use App\Static\MediaHandler as StaticVarMediaHandler;
 
 class Department extends Model implements MediaModelInterface
 {
@@ -43,7 +44,7 @@ class Department extends Model implements MediaModelInterface
         'deleted_at',
     ];
 
-    private $const_ModelName = "departments";
+    private $const_ModelName = StaticVarMediaHandler::DepartmentModelName;
 
     protected function serializeDate(DateTimeInterface $date)
     {

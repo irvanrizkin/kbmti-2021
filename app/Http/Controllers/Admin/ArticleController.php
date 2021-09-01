@@ -16,13 +16,14 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Controllers\Traits\MediaConversionTrait;
 use File;
+use App\Static\MediaHandler as StaticVarMediaHandler;
 
 class ArticleController extends Controller
 {
 
     use MediaUploadingTrait;
     use MediaConversionTrait;
-    private $modelName = "articles";
+    private $modelName = StaticVarMediaHandler::ArticleModelName;
 
     public function index()
     {
@@ -65,7 +66,7 @@ class ArticleController extends Controller
         // Image
         foreach ($request->input('image', []) as $file) {
             // $article->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('image');
-            File::move(storage_path('tmp/uploads/') . $file, storage_path('app/public/articles/') . $file);
+            File::move(storage_path('tmp/uploads/') . $file, storage_path("app/public/$this->modelName/") . $file);
             $mediaHandle = CustomMediaHandler::create([
                 'path' => $file,
                 'model_id' => $article->id,
@@ -124,7 +125,7 @@ class ArticleController extends Controller
 
             if (count($media) === 0 || !in_array($file, $media)) {
                 // $article->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('image');
-                File::move(storage_path('tmp/uploads/') . $file, storage_path('app/public/articles/') . $file);
+                File::move(storage_path('tmp/uploads/') . $file, storage_path("app/public/$this->modelName/") . $file);
                 $mediaHandle = CustomMediaHandler::create([
                     'path' => $file,
                     'model_id' => $article->id,

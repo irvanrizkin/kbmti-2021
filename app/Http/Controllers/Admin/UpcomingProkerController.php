@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyUpcomingProkerRequest;
 use App\Http\Requests\StoreUpcomingProkerRequest;
 use App\Http\Requests\UpdateUpcomingProkerRequest;
@@ -10,9 +11,17 @@ use App\Models\UpcomingProker;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use File;
+use App\Http\Controllers\Traits\MediaConversionTrait;
+use App\Static\MediaHandler as StaticVarMediaHandler;
 
 class UpcomingProkerController extends Controller
 {
+
+    use MediaUploadingTrait;
+    use MediaConversionTrait;
+    private $modelName = StaticVarMediaHandler::UpcomingProkerModelName;
+
     public function index()
     {
         abort_if(Gate::denies('upcoming_proker_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -32,6 +41,10 @@ class UpcomingProkerController extends Controller
     public function store(StoreUpcomingProkerRequest $request)
     {
         $upcomingProker = UpcomingProker::create($request->all());
+
+        // if ($request->input('image', false)) {
+        //     File::move( storage_path('tmp/uploads/') . $request->input );   
+        // }
 
         return redirect()->route('admin.upcoming-prokers.index');
     }
