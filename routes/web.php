@@ -206,10 +206,12 @@ Route::group($routesAttributes, function () {
 //     ]);
 // });
 
-Route::get('testing-query-string', function (Request $request) {
-    return response()->json([
-        'success' => true,
-        'message' => "returned string",
-        'help' => $request->query('help') ?? "nothing to offer"
-    ]);
-});
+// Route::get('testing-query-string', function (Request $request) {
+//     return response()->json([
+//         'success' => true,
+//         'message' => "returned string",
+//         'help' => $request->query('help') ?? "nothing to offer"
+//     ]);
+// });
+
+// Route::view('testing-custom-quote', 'testing.custom-quote');

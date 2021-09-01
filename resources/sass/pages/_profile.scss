@@ -176,4 +176,43 @@
             }
         }
     }
+
+    &__description{
+        padding-top: 200px;
+        text-align: justify !important;
+
+        &__blockquote{
+            position: relative;
+            font-size: 1.1rem;
+            background-color: #F5F5F5;
+            border-radius: 50px;
+            display: none;
+
+            &__icon {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                top: -25px;
+                left: 50px;
+                background-color: #951C21;
+            }
+        }
+    }
+
+    // Custom
+    @media (max-width: 1492px) {
+
+        &__chart-container-parent{
+            flex: 0 0 auto !important;
+            width: 100% !important;
+        }
+
+        &__description{
+            display: none !important;       
+        }
+    }
 }
