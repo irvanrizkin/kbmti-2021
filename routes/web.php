@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 // GuestController
 use App\Http\Controllers\Guest\HomeController as GuestHomeController;
@@ -204,3 +205,13 @@ Route::group($routesAttributes, function () {
 //         'var' => $var->getArrayOnlyPath(),
 //     ]);
 // });
+
+// Route::get('testing-query-string', function (Request $request) {
+//     return response()->json([
+//         'success' => true,
+//         'message' => "returned string",
+//         'help' => $request->query('help') ?? "nothing to offer"
+//     ]);
+// });
+
+// Route::view('testing-custom-quote', 'testing.custom-quote');
