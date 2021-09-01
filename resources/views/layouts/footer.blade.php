@@ -32,15 +32,16 @@
             <div class="col-md-3 d-flex footer__col__mid">
                 <div class="">
                     <div class="footer__title">Department</div>
-                    <a href="#" class="footer__item d-block">Ketua & Wakil</a>
-                    <a href="#" class="footer__item d-block">Internal</a>
-                    <a href="#" class="footer__item d-block">HRD</a>
-                    <a href="#" class="footer__item d-block">Advocacy</a>
-                    <a href="#" class="footer__item d-block">SE</a>
-                    <a href="#" class="footer__item d-block">RnD</a>
-                    <a href="#" class="footer__item d-block">RnC</a>
-                    <a href="#" class="footer__item d-block">Entrepreneurship</a>
-                    <a href="#" class="footer__item d-block">BPMTI</a>
+                    <a href="{{ route('guest.department.index') }}" class="footer__item d-block">Ketua & Wakil</a>
+                    <a href="{{ route('guest.department.index', [ 'group' => 'emti', 'subGroup' => "sekben" ]) }}" class="footer__item d-block">Sekretaris dan Bendahara</a>
+                    <a href="{{ route('guest.department.index', [ 'group' => 'emti', 'subGroup' => "internal" ]) }}" class="footer__item d-block">Internal</a>
+                    <a href="{{ route('guest.department.index', [ 'group' => 'emti', 'subGroup' => "hrd" ]) }}" class="footer__item d-block">HRD</a>
+                    <a href="{{ route('guest.department.index', [ 'group' => 'emti', 'subGroup' => "advo" ]) }}" class="footer__item d-block">Advocacy</a>
+                    <a href="{{ route('guest.department.index', [ 'group' => 'emti', 'subGroup' => "se" ]) }}" class="footer__item d-block">SE</a>
+                    <a href="{{ route('guest.department.index', [ 'group' => 'emti', 'subGroup' => "rnd" ]) }}" class="footer__item d-block">RnD</a>
+                    <a href="{{ route('guest.department.index', [ 'group' => 'emti', 'subGroup' => "rnc" ]) }}" class="footer__item d-block">RnC</a>
+                    <a href="{{ route('guest.department.index', [ 'group' => 'emti', 'subGroup' => "entre" ]) }}" class="footer__item d-block">Entrepreneurship</a>
+                    <a href="{{ route('guest.department.index', [ 'group' => 'bpmti', 'subGroup' => "nonKomisi" ]) }}" class="footer__item d-block">BPMTI</a>
                 </div>
             </div>
             <div class="col-md-3">
