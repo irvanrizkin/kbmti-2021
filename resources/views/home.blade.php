@@ -108,7 +108,7 @@
                     <span>Upcoming Proker</span>
                 </div>
                 <div class="home__mid2__desc">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie in lacus tempor praesent nunc. Pharetra phasellus ac tincidunt varius ac semper feugiat in cursus.
+                    KBMTI hadir dengan  program kerja yang mewadahi kemampuan mahasiswa TI untuk mewujudkan visi dan misinya. Berikut adalah beberapa program kerja yang akan datang
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">

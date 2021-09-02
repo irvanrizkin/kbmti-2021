@@ -47,9 +47,9 @@
             <div class="col-md-3">
                 <div class="footer__title">Media Sosial</div>
                 <div class="footer__icon__medsos">
-                    <a href="#"><img src="{{ asset('img/line.svg') }}" alt=""></a>
-                    <a href="#" class="footer__icon__medsos__mid"><img src="{{ asset('img/instagram.svg') }}" alt=""></a>
-                    <a href="#"><img src="{{ asset('img/youtube.svg') }}" alt=""></a>
+                    <a href="https://timeline.line.me/user/_dbYv-Fao1E5Hwup-fs3deGlHY-kBsfZcjoNLMG0"><img src="{{ asset('img/line.svg') }}" alt=""></a>
+                    <a href="https://www.instagram.com/kbmti_ub/?hl=id" class="footer__icon__medsos__mid"><img src="{{ asset('img/instagram.svg') }}" alt=""></a>
+                    <a href="https://www.youtube.com/channel/UC4xmxfEvrvAy_6IYI9H6MJw"><img src="{{ asset('img/youtube.svg') }}" alt=""></a>
                 </div>
             </div>
         </div>
