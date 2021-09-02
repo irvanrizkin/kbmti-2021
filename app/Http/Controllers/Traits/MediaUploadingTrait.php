@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Traits;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 trait MediaUploadingTrait
 {
@@ -44,5 +45,16 @@ trait MediaUploadingTrait
             'name'          => $name,
             'original_name' => $file->getClientOriginalName(),
         ]);
+    }
+
+    public function createDirIfNotExist($dirName)
+    {
+        $path = "public/$dirName";
+        $previewPath = $path . "/previews";
+        $thumbnailPath = $path . "/thumbnails";
+
+        Storage::makeDirectory($path);
+        Storage::makeDirectory($previewPath);
+        Storage::makeDirectory($thumbnailPath);
     }
 }

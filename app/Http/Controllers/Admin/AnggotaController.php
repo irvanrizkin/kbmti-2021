@@ -14,6 +14,7 @@ use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use File;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Traits\MediaConversionTrait;
 use App\Static\MediaHandler as StaticVarMediaHandler;
 
@@ -46,7 +47,7 @@ class AnggotaController extends Controller
         $anggotum = Anggotum::create($request->all());
 
         if ( $image = $request->input('image', false) ) {
-            // $anggotum->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
+            if (!Storage::exists("public/$this->modelName")) $this->createDirIfNotExist($this->modelName) ;
             File::move(storage_path("tmp/uploads/$image"), storage_path("app/public/$this->modelName/$image"));
             // Create the preview version and thumnail version
             $this->convertToThumbnail($this->modelName, $image);

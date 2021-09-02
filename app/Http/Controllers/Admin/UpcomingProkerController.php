@@ -13,6 +13,7 @@ use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use File;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Traits\MediaConversionTrait;
 use App\Models\Department;
 use App\Static\MediaHandler as StaticVarMediaHandler;
@@ -45,10 +46,11 @@ class UpcomingProkerController extends Controller
         $upcomingProker = UpcomingProker::create($request->all());
 
         if ( $image = $request->input('image', false) ) {
+            if (!Storage::exists("public/$this->modelName")) $this->createDirIfNotExist($this->modelName) ;
             File::move( storage_path("tmp/uploads/$image"), storage_path("app/public/$this->modelName/$image") );
             // Create the preview version and thumbnail version
             $this->convertToThumbnail($this->modelName, $image);
-            $this->convertToPreview($this->modelName, $iamge);
+            $this->convertToPreview($this->modelName, $image);
 
             $mediaHandler = CustomMediaHandler::create([
                 'path' => $image,
