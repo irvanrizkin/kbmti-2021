@@ -16,6 +16,7 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Controllers\Traits\MediaConversionTrait;
 use File;
+use Illuminate\Support\Facades\Storage;
 use App\Static\MediaHandler as StaticVarMediaHandler;
 
 class ArticleController extends Controller
@@ -65,7 +66,7 @@ class ArticleController extends Controller
 
         // Image
         foreach ($request->input('image', []) as $file) {
-            // $article->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('image');
+            if (!Storage::exists("public/$this->modelName")) $this->createDirIfNotExist($this->modelName) ;
             File::move(storage_path('tmp/uploads/') . $file, storage_path("app/public/$this->modelName/") . $file);
             $mediaHandle = CustomMediaHandler::create([
                 'path' => $file,

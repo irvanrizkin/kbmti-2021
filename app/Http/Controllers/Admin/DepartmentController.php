@@ -13,6 +13,7 @@ use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use File;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Traits\MediaConversionTrait;
 use App\Static\MediaHandler as StaticVarMediaHandler;
 
@@ -42,15 +43,16 @@ class DepartmentController extends Controller
     {
         $department = Department::create($request->all());
 
-        if ($request->input('logo', false)) {
+        if ($logo = $request->input('logo', false)) {
             // Keluarnya nanti public_path("storage/departments/nama filenya")
-            File::move(storage_path('tmp/uploads/') . $request->input('logo'), storage_path("app/public/$this->modelName/") . $request->input('logo'));
+            if (!Storage::exists("public/$this->modelName")) $this->createDirIfNotExist($this->modelName) ;
+            File::move(storage_path("tmp/uploads/$logo"), storage_path("app/public/$this->modelName/$logo"));
             // Create the preview version and thumnail version
-            $this->convertToThumbnail($this->modelName ,$request->input('logo'));
-            $this->convertToPreview($this->modelName ,$request->input('logo'));
+            $this->convertToThumbnail($this->modelName , $logo);
+            $this->convertToPreview($this->modelName , $logo);
             // Create new item of media handlers
             $mediaHandle = CustomMediaHandler::create([
-                'path' => $request->input('logo'),
+                'path' => $logo,
                 'model_id' => $department->id,
                 'model_name' => $this->modelName,
             ]);
@@ -75,8 +77,8 @@ class DepartmentController extends Controller
         $department = Department::where('id', $id);
         $department->update($request->except('_method', '_token', 'logo', '_route_'));
 
-        if ($request->input('logo', false)) {
-            File::move(storage_path('tmp/uploads/') . $request->input('logo'), storage_path("app/public/$this->modelName/") . $request->input('logo'));
+        if ($logo = $request->input('logo', false)) {
+            File::move(storage_path("tmp/uploads/$logo"), storage_path("app/public/$this->modelName/$logo"));
             // If previously exist
             if ($department->first()->getMediaPath()) {
                 CustomMediaHandler::where('model_id', $id)
@@ -84,13 +86,13 @@ class DepartmentController extends Controller
                     ->delete();
             }
             $mediaHandle = CustomMediaHandler::create([
-                'path' => $request->input('logo'),
+                'path' => $logo,
                 'model_id' => $id,
                 'model_name' => $this->modelName,
             ]);
             // Create thumbnail and preview version
-            $this->convertToThumbnail($this->modelName, $request->input('logo'));
-            $this->convertToPreview($this->modelName, $request->input('logo'));
+            $this->convertToThumbnail($this->modelName, $logo);
+            $this->convertToPreview($this->modelName, $logo);
         }
         return redirect()->route('admin.departments.index');
     }

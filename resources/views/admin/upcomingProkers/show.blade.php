@@ -13,6 +13,14 @@
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
+            <div class="row">
+                <div class="col-12 d-flex flex-column">
+                    <h2>Avatar</h2>
+                    @if ($media = $upcomingProker->getMediaPath())
+                        <img src="{{ $media->getUrlPath() }}" alt="" class="img-fluid">     
+                    @endif
+                </div>
+            </div>
             <table class="table table-bordered table-striped">
                 <tbody>
                     <tr>

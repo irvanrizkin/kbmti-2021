@@ -175,6 +175,7 @@ Route::group($routesAttributes, function () {
 
             // Upcoming Proker
             Route::delete('upcoming-prokers/destroy', [AdminUpcomingProkerController::class, 'massDestroy'])->name('upcoming-prokers.massDestroy');
+            Route::post('upcoming-proker/media', [AdminUpcomingProkerController::class, 'storeMedia'])->name('upcoming-prokers.storeMedia');
             Route::resource('upcoming-prokers', AdminUpcomingProkerController::class);
 
             // Event Field Choice
