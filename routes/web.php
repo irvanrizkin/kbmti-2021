@@ -78,6 +78,8 @@ Route::group($routesAttributes, function () {
             // Berita
             // Route::get('/berita', [GuestBeritaController::class, 'berita-1'])->name('berita.berita-1');
             Route::resource('/berita', GuestBeritaController::class);
+            Route::get('/berita/show/{id}', [GuestBeritaController::class, 'show_news']);
+            Route::get('/berita/tag/{tag}', [GuestBeritaController::class, 'show_tag']);
 
             // Product
             Route::redirect('/products', '/under-construction')->name('products');

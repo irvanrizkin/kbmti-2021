@@ -4,125 +4,41 @@
 
 @section('content')
 <section class="berita__top">
-    @include('layouts.heading', ['text' => 'Berita'])
+    @if (empty($tag))
+        @include('layouts.heading', ['text' => 'Berita'])
+    @else
+        @include('layouts.heading', ['text' => "Berita tagged #$tag"])
+    @endif
     <div class="berita__break"></div>
-    @include('layouts.search', ['name' => 'searchBerita', 'text' => 'Info Advokasi...'])
+    @include('layouts.search', ['name' => 'searchBerita', 'text' => 'Cari Berita...'])
 </section>
 <section class="berita__content">
 
     <section class="berita__content">
         <div class="container">
             <div class="row">
-                <div class="col-sm-4">
-                    <div class="berita__card">
-                        <div class="berita__image">
-                            <img src="{{ asset('img/caroufoot4.png') }}">
-                            <div class="berita__card-lembaga">RnD</div>
-                            <div class="berita__card-overlay"></div>
-                        </div>
-                        <div class="berita__container">
+            @if (empty($tag))
+                @foreach($articles as $article)
+                    @include('layouts.news', [
+                        'bureau' => $article->bureau,
+                        'date' => DateTime::createFromFormat('Y-m-d', explode(" ", $article->updated_at)[0])->format('l, d F Y'),
+                        'title' => $article->name,
+                        'url' => url(env("ASSET_URL", "") . "/berita/show/$article->id")
+                    ])
+                @endforeach
+            @else
+                @foreach($articles as $article)
+                    @if ($article->tag_id == $tagId)
+                        @include('layouts.news', [
+                            'bureau' => $article->bureau,
+                            'date' => DateTime::createFromFormat('Y-m-d', explode(" ", $article->updated_at)[0])->format('l, d F Y'),
+                            'title' => $article->name,
+                            'url' => url(env("ASSET_URL", "") . "/berita/show/$article->id")
+                        ])
+                    @endif
+                @endforeach
+            @endif
 
-                            <div class="berita__container-date">
-                                Selasa, 03 Mei 2021
-                            </div>
-                            <div class="berita__container-title">
-                                INFO ADVOKASI Pengambilan Jas Almamater Angkatan 2019 Semester GENAP 2019/2020
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="berita__card">
-                        <div class="berita__image">
-                            <img src="{{ asset('img/caroufoot4.png') }}">
-                            <div class="berita__card-lembaga">ENTRE</div>
-                            <div class="berita__card-overlay"></div>
-                        </div>
-                        <div class="berita__container">
-
-                            <div class="berita__container-date">
-                                Selasa, 03 Mei 2021
-                            </div>
-                            <div class="berita__container-title">
-                                INFO ADVOKASI Pengambilan Jas Almamater Angkatan 2019 Semester GENAP 2019/2020
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="berita__card">
-                        <div class="berita__image">
-                            <img src="{{ asset('img/caroufoot4.png') }}">
-                            <div class="berita__card-lembaga">Komisi 1</div>
-                            <div class="berita__card-overlay"></div>
-                        </div>
-                        <div class="berita__container">
-                            <div class="berita__container-date">
-                                Selasa, 03 Mei 2021
-                            </div>
-                            <div class="berita__container-title">
-                                INFO ADVOKASI Pengambilan Jas Almamater Angkatan 2019 Semester GENAP 2019/2020
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4">
-                    <div class="berita__card">
-                        <div class="berita__image">
-                            <img src="{{ asset('img/caroufoot4.png') }}">
-                            <div class="berita__card-lembaga">SE</div>
-                            <div class="berita__card-overlay"></div>
-                        </div>
-                        <div class="berita__container">
-                            <div class="berita__container-date">
-                                Selasa, 03 Mei 2021
-                            </div>
-                            <div class="berita__container-title">
-                                INFO ADVOKASI Pengambilan Jas Almamater Angkatan 2019 Semester GENAP 2019/2020
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="berita__card">
-                        <div class="berita__image">
-                            <img src="{{ asset('img/caroufoot4.png') }}">
-                            <div class="berita__card-lembaga">HRD</div>
-                            <div class="berita__card-overlay"></div>
-                        </div>
-                        <div class="berita__container">
-                            <div class="berita__container-date">
-                                Selasa, 03 Mei 2021
-                            </div>
-                            <div class="berita__container-title">
-                                INFO ADVOKASI Pengambilan Jas Almamater Angkatan 2019 Semester GENAP 2019/2020
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="berita__card">
-                        <div class="berita__image">
-                            <img src="{{ asset('img/caroufoot4.png') }}">
-                            <div class="berita__card-lembaga">Advocacy</div>
-                            <div class="berita__card-overlay"></div>
-                        </div>
-                        <div class="berita__container">
-                            <div class="berita__container-date">
-                                Selasa, 03 Mei 2021
-                            </div>
-                            <div class="berita__container-title">
-                                INFO ADVOKASI Pengambilan Jas Almamater Angkatan 2019 Semester GENAP 2019/2020
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -130,7 +46,9 @@
 </section>
 <section class="berita__paginator">
     <hr class="berita__hr">
-    {{-- $berita->links('vendor.pagination.custom') --}}
+    @if (empty($tag))
+        {{ $articles->links('vendor.pagination.custom') }}
+    @endif
 </section>
 @endsection
 

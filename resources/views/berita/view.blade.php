@@ -7,50 +7,44 @@
         <section class="berita_detail__top">
             @include('layouts.heading', ['text' => 'Berita'])
             <div class="berita__break"></div>
-            @include('layouts.search', ['name' => 'searchBerita', 'text' => 'Info Advokasi...'])
+            @include('layouts.search', ['name' => 'searchBerita', 'text' => 'Cari Berita...'])
         </section>
         <section class="berita_detail__content">
             <div class="berita_detail__content__img">
               <div class="owl-carousel">
-                <div class="berita_detail__content__img__item" ><img src="{{ asset('img/carou-berita.png') }}" alt="" srcset=""></div>
-                <div class="berita_detail__content__img__item" ><img src="{{ asset('img/carou-berita.png') }}" alt="" srcset=""></div>
-                <div class="berita_detail__content__img__item" ><img src="{{ asset('img/carou-berita.png') }}" alt="" srcset=""></div>
-                <div class="berita_detail__content__img__item" ><img src="{{ asset('img/carou-berita.png') }}" alt="" srcset=""></div>
-                <div class="berita_detail__content__img__item" ><img src="{{ asset('img/carou-berita.png') }}" alt="" srcset=""></div>
-                <div class="berita_detail__content__img__item" ><img src="{{ asset('img/carou-berita.png') }}" alt="" srcset=""></div>
-                <div class="berita_detail__content__img__item" ><img src="{{ asset('img/carou-berita.png') }}" alt="" srcset=""></div>
+                @foreach ($article[0]->getMediaPath() as $images)
+                    <div class="berita_detail__content__img__item" ><img src="{{ $images->imageUrl }}" alt="" srcset=""></div>
+                @endforeach
               </div>
             </div>
-            <div class="berita_detail__content__judul">[ INFO ADVOKASI | MEKANISME UJIAN AKHIR SEMESTER GENAP 2020/2021 FILKOM SECARA DARING ]</div>
+            <div class="berita_detail__content__judul">{{ $article[0]->name }}</div>
             <div class="berita_detail__content__body">
-                Halo Tetizen !</br>
-                </br>
-                Berikut adalah informasi terkait Mekanisme UAS Daring FILKOM Semester Genap 2020/2021 yang dapat dilihat pada link berikut : </br>
-                http://bit.ly/MekanismeUASsmtGenap.</br>
-                </br>
-                [ Narahubung Advo ]</br>
-                • Galang (line : galfnj)</br>
-                • Fira (line : bsrn_)</br>
-                </br>
-                </br>
-                Advocacy Department</br>
-                EMTI FILKOM UB 2021</br>
-                </br>
-                </br>
-                #ADVOCACY_EMTI2021</br>
-                #DIMENSIKREASI</br>
-                #MajuBersamaTI</br>
+                @foreach (explode("<br>", $article[0]->content) as $line)
+                  <p>{{ strip_tags($line) }}</p>
+                @endforeach
             </div>
             <div class="berita_detail__tag">
-                @include('layouts.tag', ['name' => 'Advocacy'])
-                @include('layouts.tag', ['name' => 'Advocacy_EMTI2021'])
-                @include('layouts.tag', ['name' => 'DIMENSIKREASI'])
-                @include('layouts.tag', ['name' => 'MajuBersamaTI'])
+                @foreach ($article[0]->isTagExist() as $tag)
+                    @include('layouts.tag', [
+                        'name' => $tag->name,
+                        'url' => url(env("ASSET_URL", "") . "/berita/tag/$tag->name")
+                    ])
+                @endforeach
             </div>
         </section>
         <section class="berita_detail__footer">
             @include('layouts.heading', ['text' => 'Berita Lainnya'])
             <div class="berita__break"></div>
+            <div class="row">
+                @foreach($otherNews as $article)
+                    @include('layouts.news', [
+                        'bureau' => $article->bureau,
+                        'date' => DateTime::createFromFormat('Y-m-d', explode(" ", $article->updated_at)[0])->format('l, d F Y'),
+                        'title' => $article->name,
+                        'url' => url(env("ASSET_URL", "") . "/berita/show/$article->id")
+                    ])
+                @endforeach
+            </div>
         </section>
     </div>
 @endsection
