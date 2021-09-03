@@ -16,23 +16,21 @@ class BeritaController extends Controller
      */
     public function index(Request $request)
     {
-        $articles = [];
+        // $articles = [];
         if ($tag = $request->query('tag')) {
             $itemTag = Tag::where('name', $tag)->pluck('id')->first();
             $hasTags = HasTag::where('tag_id', $itemTag)->paginate(6);
+            $articleTag = $hasTags->pluck('article');
             $data = [
                 'articles' => $hasTags->pluck('article'),
                 'tag' => $tag ?? false,
-                'tagId' => $itemTag ?? false,
-                'links' => $hasTags->links('vendor.pagination.custom'),
+                'hasTag' => $hasTags,
             ];
         } else {
             $articles = Article::paginate(6);
             $data = [
                 'articles' => $articles,
                 'tag' => $nameTag ?? false,
-                'tagId' => $tag ?? false,
-                'links' => $articles->links('vendor.pagination.custom')
             ];
         }
 

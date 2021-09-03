@@ -18,6 +18,9 @@
         <div class="container">
             <div class="row">
                 @foreach($articles as $article)
+                    @if (!$article)
+                        @continue
+                    @endif
                     @include('layouts.news', [
                         'bureau' => $article->bureau,
                         'date' => DateTime::createFromFormat('Y-m-d', explode(" ", $article->updated_at)[0])->format('l, d F Y'),
@@ -48,7 +51,7 @@
 <section class="berita__paginator">
     <hr class="berita__hr">
     {{-- @if (empty($tag)) --}}
-        {{ $links }}
+        {{ ($hasTag ?? null) ? $hasTag->links('vendor.pagination.custom') : $articles->links('vendor.pagination.custom') }}
     {{-- @endif --}}
 </section>
 @endsection
