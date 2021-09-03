@@ -83,6 +83,9 @@ Route::group($routesAttributes, function () {
             // Product
             Route::redirect('/products', '/under-construction')->name('products');
 
+            // Product test
+            Route::view('/bank-materi', 'bank_materi.index');
+
             // Open Recruitment
             Route::redirect('/open-recruitmen', '/under-construction')->name('open-recruitmen');
 
