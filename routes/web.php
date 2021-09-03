@@ -79,8 +79,6 @@ Route::group($routesAttributes, function () {
             // Berita
             // Route::get('/berita', [GuestBeritaController::class, 'berita-1'])->name('berita.berita-1');
             Route::resource('/berita', GuestBeritaController::class);
-            Route::get('/berita/show/{id}', [GuestBeritaController::class, 'show_news']);
-            Route::get('/berita/tag/{tag}', [GuestBeritaController::class, 'show_tag']);
 
             // Product
             Route::redirect('/products', '/under-construction')->name('products');
@@ -210,21 +208,21 @@ Route::group($routesAttributes, function () {
 
 
 // Testing with pagination
-Route::get("testing-pagination-article", function () {
-    $articles = Article::paginate(6);
-    $hasTag = HasTag::where('tag_id', 1)
-        ->paginate(6);
-    return response()->json([
-        // 'articles' => $articles,
-        'hasTag' => $hasTag,
-        'link' => $hasTag->links(),
-        'articleFromHasTag' => $hasTag[0],
-        'callback' => function () {
+// Route::get("testing-pagination-article", function () {
+//     $articles = Article::paginate(6);
+//     $hasTag = HasTag::where('tag_id', 1)
+//         ->paginate(6);
+//     return response()->json([
+//         // 'articles' => $articles,
+//         'hasTag' => $hasTag,
+//         'link' => $hasTag->links(),
+//         'articleFromHasTag' => $hasTag[0],
+//         'callback' => function () {
             
-        },
-        // // Nomor satu
-        // 'nomorSatu' => $articles[0]->getMediaPath(),
-        // 'hasTag' => $articles[0]->hasTag,
-        // 'hasTagSatu' => $articles[0]->hasTag[0]->tag
-    ]);
-});
+//         },
+//         // // Nomor satu
+//         // 'nomorSatu' => $articles[0]->getMediaPath(),
+//         // 'hasTag' => $articles[0]->hasTag,
+//         // 'hasTagSatu' => $articles[0]->hasTag[0]->tag
+//     ]);
+// });

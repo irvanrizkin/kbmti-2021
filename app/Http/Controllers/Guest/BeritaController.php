@@ -16,8 +16,6 @@ class BeritaController extends Controller
      */
     public function index(Request $request)
     {
-        // Irvan
-        // Article::paginate(6);
         $articles = [];
         if ($tag = $request->query('tag')) {
             $itemTag = Tag::where('name', $tag)->pluck('id')->first();
@@ -50,30 +48,5 @@ class BeritaController extends Controller
             'otherNews' => $otherNews
         ];
         return view('berita.view')->with($data);
-        // return view('berita.show');
-    }
-
-    public function show_news($id)
-    {
-        $article = Article::where('id', $id)->get();
-        $otherNews = Article::where('id', '!=', $id)->limit(3)->get();
-        $data = [
-            'article' => $article,
-            'otherNews' => $otherNews
-        ];
-        return view('berita.view')->with($data);
-    }
-
-    public function show_tag($tag)
-    {
-        $tagId = Tag::where('name', $tag)->get()[0]->id;
-        $articles = Article::join('has_tags', 'has_tags.article_id', '=', 'articles.id')
-            ->paginate(6);
-        $data = [
-            'articles' => $articles,
-            'tag' => $tag,
-            'tagId' => $tagId
-        ];
-        return view('berita.index')->with($data);
     }
 }

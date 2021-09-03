@@ -27,7 +27,7 @@
                 @foreach ($article[0]->isTagExist() as $tag)
                     @include('layouts.tag', [
                         'name' => $tag->name,
-                        'url' => url(env("ASSET_URL", "") . "/berita/tag/$tag->name")
+                        'url' => route('guest.berita.index', [ 'tag' => $tag->name ]),
                     ])
                 @endforeach
             </div>
