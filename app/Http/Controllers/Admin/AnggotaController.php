@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 use File;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Traits\MediaConversionTrait;
-use App\Static\MediaHandler as StaticVarMediaHandler;
+use App\StaticVars\MediaHandler as StaticVarMediaHandler;
 
 class AnggotaController extends Controller
 {

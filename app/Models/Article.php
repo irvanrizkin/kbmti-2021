@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Interfaces\MediaModelInterface;
-use App\Static\MediaHandler as StaticVarMediaHandler;
+use App\StaticVars\MediaHandler as StaticVarMediaHandler;
 
 
 class Article extends Model implements MediaModelInterface

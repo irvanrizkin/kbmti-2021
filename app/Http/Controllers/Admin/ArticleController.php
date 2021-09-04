@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Http\Controllers\Traits\MediaConversionTrait;
 use File;
 use Illuminate\Support\Facades\Storage;
-use App\Static\MediaHandler as StaticVarMediaHandler;
+use App\StaticVars\MediaHandler as StaticVarMediaHandler;
 
 class ArticleController extends Controller
 {

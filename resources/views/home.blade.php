@@ -139,7 +139,7 @@
 </section>
 
 
-@if ($articles)
+@if ($articles && count($articles) >= 6)
 <section class="home__down">
 
     <div class="d-flex justify-content-center" data-aos="fade-down">

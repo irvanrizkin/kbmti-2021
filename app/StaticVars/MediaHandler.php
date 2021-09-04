@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Static;
+namespace App\StaticVars;
 
 class MediaHandler
 {
