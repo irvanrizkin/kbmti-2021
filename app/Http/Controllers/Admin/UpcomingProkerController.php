@@ -16,7 +16,7 @@ use File;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Traits\MediaConversionTrait;
 use App\Models\Department;
-use App\Static\MediaHandler as StaticVarMediaHandler;
+use App\StaticVars\MediaHandler as StaticVarMediaHandler;
 
 class UpcomingProkerController extends Controller
 {
