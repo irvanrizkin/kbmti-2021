@@ -14,7 +14,7 @@
                                 if ($anggota->getMediaPath()) {
                                     $imgSource = $anggota->getMediaPath()->imageUrl ?? "";
                                 } else {
-                                    $imgSource = url("/img/kiwul.png");
+                                    $imgSource = asset("/img/anon.png");
                                 }
                             @endphp
                             <img src="{{ $imgSource }}" alt="" class="card-member__image">

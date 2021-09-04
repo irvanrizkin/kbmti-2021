@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use App\Static\MediaHandler as StaticVarMediaHandler;
 
 // GuestController
 use App\Http\Controllers\Guest\HomeController as GuestHomeController;
@@ -177,6 +179,7 @@ Route::group($routesAttributes, function () {
 
             // Upcoming Proker
             Route::delete('upcoming-prokers/destroy', [AdminUpcomingProkerController::class, 'massDestroy'])->name('upcoming-prokers.massDestroy');
+            Route::post('upcoming-proker/media', [AdminUpcomingProkerController::class, 'storeMedia'])->name('upcoming-prokers.storeMedia');
             Route::resource('upcoming-prokers', AdminUpcomingProkerController::class);
 
             // Event Field Choice
@@ -192,7 +195,9 @@ Route::group($routesAttributes, function () {
 });
 
 // Testing for development experimental
+
 // Route::view('experimental-department', 'department/experimental_department_template');
+
 // Route::view('template-departemen', 'department_template');
 // Route::get('testing-model-department', function () {
 //     $var = Department::find(1);
@@ -209,6 +214,22 @@ Route::group($routesAttributes, function () {
 //     ]);
 // });
 
+// Route::get('testing-query-string', function (Request $request) {
+//     return response()->json([
+//         'success' => true,
+//         'message' => "returned string",
+//         'help' => $request->query('help') ?? "nothing to offer"
+//     ]);
+// });
+
+// Route::view('testing-custom-quote', 'testing.custom-quote');
+
+// Route::get('testing-static-media-handler', function () {
+//     return response()->json([
+//         "success" => true,
+//         "message" => StaticVarMediaHandler::UpcomingProkerModelName,
+//     ]);
+// });
 
 // Testing with pagination
 // Route::get("testing-pagination-article", function () {

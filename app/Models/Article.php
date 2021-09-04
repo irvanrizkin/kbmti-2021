@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Interfaces\MediaModelInterface;
+use App\Static\MediaHandler as StaticVarMediaHandler;
 
 
 class Article extends Model implements MediaModelInterface
@@ -41,7 +42,7 @@ class Article extends Model implements MediaModelInterface
         'ENTRE' => 'Entrepreneurship'
     ];
 
-    private $const_ModelName = "articles";
+    private $const_ModelName = StaticVarMediaHandler::ArticleModelName;
 
     protected function serializeDate(DateTimeInterface $date)
     {

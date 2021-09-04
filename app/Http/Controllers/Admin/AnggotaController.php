@@ -14,13 +14,15 @@ use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use File;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Traits\MediaConversionTrait;
+use App\Static\MediaHandler as StaticVarMediaHandler;
 
 class AnggotaController extends Controller
 {
     use MediaUploadingTrait;
     use MediaConversionTrait;
-    private $modelName = "anggotas";
+    private $modelName = StaticVarMediaHandler::AnggotaModelName;
 
     public function index()
     {
@@ -44,14 +46,14 @@ class AnggotaController extends Controller
     {
         $anggotum = Anggotum::create($request->all());
 
-        if ($request->input('image', false)) {
-            // $anggotum->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
-            File::move(storage_path('tmp/uploads/') . $request->input('image'), storage_path('app/public/anggotas/') . $request->input('image'));
+        if ( $image = $request->input('image', false) ) {
+            if (!Storage::exists("public/$this->modelName")) $this->createDirIfNotExist($this->modelName) ;
+            File::move(storage_path("tmp/uploads/$image"), storage_path("app/public/$this->modelName/$image"));
             // Create the preview version and thumnail version
-            $this->convertToThumbnail($this->modelName, $request->input('image'));
-            $this->convertToPreview($this->modelName, $request->input('image'));
+            $this->convertToThumbnail($this->modelName, $image);
+            $this->convertToPreview($this->modelName, $image);
             $mediaHandle = CustomMediaHandler::create([
-                'path' => $request->input('image'),
+                'path' => $image,
                 'model_id' => $anggotum->id,
                 'model_name' => $this->modelName,
             ]);
@@ -81,8 +83,8 @@ class AnggotaController extends Controller
         $anggotum = Anggotum::where('id', $id);
         $anggotum->update($request->except('_method', '_token', 'image', '_route_'));
 
-        if ($request->input('image', false)) {
-            File::move(storage_path('tmp/uploads/') . $request->input('image'), storage_path('app/public/anggotas/') . $request->input('image'));
+        if ($image = $request->input('image', false)) {
+            File::move(storage_path("tmp/uploads/$image"), storage_path("app/public/$this->modelName/$image"));
             // If previously exist
             if ($anggotum->first()->getMediaPath()) {
                 CustomMediaHandler::where('model_id', $id)
@@ -90,13 +92,13 @@ class AnggotaController extends Controller
                     ->delete();
             }
             $mediaHandle = CustomMediaHandler::create([
-                'path' => $request->input('image'),
+                'path' => $image,
                 'model_id' => $id,
                 'model_name' => $this->modelName,
             ]);
             // Create thumnail and preview version
-            $this->convertToThumbnail($this->modelName, $request->input('image'));
-            $this->convertToPreview($this->modelName, $request->input('image'));
+            $this->convertToThumbnail($this->modelName, $image);
+            $this->convertToPreview($this->modelName, $image);
 
         }
 

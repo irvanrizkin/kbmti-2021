@@ -15,6 +15,7 @@ class DepartmentController extends Controller
         /**
          * NOTE: nonDept included:
          *  - Ketua dan Wakil ketua EMTI
+         *  - Koordinator dan Sekretaris Jenderal KBMTI
          */
 
         $arrayDept = [
@@ -35,12 +36,20 @@ class DepartmentController extends Controller
             'komisi3' => Department::firstWhere('name', 'Komisi 3') ?? null
         ];
 
+        // Group decision
+        $group = request()->query('group') ?? "emti"; // Default to emti
+        if ($group == "emti") {
+            $subGroup = request()->query('subGroup') ?? "kahim_wakahim"; // Default emti is kahim_wakahim
+        } else {
+            $subGroup = request()->query('subGroup') ?? "nonKomisi"; // Default to kahim_wakahim
+        }
+        $arrayDept[$subGroup]->isVisible = true;
         // Testing
         // return response()->json([
-        //     'nonDept' => Department::firstWhere('initial', 'Non-Dept')->getUrlPath(),
+        //     "arrayDept" => $arrayDept
         // ]);
 
         // return view('department_template', compact('arrayDept'));
-        return view('department.department_template', compact('arrayDept'));
+        return view('department.department_template', compact('arrayDept', 'group', 'subGroup'));
     }
 }

@@ -3,16 +3,28 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyUpcomingProkerRequest;
 use App\Http\Requests\StoreUpcomingProkerRequest;
 use App\Http\Requests\UpdateUpcomingProkerRequest;
 use App\Models\UpcomingProker;
+use App\Models\Media_handlers as CustomMediaHandler;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use File;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Traits\MediaConversionTrait;
+use App\Models\Department;
+use App\Static\MediaHandler as StaticVarMediaHandler;
 
 class UpcomingProkerController extends Controller
 {
+
+    use MediaUploadingTrait;
+    use MediaConversionTrait;
+    private $modelName = StaticVarMediaHandler::UpcomingProkerModelName;
+
     public function index()
     {
         abort_if(Gate::denies('upcoming_proker_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -33,6 +45,20 @@ class UpcomingProkerController extends Controller
     {
         $upcomingProker = UpcomingProker::create($request->all());
 
+        if ( $image = $request->input('image', false) ) {
+            if (!Storage::exists("public/$this->modelName")) $this->createDirIfNotExist($this->modelName) ;
+            File::move( storage_path("tmp/uploads/$image"), storage_path("app/public/$this->modelName/$image") );
+            // Create the preview version and thumbnail version
+            $this->convertToThumbnail($this->modelName, $image);
+            $this->convertToPreview($this->modelName, $image);
+
+            $mediaHandler = CustomMediaHandler::create([
+                'path' => $image,
+                'model_id' => $upcomingProker->id,
+                'model_name' => $this->modelName
+            ]);
+        }
+
         return redirect()->route('admin.upcoming-prokers.index');
     }
 
@@ -43,9 +69,28 @@ class UpcomingProkerController extends Controller
         return view('admin.upcomingProkers.edit', compact('upcomingProker'));
     }
 
-    public function update(UpdateUpcomingProkerRequest $request, UpcomingProker $upcomingProker)
+    public function update(UpdateUpcomingProkerRequest $request, $id)
     {
-        $upcomingProker->update($request->all());
+        $upcomingProker = Department::where('id', $id);
+        $upcomingProker->update($request->except('_method', '_token', 'logo', '_route_'));
+
+        if ($image = $request->input('image', false)) {
+            File::move(storage_path("tmp/uploads/$image"), storage_path("app/public/$this->modelName/$image"));
+            // If previously exist
+            if ($upcomingProker->first()->getMediaPath()) {
+                CustomMediaHandler::where('model_id', $id)
+                    ->where('model_name', $this->modelName)
+                    ->delete();
+            }
+            $mediaHandle = CustomMediaHandler::create([
+                'path' => $image,
+                'model_id' => $id,
+                'model_name' => $this->modelName
+            ]);
+            // Create thumbnail and preview version
+            $this->convertToThumbnail($this->modelName, $image);
+            $this->convertToPreview($this->modelName, $image);
+        }
 
         return redirect()->route('admin.upcoming-prokers.index');
     }
