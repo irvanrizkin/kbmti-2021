@@ -139,7 +139,7 @@
 </section>
 
 
-
+@if ($articles)
 <section class="home__down">
 
     <div class="d-flex justify-content-center" data-aos="fade-down">
@@ -217,4 +217,5 @@
         </div>
     </div>
 </section>
+@endif
 @endsection
