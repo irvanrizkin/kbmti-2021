@@ -1,0 +1,15 @@
+.subfolder {
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    padding: 32px;
+    &__img {
+        width: unset !important;
+        margin-right: 22px;
+    }
+    &__type {
+        font-family: ITC Cheltenham Std;
+        font-weight: 300;
+        font-size: 1.5rem;
+        color: #24231F;
+    }
+}
