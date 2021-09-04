@@ -33,6 +33,7 @@ use App\Http\Controllers\Admin\DepartmentController as AdminDepartmentController
 // Models
 use App\Models\Department;
 use App\Models\Article;
+use App\Models\HasTag;
 
 /*
 |--------------------------------------------------------------------------
@@ -223,9 +224,29 @@ Route::group($routesAttributes, function () {
 
 // Route::view('testing-custom-quote', 'testing.custom-quote');
 
-Route::get('testing-static-media-handler', function () {
-    return response()->json([
-        "success" => true,
-        "message" => StaticVarMediaHandler::UpcomingProkerModelName,
-    ]);
-});
+// Route::get('testing-static-media-handler', function () {
+//     return response()->json([
+//         "success" => true,
+//         "message" => StaticVarMediaHandler::UpcomingProkerModelName,
+//     ]);
+// });
+
+// Testing with pagination
+// Route::get("testing-pagination-article", function () {
+//     $articles = Article::paginate(6);
+//     $hasTag = HasTag::where('tag_id', 1)
+//         ->paginate(6);
+//     return response()->json([
+//         // 'articles' => $articles,
+//         'hasTag' => $hasTag,
+//         'link' => $hasTag->links(),
+//         'articleFromHasTag' => $hasTag[0],
+//         'callback' => function () {
+            
+//         },
+//         // // Nomor satu
+//         // 'nomorSatu' => $articles[0]->getMediaPath(),
+//         // 'hasTag' => $articles[0]->hasTag,
+//         // 'hasTagSatu' => $articles[0]->hasTag[0]->tag
+//     ]);
+// });

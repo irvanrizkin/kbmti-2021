@@ -137,4 +137,26 @@ class Article extends Model implements MediaModelInterface
         }
         return url(env("ASSET_URL", "") . "/storage/$this->const_ModelName/thumbails/$this->path");
     }
+
+    // Helper funtion to Single Media Handler
+    public function getSingleMediaPath()
+    {
+        // should return an array of media handlers
+        $query = $this->query()
+            ->join('media_handlers', 'media_handlers.model_id', '=', 'articles.id')
+            ->where('media_handlers.model_id', '=', $this->id)
+            ->where('media_handlers.model_name', '=', $this->const_ModelName)
+            ->where('media_handlers.deleted_at', '=', null)
+            ->get();
+        if (count($query) != 0) {
+            foreach ($query as $item) {
+                $item->imageUrl = $this->getUrlPath($item->path);
+                $item->thumbnail = $this->getThumbnailUrlPath($item->path);
+                $item->preview = $this->getPreviewUrlPath($item->path);
+            }
+            return $query[0];
+        }
+
+        return null;
+    }
 }

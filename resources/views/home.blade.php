@@ -156,101 +156,45 @@
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
                             <div class="row">
-                                <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1000">
-                                    <a href="https://google.com" class="home__down__link">
-                                        <img src="{{ asset('img/caroufoot1.png') }}" class="img-fluid">
-                                        <div class="d-flex justify-content-center">
-                                            <div class="home__down__date">
-                                                Selasa, 03 Mei 2021
+                                @for ($i = 0; $i < 3; $i++)
+                                    <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1000">
+                                        <a href="https://google.com" class="home__down__link">
+                                            <img src="{{ $articles[$i]->getSingleMediaPath()->imageUrl }}" class="img-fluid">
+                                            <div class="d-flex justify-content-center">
+                                                <div class="home__down__date">
+                                                    {{ DateTime::createFromFormat('Y-m-d', explode(" ", $articles[$i]->updated_at)[0])->format('l, d F Y') }}
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="d-flex justify-content-center">
-                                            <div class="home__down__title">
-                                                [INFO ADVOKASI Pengambilan Jas Almamater]
+                                            <div class="d-flex justify-content-center">
+                                                <div class="home__down__title">
+                                                    {{ $articles[$i]->name }}
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1400">
-                                    <a href="https://google.com" class="home__down__link">
-                                        <img src="{{ asset('img/caroufoot2.png')  }}" class="img-fluid">
-                                        <div class="d-flex justify-content-center">
-                                            <div class="home__down__date">
-                                                Senin, 01 Mei 2021
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-center">
-                                            <div class="home__down__title">
-                                                [COMMERATION Hari Buruh Internasional]
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1800">
-                                    <a href="https://google.com" class="home__down__link">
-                                        <img src="{{ asset('img/caroufoot3.png') }}" class="img-fluid">
-                                        <div class="d-flex justify-content-center">
-                                            <div class="home__down__date">
-                                                Senin, 01 Mei 2021
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-center">
-                                            <div class="home__down__title">
-                                                [Birthday Calender Mei]
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
+                                        </a>
+                                    </div>
+                                @endfor
                             </div>
                         </div>
                         {{-- End of Carousel item --}}
                         <div class="carousel-item">
                             <div class="row">
-                                <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1000">
-                                    <a href="https://google.com" class="home__down__link">
-                                        <img src="{{ asset('img/caroufoot1.png') }}" class="img-fluid">
-                                        <div class="d-flex justify-content-center">
-                                            <div class="home__down__date">
-                                                Selasa, 03 Mei 2021
+                            @for ($i = 3; $i < 6; $i++)
+                                    <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1000">
+                                        <a href="https://google.com" class="home__down__link">
+                                            <img src="{{ $articles[$i]->getSingleMediaPath()->imageUrl }}" class="img-fluid">
+                                            <div class="d-flex justify-content-center">
+                                                <div class="home__down__date">
+                                                    {{ DateTime::createFromFormat('Y-m-d', explode(" ", $articles[$i]->updated_at)[0])->format('l, d F Y') }}
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="d-flex justify-content-center">
-                                            <div class="home__down__title">
-                                                [INFO ADVOKASI Pengambilan Jas Almamater]
+                                            <div class="d-flex justify-content-center">
+                                                <div class="home__down__title">
+                                                    {{ $articles[$i]->name }}
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1400">
-                                    <a href="https://google.com" class="home__down__link">
-                                        <img src="{{ asset('img/caroufoot2.png')  }}" class="img-fluid">
-                                        <div class="d-flex justify-content-center">
-                                            <div class="home__down__date">
-                                                Senin, 01 Mei 2021
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-center">
-                                            <div class="home__down__title">
-                                                [COMMERATION Hari Buruh Internasional]
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1800">
-                                    <a href="https://google.com" class="home__down__link">
-                                        <img src="{{ asset('img/caroufoot3.png') }}" class="img-fluid">
-                                        <div class="d-flex justify-content-center">
-                                            <div class="home__down__date">
-                                                Senin, 01 Mei 2021
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-center">
-                                            <div class="home__down__title">
-                                                [Birthday Calender Mei]
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
+                                        </a>
+                                    </div>
+                                @endfor
                             </div>
                         </div>
                         {{-- End of Carousel Item --}}
