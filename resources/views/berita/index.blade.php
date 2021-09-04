@@ -14,46 +14,50 @@
 </section>
 <section class="berita__content">
 
+@if ($articles)
     <section class="berita__content">
         <div class="container">
-            <div class="row">
-                @foreach($articles as $article)
-                    @if (!$article)
-                        @continue
-                    @endif
-                    @include('layouts.news', [
-                        'bureau' => $article->bureau,
-                        'date' => DateTime::createFromFormat('Y-m-d', explode(" ", $article->updated_at)[0])->format('l, d F Y'),
-                        'title' => $article->name,
-                        'url' => url(env("ASSET_URL", "") . "/berita/show/$article->id"),
-                        'url' => route('guest.berita.show', [ 'beritum' => $article->id ])
-                    ])
-                @endforeach
-            {{-- @if (empty($tag))
-            @else
-                @foreach($articles as $article)
-                    @if ($article->tag_id == $tagId)
+                <div class="row">
+                    @foreach($articles as $article)
+                        @if (!$article)
+                            @continue
+                        @endif
                         @include('layouts.news', [
                             'bureau' => $article->bureau,
                             'date' => DateTime::createFromFormat('Y-m-d', explode(" ", $article->updated_at)[0])->format('l, d F Y'),
                             'title' => $article->name,
-                            'url' => url(env("ASSET_URL", "") . "/berita/show/$article->id")
+                            'url' => url(env("ASSET_URL", "") . "/berita/show/$article->id"),
+                            'url' => route('guest.berita.show', [ 'beritum' => $article->id ])
                         ])
-                    @endif
-                @endforeach
-            @endif --}}
+                    @endforeach
+                {{-- @if (empty($tag))
+                @else
+                    @foreach($articles as $article)
+                        @if ($article->tag_id == $tagId)
+                            @include('layouts.news', [
+                                'bureau' => $article->bureau,
+                                'date' => DateTime::createFromFormat('Y-m-d', explode(" ", $article->updated_at)[0])->format('l, d F Y'),
+                                'title' => $article->name,
+                                'url' => url(env("ASSET_URL", "") . "/berita/show/$article->id")
+                            ])
+                        @endif
+                    @endforeach
+                @endif --}}
 
             </div>
         </div>
     </section>
 
-</section>
-<section class="berita__paginator">
-    <hr class="berita__hr">
-    {{-- @if (empty($tag)) --}}
-        {{ ($hasTag ?? null) ? $hasTag->links('vendor.pagination.custom') : $articles->links('vendor.pagination.custom') }}
-    {{-- @endif --}}
-</section>
+    </section>
+    <section class="berita__paginator">
+        <hr class="berita__hr">
+        {{-- @if (empty($tag)) --}}
+            {{ ($hasTag ?? null) ? $hasTag->links('vendor.pagination.custom') : $articles->links('vendor.pagination.custom') }}
+        {{-- @endif --}}
+    </section>
+@else
+<h1 class="text-center mt-3 mb-3" style="font-family: Regis;">Berita tidak ditemukan</h1>
+@endif
 @endsection
 
 @section('custom-script')
