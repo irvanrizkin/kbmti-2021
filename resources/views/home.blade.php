@@ -159,7 +159,7 @@
                                 @for ($i = 0; $i < 3; $i++)
                                     <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1000">
                                         <a href="https://google.com" class="home__down__link">
-                                            <img src="{{ $articles[$i]->getSingleMediaPath()->imageUrl }}" class="img-fluid">
+                                            <img src="{{ $articles[$i]->getSingleMediaPath()->imageUrl }}" class="img-fluid home__down__img">
                                             <div class="d-flex justify-content-center">
                                                 <div class="home__down__date">
                                                     {{ DateTime::createFromFormat('Y-m-d', explode(" ", $articles[$i]->updated_at)[0])->format('l, d F Y') }}
@@ -181,7 +181,7 @@
                             @for ($i = 3; $i < 6; $i++)
                                     <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1000">
                                         <a href="https://google.com" class="home__down__link">
-                                            <img src="{{ $articles[$i]->getSingleMediaPath()->imageUrl }}" class="img-fluid">
+                                            <img src="{{ $articles[$i]->getSingleMediaPath()->imageUrl }}" class="img-fluid home__down__img">
                                             <div class="d-flex justify-content-center">
                                                 <div class="home__down__date">
                                                     {{ DateTime::createFromFormat('Y-m-d', explode(" ", $articles[$i]->updated_at)[0])->format('l, d F Y') }}

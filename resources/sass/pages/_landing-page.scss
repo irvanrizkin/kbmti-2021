@@ -175,9 +175,9 @@
     }
 
 
- 
- 
-  
+
+
+
 
     &down {
         background-color: #F5F5F5;
@@ -191,7 +191,7 @@
         &__text {
             font-weight: 600;
             font-size: 3rem;
-            color: #0c0e0d; 
+            color: #0c0e0d;
             margin-top: 10px;
             // margin-bottom: 10px;
             font-family: ITC Cheltenham Std;
@@ -225,6 +225,12 @@
         &__arrows {
             margin-bottom: 175px;
         }
-        
+        &__img {
+            width: 500px;
+            height: 330px;
+            object-fit: cover;
+            border-radius: 30px;
+        }
+
     }
 }
