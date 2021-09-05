@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 @section('content')
-<section class="home__top" style="background-image: url('{{ asset('img/img-cover.png') }}')">
+<section class="home__top" style="background-image: url('{{ asset('img/landing-page-jumbotron.jpg') }}')">
     <div class="home__top__item animate__animated animate__bounce animate__slow">
         <div class="home__top__item__logo">
             <img src="{{ asset('img/logo-putih.svg') }}" alt="">
@@ -22,7 +22,7 @@
             Keluarga Besar Mahasiswa <span style="color: #951C21;">Teknologi Informasi</span>
         </div>
         <div class="home__top2__item__desc ms-auto me-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie in lacus tempor praesent nunc. Pharetra phasellus ac tincidunt varius ac semper feugiat in cursus.
+            Keluarga Besar Mahasiswa Teknologi Informasi (KBMTI) merupakan lembaga mahasiswa program studi Teknologi Informasi yang terdiri dari EMTI dan BPMTI. KBMTI berfungsi sebagai wadah pembelajaran organisasi dan kreativitas mahasiswa Teknologi Infomasi FILKOM UB untuk menyalurkan aspirasi dan berkarya dalam bidang akademik maupun non akademik.
         </div>
     </div>
 </section>
@@ -158,7 +158,7 @@
                             <div class="row">
                                 @for ($i = 0; $i < 3; $i++)
                                     <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1000">
-                                        <a href="https://google.com" class="home__down__link">
+                                        <a href="{{ route('guest.articles.show' , [ "beritum" => $articles[$i] ]) }}" class="home__down__link">
                                             <img src="{{ $articles[$i]->getSingleMediaPath()->imageUrl }}" class="img-fluid home__down__img">
                                             <div class="d-flex justify-content-center">
                                                 <div class="home__down__date">
@@ -180,7 +180,7 @@
                             <div class="row">
                             @for ($i = 3; $i < 6; $i++)
                                     <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1000">
-                                        <a href="https://google.com" class="home__down__link">
+                                        <a href="{{ route('guest.articles.show' , [ "beritum" => $articles[$i] ]) }}" class="home__down__link">
                                             <img src="{{ $articles[$i]->getSingleMediaPath()->imageUrl }}" class="img-fluid home__down__img">
                                             <div class="d-flex justify-content-center">
                                                 <div class="home__down__date">
