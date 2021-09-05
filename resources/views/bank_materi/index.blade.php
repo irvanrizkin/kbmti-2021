@@ -20,6 +20,26 @@
                 @include('layouts.subfolder', ['text' => 'Kumpulan Soal'])
             </div>
         </div>
+        <div class="row mt-5">
+            <table class="table table-product">
+                <thead>
+                    <tr>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Terakhir Diunggah</th>
+                        <th scope="col">Ukuran</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="{{ asset('img/note-blue.svg') }}" class="table-product__svg-name" alt="">Contoh Soal.docx</td>
+                        <td>3 Oktober 2021</td>
+                        <td>31 KB</td>
+                        <td><a href="#"><img src="{{ asset('img/download-icon.svg') }}" alt=""></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 @endsection
 

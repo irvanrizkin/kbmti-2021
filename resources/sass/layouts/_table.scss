@@ -1,0 +1,17 @@
+.table-product {
+    border-color: #F5F5F5;
+    font-family: ITC Cheltenham Std;
+    color: #4E4B66;
+    font-size: 1.5rem;
+    & > :not(caption) > * > * {
+        border-bottom-width: 3px !important;
+    }
+    & > :not(:last-child) > :last-child > * {
+        color: #24231F;
+        font-weight: normal;
+        border-bottom-color: #F5F5F5;
+    }
+    &__svg-name {
+        margin-right: 10px;
+    }
+}
