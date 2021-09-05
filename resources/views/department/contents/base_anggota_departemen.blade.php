@@ -48,7 +48,7 @@
                             if ($anggota->getMediaPath()) {
                                     $imgSource = $anggota->getMediaPath()->imageUrl ?? "";
                                 } else {
-                                    $imgSource = asset("/img/kiwul.png");
+                                    $imgSource = asset("/img/anon.png");
                                 }
                         @endphp
                         <div class="card-member text-center d-flex flex-column">
