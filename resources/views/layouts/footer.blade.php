@@ -20,13 +20,13 @@
             <div class="col-md-2 d-flex footer__col__mid">
                 <div class="">
                     <div class="footer__title">Produk</div>
-                    <a href="#" class="footer__item d-block">Bank Materi</a>
-                    <a href="#" class="footer__item d-block">Bank Soal</a>
-                    <a href="#" class="footer__item d-block">Info Event TI</a>
-                    <a href="#" class="footer__item d-block">Info Beasiswa</a>
-                    <a href="#" class="footer__item d-block">Info Karir</a>
-                    <a href="#" class="footer__item d-block">TI Talks</a>
-                    <a href="#" class="footer__item d-block">Pengajuan Surat</a>
+                    <a href="{{ route('guest.products') }}" class="footer__item d-block">Bank Materi</a>
+                    <a href="{{ route('guest.products') }}" class="footer__item d-block">Bank Soal</a>
+                    <a href="{{ route('guest.products') }}" class="footer__item d-block">Info Event TI</a>
+                    <a href="{{ route('guest.products') }}" class="footer__item d-block">Info Beasiswa</a>
+                    <a href="{{ route('guest.products') }}" class="footer__item d-block">Info Karir</a>
+                    <a href="{{ route('guest.products') }}" class="footer__item d-block">TI Talks</a>
+                    <a href="{{ route('guest.products') }}" class="footer__item d-block">Pengajuan Surat</a>
                 </div>
             </div>
             <div class="col-md-3 d-flex footer__col__mid">

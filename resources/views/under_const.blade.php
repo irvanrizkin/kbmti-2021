@@ -17,9 +17,9 @@
                 </h1>
             </div>
             <div class="under_const__mid__item">
-                <button class="rounded-pill under_const__button">
+                <a class="rounded-pill under_const__button" href="{{ route("guest.landing.home") }}">
                     Kembali
-                </button>
+                </a>
             </div>
         </section>
     </div>

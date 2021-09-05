@@ -23,13 +23,19 @@
     }
 
     &__button {
-        background-color:#951C21;
+        background-color: #951C21;
         color: white;
-        padding: 15px 32px;
+        padding: 12.5px 32px;
         text-align: center;
         display: inline-block;
-        font-size: 2rem;
+        font-size: 18px;
         font-weight: 400;
+        font-family: ITC CHELTENHAM STD;
+        text-decoration: none;
+        &:hover {
+            background-color: black;
+            color: white;
+        }
     }
 
     &__content {
@@ -38,7 +44,7 @@
         font-family: ITC CHELTENHAM STD;
     }
 
-    &__star_ornament{
+    &__star_ornament {
         padding-right: 50rem;
     }
 }
