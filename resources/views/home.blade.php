@@ -158,7 +158,7 @@
                             <div class="row">
                                 @for ($i = 0; $i < 3; $i++)
                                     <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1000">
-                                        <a href="{{ route('guest.articles.show' , [ "beritum" => $articles[$i] ]) }}" class="home__down__link">
+                                        <a href="{{ route('guest.berita.show' , [ "beritum" => $articles[$i] ]) }}" class="home__down__link">
                                             <img src="{{ $articles[$i]->getSingleMediaPath()->imageUrl }}" class="img-fluid home__down__img">
                                             <div class="d-flex justify-content-center">
                                                 <div class="home__down__date">
@@ -180,7 +180,7 @@
                             <div class="row">
                             @for ($i = 3; $i < 6; $i++)
                                     <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1000">
-                                        <a href="{{ route('guest.articles.show' , [ "beritum" => $articles[$i] ]) }}" class="home__down__link">
+                                        <a href="{{ route('guest.berita.show' , [ "beritum" => $articles[$i] ]) }}" class="home__down__link">
                                             <img src="{{ $articles[$i]->getSingleMediaPath()->imageUrl }}" class="img-fluid home__down__img">
                                             <div class="d-flex justify-content-center">
                                                 <div class="home__down__date">
