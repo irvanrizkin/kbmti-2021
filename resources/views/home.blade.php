@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 @section('content')
-<section class="home__top" style="background-image: url('{{ asset('img/landing-page-jumbotron.jpg') }}')">
+<section class="home__top" style="background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url('{{ asset('img/landing-page-jumbotron.jpg') }}');">
     <div class="home__top__item animate__animated animate__bounce animate__slow">
         <div class="home__top__item__logo">
             <img src="{{ asset('img/logo-putih.svg') }}" alt="">
@@ -119,13 +119,13 @@
                     <div id="carouselExampleIndicators" class="carousel mid2__carousel__slide slide w-100" data-bs-ride="carousel">
                         <div class="carousel-inner home__mid2__carousel__slide__inner">
                             <div class="carousel-item active">
-                                <img src="{{ asset('img/proker-carousel.png') }}" class="d-block w-100" alt="...">
+                                <img src="{{ asset('img/carousel-1.png') }}" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('img/proker-carousel.png') }}" class="d-block w-100" alt="...">
+                                <img src="{{ asset('img/carousel-2.png') }}" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('img/proker-carousel.png') }}" class="d-block w-100" alt="...">
+                                <img src="{{ asset('img/carousel-3.png') }}" class="d-block w-100" alt="...">
                             </div>
                         </div>
                     </div>
@@ -158,7 +158,7 @@
                             <div class="row">
                                 @for ($i = 0; $i < 3; $i++)
                                     <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1000">
-                                        <a href="{{ route('guest.articles.show' , [ "beritum" => $articles[$i] ]) }}" class="home__down__link">
+                                        <a href="{{ route('guest.berita.show' , [ "beritum" => $articles[$i] ]) }}" class="home__down__link">
                                             <img src="{{ $articles[$i]->getSingleMediaPath()->imageUrl }}" class="img-fluid home__down__img">
                                             <div class="d-flex justify-content-center">
                                                 <div class="home__down__date">
@@ -180,7 +180,7 @@
                             <div class="row">
                             @for ($i = 3; $i < 6; $i++)
                                     <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1000">
-                                        <a href="{{ route('guest.articles.show' , [ "beritum" => $articles[$i] ]) }}" class="home__down__link">
+                                        <a href="{{ route('guest.berita.show' , [ "beritum" => $articles[$i] ]) }}" class="home__down__link">
                                             <img src="{{ $articles[$i]->getSingleMediaPath()->imageUrl }}" class="img-fluid home__down__img">
                                             <div class="d-flex justify-content-center">
                                                 <div class="home__down__date">

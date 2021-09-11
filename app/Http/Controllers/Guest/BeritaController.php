@@ -26,6 +26,12 @@ class BeritaController extends Controller
                 'tag' => $tag ?? false,
                 'hasTag' => $hasTags,
             ];
+        } else if ($search = $request->query('search')) {
+            $articles = Article::where('name', 'LIKE','%'.$search.'%')->paginate(6);
+            $data = [
+                'articles' => $articles,
+                'tag' => $tag ?? false,
+            ];
         } else {
             $articles = Article::paginate(6);
             $data = [
