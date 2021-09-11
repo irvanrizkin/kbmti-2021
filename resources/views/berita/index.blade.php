@@ -53,5 +53,15 @@
             $('.berita__card-overlay').fadeOut(0);
         });
     });
+
+    const searchText = document.querySelector('#searchBerita');
+    searchText.addEventListener('keypress', (event) => {
+        if (event.keyCode === 13) {
+            let address = window.location.href.split('/');
+            let destination = `${address[0]}/${address[1]}/${address[2]}/berita?search=${searchText.value}`;
+            event.preventDefault()
+            window.location.href = destination
+        }
+    })
 </script>
 @endsection
