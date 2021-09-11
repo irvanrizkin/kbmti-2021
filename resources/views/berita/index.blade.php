@@ -56,7 +56,7 @@
 
     const searchText = document.querySelector('#searchBerita');
     searchText.addEventListener('keypress', (event) => {
-        if (event.keyCode === 13) {
+        if (event.key === 'Enter') {
             let address = window.location.href.split('/');
             let destination = `${address[0]}/${address[1]}/${address[2]}/berita?search=${searchText.value}`;
             event.preventDefault()
