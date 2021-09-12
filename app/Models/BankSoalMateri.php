@@ -12,6 +12,11 @@ class BankSoalMateri extends Model
     use SoftDeletes;
     use HasFactory;
 
+    public const TYPE_SELECT = [
+        'Soal' => "Soal",
+        "Materi" => "Materi"
+    ];
+
     public const SUB_TYPE_SELECT = [
         'DOCS' => 'docs',
         'PPT'  => 'ppt',
@@ -31,6 +36,7 @@ class BankSoalMateri extends Model
         'name',
         'link',
         'matkuliah_id',
+        'type',
         'sub_type',
         'created_at',
         'updated_at',

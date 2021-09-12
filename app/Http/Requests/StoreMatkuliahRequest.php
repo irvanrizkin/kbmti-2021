@@ -21,6 +21,10 @@ class StoreMatkuliahRequest extends FormRequest
                 'string',
                 'required',
             ],
+            'semester' => [
+                'string',
+                'required'
+            ],
         ];
     }
 }

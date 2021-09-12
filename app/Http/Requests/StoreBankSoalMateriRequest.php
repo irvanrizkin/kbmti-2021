@@ -29,6 +29,9 @@ class StoreBankSoalMateriRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'type' => [
+                'required',
+            ],
             'sub_type' => [
                 'required',
             ],

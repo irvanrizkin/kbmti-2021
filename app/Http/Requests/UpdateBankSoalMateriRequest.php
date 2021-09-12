@@ -29,6 +29,9 @@ class UpdateBankSoalMateriRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'type' => [
+                'required',
+            ],
             'sub_type' => [
                 'required',
             ],

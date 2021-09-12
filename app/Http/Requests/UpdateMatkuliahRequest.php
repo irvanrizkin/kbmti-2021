@@ -21,6 +21,10 @@ class UpdateMatkuliahRequest extends FormRequest
                 'string',
                 'required',
             ],
+            'semester' => [
+                'string',
+                'required'
+            ],
         ];
     }
 }
