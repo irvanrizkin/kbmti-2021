@@ -29,10 +29,13 @@ use App\Http\Controllers\Admin\EventFieldResponseController as AdminEventFieldRe
 use App\Http\Controllers\Admin\UpcomingProkerController as AdminUpcomingProkerController;
 use App\Http\Controllers\Admin\EventFieldChoiceController as AdminEventFieldChoiceController;
 use App\Http\Controllers\Admin\DepartmentController as AdminDepartmentController;
+use App\Http\Controllers\Admin\MatkuliahController as AdminMatkuliahController;
+use App\Http\Controllers\Admin\BankSoalMateriController as AdminBankSoalMateriController;
 
 // Models
 use App\Models\Department;
 use App\Models\Article;
+use App\Models\BankSoalMateri;
 use App\Models\HasTag;
 
 /*
@@ -79,7 +82,6 @@ Route::group($routesAttributes, function () {
             Route::resource('/department', GuestDepartmentController::class);
 
             // Berita
-            // Route::get('/berita', [GuestBeritaController::class, 'berita-1'])->name('berita.berita-1');
             Route::resource('/berita', GuestBeritaController::class);
 
             // Product
@@ -147,12 +149,7 @@ Route::group($routesAttributes, function () {
             Route::post('anggota/ckmedia', [AdminAnggotController::class, 'storeCKEditorImages'])->name('anggota.storeCKEditorImages');
             Route::resource('anggota', AdminAnggotController::class);
 
-            // Article is disabled due maintenance
-            // Route::get('articles', function () {
-            //     return response()->json([
-            //         'message' => 'this feature is under maintenance'
-            //     ]);
-            // })->name('articles.index');
+            // Article / Beritas
             Route::delete('articles/destroy', [AdminArticleController::class, 'massDestroy'])->name('articles.massDestroy');
             Route::post('articles/media', [AdminArticleController::class, 'storeMedia'])->name('articles.storeMedia');
             Route::post('articles/ckmedia', [AdminArticleController::class, 'storeCKEditorImage'])->name('articles.storeCKEditorImages');
@@ -191,6 +188,14 @@ Route::group($routesAttributes, function () {
             Route::post('departments/media', [AdminDepartmentController::class, 'storeMedia'])->name('departments.storeMedia');
             Route::post('departments/ckmedia', [AdminDepartmentController::class, 'storeCKEditorImages'])->name('departments.storeCKEditorImages');
             Route::resource('departments', AdminDepartmentController::class);
+
+            // Matkuliah
+            Route::delete('matkuliah/destroy', [AdminMatkuliahController::class, 'massDestroy'])->name('matkuliah.massDestroy');
+            Route::resource('matkuliah', AdminMatkuliahController::class);
+
+            // Bank Soal Materi
+            Route::delete('bank-soal-materi/destroy', [AdminBankSoalMateriController::class, 'massDestroy'])->name('bank-soal-materi.massDestroy');
+            Route::resource('bank-soal-materi', AdminBankSoalMateriController::class);
         });
 });
 
