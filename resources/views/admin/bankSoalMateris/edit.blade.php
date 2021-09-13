@@ -39,6 +39,19 @@
                 <span class="help-block">{{ trans('cruds.bankSoalMateri.fields.matkuliah_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required">{{ trans('cruds.bankSoalMateri.fields.type') }}</label>
+                <select class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type" id="type" required>
+                    <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\BankSoalMateri::TYPE_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('type', App\Models\BankSoalMateri::TYPE_SELECT[$bankSoalMateri->type]) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('type'))
+                    <span class="text-danger">{{ $errors->first('type') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.bankSoalMateri.fields.type_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required">{{ trans('cruds.bankSoalMateri.fields.sub_type') }}</label>
                 <select class="form-control {{ $errors->has('sub_type') ? 'is-invalid' : '' }}" name="sub_type" id="sub_type" required>
                     <option value disabled {{ old('sub_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>

@@ -321,6 +321,8 @@ return [
             'updated_at_helper'  => ' ',
             'deleted_at'         => 'Deleted at',
             'deleted_at_helper'  => ' ',
+            'semester'           => 'Semester',
+            'semester_helper'    => " ",
         ],
     ],
     'bankSoalMateri' => [
@@ -343,6 +345,8 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted at',
             'deleted_at_helper' => ' ',
+            'type'              => "Tipe",
+            "type_helper"       => "Apakah item termasuk soal atau materi",
         ],
     ],
 ];

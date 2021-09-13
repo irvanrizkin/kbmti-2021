@@ -29,6 +29,9 @@
                             {{ trans('cruds.matkuliah.fields.name') }}
                         </th>
                         <th>
+                            {{ trans('cruds.matkuliah.fields.semester') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -44,6 +47,9 @@
                             </td>
                             <td>
                                 {{ $matkuliah->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ App\Models\Matkuliah::SEMESTER_SELECT[$matkuliah->semester] ?? "" }}
                             </td>
                             <td>
                                 @can('matkuliah_show')

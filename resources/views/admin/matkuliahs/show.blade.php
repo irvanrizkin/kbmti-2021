@@ -39,6 +39,14 @@
                             {{ $matkuliah->description }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.matkuliah.fields.semester') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Matkuliah::SEMESTER_SELECT[$matkuliah->semester] ?? "" }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

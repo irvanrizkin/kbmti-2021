@@ -49,6 +49,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.bankSoalMateri.fields.type') }}
+                        </th>
+                        <td>
+                            {{ App\Models\BankSoalMateri::TYPE_SELECT[$bankSoalMateri->type] }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.bankSoalMateri.fields.sub_type') }}
                         </th>
                         <td>

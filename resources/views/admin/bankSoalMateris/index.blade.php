@@ -35,6 +35,9 @@
                             {{ trans('cruds.bankSoalMateri.fields.matkuliah') }}
                         </th>
                         <th>
+                            {{ trans('cruds.bankSoalMateri.fields.type') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.bankSoalMateri.fields.sub_type') }}
                         </th>
                         <th>
@@ -59,6 +62,9 @@
                             </td>
                             <td>
                                 {{ $bankSoalMateri->matkuliah->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ App\Models\BankSoalMateri::TYPE_SELECT[$bankSoalMateri->type] ?? "" }}
                             </td>
                             <td>
                                 {{ App\Models\BankSoalMateri::SUB_TYPE_SELECT[$bankSoalMateri->sub_type] ?? '' }}
