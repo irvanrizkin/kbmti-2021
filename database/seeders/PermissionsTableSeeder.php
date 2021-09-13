@@ -264,6 +264,50 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 64,
+                'title' => 'bank_soal_access',
+            ],
+            [
+                'id'    => 65,
+                'title' => 'matkuliah_create',
+            ],
+            [
+                'id'    => 66,
+                'title' => 'matkuliah_edit',
+            ],
+            [
+                'id'    => 67,
+                'title' => 'matkuliah_show',
+            ],
+            [
+                'id'    => 68,
+                'title' => 'matkuliah_delete',
+            ],
+            [
+                'id'    => 69,
+                'title' => 'matkuliah_access',
+            ],
+            [
+                'id'    => 70,
+                'title' => 'bank_soal_materi_create',
+            ],
+            [
+                'id'    => 71,
+                'title' => 'bank_soal_materi_edit',
+            ],
+            [
+                'id'    => 72,
+                'title' => 'bank_soal_materi_show',
+            ],
+            [
+                'id'    => 73,
+                'title' => 'bank_soal_materi_delete',
+            ],
+            [
+                'id'    => 74,
+                'title' => 'bank_soal_materi_access',
+            ],
+            [
+                'id'    => 75,
                 'title' => 'profile_password_edit',
             ],
         ];

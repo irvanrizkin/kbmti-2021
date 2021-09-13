@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             // Irvan
-            BeritaTestSeeder::class,
+            // BeritaTestSeeder::class, (Not used)
+
             // Default
             PermissionsTableSeeder::class,
             RolesTableSeeder::class,

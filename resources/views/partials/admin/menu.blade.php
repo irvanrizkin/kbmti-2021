@@ -146,6 +146,45 @@
                         </ul>
                     </li>
                 @endcan
+                @can('bank_soal_access')
+                    <li class="nav-item has-treeview {{ request()->is("admin/matkuliah*") ? "menu-open" : "" }} {{ request()->is("admin/bank-soal-materi*") ? "menu-open" : "" }}">
+                        <a class="nav-link nav-dropdown-toggle" href="#">
+                            <i class="fa-fw nav-icon fas fa-paperclip">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.bankSoal.title') }}
+                                <i class="right fa fa-fw fa-angle-left nav-icon"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            @can('matkuliah_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.matkuliah.index") }}" class="nav-link {{ request()->is("admin/matkuliah") || request()->is("admin/matkuliah/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-atlas">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.matkuliah.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('bank_soal_materi_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.bank-soal-materi.index") }}" class="nav-link {{ request()->is("admin/bank-soal-materi") || request()->is("admin/bank-soal-materi/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-book-open">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.bankSoalMateri.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </li>
+                @endcan
                 @can('misc_access')
                     <li class="nav-item has-treeview {{ request()->is("admin/event-registrations*") ? "menu-open" : "" }} {{ request()->is("admin/event-fields*") ? "menu-open" : "" }} {{ request()->is("admin/event-field-responses*") ? "menu-open" : "" }} {{ request()->is("admin/event-field-choices*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
