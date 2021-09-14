@@ -123,6 +123,8 @@ return [
             'tags_helper'       => ' ',
             'bureau'            => 'Bureau',
             'bureau_helper'     => ' ',
+            'date_upload'        => 'Date Upload',
+            'date_upload_helper' => ' ',
         ],
     ],
     'event' => [

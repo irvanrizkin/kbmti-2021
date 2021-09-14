@@ -2,16 +2,16 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Article;
+use App\Models\ArticleTest;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
-class UpdateArticleRequest extends FormRequest
+class StoreArticleTestRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('article_edit');
+        return Gate::allows('article_test_create');
     }
 
     public function rules()
@@ -19,6 +19,9 @@ class UpdateArticleRequest extends FormRequest
         return [
             'name' => [
                 'string',
+                'required',
+            ],
+            'image.*' => [
                 'required',
             ],
             'date_upload' => [

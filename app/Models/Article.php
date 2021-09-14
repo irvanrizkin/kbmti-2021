@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use \DateTimeInterface;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -17,22 +18,6 @@ class Article extends Model implements MediaModelInterface
 
     public $table = 'articles';
 
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
-
-    protected $fillable = [
-        'name',
-        'content',
-        'counter',
-        'bureau',
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
-
     public const BUREAU_SELECT = [
         'HRD'  => 'HRD',
         'ADVO' => 'Advocacy',
@@ -42,11 +27,41 @@ class Article extends Model implements MediaModelInterface
         'ENTRE' => 'Entrepreneurship'
     ];
 
+    protected $dates = [
+        'date_upload',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    protected $fillable = [
+        'name',
+        'content',
+        'counter',
+        'date_upload',
+        'bureau',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
     private $const_ModelName = StaticVarMediaHandler::ArticleModelName;
 
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    // date_upload attribute getter
+    public function getDateUploadAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    // date_upload attribute setter
+    public function setDateUploadAttribute($value)
+    {
+        $this->attributes['date_upload'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
     // Helper functions to detect tag
