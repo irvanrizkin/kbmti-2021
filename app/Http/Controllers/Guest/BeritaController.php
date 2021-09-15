@@ -19,7 +19,7 @@ class BeritaController extends Controller
         if ($tag = $request->query('tag')) {
             $itemTag = Tag::where('name', $tag)->pluck('id')->first();
             $hasTags = new HasTag();
-            $hasTags = $hasTags->joinArticleTag($itemTag);
+            $hasTags = $hasTags->joinArticleTag($itemTag)->withQueryString();
             $data = [
                 'articles' => $hasTags->pluck('article'),
                 'tag' => $tag ?? false,
