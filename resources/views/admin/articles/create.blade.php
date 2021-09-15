@@ -47,7 +47,16 @@
                   <span class="text-danger">{{ $errors->first('bureau') }}</span>
               @endif
               <span class="help-block">{{ trans('cruds.article.fields.bureau_helper') }}</span>
-          </div>
+            </div>
+          {{-- Date Upload --}}
+            <div class="form-group">
+              <label class="required" for="date_upload">{{ trans('cruds.article.fields.date_upload') }}</label>
+              <input class="form-control date {{ $errors->has('date_upload') ? 'is-invalid' : '' }}" type="text" name="date_upload" id="date_upload" value="{{ old('date_upload') }}" required>
+              @if($errors->has('date_upload'))
+                  <span class="text-danger">{{ $errors->first('date_upload') }}</span>
+              @endif
+              <span class="help-block">{{ trans('cruds.article.fields.date_upload_helper') }}</span>
+            </div>
             <div class="form-group">
               <label for="tags">{{ trans('cruds.article.fields.tags') }}</label>
                 <div style="padding-bottom: 4px">

@@ -24,7 +24,7 @@
                         @endif
                         @include('layouts.news', [
                             'bureau' => $article->bureau,
-                            'date' => DateTime::createFromFormat('Y-m-d', explode(" ", $article->updated_at)[0])->format('l, d F Y'),
+                            'date' => DateTime::createFromFormat(config('panel.date_format'), $article->date_upload)->format(config('panel.view_date_format')),
                             'title' => $article->name,
                             'url' => url(env("ASSET_URL", "") . "/berita/show/$article->id"),
                             'url' => route('guest.berita.show', [ 'beritum' => $article->id ])

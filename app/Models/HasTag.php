@@ -31,11 +31,27 @@ class HasTag extends Model
     }
 
     // Helper function
-    public function article(){
+    public function article()
+    {
         return $this->belongsTo(Article::class, 'article_id');
     }
 
-    public function tag(){
+    public function tag()
+    {
         return $this->belongsTo(Tag::class, 'tag_id');
+    }
+
+    // Helper join functions
+    public function joinArticleTag($tag_id)
+    {
+        // return $tag_id;
+        $query = $this->query()
+            ->join('articles', 'articles.id', '=', 'has_tags.article_id')
+            ->join('tags', 'tags.id', '=', 'has_tags.tag_id')
+            ->where('has_tags.tag_id', '=', $tag_id)
+            ->where('articles.deleted_at', '=', null)
+            ->orderBy('articles.date_upload', 'desc')
+            ->paginate(6);
+        return $query;
     }
 }
