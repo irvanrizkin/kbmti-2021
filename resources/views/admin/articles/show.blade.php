@@ -85,6 +85,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.article.fields.date_upload') }}
+                        </th>
+                        <td>
+                            {{ $article->date_upload }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.article.fields.tags') }}
                         </th>
                         <td>

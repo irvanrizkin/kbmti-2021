@@ -41,6 +41,9 @@
                             {{ trans('cruds.article.fields.tags') }}
                         </th>
                         <th>
+                            {{ trans('cruds.article.fields.date_upload') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -76,6 +79,9 @@
                                         {{ $hasTag->tag->name }}
                                     </span>
                                 @endforeach
+                            </td>
+                            <td>
+                                {{ $article->date_upload ?? '' }}
                             </td>
                             <td>
                                 @can('article_show')
