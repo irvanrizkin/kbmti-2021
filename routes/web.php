@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
-use App\Static\MediaHandler as StaticVarMediaHandler;
+// use Illuminate\Support\Facades\DB;
+// use Illuminate\Http\Request;
+// use App\Static\MediaHandler as StaticVarMediaHandler;
 
 // GuestController
 use App\Http\Controllers\Guest\HomeController as GuestHomeController;
