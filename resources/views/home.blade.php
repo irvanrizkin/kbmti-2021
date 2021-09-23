@@ -162,7 +162,7 @@
                                             <img src="{{ $articles[$i]->getSingleMediaPath()->imageUrl }}" class="img-fluid home__down__img">
                                             <div class="d-flex justify-content-center">
                                                 <div class="home__down__date">
-                                                    {{ DateTime::createFromFormat('Y-m-d', explode(" ", $articles[$i]->updated_at)[0])->format('l, d F Y') }}
+                                                    {{ DateTime::createFromFormat('d-m-Y', $articles[$i]->date_upload)->format('l, d F Y') }}
                                                 </div>
                                             </div>
                                             <div class="d-flex justify-content-center">
