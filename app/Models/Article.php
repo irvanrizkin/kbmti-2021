@@ -25,9 +25,9 @@ class Article extends Model implements MediaModelInterface
         'RND' => 'Research and Development',
         'RNC' => 'Relation and Creative',
         'ENTRE' => 'Entrepreneurship',
-        "KOMISI1" => "Komisi 1",
-        "KOMISI2" => "Komisi 2",
-        "KOMISI3" => "Komisi 3",
+        "KOMISI 1" => "Komisi 1",
+        "KOMISI 2" => "Komisi 2",
+        "KOMISI 3" => "Komisi 3",
         "INTERNAL" => "Internal",
     ];
 
