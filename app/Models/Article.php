@@ -24,7 +24,10 @@ class Article extends Model implements MediaModelInterface
         'SE' => 'Social Environment',
         'RND' => 'Research and Development',
         'RNC' => 'Relation and Creative',
-        'ENTRE' => 'Entrepreneurship'
+        'ENTRE' => 'Entrepreneurship',
+        "KOMISI1" => "Komisi 1 BPMTI",
+        "KOMISI2" => "Komisi 2 BPMTI",
+        "KOMISI3" => "Komisi 3 BPMTI",
     ];
 
     protected $dates = [
