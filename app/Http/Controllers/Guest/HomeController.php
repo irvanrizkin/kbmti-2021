@@ -12,7 +12,7 @@ class HomeController extends Controller
      *@return \Illuminate\Contracts\Support\Renderable
      */
     public function index (){
-        $articles = Article::limit(6)->get();
+        $articles = Article::orderBy('id', 'DESC')->limit(6)->get();
         return view('home', compact('articles'));
     }
 }
