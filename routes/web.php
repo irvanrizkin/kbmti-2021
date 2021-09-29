@@ -255,3 +255,6 @@ Route::group($routesAttributes, function () {
 //         // 'hasTagSatu' => $articles[0]->hasTag[0]->tag
 //     ]);
 // });
+
+// Testing for page open recruitmen
+Route::view('testing-open-recruitmen', "open-recruitmen-staff-muda");
