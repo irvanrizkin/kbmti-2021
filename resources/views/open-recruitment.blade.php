@@ -16,7 +16,7 @@
                         <div class="recruitment__description-text-desc">
                             Melambangkan open recruitment Melambangkan open recruitment Melambangkan open recruitment
                             Melambangkan open recruitment Melambangkan open recruitment Melambangkan open recruitment
-                            Melambangkan open recruitment Melambangkan open recruitment 
+                            Melambangkan open recruitment Melambangkan 
                         </div>
                     </div>
                 </section>
