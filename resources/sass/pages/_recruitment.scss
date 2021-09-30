@@ -1,0 +1,84 @@
+.recruitment {
+    &__top {
+        margin-top: 8rem;
+        margin-left: 6rem;
+        margin-right: 6rem;
+        justify-content: center; 
+    } 
+    &__content {  
+        margin-top: 4rem;
+        margin-left: 6rem;
+        margin-right: 6rem;
+        justify-content: center; 
+    }
+    &__down {
+        margin-top: 10rem;
+        margin-left: 6rem;
+        margin-right: 6rem; 
+    } 
+    &__label {
+        margin-left: 16px;
+        font-weight: 600;
+        font-size: 1rem;
+        color: #52524e;
+        font-family: ITC Cheltenham Std;
+    }
+    &__break {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    &__break-small {
+        margin-top: 0rem;
+        margin-bottom: 0.8rem;
+    }
+    &__head_text {
+        margin-left: 16px;
+        font-weight: 600;
+        font-size: 1.5rem;
+        color: #24231F;
+        font-family: ITC Cheltenham Std;
+    }
+    &__button-red{
+        color: #ffffff;
+        background-color: #951C21;
+        border-color: #951C21;
+        border-radius: 25px;
+        margin-bottom: 0px;
+    }
+    &__button-white{
+        color: #0a0a0a;
+        background-color: #ffffff;
+        border-color: #ffffff;
+        border-radius: 25px;
+        margin-bottom: 0px;
+    }
+    &__button-input{
+        color: #951C21;
+        background-color: #ffffff;
+        border-color: #333030;
+        border-radius: 5px;
+        margin-bottom: 0px;
+    }
+    &__description {
+        text-align: center;
+        scroll-snap-align: center;
+        &-text { 
+            background-color: #F5F5F5;
+            width: 500px;
+            height: 200px;
+            padding: 30px;
+            border-radius: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 2rem; 
+            margin-bottom: 2rem;
+            text-align: center;
+            &-desc {
+                font-size: 1.125rem;
+                font-family: ITC Cheltenham Std;
+                font-weight: 400;
+            }
+        }
+     
+    }
+}  
