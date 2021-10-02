@@ -69,7 +69,7 @@ if ($condition) {
 }
 
 Route::group($routesAttributes, function () {
-    // Guest
+    // Guest 
     Route::as('guest.')
         ->group(function () {
             // Landing Page
@@ -83,7 +83,7 @@ Route::group($routesAttributes, function () {
 
             // Berita
             Route::resource('/berita', GuestBeritaController::class);
-
+ 
             // Product
             Route::redirect('/products', '/under-construction')->name('products');
 
@@ -92,7 +92,9 @@ Route::group($routesAttributes, function () {
 
             // Open Recruitment
             Route::redirect('/open-recruitmen', '/under-construction')->name('open-recruitmen');
-
+            Route::resource('/open-recruitment', 'App\Http\Controllers\Guest\OprecController');
+            Route::post('/open-recruitment.store', 'App\Http\Controllers\Guest\OprecController@store');
+            Route::view('/open-recruitment.success', 'open-recruitment-success');
             // Under Construction
             Route::view('/under-construction', 'under_const');
         });
@@ -258,4 +260,3 @@ Route::group($routesAttributes, function () {
 
 
 //test route
-Route::view('/open-recruitment', 'open-recruitment');
