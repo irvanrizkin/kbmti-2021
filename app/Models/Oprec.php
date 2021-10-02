@@ -21,7 +21,5 @@ class Oprec extends Model
         'email',
         'id_line',
         'no_hp',
-        'image',
-        'berkas'
     ];
 }

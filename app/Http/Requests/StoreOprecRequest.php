@@ -11,7 +11,7 @@ class StoreOprecRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('anggotum_create');
+        return Gate::allows('oprec_create');
     }
 
     public function rules()
