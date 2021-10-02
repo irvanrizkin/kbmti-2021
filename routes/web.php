@@ -255,3 +255,7 @@ Route::group($routesAttributes, function () {
 //         // 'hasTagSatu' => $articles[0]->hasTag[0]->tag
 //     ]);
 // });
+
+
+//test route
+Route::view('/open-recruitment', 'open-recruitment');
