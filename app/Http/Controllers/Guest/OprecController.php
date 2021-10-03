@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Oprec;
 use Illuminate\Http\Request; 
 
-  
+   
 class OprecController extends Controller
 { 
     public function index()
@@ -17,8 +17,7 @@ class OprecController extends Controller
     public function store(Request $request)
     {
         $newOprecItem = Oprec::create($request->all());
-        
         // Return view that is successfull
-        return view('oprec.open-recruitment-success');
-    } 
+        return redirect()->route('guest.landing.home');
+    }  
 }
