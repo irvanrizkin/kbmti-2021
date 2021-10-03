@@ -164,7 +164,7 @@
                     </div>
                     <div class="recruitment__break"></div>
                     <div class="form-group">
-                        <div class="recruitment__head_text">Silahkan submit berkas kalian pada link dibawah!</div>
+                        <div class="recruitment__head_text" style="font-size: 1.3rem">Silahkan submit berkas kalian pada link dibawah!</div>
                         <div class="d-flex align-items-center w-100 justify-content-center">
                             <a href="https://bit.ly/PengumpulanBerkas_StaffMudaEMTI_2021" target="blank" class="btn recruitment__button-red btn-lg ms-auto me-auto"><i class="fas fa-upload"></i> Upload Pemberkasan (Email UB)  <i class="fas fa-download"></i></a>
                         </div>
