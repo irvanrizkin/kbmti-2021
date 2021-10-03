@@ -54,7 +54,7 @@
                     </div>
                     <div class="recruitment__break"></div>
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-7">
                             <div class="form-group">
                                 <label class="required recruitment__label" for="tempat_lahir">Tempat Lahir*</label>
                                 <div class="recruitment__break-small"></div>
