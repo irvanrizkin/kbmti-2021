@@ -16,7 +16,9 @@ class OprecController extends Controller
  
     public function store(Request $request)
     {
-        Oprec::create($request->all());
+        $newOprecItem = Oprec::create($request->all());
+        
+        // Return view that is successfull
         return view('oprec.open-recruitment-success');
     } 
 }

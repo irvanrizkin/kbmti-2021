@@ -14,14 +14,12 @@
                     <br> 
                     <div class="recruitment__description-text">
                         <div class="recruitment__description-text-desc">
-                            Melambangkan open recruitment Melambangkan open recruitment Melambangkan open recruitment
-                            Melambangkan open recruitment Melambangkan open recruitment Melambangkan open recruitment
-                            Melambangkan open recruitment Melambangkan 
+                            Redaksi untuk mengisi form pendaftaran
                         </div>
                     </div>
                 </section>
                 <section class="recruitment__content"> 
-                    <form method="POST" action="{{ url("open-recruitment.store") }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route("guest.open-recruitment.store") }}" enctype="multipart/form-data">
                         @csrf     
                         <div class="form-group">
                             <label class="required recruitment__label" for="name">Nama Lengkap*</label>
@@ -35,7 +33,7 @@
                         </div>
                         <div class="recruitment__break"></div>
                         <div class="form-group">
-                            <label class="required recruitment__label" for="nim">NIM</label>
+                            <label class="required recruitment__label" for="nim">NIM*</label>
                             <div class="recruitment__break-small"></div>
                             <input class="form-control {{ $errors->has('nim') ? 'is-invalid' : '' }} 
                             search__container" style="  border-radius: 5px;" 
@@ -46,7 +44,7 @@
                         </div> 
                         <div class="recruitment__break"></div>
                         <div class="form-group">
-                            <label class="required recruitment__label" for="angkatan">Angkatan</label>
+                            <label class="required recruitment__label" for="angkatan">Angkatan*</label>
                             <div class="recruitment__break-small"></div>
                             <input class="form-control {{ $errors->has('angkatan') ? 'is-invalid' : '' }} 
                             search__container" style="  border-radius: 5px;" 
@@ -59,7 +57,7 @@
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="form-group" >
-                                    <label class="required recruitment__label" for="tempat_lahir">Tempat Lahir</label>
+                                    <label class="required recruitment__label" for="tempat_lahir">Tempat Lahir*</label>
                                     <div class="recruitment__break-small"></div>
                                     <input class="form-control {{ $errors->has('tempat_lahir') ? 'is-invalid' : '' }} 
                                     search__container" style="  border-radius: 5px;" 
@@ -71,7 +69,7 @@
                             </div>
                             <div class="col-md-5">
                                 <div class="form-group">
-                                    <label class="required recruitment__label" for="tanggal_lahir">Tanggal Lahir</label>
+                                    <label class="required recruitment__label" for="tanggal_lahir">Tanggal Lahir*</label>
                                     <div class="recruitment__break-small"></div>
                                     <input class="form-control {{ $errors->has('tanggal_lahir') ? 'is-invalid' : '' }} 
                                     search__container" style="  border-radius: 5px;" 
@@ -84,7 +82,7 @@
                         </div> 
                         <div class="recruitment__break"></div>
                         <div class="form-group">
-                            <label class="required recruitment__label" for="alamat">Alamat</label>
+                            <label class="required recruitment__label" for="alamat">Alamat*</label>
                             <div class="recruitment__break-small"></div>
                             <textarea class="form-control {{ $errors->has('alamat') ? 'is-invalid' : '' }}
                             search__container" style="border-radius: 5px;" 
@@ -95,7 +93,7 @@
                         </div>
                         <div class="recruitment__break"></div>
                         <div class="form-group">
-                            <label class="required recruitment__label" for="email">Email</label>
+                            <label class="required recruitment__label" for="email">Email*</label>
                             <div class="recruitment__break-small"></div>
                             <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }} 
                             search__container" style="  border-radius: 5px;" 
@@ -106,7 +104,7 @@
                         </div>
                         <div class="recruitment__break"></div>
                         <div class="form-group">
-                            <label class="required recruitment__label" for="id_line">ID Line</label>
+                            <label class="required recruitment__label" for="id_line">ID Line*</label>
                             <div class="recruitment__break-small"></div>
                             <input class="form-control {{ $errors->has('id_line') ? 'is-invalid' : '' }} 
                             search__container" style="  border-radius: 5px;" 
@@ -117,7 +115,7 @@
                         </div>
                         <div class="recruitment__break"></div>
                         <div class="form-group">
-                            <label class="required recruitment__label" for="no_hp">No. Handphone</label>
+                            <label class="required recruitment__label" for="no_hp">No. Handphone*</label>
                             <div class="recruitment__break-small"></div>
                             <input class="form-control {{ $errors->has('no_hp') ? 'is-invalid' : '' }} 
                             search__container" style="  border-radius: 5px;" 
@@ -127,11 +125,22 @@
                             @endif 
                         </div> 
                         <div class="recruitment__break"></div>
+                        <div class="form-group">
+                            <label class="required recruitment__label" for="berkas_link">Link Google Drive Berkas*</label>
+                            <div class="recruitment__break-small"></div>
+                            <input class="form-control {{ $errors->has('berkas_link') ? 'is-invalid' : '' }} 
+                            search__container" style="  border-radius: 5px;" 
+                            type="text" name="berkas_link" id="berkas_link" value="{{ old('berkas_link', '') }}" 
+                            placeholder="Jawaban Anda" required>
+                            @if($errors->has('berkas_link'))
+                            @endif 
+                        </div> 
+                        {{-- <div class="recruitment__break"></div>
                         <label for="foto" class="required recruitment__label">Foto 3X4</label>
-                        <input id="file" type="file" name="image">
+                        <input id="file" type="file" name="photo">
                         <div class="recruitment__break"></div>
                         <label for="foto" class="required recruitment__label">Berkas</label>
-                        <input id="file" type="file" name="berkas">
+                        <input id="file" type="file" name="berkas"> --}}
                         <div class="recruitment__break"></div>
                         <button type="submit" class="btn recruitment__button-red btn-lg">Submit</button>
                     </form>

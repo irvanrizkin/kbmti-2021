@@ -11,6 +11,8 @@ use App\Http\Controllers\Guest\HomeController as GuestHomeController;
 use App\Http\Controllers\Guest\ProfileController as GuestProfileConttroller;
 use App\Http\Controllers\Guest\DepartmentController as GuestDepartmentController;
 use App\Http\Controllers\Guest\BeritaController as GuestBeritaController;
+// Temporary Guest Controller
+use App\Http\Controllers\Guest\OprecController as GuestOprecController;
 
 // Auth
 use App\Http\Controllers\Auth\ChangePasswordController as AuthChangePasswordController;
@@ -92,9 +94,9 @@ Route::group($routesAttributes, function () {
 
             // Open Recruitment
             Route::redirect('/open-recruitmen', '/under-construction')->name('open-recruitmen');
-            Route::resource('/open-recruitment', 'App\Http\Controllers\Guest\OprecController');
-            Route::post('/open-recruitment.store', 'App\Http\Controllers\Guest\OprecController@store');
+            Route::resource('/open-recruitment', GuestOprecController::class);
             Route::view('/open-recruitment.success', 'open-recruitment-success');
+
             // Under Construction
             Route::view('/under-construction', 'under_const');
         });
@@ -259,6 +261,6 @@ Route::group($routesAttributes, function () {
 // });
 
 // Testing for page open recruitmen
-Route::view('testing-open-recruitmen', "open-recruitmen-staff-muda");
+// Route::view('testing-open-recruitmen', "open-recruitmen-staff-muda");
 
 //Test Routes
