@@ -21,16 +21,16 @@
                     </div>
                 </section>
                 <section class="recruitment__content"> 
-                    <form method="POST" action="#" enctype="multipart/form-data">
-                        @csrf   
+                    <form method="POST" action="{{ url("open-recruitment.store") }}" enctype="multipart/form-data">
+                        @csrf     
                         <div class="form-group">
                             <label class="required recruitment__label" for="name">Nama Lengkap*</label>
                             <div class="recruitment__break-small"></div>
-                            <input class="form-control {{ $errors->has('nama') ? 'is-invalid' : '' }} 
+                            <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }} 
                             search__container" style="  border-radius: 5px;" 
-                            type="text" name="nama" id="nama" value="{{ old('nama', '') }}" 
+                            type="text" name="name" id="name" value="{{ old('name', '') }}" 
                             placeholder="Jawaban Anda" required>
-                            @if($errors->has('nama'))
+                            @if($errors->has('name'))
                             @endif 
                         </div>
                         <div class="recruitment__break"></div>
@@ -46,37 +46,26 @@
                         </div> 
                         <div class="recruitment__break"></div>
                         <div class="form-group">
-                            <label class="required recruitment__label" for="prodi">Program Studi/Angkatan</label>
+                            <label class="required recruitment__label" for="angkatan">Angkatan</label>
                             <div class="recruitment__break-small"></div>
-                            <input class="form-control {{ $errors->has('prodi') ? 'is-invalid' : '' }} 
+                            <input class="form-control {{ $errors->has('angkatan') ? 'is-invalid' : '' }} 
                             search__container" style="  border-radius: 5px;" 
-                            type="text" name="prodi" id="prodi" value="{{ old('prodi', '') }}" 
+                            type="text" name="angkatan" id="prodi" value="{{ old('angkatan', '') }}" 
                             placeholder="Jawaban Anda" required>
-                            @if($errors->has('prodi'))
+                            @if($errors->has('angkatan'))
                             @endif
                         </div>  
-                        <div class="recruitment__break"></div>
-                        <div class="form-group">
-                            <label class="required recruitment__label" for="kelas">Kelas</label>
-                            <div class="recruitment__break-small"></div>
-                            <input class="form-control {{ $errors->has('kelas') ? 'is-invalid' : '' }} 
-                            search__container" style="  border-radius: 5px;" 
-                            type="text" name="kelas" id="kelas" value="{{ old('kelas', '') }}" 
-                            placeholder="Jawaban Anda" required>
-                            @if($errors->has('kelas'))
-                            @endif
-                        </div> 
                         <div class="recruitment__break"></div>
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="form-group" >
-                                    <label class="required recruitment__label" for="tempat">Tempat</label>
+                                    <label class="required recruitment__label" for="tempat_lahir">Tempat Lahir</label>
                                     <div class="recruitment__break-small"></div>
-                                    <input class="form-control {{ $errors->has('tempat') ? 'is-invalid' : '' }} 
+                                    <input class="form-control {{ $errors->has('tempat_lahir') ? 'is-invalid' : '' }} 
                                     search__container" style="  border-radius: 5px;" 
-                                    type="text" name="tempat" id="tempat" value="{{ old('tempat', '') }}" 
+                                    type="text" name="tempat_lahir" id="tempat_lahir" value="{{ old('tempat_lahir', '') }}" 
                                     placeholder="Jawaban Anda" required>
-                                    @if($errors->has('tempat'))
+                                    @if($errors->has('tempat_lahir'))
                                     @endif
                                 </div> 
                             </div>
@@ -95,22 +84,11 @@
                         </div> 
                         <div class="recruitment__break"></div>
                         <div class="form-group">
-                            <label class="required recruitment__label" for="alamat_asal">Alamat Asal</label>
+                            <label class="required recruitment__label" for="alamat">Alamat</label>
                             <div class="recruitment__break-small"></div>
-                            <textarea class="form-control {{ $errors->has('alamat_asal') ? 'is-invalid' : '' }}
+                            <textarea class="form-control {{ $errors->has('alamat') ? 'is-invalid' : '' }}
                             search__container" style="border-radius: 5px;" 
-                            name="alamat_asal" id="alamat_asal" value="{{ old('alamat_asal','') }}"
-                            placeholder="Jawaban Anda"></textarea>
-                            @if($errors->has('content'))
-                            @endif
-                        </div>
-                        <div class="recruitment__break"></div>
-                        <div class="form-group">
-                            <label class="required recruitment__label" for="alamat_malang">Alamat di Malang</label>
-                            <div class="recruitment__break-small"></div>
-                            <textarea class="form-control {{ $errors->has('alamat_malang') ? 'is-invalid' : '' }}
-                            search__container" style="  border-radius: 5px;" 
-                            name="alamat_malang" id="alamat_malang" value="{{ old('alamat_malang','') }}" 
+                            name="alamat" id="alamat" value="{{ old('alamat','') }}"
                             placeholder="Jawaban Anda"></textarea>
                             @if($errors->has('content'))
                             @endif
@@ -135,7 +113,7 @@
                             type="id_line" name="id_line" id="id_line" value="{{ old('id_line', '') }}" 
                             placeholder="Jawaban Anda" required>
                             @if($errors->has('id_line'))
-                            @endif 
+                            @endif  
                         </div>
                         <div class="recruitment__break"></div>
                         <div class="form-group">
@@ -147,36 +125,15 @@
                             placeholder="Jawaban Anda" required>
                             @if($errors->has('no_hp'))
                             @endif 
-                        </div>
+                        </div> 
                         <div class="recruitment__break"></div>
-                        <div class="form-group">
-                            <label class="required recruitment__label" for="hobi">Hobi</label>
-                            <div class="recruitment__break-small"></div>
-                            <input class="form-control {{ $errors->has('hobi') ? 'is-invalid' : '' }} 
-                            search__container" style="  border-radius: 5px;" 
-                            type="text" name="hobi" id="hobi" value="{{ old('hobi', '') }}" 
-                            placeholder="Jawaban Anda" required>
-                            @if($errors->has('hobi'))
-                            @endif 
-                        </div>  
+                        <label for="foto" class="required recruitment__label">Foto 3X4</label>
+                        <input id="file" type="file" name="image">
                         <div class="recruitment__break"></div>
-                        <div class="form-group">
-                            <label class="required recruitment__label" for="motto">Motto</label>
-                            <div class="recruitment__break-small"></div>
-                            <textarea class="form-control {{ $errors->has('motto') ? 'is-invalid' : '' }}
-                            search__container" style="  border-radius: 5px;" 
-                            name="motto" id="motto" value="{{ old('motto','') }}" 
-                            placeholder="Jawaban Anda"></textarea>
-                            @if($errors->has('content'))
-                            @endif
-                        </div>
-                        <div class="recruitment__break"></div>
-                        <label for="foto" class="required recruitment__label"  >Foto 3X4</label>
-                        <div class="recruitment__break-small"></div>
-                        <button type="submit" class="btn recruitment__button-input btn-sm">Upload Foto</button>
+                        <label for="foto" class="required recruitment__label">Berkas</label>
+                        <input id="file" type="file" name="berkas">
                         <div class="recruitment__break"></div>
                         <button type="submit" class="btn recruitment__button-red btn-lg">Submit</button>
-                        <button type="submit" class="btn recruitment__button-white btn-lg">Clear Form</button>
                     </form>
                 </section>
                 <section class="recruitment__down">
