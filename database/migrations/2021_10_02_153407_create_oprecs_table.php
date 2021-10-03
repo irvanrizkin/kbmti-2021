@@ -24,7 +24,12 @@ class CreateOprecsTable extends Migration
             $table->string('email')->nullable();;
             $table->string('id_line')->nullable();; 
             $table->string('no_hp')->nullable();;
+            // Urgent Purpose only
+            // $table->string('photo_path')->nullable();
+            $table->string('berkas_link')->nullable();
+            // Urgent Purpose only
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="{{ asset('css/owlcarousel/owl.theme.default.min.css') }}">
     {{-- Favico --}}
     <link rel="shortcut icon" type="image/jpg" href="{{ asset('img/logo.svg') }}">
+    {{-- Dropzone --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -35,6 +37,8 @@
         AOS.init();
     </script>
     <script src="{{ asset('js/owlcarousel/owl.carousel.min.js') }}"></script>
+    {{-- Dropzone --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
     @yield('custom-script')
 </body>
 
