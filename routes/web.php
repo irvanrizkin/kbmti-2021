@@ -93,7 +93,7 @@ Route::group($routesAttributes, function () {
             Route::view('/bank-materi', 'bank_materi.index');
 
             // Open Recruitment
-            Route::redirect('/open-recruitmen', '/under-construction')->name('open-recruitmen');
+            // Route::redirect('/open-recruitmen', '/under-construction')->name('open-recruitmen');
             Route::resource('/open-recruitment', GuestOprecController::class);
             Route::view('/open-recruitment.success', 'open-recruitment-success');
 

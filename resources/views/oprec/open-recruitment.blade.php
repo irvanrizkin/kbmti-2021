@@ -121,13 +121,12 @@
                     </div>
                     <div class="recruitment__break"></div>
                     <div class="form-group">
-                        <label class="required recruitment__label" for="pilihan1">Departemen Pilihan 1*</label>
+                        <label class="required recruitment__label" for="pilihan1">Departemen/Biro Pilihan 1*</label>
                         <div class="recruitment__break-small"></div>
                         <select name="pilihan1" id="pilihan1"
                             class="form-control {{ $errors->has('pilihan1') ? 'is-invalid' : '' }} search__container"
                             style="border-radius: 5px">
-                            <option value disabled {{ old('pilihan1', null) === null ? 'selected' : '' }}>Silakan
-                                Memilih</option>
+                            <option value disabled {{ old('pilihan1', null) === null ? 'selected' : '' }}>Silahkan Memilih</option>
                             <option value="Human Resource Development">Human Resource Development</option>
                             <option value="Advocacy">Advocacy</option>
                             <option value="Social Environment">Social Environment</option>
@@ -140,13 +139,12 @@
                     </div>
                     <div class="recruitment__break"></div>
                     <div class="form-group">
-                        <label class="required recruitment__label" for="pilihan2">Departemen Pilihan 2*</label>
+                        <label class="required recruitment__label" for="pilihan2">Departemen/Biro Pilihan 2*</label>
                         <div class="recruitment__break-small"></div>
                         <select name="pilihan2" id="pilihan2"
                             class="form-control {{ $errors->has('pilihan2') ? 'is-invalid' : '' }} search__container"
                             style="border-radius: 5px">
-                            <option value disabled {{ old('pilihan2', null) === null ? 'selected' : '' }}>Silakan
-                                Memilih</option>
+                            <option value disabled {{ old('pilihan2', null) === null ? 'selected' : '' }}>Silahkan Memilih</option>
                             <option value="Human Resource Development">Human Resource Development</option>
                             <option value="Advocacy">Advocacy</option>
                             <option value="Social Environment">Social Environment</option>
@@ -166,7 +164,7 @@
                     </div>
                     <div class="recruitment__break"></div>
                     <div class="form-group">
-                        <div class="recruitment__head_text">Download Berkas Pendaftaran disini!</div>
+                        <div class="recruitment__head_text" style="font-size: 1.3rem">Silahkan submit berkas kalian pada link dibawah!</div>
                         <div class="d-flex align-items-center w-100 justify-content-center">
                             <a href="https://bit.ly/PengumpulanBerkas_StaffMudaEMTI_2021" target="blank" class="btn recruitment__button-red btn-lg ms-auto me-auto"><i class="fas fa-upload"></i> Upload Pemberkasan (Email UB)  <i class="fas fa-download"></i></a>
                         </div>
