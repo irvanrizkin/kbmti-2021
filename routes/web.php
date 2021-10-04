@@ -33,6 +33,8 @@ use App\Http\Controllers\Admin\EventFieldChoiceController as AdminEventFieldChoi
 use App\Http\Controllers\Admin\DepartmentController as AdminDepartmentController;
 use App\Http\Controllers\Admin\MatkuliahController as AdminMatkuliahController;
 use App\Http\Controllers\Admin\BankSoalMateriController as AdminBankSoalMateriController;
+// Temporary Admin Controller
+use App\Http\Controllers\Admin\PendaftaranStaffMuda as AdminOprecController;
 
 // Models
 use App\Models\Department;
@@ -200,6 +202,14 @@ Route::group($routesAttributes, function () {
             // Bank Soal Materi
             Route::delete('bank-soal-materi/destroy', [AdminBankSoalMateriController::class, 'massDestroy'])->name('bank-soal-materi.massDestroy');
             Route::resource('bank-soal-materi', AdminBankSoalMateriController::class);
+
+
+            // TEMPORARY Routes
+            Route::as('temp.')->group( function () {
+
+                // TEMPORARY Pendaftaran Staff Muda
+                Route::resource('pendaftaran-staff-muda', AdminOprecController::class);
+            } );
         });
 });
 
