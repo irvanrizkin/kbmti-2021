@@ -21,7 +21,7 @@ class PendaftaranStaffMuda extends Controller
 
         $pendaftars = Oprec::all();
 
-        // return view('admin.temp.pendaftaran-staff-muda.index', compact('pendaftars'));
+        return view('admin.temp.pendaftaran-staff-muda.index', compact('pendaftars'));
     }
 
     /**
@@ -51,11 +51,13 @@ class PendaftaranStaffMuda extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Oprec $oprec)
+    public function show($oprec_id)
     {
         abort_if(Gate::denies('temp_pendaftaran_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        
+        $pendaftar = Oprec::find($oprec_id);
 
-        // return view('admin.temp.pendaftaran-staff-muda.show', compact('pendaftars'));
+        return view('admin.temp.pendaftaran-staff-muda.show', compact('pendaftar'));
     }
 
     /**

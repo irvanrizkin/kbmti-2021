@@ -186,21 +186,21 @@
                     </li>
                 @endcan
                 {{-- Temporary Pendaftaran Staff Muda daftar list --}}
-                @can('pendaftaran_access')
+                @can('temp_pendaftaran_access')
                     <li class="nav-item has-treeview {{ request()->is("admin/pendaftaran-staff-muda*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-paperclip">
 
                             </i>
                             <p>
-                                {{ trans('cruds.bankSoal.title') }}
+                                Pendaftaran StaffMud
                                 <i class="right fa fa-fw fa-angle-left nav-icon"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            @can('pendaftaran_access')
+                            @can('temp_pendaftaran_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.pendaftaran-staff-muda.index") }}" class="nav-link {{ request()->is("admin/pendaftaran-staff-muda") || request()->is("admin/pendaftaran-staff-muda/*") ? "active" : "" }}">
+                                    <a href="{{ route("admin.temp.pendaftaran-staff-muda.index") }}" class="nav-link {{ request()->is("admin/pendaftaran-staff-muda") || request()->is("admin/pendaftaran-staff-muda/*") ? "active" : "" }}">
                                         <i class="fa-fw nav-icon fas fa-atlas">
 
                                         </i>

@@ -73,28 +73,28 @@
                             <td class="d-flex justify-content-center">
                                 <span class="badge rounded-pill bg-{{ $pendaftar->is_interviewed ? "success" : "danger" }}">{{ $pendaftar->is_interviewed ? "Sudah Wawancara" : "Belum Wawancara" }}</span>
                             </td>
-                            {{-- <td>
-                                @can('anggotum_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.anggota.show', $pendaftar->id) }}">
+                            <td>
+                                @can('temp_pendaftaran_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.temp.pendaftaran-staff-muda.show', $pendaftar->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('anggotum_edit')
+                                {{-- @can('anggotum_edit')
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.anggota.edit', $pendaftar->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
-                                @endcan
+                                @endcan --}}
 
-                                @can('anggotum_delete')
+                                {{-- @can('anggotum_delete')
                                     <form action="{{ route('admin.anggota.destroy', $pendaftar->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
                                     </form>
-                                @endcan
+                                @endcan --}}
 
-                            </td> --}}
+                            </td>
 
                         </tr>
                     @endforeach
