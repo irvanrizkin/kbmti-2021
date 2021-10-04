@@ -185,6 +185,35 @@
                         </ul>
                     </li>
                 @endcan
+                {{-- Temporary Pendaftaran Staff Muda daftar list --}}
+                @can('pendaftaran_access')
+                    <li class="nav-item has-treeview {{ request()->is("admin/pendaftaran-staff-muda*") ? "menu-open" : "" }}">
+                        <a class="nav-link nav-dropdown-toggle" href="#">
+                            <i class="fa-fw nav-icon fas fa-paperclip">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.bankSoal.title') }}
+                                <i class="right fa fa-fw fa-angle-left nav-icon"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            @can('pendaftaran_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.pendaftaran-staff-muda.index") }}" class="nav-link {{ request()->is("admin/pendaftaran-staff-muda") || request()->is("admin/pendaftaran-staff-muda/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-atlas">
+
+                                        </i>
+                                        <p>
+                                            Pendaftaran Staff Muda 2021
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </li>
+                @endcan
+                {{-- Temporary Pendaftaran Staff Muda daftar list 2021 --}}
                 @can('misc_access')
                     <li class="nav-item has-treeview {{ request()->is("admin/event-registrations*") ? "menu-open" : "" }} {{ request()->is("admin/event-fields*") ? "menu-open" : "" }} {{ request()->is("admin/event-field-responses*") ? "menu-open" : "" }} {{ request()->is("admin/event-field-choices*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
