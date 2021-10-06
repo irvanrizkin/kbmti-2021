@@ -153,46 +153,34 @@
                             <option value="Relation and Creative">Relation and Creative</option>
                         </select>
                         @if($errors->has('pilihan2'))
-                        @endif
+                        @endif 
                     </div>
                     <div class="recruitment__break"></div>
                     <div class="form-group">
-                        <div class="recruitment__head_text">Download Berkas Pendaftaran disini!</div>
-                        <div class="d-flex align-items-center w-100 justify-content-center">
-                            <a href="https://bit.ly/DaftarStaffMudaEMTI2021" target="blank" class="btn recruitment__button-red btn-lg ms-auto me-auto"><i class="fas fa-download"></i> Download Pemberkasan (Email UB)  <i class="fas fa-download"></i></a>
-                        </div>
-                    </div>
-                    <div class="recruitment__break"></div>
-                    <div class="form-group">
-                        <div class="recruitment__head_text" style="font-size: 1.3rem">Silahkan submit berkas kalian pada link dibawah!</div>
-                        <div class="d-flex align-items-center w-100 justify-content-center">
-                            <a href="https://bit.ly/PengumpulanBerkas_StaffMudaEMTI_2021" target="blank" class="btn recruitment__button-red btn-lg ms-auto me-auto"><i class="fas fa-upload"></i> Upload Pemberkasan (Email UB)  <i class="fas fa-download"></i></a>
-                        </div>
-                    </div>
-                    {{-- <div class="recruitment__break"></div>
-                    <div class="form-group">
-                        <label class="required recruitment__label" for="berkas_link">Link Google Drive Berkas*</label>
+                        <label class="required recruitment__label">Download Berkas Pendaftaran disini!</label>
                         <div class="recruitment__break-small"></div>
-                        <input class="form-control {{ $errors->has('berkas_link') ? 'is-invalid' : '' }}
-                    search__container" style=" border-radius: 5px;" type="text" name="berkas_link" id="berkas_link"
-                            value="{{ old('berkas_link', '') }}" placeholder="Jawaban Anda" required>
-                        @if($errors->has('berkas_link'))
-                        @endif
-                    </div> --}}
-                    {{-- <div class="recruitment__break"></div>
-                        <label for="foto" class="required recruitment__label">Foto 3X4</label>
-                        <input id="file" type="file" name="photo">
-                        <div class="recruitment__break"></div>
-                        <label for="foto" class="required recruitment__label">Berkas</label>
-                        <input id="file" type="file" name="berkas">
-                    <div class="recruitment__break"></div> --}}
+                        <div >
+                            <a href="https://bit.ly/DaftarStaffMudaEMTI2021" target="blank" class="btn recruitment__button-input btn-lg ms-auto me-auto"><img src="{{ asset('img/directbox-send.svg') }}"> Download Pemberkasan (Email UB)</a>
+                        </div>
+                    </div> 
                     <div class="recruitment__break"></div>
-                    <button type="submit" class="btn recruitment__button-red btn-lg">Submit</button>
+                    <div class="form-group">
+                        <label class="required recruitment__label">Silahkan submit berkas kalian pada link dibawah!</label>
+                        <div class="recruitment__break-small"></div>
+                        <div >
+                            <a href="https://bit.ly/PengumpulanBerkas_StaffMudaEMTI_2021" target="blank" class="btn recruitment__button-input btn-lg ms-auto me-auto"><img src="{{ asset('img/directbox-send.svg') }}"> Upload Pemberkasan (Email UB)</a>
+                        </div>
+                    </div> 
+                    <div class="recruitment__break-small"></div>
+                    <div class="recruitment__break"></div>
+                    <button type="submit" style="font-size: 18px;" class="btn recruitment__button-red btn-lg">
+                    &emsp;&emsp;&emsp;Submit&emsp;&emsp;&emsp;
+                    </button>
                 </form>
             </section>
             <section class="recruitment__down">
             </section>
         </div>
     </div>
-</div>
+</div> 
 @endsection
