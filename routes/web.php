@@ -11,6 +11,7 @@ use App\Http\Controllers\Guest\HomeController as GuestHomeController;
 use App\Http\Controllers\Guest\ProfileController as GuestProfileConttroller;
 use App\Http\Controllers\Guest\DepartmentController as GuestDepartmentController;
 use App\Http\Controllers\Guest\BeritaController as GuestBeritaController;
+use App\Http\Controllers\Guest\BankController as GuestBankController;
 // Temporary Guest Controller
 use App\Http\Controllers\Guest\OprecController as GuestOprecController;
 
@@ -35,7 +36,6 @@ use App\Http\Controllers\Admin\MatkuliahController as AdminMatkuliahController;
 use App\Http\Controllers\Admin\BankSoalMateriController as AdminBankSoalMateriController;
 // Temporary Admin Controller
 use App\Http\Controllers\Admin\PendaftaranStaffMuda as AdminOprecController;
-
 // Models
 use App\Models\Department;
 use App\Models\Article;
@@ -73,7 +73,7 @@ if ($condition) {
 }
 
 Route::group($routesAttributes, function () {
-    // Guest 
+    // Guest
     Route::as('guest.')
         ->group(function () {
             // Landing Page
@@ -87,12 +87,14 @@ Route::group($routesAttributes, function () {
 
             // Berita
             Route::resource('/berita', GuestBeritaController::class);
- 
+
             // Product
             Route::redirect('/products', '/under-construction')->name('products');
 
             // Product test
-            Route::view('/bank-materi', 'bank_materi.index');
+            Route::get('/bank-materi/redirect', [GuestBankController::class, 'dropdownRedirect'])->name('bank.redirect');
+            Route::resource('/bank-materi', GuestBankController::class);
+            Route::get('/bank-materi/{semester}/matkul/{matkul}', [GuestBankController::class, 'getWithMateri']);
 
             // Open Recruitment
             // Route::redirect('/open-recruitmen', '/under-construction')->name('open-recruitmen');
@@ -261,7 +263,7 @@ Route::group($routesAttributes, function () {
 //         'link' => $hasTag->links(),
 //         'articleFromHasTag' => $hasTag[0],
 //         'callback' => function () {
-            
+
 //         },
 //         // // Nomor satu
 //         // 'nomorSatu' => $articles[0]->getMediaPath(),

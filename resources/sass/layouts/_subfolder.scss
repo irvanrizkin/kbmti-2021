@@ -7,9 +7,16 @@
         margin-right: 22px;
     }
     &__type {
+        width: 170px;
         font-family: ITC Cheltenham Std;
         font-weight: 300;
         font-size: 1.5rem;
         color: #24231F;
+    }
+    &__border-red {
+        border: 3px solid #951C21;
+    }
+    &__border-white {
+        border: 3px solid transparent;
     }
 }
