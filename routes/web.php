@@ -101,6 +101,11 @@ Route::group($routesAttributes, function () {
             Route::resource('/open-recruitment', GuestOprecController::class);
             Route::view('/open-recruitment.success', 'open-recruitment-success');
 
+            // Feel It UI
+            Route::get('/pengumuman-feel-it', function() {
+                return view('feelit.index');
+            });
+
             // Under Construction
             Route::view('/under-construction', 'under_const');
         });
