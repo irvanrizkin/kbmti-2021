@@ -1,0 +1,19 @@
+.feel-it {
+    margin-top: 9rem;
+    margin-bottom: 4rem;
+    &__text-header {
+        font-weight: 600;
+        font-family: Regis;
+        font-size: 36px;
+    }
+    &__text-box {
+        background-color: #F3F3F3;
+        border-radius: 4px;
+        padding: 16px 24px;
+        font-family: ITC Cheltenham Std;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 18px;
+        color: #4E4B66;
+    }
+}
