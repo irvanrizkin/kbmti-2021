@@ -13,6 +13,7 @@ use App\Http\Controllers\Guest\DepartmentController as GuestDepartmentController
 use App\Http\Controllers\Guest\BeritaController as GuestBeritaController;
 use App\Http\Controllers\Guest\BankController as GuestBankController;
 // Temporary Guest Controller
+use App\Http\Controllers\Guest\PengumumanFeelItController as GuestPengumumanFeelItController;
 use App\Http\Controllers\Guest\OprecController as GuestOprecController;
 
 // Auth
@@ -101,10 +102,8 @@ Route::group($routesAttributes, function () {
             // Route::resource('/open-recruitment', GuestOprecController::class);
             // Route::view('/open-recruitment.success', 'open-recruitment-success');
 
-            // Feel It UI
-            Route::get('/pengumuman-feel-it', function() {
-                return view('feelit.index');
-            });
+            // Pengumuman Feel It
+            Route::get('/pengumuman-feel-it', [GuestPengumumanFeelItController::class, 'index'])->name('guest.pengumuman.index');
 
             // Under Construction
             Route::view('/under-construction', 'under_const');
