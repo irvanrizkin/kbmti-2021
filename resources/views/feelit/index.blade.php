@@ -45,6 +45,13 @@
             var status = false;
             var message = "";
             var dataMessage = "";
+            $.ajaxSetup({
+                headers: { 
+                    'Host': 'http://svc-kbmti',
+                    'Accept' : '*/*',
+                    'Connection' : 'keep-alive'
+                }
+            });
             $.ajax({
                 method: "GET",
                 url: "http://svc-kbmti/auth" + msg
