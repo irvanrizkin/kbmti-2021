@@ -40,32 +40,25 @@
 <script>
 
         // Ajax
-        var ajaxFormer = function (msg) {
-            var respStat = false;
-            var status = false;
-            var message = "";
-            var dataMessage = "";
+        var ajaxFormer = function (msg, callback) {
             $.ajaxSetup({
                 headers: { 
-                    'Host': 'http://svc-kbmti',
                     'Accept' : '*/*',
-                    'Connection' : 'keep-alive'
                 }
             });
             $.ajax({
                 method: "GET",
-                url: "http://svc-kbmti/auth" + msg
-            })
-            .done( function (response){
-                if (responses.success) {
-                    respStat = true;
-                    status = response.data.statusKelulusan;
-                    dataMessage = response.data.message;
-                } else {
-                    message = response.message;
+                url: "http://svc-kbmti.mides.id/auth?msg=" + msg,
+                success: (response) => {
+                    let returnedData = {
+                        respStat : response.success,
+                        status : response.data?.statusKelulusan,        
+                        dataMessage : response.data?.message,
+                        message : response.message,
+                    };
+                    callback(returnedData);
                 }
             });
-            return { respStat, status, message, dataMessage };
         }
 
         // Base64Helper
@@ -102,7 +95,7 @@
         }
 
         // Listener
-        var formListener = function (event) {
+        var formListener = async function (event) {
             event.preventDefault();
             let nim = $("#nim").val();
             let password = $('#password').val();
@@ -110,9 +103,30 @@
 
             let token = jwt(data);
 
-            var { respStat, status, message, dataMessage } = ajaxFormer(token);
-
-            Swal.fire(message);
+            let callback = ({ respStat, status, dataMessage, message }) => {
+                if (respStat) {
+                    if (status) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Selamat!',
+                            text: dataMessage,
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Wah...',
+                            text: dataMessage,
+                        });
+                    }
+                } else {
+                    Swal.fire({
+                            icon: 'question',
+                            title: 'Lah...',
+                            text: message,
+                    });
+                }
+            };
+            await ajaxFormer(token, callback);
         }
 
         $("#announcement_form").on('submit', formListener);
