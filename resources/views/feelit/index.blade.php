@@ -57,6 +57,15 @@
                         message : response.message,
                     };
                     callback(returnedData);
+                },
+                error: (response) => {
+                    let returnedData = {
+                        respStat : response.success,
+                        status : response.data?.statusKelulusan,        
+                        dataMessage : response.data?.message,
+                        message : "Kayaknya kredensialmu salah deh...",
+                    };
+                    callback(returnedData);
                 }
             });
         }
