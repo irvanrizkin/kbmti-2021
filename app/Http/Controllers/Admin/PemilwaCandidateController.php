@@ -54,7 +54,7 @@ class PemilwaCandidateController extends Controller
             $this->convertToPreview($this->modelName, $image);
             $mediaHandle = CustomMediaHandler::create([
                 'path' => $image,
-                'model_id' => $anggotum->id,
+                'model_id' => $pemilwaCandidate->id,
                 'model_name' => $this->modelName,
             ]);
         }

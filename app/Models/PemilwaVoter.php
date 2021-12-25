@@ -37,7 +37,7 @@ class PemilwaVoter extends Model
     }
 
     // Helper function belongs to pemilwa event
-    public function pemilwaEvent()
+    public function pemilwa_event()
     {
         return $this->belongsTo(PemilwaEvent::class, 'pemilwa_event_id');
     }

@@ -45,7 +45,7 @@ class PemilwaCandidate extends Model implements MediaModelInterface
     }
 
     // Helper function belongs to pemilwa event
-    public function pemilwaEvent()
+    public function pemilwa_event()
     {
         return $this->belongsTo(PemilwaEvent::class, 'pemilwa_event_id');
     }
@@ -55,7 +55,7 @@ class PemilwaCandidate extends Model implements MediaModelInterface
     {
         // should return an array
         $query = $this->query()
-            ->join('media_handlers', 'media_handlers.model_id', '=', 'anggota.id')
+            ->join('media_handlers', 'media_handlers.model_id', '=', 'pemilwa_candidates.id')
             ->where('media_handlers.model_id', '=', $this->id)
             ->where('media_handlers.model_name', '=', $this->const_ModelName)
             ->where('media_handlers.deleted_at', '=', null)

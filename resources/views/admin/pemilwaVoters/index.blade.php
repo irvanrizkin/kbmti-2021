@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.admin.admin')
 @section('content')
 @can('pemilwa_voter_create')
     <div style="margin-bottom: 10px;" class="row">
