@@ -63,7 +63,7 @@
                         confirmButtonColor: '#951C21',
                         confirmButtonText: 'Kembali',
                     }).then((result) => {
-                        $('#formBpmti').submit();
+                        $('#formEmti').submit();
                     })
                 }
             })
