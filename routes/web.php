@@ -35,6 +35,10 @@ use App\Http\Controllers\Admin\EventFieldChoiceController as AdminEventFieldChoi
 use App\Http\Controllers\Admin\DepartmentController as AdminDepartmentController;
 use App\Http\Controllers\Admin\MatkuliahController as AdminMatkuliahController;
 use App\Http\Controllers\Admin\BankSoalMateriController as AdminBankSoalMateriController;
+use App\Http\Controllers\Admin\PemilwaEventController as AdminPemilwaEventController;
+use App\Http\Controllers\Admin\PemilwaCandidateController as AdminPemilwaCandidateController;
+use App\Http\Controllers\Admin\PemilwaVoterController as AdminPemilwaVoterController;
+use App\Http\Controllers\Admin\PemilwaVoteController as AdminPemilwaVoteController;
 // Temporary Admin Controller
 use App\Http\Controllers\Admin\PendaftaranStaffMuda as AdminOprecController;
 // Models
@@ -209,13 +213,30 @@ Route::group($routesAttributes, function () {
             Route::delete('bank-soal-materi/destroy', [AdminBankSoalMateriController::class, 'massDestroy'])->name('bank-soal-materi.massDestroy');
             Route::resource('bank-soal-materi', AdminBankSoalMateriController::class);
 
+            // Pemilwa Event
+            Route::delete('pemilwa-events/destroy', [AdminPemilwaEventController::class, 'massDestroy'])->name('pemilwa-events.massDestroy');
+            Route::resource('pemilwa-events', AdminPemilwaEventController::class);
+
+            // Pemilwa Candidate
+            Route::delete('pemilwa-candidates/destroy', [AdminPemilwaCandidateController::class, 'massDestroy'])->name('pemilwa-candidates.massDestroy');
+            Route::post('pemilwa-candidates/media', [AdminPemilwaCandidateController::class, 'storeMedia'])->name('pemilwa-candidates.storeMedia');
+            Route::resource('pemilwa-candidates', AdminPemilwaCandidateController::class);
+
+            // Pemilwa Voter
+            Route::delete('pemilwa-voters/destroy', [AdminPemilwaVoterController::class, 'massDestroy'])->name('pemilwa-voters.massDestroy');
+            Route::resource('pemilwa-voters', AdminPemilwaVoterController::class);
+
+            // Vote
+            Route::delete('votes/destroy', [AdminPemilwaVoteController::class, 'massDestroy'])->name('votes.massDestroy');
+            Route::resource('votes', AdminPemilwaVoteController::class);
+
 
             // TEMPORARY Routes
-            Route::as('temp.')->group( function () {
+            Route::as('temp.')->group(function () {
 
                 // TEMPORARY Pendaftaran Staff Muda
                 Route::resource('pendaftaran-staff-muda', AdminOprecController::class);
-            } );
+            });
         });
 });
 
