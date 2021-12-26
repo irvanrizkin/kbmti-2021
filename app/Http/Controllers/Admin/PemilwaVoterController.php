@@ -58,7 +58,7 @@ class PemilwaVoterController extends Controller
             'pemilwa_event_id' => $request->input('pemilwa_event_id'),
         ]);
 
-        $returnEndpoint = env('APP_URL', 'http://kbmti.ub.ac.id') . "/admin/pemilwa-voters?event_id=$pemilwaEventId";
+        $returnEndpoint = env('APP_URL', 'http://kbmti.ub.ac.id') . "admin/pemilwa-voters?event_id=$pemilwaEventId";
         return redirect("http://svc-kbmti.mides.id/assignEmail?email=$email&token=$token&rendpoint=$returnEndpoint");
 
         // return redirect()->route('admin.pemilwa-voters.index');
