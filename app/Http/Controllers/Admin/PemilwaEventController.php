@@ -53,7 +53,7 @@ class PemilwaEventController extends Controller
     public function show(PemilwaEvent $pemilwaEvent)
     {
         abort_if(Gate::denies('pemilwa_event_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
+        
         return view('admin.pemilwaEvents.show', compact('pemilwaEvent'));
     }
 

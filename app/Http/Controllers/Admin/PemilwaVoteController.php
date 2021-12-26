@@ -8,18 +8,25 @@ use App\Http\Requests\StoreVoteRequest;
 use App\Http\Requests\UpdateVoteRequest;
 use App\Models\PemilwaCandidate;
 use App\Models\PemilwaEvent;
-use App\Models\Vote;
+use App\Models\PemilwaVote;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class PemilwaVoteController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         abort_if(Gate::denies('vote_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $votes = Vote::with(['pemilwa_event', 'pemilwa_candidate'])->get();
+        $pemilwaEventId = $request->query('event_id', null);
+
+        $votes = $pemilwaEventId ? 
+            PemilwaVote::with(['pemilwa_event'])
+                ->where('pemilwa_event_id', $pemilwaEventId)
+                ->get()   
+            : PemilwaVote::with(['pemilwa_event'])->get()
+        ;
 
         $pemilwa_events = PemilwaEvent::get();
 
@@ -41,12 +48,12 @@ class PemilwaVoteController extends Controller
 
     public function store(StoreVoteRequest $request)
     {
-        $vote = Vote::create($request->all());
+        $vote = PemilwaVote::create($request->all());
 
         return redirect()->route('admin.pemilwaVotes.index');
     }
 
-    public function edit(Vote $vote)
+    public function edit(PemilwaVote $vote)
     {
         abort_if(Gate::denies('vote_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
@@ -59,14 +66,14 @@ class PemilwaVoteController extends Controller
         return view('admin.pemilwaVotes.edit', compact('pemilwa_candidates', 'pemilwa_events', 'vote'));
     }
 
-    public function update(UpdateVoteRequest $request, Vote $vote)
+    public function update(UpdateVoteRequest $request, PemilwaVote $vote)
     {
         $vote->update($request->all());
 
         return redirect()->route('admin.pemilwaVotes.index');
     }
 
-    public function show(Vote $vote)
+    public function show(PemilwaVote $vote)
     {
         abort_if(Gate::denies('vote_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
@@ -75,7 +82,7 @@ class PemilwaVoteController extends Controller
         return view('admin.pemilwaVotes.show', compact('vote'));
     }
 
-    public function destroy(Vote $vote)
+    public function destroy(PemilwaVote $vote)
     {
         abort_if(Gate::denies('vote_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
@@ -86,7 +93,7 @@ class PemilwaVoteController extends Controller
 
     public function massDestroy(MassDestroyVoteRequest $request)
     {
-        Vote::whereIn('id', request('ids'))->delete();
+        PemilwaVote::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
     }

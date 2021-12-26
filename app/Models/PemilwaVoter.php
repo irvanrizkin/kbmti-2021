@@ -25,6 +25,7 @@ class PemilwaVoter extends Model
         'email',
         'token',
         'pemilwa_event_id',
+        'is_done',
         'created_at',
         'updated_at',
         'deleted_at',

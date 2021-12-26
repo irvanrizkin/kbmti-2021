@@ -46,6 +46,8 @@ use App\Models\Department;
 use App\Models\Article;
 use App\Models\BankSoalMateri;
 use App\Models\HasTag;
+// Another helper
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -300,4 +302,11 @@ Route::group($routesAttributes, function () {
 // Testing for page open recruitmen
 // Route::view('testing-open-recruitmen', "open-recruitmen-staff-muda");
 
-//Test Routes
+// Testing Random String
+Route::get('random-string', function () {
+    return response()->json([
+        'randomString' => Str::random(16),
+    ]);
+});
+
+//End of Test Routes

@@ -9,16 +9,24 @@ use App\Http\Requests\UpdatePemilwaVoterRequest;
 use App\Models\PemilwaEvent;
 use App\Models\PemilwaVoter;
 use Gate;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class PemilwaVoterController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         abort_if(Gate::denies('pemilwa_voter_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $pemilwaVoters = PemilwaVoter::with(['pemilwa_event'])->get();
+        $pemilwaEventId = $request->query('event_id', null);
+
+        $pemilwaVoters = $pemilwaEventId ? 
+            PemilwaVoter::with(['pemilwa_event'])
+                ->where('pemilwa_event_id', $pemilwaEventId)
+                ->get()   
+            : PemilwaVoter::with(['pemilwa_event'])->get()
+        ;
 
         $pemilwa_events = PemilwaEvent::get();
 
@@ -36,6 +44,7 @@ class PemilwaVoterController extends Controller
 
     public function store(StorePemilwaVoterRequest $request)
     {
+        $request->token = Str::random(16);
         $pemilwaVoter = PemilwaVoter::create($request->all());
 
         return redirect()->route('admin.pemilwa-voters.index');

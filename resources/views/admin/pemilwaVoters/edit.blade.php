@@ -27,14 +27,6 @@
                 <span class="help-block">{{ trans('cruds.pemilwaVoter.fields.email_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="token">{{ trans('cruds.pemilwaVoter.fields.token') }}</label>
-                <input class="form-control {{ $errors->has('token') ? 'is-invalid' : '' }}" type="text" name="token" id="token" value="{{ old('token', $pemilwaVoter->token) }}">
-                @if($errors->has('token'))
-                    <span class="text-danger">{{ $errors->first('token') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.pemilwaVoter.fields.token_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label for="pemilwa_event_id">{{ trans('cruds.pemilwaVoter.fields.pemilwa_event') }}</label>
                 <select class="form-control select2 {{ $errors->has('pemilwa_event') ? 'is-invalid' : '' }}" name="pemilwa_event_id" id="pemilwa_event_id">
                     @foreach($pemilwa_events as $id => $entry)

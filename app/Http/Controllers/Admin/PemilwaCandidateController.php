@@ -24,11 +24,18 @@ class PemilwaCandidateController extends Controller
     use MediaConversionTrait;
     private $modelName = StaticVarMediaHandler::PemilwaCandidate;
 
-    public function index()
+    public function index(Request $request)
     {
         abort_if(Gate::denies('pemilwa_candidate_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $pemilwaCandidates = PemilwaCandidate::with(['pemilwa_event'])->get();
+        $pemilwaEventId = $request->query('event_id', null);
+
+        $pemilwaCandidates = $pemilwaEventId ? 
+            PemilwaCandidate::with(['pemilwa_event'])
+                ->where('pemilwa_event_id', $pemilwaEventId)
+                ->get()   
+            : PemilwaCandidate::with(['pemilwa_event'])->get()
+        ;
 
         return view('admin.pemilwaCandidates.index', compact('pemilwaCandidates'));
     }
