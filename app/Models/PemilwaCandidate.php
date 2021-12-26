@@ -9,13 +9,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Interfaces\MediaModelInterface;
 use App\StaticVars\MediaHandler as StaticVarMediaHandler;
 
-class Anggotum extends Model implements MediaModelInterface
+class PemilwaCandidate extends Model implements MediaModelInterface
 {
-    use SoftDeletes;
     use HasFactory;
+    use SoftDeletes;
 
-    public $table = 'anggota';
-    private $const_ModelName = StaticVarMediaHandler::AnggotaModelName;
+    public const TYPE_SELECT = [
+        'BPMTI' => 'BPMTI',
+        'EMTI'  => 'EMTI',
+    ];
+
+    public $table = 'pemilwa_candidates';
+    private $const_ModelName = StaticVarMediaHandler::PemilwaCandidate;
 
     protected $dates = [
         'created_at',
@@ -25,25 +30,24 @@ class Anggotum extends Model implements MediaModelInterface
 
     protected $fillable = [
         'name',
-        'instagram_acc',
-        'linkedin_acc',
-        'keanggotaan',
+        'no_urut',
+        'type',
+        'pemilwa_event_id',
         'created_at',
         'updated_at',
         'deleted_at',
-        'department_id',
-        'type',
-        'caption'
     ];
 
-    public function department()
-    {
-        return $this->belongsTo(Department::class, 'department_id');
-    }
-
+    // Helper function to format the date
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    // Helper function belongs to pemilwa event
+    public function pemilwa_event()
+    {
+        return $this->belongsTo(PemilwaEvent::class, 'pemilwa_event_id');
     }
 
     // Helper function to Media Handler
@@ -51,7 +55,7 @@ class Anggotum extends Model implements MediaModelInterface
     {
         // should return an array
         $query = $this->query()
-            ->join('media_handlers', 'media_handlers.model_id', '=', 'anggota.id')
+            ->join('media_handlers', 'media_handlers.model_id', '=', 'pemilwa_candidates.id')
             ->where('media_handlers.model_id', '=', $this->id)
             ->where('media_handlers.model_name', '=', $this->const_ModelName)
             ->where('media_handlers.deleted_at', '=', null)

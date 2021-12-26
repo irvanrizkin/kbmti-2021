@@ -21,7 +21,7 @@
           <a class="nav-link {{ route('guest.products') == url()->current() ? 'active' : "" }}" href="{{ route('guest.products') }}">Produk</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ route('guest.open-recruitment.index') == url()->current() ? 'active' : "" }}" href="{{ url('open-recruitment') }}">Open Recruitment</a>
+          <a class="nav-link {{ route('guest.open-recruitmen') == url()->current() ? 'active' : "" }}" href="{{ url('open-recruitmen') }}">Open Recruitment</a>
         </li>
       </ul>
     </div>

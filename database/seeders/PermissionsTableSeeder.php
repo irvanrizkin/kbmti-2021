@@ -308,6 +308,90 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 75,
+                'title' => 'pemilwa_access',
+            ],
+            [
+                'id'    => 76,
+                'title' => 'pemilwa_event_create',
+            ],
+            [
+                'id'    => 77,
+                'title' => 'pemilwa_event_edit',
+            ],
+            [
+                'id'    => 78,
+                'title' => 'pemilwa_event_show',
+            ],
+            [
+                'id'    => 79,
+                'title' => 'pemilwa_event_delete',
+            ],
+            [
+                'id'    => 80,
+                'title' => 'pemilwa_event_access',
+            ],
+            [
+                'id'    => 81,
+                'title' => 'pemilwa_candidate_create',
+            ],
+            [
+                'id'    => 82,
+                'title' => 'pemilwa_candidate_edit',
+            ],
+            [
+                'id'    => 83,
+                'title' => 'pemilwa_candidate_show',
+            ],
+            [
+                'id'    => 84,
+                'title' => 'pemilwa_candidate_delete',
+            ],
+            [
+                'id'    => 85,
+                'title' => 'pemilwa_candidate_access',
+            ],
+            [
+                'id'    => 86,
+                'title' => 'pemilwa_voter_create',
+            ],
+            [
+                'id'    => 87,
+                'title' => 'pemilwa_voter_edit',
+            ],
+            [
+                'id'    => 88,
+                'title' => 'pemilwa_voter_show',
+            ],
+            [
+                'id'    => 89,
+                'title' => 'pemilwa_voter_delete',
+            ],
+            [
+                'id'    => 90,
+                'title' => 'pemilwa_voter_access',
+            ],
+            [
+                'id'    => 91,
+                'title' => 'vote_create',
+            ],
+            [
+                'id'    => 92,
+                'title' => 'vote_edit',
+            ],
+            [
+                'id'    => 93,
+                'title' => 'vote_show',
+            ],
+            [
+                'id'    => 94,
+                'title' => 'vote_delete',
+            ],
+            [
+                'id'    => 95,
+                'title' => 'vote_access',
+            ],
+            [
+                'id'    => 96,
                 'title' => 'profile_password_edit',
             ],
         ];

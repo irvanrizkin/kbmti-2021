@@ -19,4 +19,7 @@ class MediaHandler
 
     // Upcoming Proker
     public const UpcomingProkerModelName = "upcoming_prokers";
+
+    // Pemilwa Candidate
+    public const PemilwaCandidate = 'pemilwa_candidates';
 }

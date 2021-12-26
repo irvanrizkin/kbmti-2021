@@ -13,6 +13,7 @@ use App\Http\Controllers\Guest\DepartmentController as GuestDepartmentController
 use App\Http\Controllers\Guest\BeritaController as GuestBeritaController;
 use App\Http\Controllers\Guest\BankController as GuestBankController;
 // Temporary Guest Controller
+use App\Http\Controllers\Guest\PengumumanFeelItController as GuestPengumumanFeelItController;
 use App\Http\Controllers\Guest\OprecController as GuestOprecController;
 use App\Http\Controllers\Guest\PemilwaController as GuestPemilwaController;
 
@@ -35,6 +36,10 @@ use App\Http\Controllers\Admin\EventFieldChoiceController as AdminEventFieldChoi
 use App\Http\Controllers\Admin\DepartmentController as AdminDepartmentController;
 use App\Http\Controllers\Admin\MatkuliahController as AdminMatkuliahController;
 use App\Http\Controllers\Admin\BankSoalMateriController as AdminBankSoalMateriController;
+use App\Http\Controllers\Admin\PemilwaEventController as AdminPemilwaEventController;
+use App\Http\Controllers\Admin\PemilwaCandidateController as AdminPemilwaCandidateController;
+use App\Http\Controllers\Admin\PemilwaVoterController as AdminPemilwaVoterController;
+use App\Http\Controllers\Admin\PemilwaVoteController as AdminPemilwaVoteController;
 // Temporary Admin Controller
 use App\Http\Controllers\Admin\PendaftaranStaffMuda as AdminOprecController;
 // Models
@@ -42,6 +47,8 @@ use App\Models\Department;
 use App\Models\Article;
 use App\Models\BankSoalMateri;
 use App\Models\HasTag;
+// Another helper
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,14 +105,12 @@ Route::group($routesAttributes, function () {
             Route::get('/bank-materi/{semester}/matkul/{matkul}', [GuestBankController::class, 'getWithMateri']);
 
             // Open Recruitment
-            // Route::redirect('/open-recruitmen', '/under-construction')->name('open-recruitmen');
-            Route::resource('/open-recruitment', GuestOprecController::class);
-            Route::view('/open-recruitment.success', 'open-recruitment-success');
+            Route::redirect('/open-recruitmen', '/under-construction')->name('open-recruitmen');
+            // Route::resource('/open-recruitment', GuestOprecController::class);
+            // Route::view('/open-recruitment.success', 'open-recruitment-success');
 
-            // Feel It UI
-            Route::get('/pengumuman-feel-it', function() {
-                return view('feelit.index');
-            });
+            // Pengumuman Feel It
+            Route::get('/pengumuman-feel-it', [GuestPengumumanFeelItController::class, 'index'])->name('guest.pengumuman.index');
 
             // Under Construction
             Route::view('/under-construction', 'under_const');
@@ -216,13 +221,30 @@ Route::group($routesAttributes, function () {
             Route::delete('bank-soal-materi/destroy', [AdminBankSoalMateriController::class, 'massDestroy'])->name('bank-soal-materi.massDestroy');
             Route::resource('bank-soal-materi', AdminBankSoalMateriController::class);
 
+            // Pemilwa Event
+            Route::delete('pemilwa-events/destroy', [AdminPemilwaEventController::class, 'massDestroy'])->name('pemilwa-events.massDestroy');
+            Route::resource('pemilwa-events', AdminPemilwaEventController::class);
+
+            // Pemilwa Candidate
+            Route::delete('pemilwa-candidates/destroy', [AdminPemilwaCandidateController::class, 'massDestroy'])->name('pemilwa-candidates.massDestroy');
+            Route::post('pemilwa-candidates/media', [AdminPemilwaCandidateController::class, 'storeMedia'])->name('pemilwa-candidates.storeMedia');
+            Route::resource('pemilwa-candidates', AdminPemilwaCandidateController::class);
+
+            // Pemilwa Voter
+            Route::delete('pemilwa-voters/destroy', [AdminPemilwaVoterController::class, 'massDestroy'])->name('pemilwa-voters.massDestroy');
+            Route::resource('pemilwa-voters', AdminPemilwaVoterController::class);
+
+            // Vote
+            Route::delete('votes/destroy', [AdminPemilwaVoteController::class, 'massDestroy'])->name('votes.massDestroy');
+            Route::resource('votes', AdminPemilwaVoteController::class);
+
 
             // TEMPORARY Routes
-            Route::as('temp.')->group( function () {
+            Route::as('temp.')->group(function () {
 
                 // TEMPORARY Pendaftaran Staff Muda
                 Route::resource('pendaftaran-staff-muda', AdminOprecController::class);
-            } );
+            });
         });
 });
 
@@ -286,4 +308,18 @@ Route::group($routesAttributes, function () {
 // Testing for page open recruitmen
 // Route::view('testing-open-recruitmen', "open-recruitmen-staff-muda");
 
-//Test Routes
+// Testing Random String
+Route::get('random-string', function () {
+    return response()->json([
+        'randomString' => Str::random(16),
+    ]);
+});
+
+// Testing forredirection
+Route::get('testing-sending-email', function () {
+    // return redirect('https://google.com');
+    $returnEndpoint = env('APP_URL', 'http://kbmti.ub.ac.id') . '/admin/pemilwa-voters';
+    return redirect('http://svc-kbmti.mides.id/assignEmail?email=adiatma85@gmail.com&token=longasstokenshitcokkontol');
+});
+
+//End of Test Routes

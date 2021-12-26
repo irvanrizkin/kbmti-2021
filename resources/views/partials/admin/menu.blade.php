@@ -213,6 +213,69 @@
                         </ul>
                     </li>
                 @endcan
+                @can('pemilwa_access')
+                    <li class="nav-item has-treeview {{ request()->is("admin/pemilwa-events*") ? "menu-open" : "" }} {{ request()->is("admin/pemilwa-candidates*") ? "menu-open" : "" }} {{ request()->is("admin/pemilwa-voters*") ? "menu-open" : "" }} {{ request()->is("admin/votes*") ? "menu-open" : "" }}">
+                        <a class="nav-link nav-dropdown-toggle" href="#">
+                            <i class="fa-fw nav-icon fas fa-bullhorn">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.pemilwa.title') }}
+                                <i class="right fa fa-fw fa-angle-left nav-icon"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            @can('pemilwa_event_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.pemilwa-events.index") }}" class="nav-link {{ request()->is("admin/pemilwa-events") || request()->is("admin/pemilwa-events/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-tv">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.pemilwaEvent.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('pemilwa_candidate_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.pemilwa-candidates.index") }}" class="nav-link {{ request()->is("admin/pemilwa-candidates") || request()->is("admin/pemilwa-candidates/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon far fa-user">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.pemilwaCandidate.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('pemilwa_voter_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.pemilwa-voters.index") }}" class="nav-link {{ request()->is("admin/pemilwa-voters") || request()->is("admin/pemilwa-voters/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-users">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.pemilwaVoter.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('vote_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.votes.index") }}" class="nav-link {{ request()->is("admin/votes") || request()->is("admin/votes/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-bullhorn">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.vote.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </li>
+                @endcan
                 {{-- Temporary Pendaftaran Staff Muda daftar list 2021 --}}
                 @can('misc_access')
                     <li class="nav-item has-treeview {{ request()->is("admin/event-registrations*") ? "menu-open" : "" }} {{ request()->is("admin/event-fields*") ? "menu-open" : "" }} {{ request()->is("admin/event-field-responses*") ? "menu-open" : "" }} {{ request()->is("admin/event-field-choices*") ? "menu-open" : "" }}">
