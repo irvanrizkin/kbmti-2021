@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class PemilwaController extends Controller
 {
-    //
     public function emti_view()
     {
         return view('pemilwa.emti');
