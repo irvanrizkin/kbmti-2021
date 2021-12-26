@@ -14,6 +14,7 @@ use App\Http\Controllers\Guest\BeritaController as GuestBeritaController;
 use App\Http\Controllers\Guest\BankController as GuestBankController;
 // Temporary Guest Controller
 use App\Http\Controllers\Guest\OprecController as GuestOprecController;
+use App\Http\Controllers\Guest\PemilwaController as GuestPemilwaController;
 
 // Auth
 use App\Http\Controllers\Auth\ChangePasswordController as AuthChangePasswordController;
@@ -108,6 +109,11 @@ Route::group($routesAttributes, function () {
 
             // Under Construction
             Route::view('/under-construction', 'under_const');
+
+            // Pemilwa
+            Route::get('/pemilwa-emti', [GuestPemilwaController::class, 'emti_view']);
+            Route::get('/pemilwa-bpmti', [GuestPemilwaController::class, 'bpmti_view']);
+            Route::post('/pemilwa-submit', [GuestPemilwaController::class, 'store'])->name('pemilwa.submit');
         });
 
     // Admin Panel
