@@ -14,7 +14,7 @@ class AddIsDoneFieldToPemilwaVotersTable extends Migration
     public function up()
     {
         Schema::table('pemilwa_voters', function (Blueprint $table) {
-            $table->boolean('is_done')->default(true)->nullable()->after('token');
+            $table->boolean('is_done')->default(false)->nullable()->after('token');
         });
     }
 

@@ -21,12 +21,11 @@ class PemilwaVoterController extends Controller
 
         $pemilwaEventId = $request->query('event_id', null);
 
-        $pemilwaVoters = $pemilwaEventId ? 
+        $pemilwaVoters = $pemilwaEventId ?
             PemilwaVoter::with(['pemilwa_event'])
-                ->where('pemilwa_event_id', $pemilwaEventId)
-                ->get()   
-            : PemilwaVoter::with(['pemilwa_event'])->get()
-        ;
+            ->where('pemilwa_event_id', $pemilwaEventId)
+            ->get()
+            : PemilwaVoter::with(['pemilwa_event'])->get();
 
         $pemilwa_events = PemilwaEvent::get();
 
@@ -44,10 +43,25 @@ class PemilwaVoterController extends Controller
 
     public function store(StorePemilwaVoterRequest $request)
     {
-        $request->token = Str::random(16);
-        $pemilwaVoter = PemilwaVoter::create($request->all());
+        $email = $request->input('email');
+        $pemilwaEventId = $request->input('pemilwa_event_id');
+        // Small Fix habis ini
+        if (!$email || !$pemilwaEventId) {
+            $pemilwa_events = PemilwaEvent::pluck('tahun', 'id')->prepend(trans('global.pleaseSelect'), '');
+            return redirect()->route('admin.pemilwa-voters.create', compact('pemilwa_events'));
+        }
+        $token = Str::random(16);
+        $pemilwaVoter = PemilwaVoter::create([
+            'nim' => $request->input('nim'),
+            'email' => $request->input('email'),
+            'token' => $token,
+            'pemilwa_event_id' => $request->input('pemilwa_event_id'),
+        ]);
 
-        return redirect()->route('admin.pemilwa-voters.index');
+        $returnEndpoint = env('APP_URL', 'http://kbmti.ub.ac.id') . "/admin/pemilwa-voters?event_id=$pemilwaEventId";
+        return redirect("http://svc-kbmti.mides.id/assignEmail?email=$email&token=$token&rendpoint=$returnEndpoint");
+
+        // return redirect()->route('admin.pemilwa-voters.index');
     }
 
     public function edit(PemilwaVoter $pemilwaVoter)

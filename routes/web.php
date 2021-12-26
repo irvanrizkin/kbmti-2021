@@ -309,4 +309,11 @@ Route::get('random-string', function () {
     ]);
 });
 
+// Testing forredirection
+Route::get('testing-sending-email', function () {
+    // return redirect('https://google.com');
+    $returnEndpoint = env('APP_URL', 'http://kbmti.ub.ac.id') . '/admin/pemilwa-voters';
+    return redirect('http://svc-kbmti.mides.id/assignEmail?email=adiatma85@gmail.com&token=longasstokenshitcokkontol');
+});
+
 //End of Test Routes
