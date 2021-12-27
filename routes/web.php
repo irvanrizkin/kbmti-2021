@@ -119,6 +119,24 @@ Route::group($routesAttributes, function () {
             Route::get('/pemilwa-emti', [GuestPemilwaController::class, 'emti_view']);
             Route::get('/pemilwa-bpmti', [GuestPemilwaController::class, 'bpmti_view']);
             Route::post('/pemilwa-submit', [GuestPemilwaController::class, 'store'])->name('pemilwa.submit');
+
+            Route::prefix('pemilwa')
+                ->as('pemilwa.')
+                ->group(function () {
+                    // Login
+                    Route::get('/a/{year}', [GuestPemilwaController::class, 'login'])->name('login');
+                    // Auth
+                    Route::post('/a/{year}', [GuestPemilwaController::class, 'auth'])->name('auth');
+
+                    // Chose Emti
+                    Route::get('/a/{year}/{token}/emti', [GuestPemilwaController::class, 'choseEmti'])->name('choseEmti');
+                    // Submit Emti
+                    Route::post('/a/{year}/{token}/emti', [GuestPemilwaController::class, 'submitEmti'])->name('submitEmti');
+                    // Chose Emti
+                    Route::get('/a/{year}/{token}/bpmti', [GuestPemilwaController::class, 'choseBpmti'])->name('choseBpmti');
+                    // Submit Bpmti
+                    Route::post('/a/{year}/{token}/bpmti', [GuestPemilwaController::class, 'submitBpmti'])->name('submitBpmti');
+                });
         });
 
     // Admin Panel
