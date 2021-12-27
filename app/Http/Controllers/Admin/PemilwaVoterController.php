@@ -43,6 +43,7 @@ class PemilwaVoterController extends Controller
 
     public function store(StorePemilwaVoterRequest $request)
     {
+        $nim = $request->input('nim');
         $email = $request->input('email');
         $pemilwaEventId = $request->input('pemilwa_event_id');
         // Small Fix habis ini
@@ -50,7 +51,15 @@ class PemilwaVoterController extends Controller
             $pemilwa_events = PemilwaEvent::pluck('tahun', 'id')->prepend(trans('global.pleaseSelect'), '');
             return redirect()->route('admin.pemilwa-voters.create', compact('pemilwa_events'));
         }
+
+        // Check if already exist
+        $existedVoter = PemilwaVoter::where('nim', $nim)->where('email', $email)->exists();
+        if ($existedVoter) {
+            return view('admin.pemilwaVoters.index', compact('pemilwaVoters', 'pemilwa_events'));
+        }
+
         $token = Str::random(16);
+        $pemilwaEvent = PemilwaEvent::find($pemilwaEventId);
         $pemilwaVoter = PemilwaVoter::create([
             'nim' => $request->input('nim'),
             'email' => $request->input('email'),
@@ -59,7 +68,8 @@ class PemilwaVoterController extends Controller
         ]);
 
         $returnEndpoint = env('APP_URL', 'http://kbmti.ub.ac.id') . "admin/pemilwa-voters?event_id=$pemilwaEventId";
-        return redirect("http://svc-kbmti.mides.id/assignEmail?email=$email&token=$token&rendpoint=$returnEndpoint");
+        $toBeAccessedEndpoint = env('APP_URL', 'http://kbmti.ub.ac.id' . "pemilwa/a/$pemilwaEvent->tahun");
+        return redirect("http://svc-kbmti.mides.id/assignEmail?email=$email&token=$token&rendpoint=$returnEndpoint&toBeAccessed=$toBeAccessedEndpoint");
 
         // return redirect()->route('admin.pemilwa-voters.index');
     }
