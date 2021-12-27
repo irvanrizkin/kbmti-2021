@@ -26,6 +26,7 @@
                     @include('pemilwa.one-card', [
                         'text' => 'Habil Edgar Avangsa',
                         'buttonId' => 'habilBtn',
+                        'source' => asset("img/pemilwa/habil.jpg"),
                     ])
                 </div>
             </div>
@@ -34,12 +35,14 @@
                     @include('pemilwa.one-card', [
                         'text' => 'Khairiyan Hidayat Ramadhan',
                         'buttonId' => 'riyanBtn',
+                        'source' => asset("img/pemilwa/riyan.png"),
                     ])
                 </div>
                 <div class="col md-6">
                     @include('pemilwa.one-card', [
                         'text' => "Farhan Hisbullah A'isyi Basuki",
                         'buttonId' => 'aisBtn',
+                        'source' => asset("img/pemilwa/ais.png"),
                     ])
                 </div>
             </div>
