@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminPemilwaVoteChart;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 // use Illuminate\Support\Facades\DB;
@@ -237,6 +238,9 @@ Route::group($routesAttributes, function () {
             // Vote
             Route::delete('votes/destroy', [AdminPemilwaVoteController::class, 'massDestroy'])->name('votes.massDestroy');
             Route::resource('votes', AdminPemilwaVoteController::class);
+
+            // Chart Vote
+            Route::get('pemilwa-chart', [AdminPemilwaVoteChart::class, 'index'])->name('pemilwa-chart');
 
 
             // TEMPORARY Routes

@@ -50,6 +50,12 @@ class PemilwaCandidate extends Model implements MediaModelInterface
         return $this->belongsTo(PemilwaEvent::class, 'pemilwa_event_id');
     }
 
+    // Helper function has Many to Pemilwa vote
+    public function pemilwa_votes()
+    {
+        return $this->hasMany(PemilwaVote::class, 'pemilwa_candidate_id');
+    }
+
     // Helper function to Media Handler
     public function getMediaPath()
     {
