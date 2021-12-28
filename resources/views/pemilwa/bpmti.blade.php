@@ -20,7 +20,7 @@
                     @include('pemilwa.one-card', [
                         'text' => 'M. Alfi Syahri Ramadhan',
                         'buttonId' => 'alfiBtn',
-                        // 'source' => asset("img/pemilwa/hammam.jpg"),
+                        'source' => asset("img/pemilwa/alfi.jpg"),
                     ])
                 </div>
                 <div class="col md-4">

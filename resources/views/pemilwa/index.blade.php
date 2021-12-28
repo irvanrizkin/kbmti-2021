@@ -6,7 +6,7 @@
 <section class="feel-it container">
     @include('layouts.heading', ['text' => 'Pemilwa TI 2021'])
     <div class="feel-it__text-box">
-        Pemilwa TI merupakan tempat bagi para mahasiswa untuk memilih calon ketua himpunan KBMTI
+        Pemilwa TI merupakan tempat bagi para mahasiswa untuk memilih calon ketua himpunan, wakil ketua himpunan, serta anggota BPMTI
     </div>
     <div class="d-flex justify-content-center">
         <form action="" method="POST" class="mt-4" id="announcement_form">
