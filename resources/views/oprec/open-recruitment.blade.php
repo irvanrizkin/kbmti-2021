@@ -9,12 +9,12 @@
         <div class="col-md-12">
             <section class="recruitment__top">
 
-                <div class="recruitment__head_text">Open Recruitment Staff Muda EMTI 2021</div>
-                @include('layouts.heading', ['text' => 'Staff Muda'])
+                <div class="recruitment__head_text">Open Recruitment Staff KBMTI 2022</div>
+                @include('layouts.heading', ['text' => 'Staff'])
                 <br>
                 <div class="recruitment__description-text">
                     <div class="recruitment__description-text-desc">
-                        Hallo teman-teman Teknologi Informasi 2021! Silahkan isi form dibawah ini dengan
+                        Hallo teman-teman Teknologi Informasi 2022! Silahkan isi form di bawah ini dengan
                         sebenar-benarnya dan upload berkasnya ya!
                         Kami tunggu kontribusimu untuk KBMTI! Semangat :)
                     </div>
