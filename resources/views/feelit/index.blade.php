@@ -4,13 +4,9 @@
 
 @section('content')
 <section class="feel-it container">
-    <div class="feel-it__text-header">Open Recruitment</div>
-    @include('layouts.heading', ['text' => 'Staff Muda'])
+    @include('layouts.heading', ['text' => 'Pengumuman Feel IT'])
     <div class="feel-it__text-box">
-        Program kerja yang melakukan pembelajaran, pembinaan, dan pengembangan sumber daya mahasiswa baru di Program
-        Studi Teknologi Informasi yang dinaungi oleh EMTI. Program kerja ini dikhususkan untuk Mahasiswa Baru dari
-        Program Studi Teknologi Informasi untuk mendapat pembekalan tentang himpunan mahasiswa Program Studi Teknologi
-        Informasi
+        Silakan memasukkan NIM dan Password SIAM Anda.
     </div>
     <div class="d-flex justify-content-center">
         <form action="" method="GET" class="mt-4" id="announcement_form">

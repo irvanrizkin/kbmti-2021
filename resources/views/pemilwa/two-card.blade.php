@@ -11,8 +11,9 @@
         <h5 class="mt-4" style="font-family: Regis;">{{ $text }}</h5>
     </div>
     <button
-    id="{{ $buttonId }}"
-    class="border rounded-pill fs-5 p-3 text-white mt-4"
+    id="btn-trigger-{{$no_urut}}"
+    data-id="{{ $no_urut }}"
+    class="border rounded-pill fs-5 p-3 text-white mt-4 btn-trigger-two-card"
     style="background-color: #951C21; width:216px; font-family: ITC Cheltenham Std"
     >Pilih</button>
 </div>
