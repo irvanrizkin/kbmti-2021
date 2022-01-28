@@ -106,9 +106,9 @@ Route::group($routesAttributes, function () {
             Route::get('/bank-materi/{semester}/matkul/{matkul}', [GuestBankController::class, 'getWithMateri']);
 
             // Open Recruitment
-            Route::redirect('/open-recruitmen', '/under-construction')->name('open-recruitmen');
-            // Route::resource('/open-recruitment', GuestOprecController::class);
-            // Route::view('/open-recruitment.success', 'open-recruitment-success');
+            // Route::redirect('/open-recruitmen', '/under-construction')->name('open-recruitmen');
+            Route::resource('/open-recruitment', GuestOprecController::class);
+            Route::view('/open-recruitment.success', 'open-recruitment-success');
 
             // Pengumuman Feel It
             Route::get('/pengumuman-feel-it', [GuestPengumumanFeelItController::class, 'index'])->name('guest.pengumuman.index');
