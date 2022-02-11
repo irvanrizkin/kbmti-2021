@@ -131,7 +131,7 @@
                             <option value="Advocacy">Advocacy</option>
                             <option value="Social Environment">Social Environment</option>
                             <option value="Research and Development">Research and Development</option>
-                            <option value="Entrepreneur">Entrepreneur</option>
+                           
                             <option value="Relation and Creative">Relation and Creative</option>
                         </select>
                         @if($errors->has('pilihan1'))
@@ -149,7 +149,6 @@
                             <option value="Advocacy">Advocacy</option>
                             <option value="Social Environment">Social Environment</option>
                             <option value="Research and Development">Research and Development</option>
-                            <option value="Entrepreneur">Entrepreneur</option>
                             <option value="Relation and Creative">Relation and Creative</option>
                         </select>
                         @if($errors->has('pilihan2'))
@@ -160,7 +159,7 @@
                         <label class="required recruitment__label">Download Berkas Pendaftaran disini!</label>
                         <div class="recruitment__break-small"></div>
                         <div >
-                            <a href="https://bit.ly/DaftarStaffMudaEMTI2021" target="blank" class="btn recruitment__button-input btn-lg ms-auto me-auto"><img src="{{ asset('img/directbox-send.svg') }}"> Download Pemberkasan (Email UB)</a>
+                            <a href="https://drive.google.com/drive/folders/192rZ26fTgLwRzNQFdqa6MCQ4wOI02OwX?usp=sharing" target="blank" class="btn recruitment__button-input btn-lg ms-auto me-auto"><img src="{{ asset('img/directbox-send.svg') }}"> Download Pemberkasan (Email UB)</a>
                         </div>
                     </div> 
                     <div class="recruitment__break"></div>
@@ -168,7 +167,7 @@
                         <label class="required recruitment__label">Silahkan submit berkas kalian pada link dibawah!</label>
                         <div class="recruitment__break-small"></div>
                         <div >
-                            <a href="https://bit.ly/PengumpulanBerkas_StaffMudaEMTI_2021" target="blank" class="btn recruitment__button-input btn-lg ms-auto me-auto"><img src="{{ asset('img/directbox-send.svg') }}"> Upload Pemberkasan (Email UB)</a>
+                            <a href="https://forms.gle/Z88wNbgHP8JqqGo98" target="blank" class="btn recruitment__button-input btn-lg ms-auto me-auto"><img src="{{ asset('img/directbox-send.svg') }}"> Upload Pemberkasan (Email UB)</a>
                         </div>
                     </div> 
                     <div class="recruitment__break-small"></div>
