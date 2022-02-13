@@ -133,9 +133,9 @@
                             <option value="Research and Development">Research and Development</option>
 
                             <option value="Relation and Creative">Relation and Creative</option>
-                            <option value="Komisi 1">Komisi 1</option>
-                            <option value="Komisi 2">Komisi 2</option>
-                            <option value="Komisi 3">Komisi 3</option>
+                            <option value="BPMTI Komisi 1">BPMTI Komisi 1</option>
+                            <option value="BPMTI Komisi 2">BPMTI Komisi 2</option>
+                            <option value="BPMTI Komisi 3">BPMTI Komisi 3</option>
                         </select>
                         @if($errors->has('pilihan1'))
                         @endif
@@ -153,9 +153,9 @@
                             <option value="Social Environment">Social Environment</option>
                             <option value="Research and Development">Research and Development</option>
                             <option value="Relation and Creative">Relation and Creative</option>
-                            <option value="Komisi 1">Komisi 1</option>
-                            <option value="Komisi 2">Komisi 2</option>
-                            <option value="Komisi 3">Komisi 3</option>
+                            <option value="BPMTI Komisi 1">BPMTI Komisi 1</option>
+                            <option value="BPMTI Komisi 2">BPMTI Komisi 2</option>
+                            <option value="BPMTI Komisi 3">BPMTI Komisi 3</option>
                         </select>
                         @if($errors->has('pilihan2'))
                         @endif
