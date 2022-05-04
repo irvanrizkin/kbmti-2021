@@ -113,10 +113,12 @@
                         <label class="required recruitment__label">Download Berkas Pendaftaran disini!</label>
                         <div class="recruitment__break-small"></div>
                         <div >
-                            <a href="#" target="blank" class="btn recruitment__button-input btn-lg ms-auto me-auto"><img src="{{ asset('img/directbox-send.svg') }}"> Download Pemberkasan (Email UB)</a>
+                            <a href="https://drive.google.com/drive/folders/1zHLgshf1TwsCW5aDhBYxvVBVBbqZ27mJ?usp=sharing" target="blank" class="btn recruitment__button-input btn-lg ms-auto me-auto"><img src="{{ asset('img/directbox-send.svg') }}"> Download Pemberkasan (Email UB)</a>
                         </div>
                     </div>
                     <div class="recruitment__break"></div>
+
+
                     <div class="form-group">
                         <label class="required recruitment__label">Silahkan submit berkas kalian pada link dibawah!</label>
                         <div class="recruitment__break-small"></div>
@@ -124,6 +126,21 @@
                             <a href="#" target="blank" class="btn recruitment__button-input btn-lg ms-auto me-auto"><img src="{{ asset('img/directbox-send.svg') }}"> Upload Pemberkasan (Email UB)</a>
                         </div>
                     </div>
+
+                    <div class="recruitment__break"></div>
+
+                    <div class="form-group">
+                        <label class="required recruitment__label" for="tempat_lahir">Link berkas anda*</label>
+                        <div class="recruitment__break-small"></div>
+                            <input class="form-control 
+                            search__container" style="  border-radius: 5px;" type="text" name="tempat_lahir"
+                            id="tempat_lahir" value="" placeholder="Jawaban Anda"
+                            required>
+                        </div>
+                    </div>
+
+
+
                     <div class="recruitment__break-small"></div>
                     <div class="recruitment__break"></div>
                     <button type="submit" style="font-size: 18px;" class="btn recruitment__button-red btn-lg">
