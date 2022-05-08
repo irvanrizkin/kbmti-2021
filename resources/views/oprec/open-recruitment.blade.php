@@ -14,8 +14,8 @@
                 <br>
                 <div class="recruitment__description-text">
                     <div class="recruitment__description-text-desc">
-                       Hallo teman-teman Teknologi Informasi! Silahkan isi form dibawah ini 
-                       dengan sebenar-benarnya dan upload berkasnya ya! 
+                       Hallo teman-teman Teknologi Informasi! Silahkan isi form dibawah ini
+                       dengan sebenar-benarnya dan upload berkasnya ya!
                        Kami tunggu kontribusimu untuk KBMTI di FEEL-IT! Semangat :)
                     </div>
                 </div>
@@ -81,11 +81,13 @@
                             style="border-radius: 5px">
                             <option value disabled {{ old('pilihan1', null) === null ? 'selected' : '' }}>Silahkan Memilih</option>
                             <option value="Perlengkapan">Perlengkapan</option>
-                            <option value="Konsumsi dan Dana Usaha(Kodanus)">Konsumsi dan Dana Usaha(Kodanus)</option>
+                            <option value="Konsumsi, Dana, dan Kesehatan (Kodakes)">Konsumsi, Dana, dan Kesehatan (Kodakes)</option>
                             <option value="Hubungan Masyarakat(Humas)">Hubungan Masyarakat(Humas)</option>
                             <option value="Acara">Acara</option>
                             <option value="Pendamping">Pendamping</option>
                             <option value="Dokumentasi dan Desain Multimedia(DDM)">Dokumentasi dan Desain Multimedia(DDM)</option>
+                            <option value="Koordinator Lapangan (Korlap)">Koordinator Lapangan (Korlap)</option>
+                            <option value="Kesekretariatan (Kestari)">Kesekretariatan (Kestari)</option>
                         </select>
                         @if($errors->has('pilihan1'))
                         @endif
@@ -99,11 +101,13 @@
                             style="border-radius: 5px">
                             <option value disabled {{ old('pilihan2', null) === null ? 'selected' : '' }}>Silahkan Memilih</option>
                             <option value="Perlengkapan">Perlengkapan</option>
-                            <option value="Konsumsi dan Dana Usaha(Kodanus)">Konsumsi dan Dana Usaha(Kodanus)</option>
+                            <option value="Konsumsi, Dana, dan Kesehatan (Kodakes)">Konsumsi, Dana, dan Kesehatan (Kodakes)</option>
                             <option value="Hubungan Masyarakat(Humas)">Hubungan Masyarakat(Humas)</option>
                             <option value="Acara">Acara</option>
                             <option value="Pendamping">Pendamping</option>
                             <option value="Dokumentasi dan Desain Multimedia(DDM)">Dokumentasi dan Desain Multimedia(DDM)</option>
+                            <option value="Koordinator Lapangan (Korlap)">Koordinator Lapangan (Korlap)</option>
+                            <option value="Kesekretariatan (Kestari)">Kesekretariatan (Kestari)</option>
                         </select>
                         @if($errors->has('pilihan2'))
                         @endif
@@ -119,20 +123,20 @@
                     <div class="recruitment__break"></div>
 
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label class="required recruitment__label">Silahkan submit berkas kalian pada link dibawah!</label>
                         <div class="recruitment__break-small"></div>
                         <div >
                             <a href="#" target="blank" class="btn recruitment__button-input btn-lg ms-auto me-auto"><img src="{{ asset('img/directbox-send.svg') }}"> Upload Pemberkasan (Email UB)</a>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="recruitment__break"></div>
 
                     <div class="form-group">
                         <label class="required recruitment__label" for="tempat_lahir">Link berkas anda*</label>
                         <div class="recruitment__break-small"></div>
-                            <input class="form-control 
+                            <input class="form-control
                             search__container" style="  border-radius: 5px;" type="text" name="tempat_lahir"
                             id="tempat_lahir" value="" placeholder="Jawaban Anda"
                             required>
