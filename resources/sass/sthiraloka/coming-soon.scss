@@ -1,0 +1,10 @@
+.sth {
+    &-coming {
+        min-height: calc(100vh - 84px);
+        &>div {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+    }
+}

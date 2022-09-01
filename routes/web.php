@@ -50,6 +50,10 @@ use App\Models\BankSoalMateri;
 use App\Models\HasTag;
 // Another helper
 use Illuminate\Support\Str;
+// Sthiraloka
+use App\Http\Controllers\Sth\HomeController as SthHomeController;
+use App\Http\Controllers\Sth\AboutController as SthAboutController;
+use App\Http\Controllers\Sth\ComingSoonController as SthComingSoonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,7 +90,11 @@ Route::group($routesAttributes, function () {
     Route::as('guest.')
         ->group(function () {
             // Landing Page
-            Route::get('/', [GuestHomeController::class, 'index'])->name('landing.home');
+            Route::get('/', [SthComingSoonController::class, 'index'])->name('sth.coming');
+            // TEMPORARY Home
+            Route::get('/temphome', [SthHomeController::class, 'index'])->name('sth.home');
+            // About
+            Route::get('/about', [SthAboutController::class, 'index'])->name('sth.about');
 
             // Profile
             Route::resource('/profile', GuestProfileConttroller::class);

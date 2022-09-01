@@ -1,0 +1,24 @@
+.sth {
+    &-nav {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        letter-spacing: 1px;
+        &-brand {
+            font-weight: 100;
+            letter-spacing: 2px;
+            &>strong {
+                font-weight: 700;
+            }
+        }
+        &-item {
+            &:hover {
+                background-color: black;
+                &>a {
+                    color: white !important;
+                }
+            }
+            &>a {
+                letter-spacing: 2px;
+            }
+        }
+    }
+}
