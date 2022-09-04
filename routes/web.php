@@ -97,55 +97,55 @@ Route::group($routesAttributes, function () {
             Route::get('/about', [SthAboutController::class, 'index'])->name('sth.about');
 
             // Profile
-            Route::resource('/profile', GuestProfileConttroller::class);
+            // Route::resource('/profile', GuestProfileConttroller::class);
 
             // Department
-            Route::resource('/department', GuestDepartmentController::class);
+            // Route::resource('/department', GuestDepartmentController::class);
 
             // Berita
-            Route::resource('/berita', GuestBeritaController::class);
+            // Route::resource('/berita', GuestBeritaController::class);
 
             // Product
-            Route::redirect('/products', '/under-construction')->name('products');
+            // Route::redirect('/products', '/under-construction')->name('products');
 
             // Product test
-            Route::get('/bank-materi/redirect', [GuestBankController::class, 'dropdownRedirect'])->name('bank.redirect');
-            Route::resource('/bank-materi', GuestBankController::class);
-            Route::get('/bank-materi/{semester}/matkul/{matkul}', [GuestBankController::class, 'getWithMateri']);
+            // Route::get('/bank-materi/redirect', [GuestBankController::class, 'dropdownRedirect'])->name('bank.redirect');
+            // Route::resource('/bank-materi', GuestBankController::class);
+            // Route::get('/bank-materi/{semester}/matkul/{matkul}', [GuestBankController::class, 'getWithMateri']);
 
             // Open Recruitment
             // Route::redirect('/open-recruitmen', '/under-construction')->name('open-recruitmen');
-            Route::resource('/open-recruitment', GuestOprecController::class);
-            Route::view('/open-recruitment.success', 'open-recruitment-success');
+            // Route::resource('/open-recruitment', GuestOprecController::class);
+            // Route::view('/open-recruitment.success', 'open-recruitment-success');
 
             // Pengumuman Feel It
-            Route::get('/pengumuman-feel-it', [GuestPengumumanFeelItController::class, 'index'])->name('guest.pengumuman.index');
+            // Route::get('/pengumuman-feel-it', [GuestPengumumanFeelItController::class, 'index'])->name('guest.pengumuman.index');
 
             // Under Construction
-            Route::view('/under-construction', 'under_const');
+            // Route::view('/under-construction', 'under_const');
 
             // Pemilwa
-            Route::get('/pemilwa-emti', [GuestPemilwaController::class, 'emti_view']);
-            Route::get('/pemilwa-bpmti', [GuestPemilwaController::class, 'bpmti_view']);
-            Route::post('/pemilwa-submit', [GuestPemilwaController::class, 'store'])->name('pemilwa.submit');
+            // Route::get('/pemilwa-emti', [GuestPemilwaController::class, 'emti_view']);
+            // Route::get('/pemilwa-bpmti', [GuestPemilwaController::class, 'bpmti_view']);
+            // Route::post('/pemilwa-submit', [GuestPemilwaController::class, 'store'])->name('pemilwa.submit');
 
-            Route::prefix('pemilwa')
-                ->as('pemilwa.')
-                ->group(function () {
-                    // Login
-                    Route::get('/a/{year}', [GuestPemilwaController::class, 'login'])->name('login');
-                    // Auth
-                    Route::post('/a/{year}', [GuestPemilwaController::class, 'auth'])->name('auth');
+            // Route::prefix('pemilwa')
+            //     ->as('pemilwa.')
+            //     ->group(function () {
+            //         // Login
+            //         Route::get('/a/{year}', [GuestPemilwaController::class, 'login'])->name('login');
+            //         // Auth
+            //         Route::post('/a/{year}', [GuestPemilwaController::class, 'auth'])->name('auth');
 
-                    // Chose Emti
-                    Route::get('/a/{year}/{token}/emti', [GuestPemilwaController::class, 'choseEmti'])->name('choseEmti');
-                    // Submit Emti
-                    Route::post('/a/{year}/{token}/emti', [GuestPemilwaController::class, 'submitEmti'])->name('submitEmti');
-                    // Chose Emti
-                    Route::get('/a/{year}/{token}/bpmti', [GuestPemilwaController::class, 'choseBpmti'])->name('choseBpmti');
-                    // Submit Bpmti
-                    Route::post('/a/{year}/{token}/bpmti', [GuestPemilwaController::class, 'submitBpmti'])->name('submitBpmti');
-                });
+            //         // Chose Emti
+            //         Route::get('/a/{year}/{token}/emti', [GuestPemilwaController::class, 'choseEmti'])->name('choseEmti');
+            //         // Submit Emti
+            //         Route::post('/a/{year}/{token}/emti', [GuestPemilwaController::class, 'submitEmti'])->name('submitEmti');
+            //         // Chose Emti
+            //         Route::get('/a/{year}/{token}/bpmti', [GuestPemilwaController::class, 'choseBpmti'])->name('choseBpmti');
+            //         // Submit Bpmti
+            //         Route::post('/a/{year}/{token}/bpmti', [GuestPemilwaController::class, 'submitBpmti'])->name('submitBpmti');
+            //     });
         });
 
     // Admin Panel
